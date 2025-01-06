@@ -10,7 +10,7 @@
 <meta property='og:description' content="关于hugo博客修改和github文章推送">
 <meta property='og:url' content='https://gsygsr.github.io/dajian/boke/'>
 <meta property='og:site_name' content='一个俗人'>
-<meta property='og:type' content='article'><meta property='article:section' content='Dajian' /><meta property='article:published_time' content='2024-12-31T14:54:43&#43;08:00'/><meta property='article:modified_time' content='2024-12-31T21:19:50&#43;08:00'/><meta property='og:image' content='https://gsygsr.github.io/dajian/boke/0.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Dajian' /><meta property='article:published_time' content='2024-12-31T14:54:43&#43;08:00'/><meta property='article:modified_time' content='2025-01-06T14:06:38&#43;08:00'/><meta property='og:image' content='https://gsygsr.github.io/dajian/boke/0.jpg' />
 <meta name="twitter:title" content="博客搭建">
 <meta name="twitter:description" content="关于hugo博客修改和github文章推送"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://gsygsr.github.io/dajian/boke/0.jpg' />
@@ -310,6 +310,7 @@
         <li><a href="#归档分类封面">归档分类封面</a></li>
       </ol>
     </li>
+    <li><a href="#主页面背景设置">主页面背景设置</a></li>
     <li><a href="#结语">结语</a></li>
   </ol>
 </nav>
@@ -744,7 +745,48 @@
 <h3 id="归档分类封面">归档分类封面
 </h3><p><code>根目录\content\categories\分类的文件夹</code></p>
 <p>这里的md一定要为**_index.md**,否则不生效</p>
-<h2 id="结语">结语
+<h2 id="主页面背景设置">主页面背景设置
+</h2><p>找到<strong>博客根目录\layouts\partials\footer\custom.html</strong></p>
+<p>图片随机api</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">body {
+</span></span><span class="line"><span class="cl">    background: url(&#34;https://t.mwm.moe/fj&#34;) no-repeat center top;
+</span></span><span class="line"><span class="cl">    background-size: cover;
+</span></span><span class="line"><span class="cl">    background-attachment: fixed;
+</span></span><span class="line"><span class="cl">  }
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>图片静态</p>
+<p>图片放到**\assets\background**</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">body</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">background</span><span class="p">:</span> <span class="nb">url</span><span class="p">(</span><span class="sx">{{ (resources.Get &#34;background/背景图片名&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">Permalink</span> <span class="p">}</span><span class="err">}</span><span class="o">)</span> <span class="nt">no-repeat</span> <span class="nt">center</span> <span class="nt">top</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">background-size</span><span class="o">:</span> <span class="nt">cover</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">background-attachment</span><span class="o">:</span> <span class="nt">fixed</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">  <span class="err">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="结语">结语
 </h2><p>博客一直都想着弄的,也是熬到2024的最后一天了(；´д｀)ゞ</p>
 <p>笔记都放到语雀上了,后续会放到博客上,本人菜鸡,大佬们勿喷<strong>d(´ω｀*)</strong></p>
 
@@ -764,7 +806,7 @@
 
 
         <span>
-            最后更新于 Dec 31, 2024 21:19 &#43;0800
+            最后更新于 Jan 06, 2025 14:06 &#43;0800
         </span>
     </section></footer>
 
@@ -945,6 +987,12 @@
     --base-font-family: '屏显臻宋';
     --code-font-family: '屏显臻宋';
   }
+  body {
+    background: url(https://gsygsr.github.io/background/18.jpg) no-repeat center top;
+    background-size: cover;
+    background-attachment: fixed;
+  }
 </style>
+
     </body>
 </html>
