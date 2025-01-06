@@ -118,12 +118,16 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730622391860-85212269-2da9-4657-8b41-756bd0c1d3dd.png&#34;
-	
-	
-	
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/1730622391860-85212269-2da9-4657-8b41-756bd0c1d3dd.png&#34;
+	width=&#34;1017&#34;
+	height=&#34;767&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/1730622391860-85212269-2da9-4657-8b41-756bd0c1d3dd_huc14798b26ecdcbdbaecf4c674bb2099f_81756_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/1730622391860-85212269-2da9-4657-8b41-756bd0c1d3dd_huc14798b26ecdcbdbaecf4c674bb2099f_81756_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;132&#34;
+		data-flex-basis=&#34;318px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;此时，Commons-BeanUtils 会自动找到 name 属性的getter 方法，也就是 getName ，然后调用并获得返回值。这个形式就很自然得想到能任意函数调用。&lt;/font&gt;&lt;/p&gt;
@@ -190,12 +194,16 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;&lt;code&gt;getOutputProperties&lt;/code&gt;调用了&lt;code&gt;newTransformer&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730616744206-f72a2047-52f4-4a41-98ff-53b000e3cdab.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/1730616744206-f72a2047-52f4-4a41-98ff-53b000e3cdab.png&#34;
+	width=&#34;617&#34;
+	height=&#34;248&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/1730616744206-f72a2047-52f4-4a41-98ff-53b000e3cdab_hudce1639ca0c4d2f48d0121b1735b8ebe_22017_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/1730616744206-f72a2047-52f4-4a41-98ff-53b000e3cdab_hudce1639ca0c4d2f48d0121b1735b8ebe_22017_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;248&#34;
+		data-flex-basis=&#34;597px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;而&lt;code&gt;getOutputProperties&lt;/code&gt;很像javabean的&lt;code&gt;OutputProperties&lt;/code&gt;的&lt;code&gt;get&lt;/code&gt;方法&lt;/p&gt;
@@ -203,39 +211,55 @@
 &lt;p&gt;从而触发&lt;code&gt;TemplatesImpl.getOutputProperties&lt;/code&gt;进入链子尾部&lt;/p&gt;
 &lt;h3 id=&#34;链子中部&#34;&gt;链子中部
 &lt;/h3&gt;&lt;p&gt;找&lt;code&gt;PropertyUtils.getProperty&lt;/code&gt;找到&lt;code&gt;BeanComparator&lt;/code&gt;的&lt;code&gt;compare&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730616709188-0aa6ab67-cddf-4c37-8bfc-acbe1cdd78b5.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/1730616709188-0aa6ab67-cddf-4c37-8bfc-acbe1cdd78b5.png&#34;
+	width=&#34;756&#34;
+	height=&#34;319&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/1730616709188-0aa6ab67-cddf-4c37-8bfc-acbe1cdd78b5_hu5be409406670745d48ed60baa3863b4b_37496_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/1730616709188-0aa6ab67-cddf-4c37-8bfc-acbe1cdd78b5_hu5be409406670745d48ed60baa3863b4b_37496_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;236&#34;
+		data-flex-basis=&#34;568px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;链子首部&#34;&gt;链子首部
 &lt;/h3&gt;&lt;p&gt;继续找&lt;code&gt;compare&lt;/code&gt;的时候找到&lt;code&gt;PriorityQueue&lt;/code&gt;,和cc4链子的前部分链一样&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730616687098-9a302755-a169-4b61-bf3b-21ec502292ee.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/1730616687098-9a302755-a169-4b61-bf3b-21ec502292ee.png&#34;
+	width=&#34;710&#34;
+	height=&#34;458&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/1730616687098-9a302755-a169-4b61-bf3b-21ec502292ee_hu8c0b6834ffcfbe5a241a1ea679667b1f_47032_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/1730616687098-9a302755-a169-4b61-bf3b-21ec502292ee_hu8c0b6834ffcfbe5a241a1ea679667b1f_47032_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;155&#34;
+		data-flex-basis=&#34;372px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730616794783-15b8361a-65cf-43f3-8961-a105f9e599c7.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/1730616794783-15b8361a-65cf-43f3-8961-a105f9e599c7.png&#34;
+	width=&#34;369&#34;
+	height=&#34;451&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/1730616794783-15b8361a-65cf-43f3-8961-a105f9e599c7_hu5daabd6fe27d95e410cb5a6d4dad226e_31918_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/1730616794783-15b8361a-65cf-43f3-8961-a105f9e599c7_hu5daabd6fe27d95e410cb5a6d4dad226e_31918_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;81&#34;
+		data-flex-basis=&#34;196px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;继续找&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730616825472-9cc6fff4-b6f0-4000-a9e8-4c3e1a997a03.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/1730616825472-9cc6fff4-b6f0-4000-a9e8-4c3e1a997a03.png&#34;
+	width=&#34;425&#34;
+	height=&#34;424&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/1730616825472-9cc6fff4-b6f0-4000-a9e8-4c3e1a997a03_hu8a4d406b89c53635bfa98a3ee45ba162_28096_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/1730616825472-9cc6fff4-b6f0-4000-a9e8-4c3e1a997a03_hu8a4d406b89c53635bfa98a3ee45ba162_28096_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;100&#34;
+		data-flex-basis=&#34;240px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;这里在cc4链子的时候就注意到size设为2时刚好进入for循环&lt;/p&gt;
@@ -250,21 +274,29 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;找到入口点&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730616841857-abd762c3-1ef7-46a4-80ce-3f9f8cb6f170.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/1730616841857-abd762c3-1ef7-46a4-80ce-3f9f8cb6f170.png&#34;
+	width=&#34;400&#34;
+	height=&#34;660&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/1730616841857-abd762c3-1ef7-46a4-80ce-3f9f8cb6f170_hub46056a2014b82eec02855c79b2bdc37_57726_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/1730616841857-abd762c3-1ef7-46a4-80ce-3f9f8cb6f170_hub46056a2014b82eec02855c79b2bdc37_57726_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;60&#34;
+		data-flex-basis=&#34;145px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;编写exp&#34;&gt;编写exp
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730623202162-68723084-4816-4e08-91f5-9acc50a700ba.png&#34;
-	
-	
-	
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/1730623202162-68723084-4816-4e08-91f5-9acc50a700ba.png&#34;
+	width=&#34;699&#34;
+	height=&#34;144&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/1730623202162-68723084-4816-4e08-91f5-9acc50a700ba_hubb8955867edc76ac02272986299d734a_17754_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/1730623202162-68723084-4816-4e08-91f5-9acc50a700ba_hubb8955867edc76ac02272986299d734a_17754_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;485&#34;
+		data-flex-basis=&#34;1165px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;通过反射修改&lt;code&gt;property&lt;/code&gt;的值为&lt;code&gt;outputProperties&lt;/code&gt;&lt;/p&gt;
@@ -296,12 +328,16 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;再通过反射修改queue的值&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730623584329-792c03ea-9ed8-4275-8d04-1e24f5e5c2ef.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/1730623584329-792c03ea-9ed8-4275-8d04-1e24f5e5c2ef.png&#34;
+	width=&#34;833&#34;
+	height=&#34;414&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/1730623584329-792c03ea-9ed8-4275-8d04-1e24f5e5c2ef_hu3b12d962a85d8446d094835e8bfe5d4a_74462_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/1730623584329-792c03ea-9ed8-4275-8d04-1e24f5e5c2ef_hu3b12d962a85d8446d094835e8bfe5d4a_74462_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;201&#34;
+		data-flex-basis=&#34;482px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
