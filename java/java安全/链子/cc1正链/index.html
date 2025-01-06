@@ -10,7 +10,7 @@
 <meta property='og:description' content="java反序列化链子之cc1正链">
 <meta property='og:url' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/'>
 <meta property='og:site_name' content='一个俗人'>
-<meta property='og:type' content='article'><meta property='article:section' content='Java' /><meta property='article:published_time' content='2025-01-03T15:21:54&#43;08:00'/><meta property='article:modified_time' content='2025-01-06T06:35:36&#43;00:00'/><meta property='og:image' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/7.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Java' /><meta property='article:published_time' content='2025-01-03T15:21:54&#43;08:00'/><meta property='article:modified_time' content='2025-01-06T06:44:01&#43;00:00'/><meta property='og:image' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/7.jpg' />
 <meta name="twitter:title" content="java反序列化之Commons-Collections1-CC1正链">
 <meta name="twitter:description" content="java反序列化链子之cc1正链"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/7.jpg' />
@@ -400,38 +400,54 @@
     <h2 id="链尾invokertransformertransform">链尾InvokerTransformer.transform
 </h2><p>正版cc1链漏洞点还是<code>InvokeTransformer</code></p>
 <p>但是利用的<code>transform</code>的是<code>LazyMap</code>类</p>
-<p><img src="/images%5c1729690093720-15a1808f-bbba-48e2-a74d-1c346097459b.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729690093720-15a1808f-bbba-48e2-a74d-1c346097459b.png"
+	width="480"
+	height="94"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729690093720-15a1808f-bbba-48e2-a74d-1c346097459b_hu914a1035ce157dcd6906931c826b1a14_9837_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729690093720-15a1808f-bbba-48e2-a74d-1c346097459b_hu914a1035ce157dcd6906931c826b1a14_9837_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="510"
+		data-flex-basis="1225px"
 	
 ></p>
-<p><img src="/images%5c1729690127984-226aaeb1-8ef2-45d3-aa9c-fabbee1d24bc.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729690127984-226aaeb1-8ef2-45d3-aa9c-fabbee1d24bc.png"
+	width="667"
+	height="283"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729690127984-226aaeb1-8ef2-45d3-aa9c-fabbee1d24bc_hu136f4ea6d4c6520f369bd9f6c736bb3b_30486_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729690127984-226aaeb1-8ef2-45d3-aa9c-fabbee1d24bc_hu136f4ea6d4c6520f369bd9f6c736bb3b_30486_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="235"
+		data-flex-basis="565px"
 	
 ></p>
 <p>get是public方法,可以创建对象直接调用</p>
 <p>找一下<code>factory</code></p>
-<p><img src="/images%5c1729690201760-0901831d-6d79-48aa-a17e-b2998278b179.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729690201760-0901831d-6d79-48aa-a17e-b2998278b179.png"
+	width="402"
+	height="59"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729690201760-0901831d-6d79-48aa-a17e-b2998278b179_hu871fc17e0222d4ff680f7599c3039d48_7109_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729690201760-0901831d-6d79-48aa-a17e-b2998278b179_hu871fc17e0222d4ff680f7599c3039d48_7109_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="681"
+		data-flex-basis="1635px"
 	
 ></p>
-<p><img src="/images%5c1729690222437-4860abd1-2cea-4fff-ac5b-e1465d63a42b.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729690222437-4860abd1-2cea-4fff-ac5b-e1465d63a42b.png"
+	width="977"
+	height="61"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729690222437-4860abd1-2cea-4fff-ac5b-e1465d63a42b_hube933d19c0e403bf69739658b8d5ffbd_9381_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729690222437-4860abd1-2cea-4fff-ac5b-e1465d63a42b_hube933d19c0e403bf69739658b8d5ffbd_9381_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="1601"
+		data-flex-basis="3843px"
 	
 ></p>
 <p>发现是<code>Transformer</code>而且<code>decorate</code>方法能返回一个<code>LazyMap</code>的实例对象</p>
@@ -467,39 +483,55 @@
 </div><p>成功弹了</p>
 <p>再找<code>get</code>的链子</p>
 <p>这里太多类调用<code>get</code>了,直接看出在<code>AnnotationInvocationHandler</code>的<code>invoke</code>里</p>
-<p><img src="/images%5c1729692272357-e5c55a96-0f6b-4020-987b-bd78a7a7fa86.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729692272357-e5c55a96-0f6b-4020-987b-bd78a7a7fa86.png"
+	width="775"
+	height="602"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729692272357-e5c55a96-0f6b-4020-987b-bd78a7a7fa86_hu1f511a07096a040206dff1616b9513b8_76812_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729692272357-e5c55a96-0f6b-4020-987b-bd78a7a7fa86_hu1f511a07096a040206dff1616b9513b8_76812_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
 	
 ></p>
 <p>怎么触发呢?虽然说invoke是public方法,但是在反序列化的时候,是进入<code>readObject</code>的,不能直接来个<code>AnnotationInvocationHandler.invoke</code>来触发</p>
 <p><font style="color:rgb(80, 80, 92);">需要触发 </font><code>invoke</code><font style="color:rgb(80, 80, 92);"> 方法，马上想到动态代理</font></p>
-<p><img src="/images%5c1729770258319-7ee4ddbe-6386-4840-b36b-2603efc907fc.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729770258319-7ee4ddbe-6386-4840-b36b-2603efc907fc.png"
+	width="852"
+	height="173"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729770258319-7ee4ddbe-6386-4840-b36b-2603efc907fc_hu5cceec526e9e633312502ee1d8d18bbd_37290_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729770258319-7ee4ddbe-6386-4840-b36b-2603efc907fc_hu5cceec526e9e633312502ee1d8d18bbd_37290_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 	
-><img src="/images%5c1729770276794-16e0c148-2d86-4ebc-915b-4537f1aac990.png"
+		class="gallery-image" 
+		data-flex-grow="492"
+		data-flex-basis="1181px"
 	
-	
-	
+><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729770276794-16e0c148-2d86-4ebc-915b-4537f1aac990.png"
+	width="299"
+	height="76"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729770276794-16e0c148-2d86-4ebc-915b-4537f1aac990_hu2325ef54c7cfe13633be1e283144e3dd_6689_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729770276794-16e0c148-2d86-4ebc-915b-4537f1aac990_hu2325ef54c7cfe13633be1e283144e3dd_6689_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="393"
+		data-flex-basis="944px"
 	
 ></p>
 <p>满足实现接口并且重写了invoke方法,是代理类</p>
 <p><font style="color:rgb(80, 80, 92);">一个类被动态代理了之后，想要通过代理调用这个类的方法，就一定会调用 </font><code>invoke()</code><font style="color:rgb(80, 80, 92);"> 方法。</font></p>
-<p><img src="/images%5c1729772447678-9f76e003-38a2-4b18-af42-3790a401eb81.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729772447678-9f76e003-38a2-4b18-af42-3790a401eb81.png"
+	width="490"
+	height="61"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729772447678-9f76e003-38a2-4b18-af42-3790a401eb81_hu7e752075f027fb89e954e18b5f8936c0_8168_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729772447678-9f76e003-38a2-4b18-af42-3790a401eb81_hu7e752075f027fb89e954e18b5f8936c0_8168_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="803"
+		data-flex-basis="1927px"
 	
 ></p>
 <p>先通过反射将<code>memberValues</code>的值改为<code>LazyMap</code></p>
@@ -520,12 +552,16 @@
 <p><font style="color:rgb(33, 53, 71);">代理类只能代理构造函数传入的类，在这里就是继承了Annotation接口的类（即注解），和实现了Map接口的类。</font></p>
 <p><font style="color:rgb(33, 53, 71);">所以哪个注解类或实现了Map接口的类在readObject调用了无参方法呢？就是他本身</font></p>
 <p><font style="color:rgb(33, 53, 71);">AnnotationInvocationHandler本身的readObject里调用了map的一个无参方法</font></p>
-<p><img src="/images%5c1729776989601-18b21b2b-4875-49b5-ad00-a5efd7f19042.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729776989601-18b21b2b-4875-49b5-ad00-a5efd7f19042.png"
+	width="801"
+	height="151"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729776989601-18b21b2b-4875-49b5-ad00-a5efd7f19042_hu5f64213f5059f112b3e4640e16c8f65f_26259_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729776989601-18b21b2b-4875-49b5-ad00-a5efd7f19042_hu5f64213f5059f112b3e4640e16c8f65f_26259_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="530"
+		data-flex-basis="1273px"
 	
 ></p>
 <p><font style="color:rgb(33, 53, 71);">我们用AnnotationInvocationHandler代理lazyMap，调用这个代理实例的entrySet方法，就能跳转到invoke方法，进而调用get。</font></p>
@@ -802,7 +838,7 @@
 
 
         <span>
-            最后更新于 Jan 06, 2025 06:35 UTC
+            最后更新于 Jan 06, 2025 06:44 UTC
         </span>
     </section></footer>
 

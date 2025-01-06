@@ -10,7 +10,7 @@
 <meta property='og:description' content="java反序列化链子之cc5链">
 <meta property='og:url' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/'>
 <meta property='og:site_name' content='一个俗人'>
-<meta property='og:type' content='article'><meta property='article:section' content='Java' /><meta property='article:published_time' content='2025-01-03T15:21:39&#43;08:00'/><meta property='article:modified_time' content='2025-01-06T06:35:37&#43;00:00'/><meta property='og:image' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/11.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Java' /><meta property='article:published_time' content='2025-01-03T15:21:39&#43;08:00'/><meta property='article:modified_time' content='2025-01-06T06:44:01&#43;00:00'/><meta property='og:image' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/11.jpg' />
 <meta name="twitter:title" content="java反序列化之Commons-Collections-CC5链">
 <meta name="twitter:description" content="java反序列化链子之cc5链"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/11.jpg' />
@@ -408,39 +408,55 @@
 </h2><p><font style="color:rgb(80, 80, 92);">入口类是 </font><code>BadAttributeValueExpException</code><font style="color:rgb(80, 80, 92);"> 的 </font><code>readObject()</code><font style="color:rgb(80, 80, 92);"> 方法，这一个倒是不难。关键是后面的。</font></p>
 <p><font style="color:rgb(80, 80, 92);">逆向思维来看的话，</font><code>LazyMap.get()</code><font style="color:rgb(80, 80, 92);"> 方法被 </font><code>TiedMapEntry.toString()</code><font style="color:rgb(80, 80, 92);"> 所调用，而如果去找谁调用了 </font><code>toString()</code><font style="color:rgb(80, 80, 92);"> 这也太多了，太难找了，我们只能正向分析。</font></p>
 <p><code>BadAttributeValueExpException&lt;/font&gt;</code><font style="color:rgb(80, 80, 92);">的readObject</font></p>
-<p><img src="/images%5c1730374922224-d5ae896a-3f78-4d1c-9354-75272eaa6c39.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730374922224-d5ae896a-3f78-4d1c-9354-75272eaa6c39.png"
+	width="786"
+	height="559"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730374922224-d5ae896a-3f78-4d1c-9354-75272eaa6c39_hu170586d232904960e6e330aa2a3eca34_88199_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730374922224-d5ae896a-3f78-4d1c-9354-75272eaa6c39_hu170586d232904960e6e330aa2a3eca34_88199_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="140"
+		data-flex-basis="337px"
 	
 ></p>
 <p><code>TiedMapEntry</code>类下的<code>toString</code></p>
-<p><img src="/images%5c1730375111938-5a53885f-7cda-4f84-8b65-160711219976.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375111938-5a53885f-7cda-4f84-8b65-160711219976.png"
+	width="614"
+	height="122"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375111938-5a53885f-7cda-4f84-8b65-160711219976_huc043417b37d56becfc8b17a690c76fbd_11235_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375111938-5a53885f-7cda-4f84-8b65-160711219976_huc043417b37d56becfc8b17a690c76fbd_11235_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="503"
+		data-flex-basis="1207px"
 	
 ></p>
 <p>同类下的<code>getValue</code></p>
-<p><img src="/images%5c1730375086790-b62a3355-cda0-44ac-ae82-7646b6918380.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375086790-b62a3355-cda0-44ac-ae82-7646b6918380.png"
+	width="285"
+	height="551"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375086790-b62a3355-cda0-44ac-ae82-7646b6918380_hu9de919589fb779d4064cc27e84bf992e_32466_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375086790-b62a3355-cda0-44ac-ae82-7646b6918380_hu9de919589fb779d4064cc27e84bf992e_32466_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="51"
+		data-flex-basis="124px"
 	
 ></p>
 <p>再找到<code>LazyMap</code>下的<code>get</code></p>
-<p><img src="/images%5c1730375167971-e36caa22-30c2-4c81-a896-83980f8e734d.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375167971-e36caa22-30c2-4c81-a896-83980f8e734d.png"
+	width="664"
+	height="330"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375167971-e36caa22-30c2-4c81-a896-83980f8e734d_hu06d75b0aa2141e9faa0284a07510673a_38225_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375167971-e36caa22-30c2-4c81-a896-83980f8e734d_hu06d75b0aa2141e9faa0284a07510673a_38225_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="201"
+		data-flex-basis="482px"
 	
 ></p>
 <p>后半段是cc1正链的后半部分到<code>LazyMap</code>,直接拿进来</p>
@@ -477,28 +493,40 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="tiedmapentrygetvalue触发lazymapget"><code>TiedMapEntry.getValue</code>触发<code>LazyMap.get</code>
-</h2><p><img src="/images%5c1730375973587-ff7930ae-06f6-46f4-bc4f-fd5432f04e4f.png"
-	
-	
-	
+</h2><p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375973587-ff7930ae-06f6-46f4-bc4f-fd5432f04e4f.png"
+	width="420"
+	height="95"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375973587-ff7930ae-06f6-46f4-bc4f-fd5432f04e4f_hue47148bc6c68b8f57b33cddbec8d3c60_8820_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375973587-ff7930ae-06f6-46f4-bc4f-fd5432f04e4f_hue47148bc6c68b8f57b33cddbec8d3c60_8820_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="442"
+		data-flex-basis="1061px"
 	
 ></p>
-<p><img src="/images%5c1730375979456-58a7680e-71b5-40c9-9a2f-0b0f968238c3.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375979456-58a7680e-71b5-40c9-9a2f-0b0f968238c3.png"
+	width="453"
+	height="94"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375979456-58a7680e-71b5-40c9-9a2f-0b0f968238c3_hu2664586db6682ba2c62b3cea9b3ee7dd_9589_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375979456-58a7680e-71b5-40c9-9a2f-0b0f968238c3_hu2664586db6682ba2c62b3cea9b3ee7dd_9589_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="481"
+		data-flex-basis="1156px"
 	
 ></p>
-<p><img src="/images%5c1730376048836-6bed0362-6558-4e6d-95e3-ce5bea605f38.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730376048836-6bed0362-6558-4e6d-95e3-ce5bea605f38.png"
+	width="451"
+	height="157"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730376048836-6bed0362-6558-4e6d-95e3-ce5bea605f38_hu31452176f1cea99139fc16c3663208c7_13549_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730376048836-6bed0362-6558-4e6d-95e3-ce5bea605f38_hu31452176f1cea99139fc16c3663208c7_13549_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="287"
+		data-flex-basis="689px"
 	
 ></p>
 <div class="highlight"><div class="chroma">
@@ -512,28 +540,40 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="回到链首">回到链首
-</h2><p><img src="/images%5c1730377925810-23b82acb-2322-4072-bea2-212ab0741364.png"
-	
-	
-	
+</h2><p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730377925810-23b82acb-2322-4072-bea2-212ab0741364.png"
+	width="893"
+	height="748"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730377925810-23b82acb-2322-4072-bea2-212ab0741364_hua82db1e7b5e929e3f48276b7f9a24571_109577_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730377925810-23b82acb-2322-4072-bea2-212ab0741364_hua82db1e7b5e929e3f48276b7f9a24571_109577_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="119"
+		data-flex-basis="286px"
 	
 ></p>
 <p>可以看到存在两个<code>toString</code>方法</p>
-<p><img src="/images%5c1730378174305-a3fcc266-27bb-49db-9c02-41777ae00c22.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730378174305-a3fcc266-27bb-49db-9c02-41777ae00c22.png"
+	width="541"
+	height="86"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730378174305-a3fcc266-27bb-49db-9c02-41777ae00c22_hue91ab9e373bc2ae08c2cdd36a7c02062_12994_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730378174305-a3fcc266-27bb-49db-9c02-41777ae00c22_hue91ab9e373bc2ae08c2cdd36a7c02062_12994_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 	
-><img src="/images%5c1730378181718-f8b93b9f-48d6-4612-a9a9-f89723b50d24.png"
+		class="gallery-image" 
+		data-flex-grow="629"
+		data-flex-basis="1509px"
 	
-	
-	
+><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730378181718-f8b93b9f-48d6-4612-a9a9-f89723b50d24.png"
+	width="215"
+	height="41"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730378181718-f8b93b9f-48d6-4612-a9a9-f89723b50d24_hudaa21ebe9c0a324c1db346446758cf28_3557_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730378181718-f8b93b9f-48d6-4612-a9a9-f89723b50d24_hudaa21ebe9c0a324c1db346446758cf28_3557_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="524"
+		data-flex-basis="1258px"
 	
 ></p>
 <p>当实例化<code>BadAttributeValueExpException</code>传入参数<code>TiedMapEntry</code>后</p>
@@ -631,12 +671,16 @@
 </span></span><span class="line"><span class="cl">            InvokerTransformer.transform()
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/images%5c1730380205297-5a3261e1-4b31-4700-a37c-edf083694c82.png"
-	
-	
-	
+</div><p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730380205297-5a3261e1-4b31-4700-a37c-edf083694c82.png"
+	width="3008"
+	height="755"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730380205297-5a3261e1-4b31-4700-a37c-edf083694c82_hue025a111767c5422a558ce9e4328b436_137328_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730380205297-5a3261e1-4b31-4700-a37c-edf083694c82_hue025a111767c5422a558ce9e4328b436_137328_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="398"
+		data-flex-basis="956px"
 	
 ></p>
 
@@ -656,7 +700,7 @@
 
 
         <span>
-            最后更新于 Jan 06, 2025 06:35 UTC
+            最后更新于 Jan 06, 2025 06:44 UTC
         </span>
     </section></footer>
 

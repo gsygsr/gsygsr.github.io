@@ -10,7 +10,7 @@
 <meta property='og:description' content="java反序列化链子之cc3链">
 <meta property='og:url' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/'>
 <meta property='og:site_name' content='一个俗人'>
-<meta property='og:type' content='article'><meta property='article:section' content='Java' /><meta property='article:published_time' content='2025-01-03T15:21:25&#43;08:00'/><meta property='article:modified_time' content='2025-01-06T06:35:36&#43;00:00'/><meta property='og:image' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/9.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Java' /><meta property='article:published_time' content='2025-01-03T15:21:25&#43;08:00'/><meta property='article:modified_time' content='2025-01-06T06:44:01&#43;00:00'/><meta property='og:image' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/9.jpg' />
 <meta name="twitter:title" content="java反序列化之Commons-Collections-CC3链">
 <meta name="twitter:description" content="java反序列化链子之cc3链"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/9.jpg' />
@@ -427,12 +427,16 @@
 <li><strong>利用 ClassLoader#defineClass 直接加载字节码</strong>的手段。</li>
 </ul>
 <p><font style="color:rgb(80, 80, 92);">在这一条小链子当中，流程图可以绘制如下。</font></p>
-<p><img src="/images%5c1730279089249-9c37b034-7d65-4fa7-9609-ff38fa44a171.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730279089249-9c37b034-7d65-4fa7-9609-ff38fa44a171.png"
+	width="738"
+	height="110"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730279089249-9c37b034-7d65-4fa7-9609-ff38fa44a171_hub02fad0b7f0784da3d751c76788e7fd4_7437_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730279089249-9c37b034-7d65-4fa7-9609-ff38fa44a171_hub02fad0b7f0784da3d751c76788e7fd4_7437_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="670"
+		data-flex-basis="1610px"
 	
 ></p>
 <p><font style="color:rgb(80, 80, 92);">这里我们可以正向看，首先是</font><font style="color:rgb(80, 80, 92);"> </font><code>loadClass()</code><font style="color:rgb(80, 80, 92);">，它的作用是从已加载的类缓存、父加载器等位置寻找类（这里实际上是双亲委派机制），在前面没有找到的情况下，执行</font><font style="color:rgb(80, 80, 92);"> </font><code>findClass()</code><font style="color:rgb(80, 80, 92);">。</font></p>
@@ -498,83 +502,119 @@
 <p>此时的 <code>defineClass()</code> 方法是有局限性的，因为它只是加载类，并不执行类。若需要执行，则需要先进行 <code>newInstance()</code> 的实例化。</p>
 <p><font style="color:rgb(80, 80, 92);">现在我们的 </font><code>defineClass()</code><font style="color:rgb(80, 80, 92);"> 方法的作用域为 </font><code>protected</code><font style="color:rgb(80, 80, 92);">，我们需要找到作用域为 </font><code>public</code><font style="color:rgb(80, 80, 92);"> 的类，方便我们利用。照样 find usages</font></p>
 <h3 id="templatesimpl-解析">TemplatesImpl 解析
-</h3><p><img src="/images%5c1730122600558-bb743af7-195c-4b6a-b83f-2fdf2cb7996d.png"
-	
-	
-	
+</h3><p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122600558-bb743af7-195c-4b6a-b83f-2fdf2cb7996d.png"
+	width="650"
+	height="417"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122600558-bb743af7-195c-4b6a-b83f-2fdf2cb7996d_hu20d23f51dd6d6387347578b156e5703d_34912_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122600558-bb743af7-195c-4b6a-b83f-2fdf2cb7996d_hu20d23f51dd6d6387347578b156e5703d_34912_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="155"
+		data-flex-basis="374px"
 	
 ></p>
 <p><font style="color:rgb(80, 80, 92);">这里的 </font><code>defineClass()</code><font style="color:rgb(80, 80, 92);"> 方法没有标注作用域，默认为 defalut，也就是说自己的类里面可以调用，我们继续 find usages</font></p>
-<p><img src="/images%5c1730122769497-f7f2876b-104a-44bd-ba90-659fac01d55e.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122769497-f7f2876b-104a-44bd-ba90-659fac01d55e.png"
+	width="690"
+	height="723"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122769497-f7f2876b-104a-44bd-ba90-659fac01d55e_hub78364f1fa715aa019c4fc85f93f42d2_92092_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122769497-f7f2876b-104a-44bd-ba90-659fac01d55e_hub78364f1fa715aa019c4fc85f93f42d2_92092_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="95"
+		data-flex-basis="229px"
 	
 ></p>
 <p>在同类下找到<code>defineTransletClass</code>方法中看到调用了defineClass</p>
 <p>还是private,继续找调用<code>defineTransletClass</code></p>
-<p><img src="/images%5c1730122933557-58fda9c6-0394-4fa1-a5f1-d8911367db11.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122933557-58fda9c6-0394-4fa1-a5f1-d8911367db11.png"
+	width="605"
+	height="122"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122933557-58fda9c6-0394-4fa1-a5f1-d8911367db11_huaa8f24a882e77bb1158244375636f1e6_13859_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122933557-58fda9c6-0394-4fa1-a5f1-d8911367db11_huaa8f24a882e77bb1158244375636f1e6_13859_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="495"
+		data-flex-basis="1190px"
 	
 ></p>
-<p><img src="/images%5c1730122943517-9728f938-540c-422b-8677-304c83ed5222.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122943517-9728f938-540c-422b-8677-304c83ed5222.png"
+	width="566"
+	height="105"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122943517-9728f938-540c-422b-8677-304c83ed5222_hu255a0adad766366287032da055e81f07_12649_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122943517-9728f938-540c-422b-8677-304c83ed5222_hu255a0adad766366287032da055e81f07_12649_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="539"
+		data-flex-basis="1293px"
 	
 ></p>
-<p><img src="/images%5c1730122953691-692839ef-9136-4d9a-9a2c-04ca6675a56f.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122953691-692839ef-9136-4d9a-9a2c-04ca6675a56f.png"
+	width="600"
+	height="210"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122953691-692839ef-9136-4d9a-9a2c-04ca6675a56f_hu2133ba6ac67dafa7e210a8ae806fabcb_22547_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122953691-692839ef-9136-4d9a-9a2c-04ca6675a56f_hu2133ba6ac67dafa7e210a8ae806fabcb_22547_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="285"
+		data-flex-basis="685px"
 	
 ></p>
 <p>以上三个方法都调用了<code>defineTransletClass</code>,为什么选择它?</p>
 <p><font style="color:rgb(80, 80, 92);">因为其调用了 </font><code>defineTransletClasses()</code><font style="color:rgb(80, 80, 92);"> 方法，并且这里有一个 </font><code>newInstance()</code><font style="color:rgb(80, 80, 92);"> 实例化的过程，如果能走完这个函数那么就能动态执行代码，但是因为它是私有的，所以继续找。</font></p>
-<p><img src="/images%5c1730123329131-d2cf0fe9-0ec8-4ba2-aa42-d95a66318bc4.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730123329131-d2cf0fe9-0ec8-4ba2-aa42-d95a66318bc4.png"
+	width="850"
+	height="219"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730123329131-d2cf0fe9-0ec8-4ba2-aa42-d95a66318bc4_huc1c906b36536f8d39f079afa69a09d35_25678_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730123329131-d2cf0fe9-0ec8-4ba2-aa42-d95a66318bc4_huc1c906b36536f8d39f079afa69a09d35_25678_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="388"
+		data-flex-basis="931px"
 	
 ></p>
 <p>找到public修饰的<code>newTransformer</code>方法,接下就是处理限制条件了</p>
-<p><img src="/images%5c1730124203836-75cb4328-aaa7-480d-99c4-535a6e92181b.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730124203836-75cb4328-aaa7-480d-99c4-535a6e92181b.png"
+	width="1198"
+	height="734"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730124203836-75cb4328-aaa7-480d-99c4-535a6e92181b_hu2f6769ee492899cb96e29e2d438ac4a2_105615_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730124203836-75cb4328-aaa7-480d-99c4-535a6e92181b_hu2f6769ee492899cb96e29e2d438ac4a2_105615_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="163"
+		data-flex-basis="391px"
 	
 ></p>
-<p><img src="/images%5c1730124250473-c0997935-6c20-4e76-8fb2-70288118c55b.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730124250473-c0997935-6c20-4e76-8fb2-70288118c55b.png"
+	width="623"
+	height="184"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730124250473-c0997935-6c20-4e76-8fb2-70288118c55b_hu4db32bd550e5512be410ec27f36e07ce_27687_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730124250473-c0997935-6c20-4e76-8fb2-70288118c55b_hu4db32bd550e5512be410ec27f36e07ce_27687_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="338"
+		data-flex-basis="812px"
 	
 ></p>
 <h4 id="_bytecodes解决"><strong>_bytecodes解决</strong>
-</h4><p><img src="/images%5c1730125196189-322f0538-1d79-419b-8708-ff92fd8b4a12.png"
-	
-	
-	
+</h4><p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730125196189-322f0538-1d79-419b-8708-ff92fd8b4a12.png"
+	width="407"
+	height="64"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730125196189-322f0538-1d79-419b-8708-ff92fd8b4a12_hu102be61c9ae2dacf95faab285791e191_5176_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730125196189-322f0538-1d79-419b-8708-ff92fd8b4a12_hu102be61c9ae2dacf95faab285791e191_5176_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="635"
+		data-flex-basis="1526px"
 	
 ></p>
 <p><code>_bytecodes</code><font style="color:rgb(80, 80, 92);"> 的值，这里需要的是一个二维数组，所以我们创建一个二维数组。但是 </font><code>_bytecodes</code><font style="color:rgb(80, 80, 92);"> 作为传递进 defineClass 方法的值是一个一维数组。而这个一维数组里面我们需要存放恶意的字节码。这一段伪代码可以这样写。</font></p>
@@ -628,22 +668,30 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="_tfactory解决"><strong>_tfactory解决</strong>
-</h4><p><img src="/images%5c1730125707047-9cc0796c-7bc7-401f-b578-63fe6c3b1547.png"
-	
-	
-	
+</h4><p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730125707047-9cc0796c-7bc7-401f-b578-63fe6c3b1547.png"
+	width="595"
+	height="54"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730125707047-9cc0796c-7bc7-401f-b578-63fe6c3b1547_hud7e6bbe6513f9bed0f3842104f66780b_7485_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730125707047-9cc0796c-7bc7-401f-b578-63fe6c3b1547_hud7e6bbe6513f9bed0f3842104f66780b_7485_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="1101"
+		data-flex-basis="2644px"
 	
 ></p>
 <p>transient保证了<font style="color:rgb(80, 80, 92);">这个变量在序列化之后无法被访问</font></p>
 <p><font style="color:rgb(80, 80, 92);">在 </font><code>readObject()</code><font style="color:rgb(80, 80, 92);"> 方法中，找到了 </font><code>_tfactory</code><font style="color:rgb(80, 80, 92);"> 的初始化定义。</font></p>
-<p><img src="/images%5c1730125854645-da282866-253f-4edd-b99a-349e5d2d5ef9.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730125854645-da282866-253f-4edd-b99a-349e5d2d5ef9.png"
+	width="605"
+	height="755"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730125854645-da282866-253f-4edd-b99a-349e5d2d5ef9_hu1190bb6d3b3f21f5a2da1f6e6b74d402_110786_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730125854645-da282866-253f-4edd-b99a-349e5d2d5ef9_hu1190bb6d3b3f21f5a2da1f6e6b74d402_110786_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="80"
+		data-flex-basis="192px"
 	
 ></p>
 <p>刚好能在反序列化的时候初始化,就能让<code>_tfactory值不为null</code></p>
@@ -701,31 +749,43 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>运行完但是不弹计算器且报错</p>
-<p><img src="/images%5c1730203540011-aec37d44-08a7-45f5-b608-3df028e5ede7.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730203540011-aec37d44-08a7-45f5-b608-3df028e5ede7.png"
+	width="1142"
+	height="163"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730203540011-aec37d44-08a7-45f5-b608-3df028e5ede7_hu3ba6f03616f3fcacfc8dfda36fc6ab33_36155_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730203540011-aec37d44-08a7-45f5-b608-3df028e5ede7_hu3ba6f03616f3fcacfc8dfda36fc6ab33_36155_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="700"
+		data-flex-basis="1681px"
 	
 ></p>
 <p>空指针报错</p>
 <p>看报错是在<code>422行</code>空指针报错,打了断点</p>
-<p><img src="/images%5c1730204346663-8b2a0aca-f080-4c1e-aad6-0da80794c1aa.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730204346663-8b2a0aca-f080-4c1e-aad6-0da80794c1aa.png"
+	width="1013"
+	height="80"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730204346663-8b2a0aca-f080-4c1e-aad6-0da80794c1aa_hu019874805e1d61c65ef6ed12ad22f074_9854_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730204346663-8b2a0aca-f080-4c1e-aad6-0da80794c1aa_hu019874805e1d61c65ef6ed12ad22f074_9854_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="1266"
+		data-flex-basis="3039px"
 	
 ></p>
 <p>死在了else这里</p>
-<p><img src="/images%5c1730204404589-0e2d6cb5-1c5a-47a7-b530-33269795924c.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730204404589-0e2d6cb5-1c5a-47a7-b530-33269795924c.png"
+	width="970"
+	height="371"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730204404589-0e2d6cb5-1c5a-47a7-b530-33269795924c_hud1029051a839da65fbcdc422a1ed0d98_56015_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730204404589-0e2d6cb5-1c5a-47a7-b530-33269795924c_hud1029051a839da65fbcdc422a1ed0d98_56015_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="261"
+		data-flex-basis="627px"
 	
 ></p>
 <p>这里要么<code>_auxClasses</code>赋值,要么if判断正确不进入else</p>
@@ -757,23 +817,31 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>所以只需要给我们的恶意类加上继承<code>AbstractTranslet</code></p>
-<p><img src="/images%5c1730205042673-5f7b2aed-4c14-4b79-a2b7-1b6daae1fb69.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730205042673-5f7b2aed-4c14-4b79-a2b7-1b6daae1fb69.png"
+	width="761"
+	height="96"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730205042673-5f7b2aed-4c14-4b79-a2b7-1b6daae1fb69_huae97576dc20b6bb97d5498ae49f5bc19_12572_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730205042673-5f7b2aed-4c14-4b79-a2b7-1b6daae1fb69_huae97576dc20b6bb97d5498ae49f5bc19_12572_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="792"
+		data-flex-basis="1902px"
 	
 ></p>
 <p>重新编译一下calc.java运行后弹计算器</p>
 <h2 id="cc1-链的-templatesimpl-的实现方式">CC1 链的 TemplatesImpl 的实现方式
 </h2><p><code>&lt;font style=&quot;color:rgb(80, 80, 92);background-color:rgb(247, 247, 247);&quot;&gt;TemplatesImpl 只是将原本的命令执行变成代码执行的方式所以在不考虑黑名单的情况下，如果可以进行命令执行，则一定可以通过动态加载字节码进行代码执行。&lt;/font&gt;</code></p>
-<p><img src="/images%5c1730205438494-dc08a922-9b4e-4863-aba9-9aad79738a88.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730205438494-dc08a922-9b4e-4863-aba9-9aad79738a88.png"
+	width="927"
+	height="489"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730205438494-dc08a922-9b4e-4863-aba9-9aad79738a88_hub6f324a16a9b6ec2b3ef848fbd4570c6_161816_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730205438494-dc08a922-9b4e-4863-aba9-9aad79738a88_hub6f324a16a9b6ec2b3ef848fbd4570c6_161816_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="189"
+		data-flex-basis="454px"
 	
 ></p>
 <div class="highlight"><div class="chroma">
@@ -1030,12 +1098,16 @@
 <p><font style="color:rgb(80, 80, 92);">第二个</font><font style="color:rgb(80, 80, 92);"> </font><code>getOutProperties</code><font style="color:rgb(80, 80, 92);">，是反射调用的方法，可能会在 fastjson 的漏洞里面被调用。</font></p>
 <p><font style="color:rgb(80, 80, 92);">TransformerFactoryImpl 不能序列化，如果还想使用它也是也可能的，但是需要传参，我们需要去找构造函数。而它的构造函数难传参。</font></p>
 <p><font style="color:rgb(80, 80, 92);">最后，</font><code>TrAXFilter</code><font style="color:rgb(80, 80, 92);">，它也是不能序列化的，但是我们去到它的构造函数看，是有搞头的。</font></p>
-<p><img src="/images%5c1730208530558-479c2744-4812-453b-ae82-5184ba7faa27.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730208530558-479c2744-4812-453b-ae82-5184ba7faa27.png"
+	width="743"
+	height="262"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730208530558-479c2744-4812-453b-ae82-5184ba7faa27_hua1c14c693888f856070f6fdfacf1b392_33657_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730208530558-479c2744-4812-453b-ae82-5184ba7faa27_hua1c14c693888f856070f6fdfacf1b392_33657_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="283"
+		data-flex-basis="680px"
 	
 ></p>
 <p>只需要调用<code>TrAXFilter</code>的构造函数就行了</p>
@@ -1044,20 +1116,28 @@
 <li><code>InstantiateTransformer</code> 这个类是用来初始化 <code>Transformer</code> 的，我们去找 <code>InstantiateTransformer</code> 类下的 <code>transform</code> 方法。</li>
 </ul>
 <p><font style="color:rgb(80, 80, 92);">完美契合我们的需求！</font></p>
-<p><img src="/images%5c1730209223691-356ca3de-e86a-42f5-acc7-01b8866d4b30.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730209223691-356ca3de-e86a-42f5-acc7-01b8866d4b30.png"
+	width="1920"
+	height="1030"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730209223691-356ca3de-e86a-42f5-acc7-01b8866d4b30_hu319eafd60fc8a90a12a7f3eacec386c0_308790_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730209223691-356ca3de-e86a-42f5-acc7-01b8866d4b30_hu319eafd60fc8a90a12a7f3eacec386c0_308790_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="186"
+		data-flex-basis="447px"
 	
 ><br>
-<img src="/images%5c1730210456831-f439392a-d463-460a-a608-6d01f7acd07a.png"
-	
-	
-	
+<img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730210456831-f439392a-d463-460a-a608-6d01f7acd07a.png"
+	width="885"
+	height="756"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730210456831-f439392a-d463-460a-a608-6d01f7acd07a_hu463920064a95899fdcd2ecb6dc2f2508_130995_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730210456831-f439392a-d463-460a-a608-6d01f7acd07a_hu463920064a95899fdcd2ecb6dc2f2508_130995_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="117"
+		data-flex-basis="280px"
 	
 ></p>
 <p><strong>写exp</strong></p>
@@ -1111,32 +1191,44 @@
 </div>
 </div><p>弹计算器</p>
 <p>找<code>transform</code>找到熟悉的<code>LazyMap</code>函数</p>
-<p><img src="/images%5c1730210797112-679be9c7-84b5-4268-b79f-d67dddef0631.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730210797112-679be9c7-84b5-4268-b79f-d67dddef0631.png"
+	width="510"
+	height="142"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730210797112-679be9c7-84b5-4268-b79f-d67dddef0631_huc761d6cd820c49868246429724ab5713_15779_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730210797112-679be9c7-84b5-4268-b79f-d67dddef0631_huc761d6cd820c49868246429724ab5713_15779_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="359"
+		data-flex-basis="861px"
 	
 ></p>
 <p>想到cc1的正链</p>
-<p><img src="/images%5c1730276240133-36773be4-3dfb-48c7-94a9-103af89d3073.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730276240133-36773be4-3dfb-48c7-94a9-103af89d3073.png"
+	width="503"
+	height="169"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730276240133-36773be4-3dfb-48c7-94a9-103af89d3073_hub44c76a4a418e12a8ec81f5bcaac181c_14929_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730276240133-36773be4-3dfb-48c7-94a9-103af89d3073_hub44c76a4a418e12a8ec81f5bcaac181c_14929_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="297"
+		data-flex-basis="714px"
 	
 ></p>
 <p>直接把前半部分的链拿来用</p>
 <p>序列化正常,但是反序列化报错</p>
 <p>想起之前的</p>
-<p><img src="/images%5c1730277304764-5ba6d388-8136-4351-9321-fea59dc37af1.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730277304764-5ba6d388-8136-4351-9321-fea59dc37af1.png"
+	width="556"
+	height="78"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730277304764-5ba6d388-8136-4351-9321-fea59dc37af1_hu1d470f016fd1995ca6fcdb55ab85aeba_12763_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730277304764-5ba6d388-8136-4351-9321-fea59dc37af1_hu1d470f016fd1995ca6fcdb55ab85aeba_12763_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="712"
+		data-flex-basis="1710px"
 	
 ></p>
 <p><code>setValue</code>传参无法可控</p>
@@ -1282,12 +1374,16 @@
 </span></span><span class="line"><span class="cl">                        newInstance
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/images%5c1730277704798-f1a07d93-ebfe-4d27-9b95-751efe82863a.png"
-	
-	
-	
+</div><p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730277704798-f1a07d93-ebfe-4d27-9b95-751efe82863a.png"
+	width="2664"
+	height="526"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730277704798-f1a07d93-ebfe-4d27-9b95-751efe82863a_hud26577cdefa20685acfc022efdc556a5_174255_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730277704798-f1a07d93-ebfe-4d27-9b95-751efe82863a_hud26577cdefa20685acfc022efdc556a5_174255_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="506"
+		data-flex-basis="1215px"
 	
 ></p>
 
@@ -1307,7 +1403,7 @@
 
 
         <span>
-            最后更新于 Jan 06, 2025 06:35 UTC
+            最后更新于 Jan 06, 2025 06:44 UTC
         </span>
     </section></footer>
 

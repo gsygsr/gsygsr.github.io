@@ -602,12 +602,16 @@
 &lt;p&gt;&lt;font style=&#34;color:rgb(51, 51, 51);&#34;&gt;所以这里我们就可以通过ToStringBean类的toString方法来调用getOutputProperties方法，这里我们可以发现有两个参数：&lt;/font&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;&amp;lt;font style=&amp;quot;color:rgb(221, 17, 68);&amp;quot;&amp;gt;this._beanClass&amp;lt;/font&amp;gt;&lt;/code&gt;&lt;font style=&#34;color:rgb(51, 51, 51);&#34;&gt;和&lt;/font&gt;&lt;code&gt;&amp;lt;font style=&amp;quot;color:rgb(221, 17, 68);&amp;quot;&amp;gt;this._obj&amp;lt;/font&amp;gt;&lt;/code&gt;&lt;font style=&#34;color:rgb(51, 51, 51);&#34;&gt;,根据参数的名我们就可以知道beanClass是javaBean类型的class，obj就是我们要传入的实例化的Templateslmpl类对象&lt;/font&gt;&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(51, 51, 51);&#34;&gt;刚好这两个在构造函数里&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1734691980655-cdac1efc-d1b1-4b71-88d0-cefbadaaef55.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/rome/1734691980655-cdac1efc-d1b1-4b71-88d0-cefbadaaef55.png&#34;
+	width=&#34;561&#34;
+	height=&#34;116&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/rome/1734691980655-cdac1efc-d1b1-4b71-88d0-cefbadaaef55_hu7f82c29042846a3636b8680af901cfc2_13710_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/rome/1734691980655-cdac1efc-d1b1-4b71-88d0-cefbadaaef55_hu7f82c29042846a3636b8680af901cfc2_13710_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;483&#34;
+		data-flex-basis=&#34;1160px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -674,12 +678,16 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1734692523500-3bef4625-77fd-4deb-9ff0-906b68f77cd6.png&#34;
-	
-	
-	
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/rome/1734692523500-3bef4625-77fd-4deb-9ff0-906b68f77cd6.png&#34;
+	width=&#34;790&#34;
+	height=&#34;698&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/rome/1734692523500-3bef4625-77fd-4deb-9ff0-906b68f77cd6_hud76d10b94962074cffbd2ee4ae61fc9a_76258_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/rome/1734692523500-3bef4625-77fd-4deb-9ff0-906b68f77cd6_hud76d10b94962074cffbd2ee4ae61fc9a_76258_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;113&#34;
+		data-flex-basis=&#34;271px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;成功利用&lt;/p&gt;
@@ -845,30 +853,42 @@
 &lt;/h2&gt;&lt;p&gt;如果说对hashmap类做了过滤,这里能够用HashTable绕过&lt;/p&gt;
 &lt;p&gt;cc7的链子刚好就是用的HashTable,不过链子好像不同&lt;/p&gt;
 &lt;p&gt;Hashtable.readObject&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1734696473228-f3651b4e-81ef-4a53-8a6c-66f36c3a9c5b.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/rome/1734696473228-f3651b4e-81ef-4a53-8a6c-66f36c3a9c5b.png&#34;
+	width=&#34;599&#34;
+	height=&#34;273&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/rome/1734696473228-f3651b4e-81ef-4a53-8a6c-66f36c3a9c5b_hu15886927e72efb25925854bb81c73678_28240_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/rome/1734696473228-f3651b4e-81ef-4a53-8a6c-66f36c3a9c5b_hu15886927e72efb25925854bb81c73678_28240_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;219&#34;
+		data-flex-basis=&#34;526px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;这个函数里调用了hashCode方法&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1734696493389-76fc9af6-866a-4e3a-8a18-9c85062dee5c.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/rome/1734696493389-76fc9af6-866a-4e3a-8a18-9c85062dee5c.png&#34;
+	width=&#34;880&#34;
+	height=&#34;399&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/rome/1734696493389-76fc9af6-866a-4e3a-8a18-9c85062dee5c_huc25c655c1010e1d7ef127d8c8692ae0f_58219_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/rome/1734696493389-76fc9af6-866a-4e3a-8a18-9c85062dee5c_huc25c655c1010e1d7ef127d8c8692ae0f_58219_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;220&#34;
+		data-flex-basis=&#34;529px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;和上面的后面链子接上去了&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1734696536717-db57bf5b-45de-40ff-a5a5-7de020204fc8.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/rome/1734696536717-db57bf5b-45de-40ff-a5a5-7de020204fc8.png&#34;
+	width=&#34;410&#34;
+	height=&#34;108&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/rome/1734696536717-db57bf5b-45de-40ff-a5a5-7de020204fc8_hu666df7d9c07fc388125a632178d6e61c_7330_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/rome/1734696536717-db57bf5b-45de-40ff-a5a5-7de020204fc8_hu666df7d9c07fc388125a632178d6e61c_7330_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;379&#34;
+		data-flex-basis=&#34;911px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;exp-1&#34;&gt;exp
@@ -1023,12 +1043,16 @@
         <guid>https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/</guid>
         <description>&lt;img src="https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/13.jpg" alt="Featured image of post java反序列化之Commons-Collections-CC7链" /&gt;&lt;h2 id=&#34;正向分析&#34;&gt;正向分析
 &lt;/h2&gt;&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;CC7 的链子也是和 CC5 类似，后半条链子也是 &lt;/font&gt;&lt;code&gt;LazyMap.get()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 的这条链子。&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730530539446-57337864-b2f7-4b11-a782-e1f93f1233f6.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/1730530539446-57337864-b2f7-4b11-a782-e1f93f1233f6.png&#34;
+	width=&#34;734&#34;
+	height=&#34;273&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/1730530539446-57337864-b2f7-4b11-a782-e1f93f1233f6_hucf1c4ce610eeace3a883bbe6ce42f6d4_41929_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/1730530539446-57337864-b2f7-4b11-a782-e1f93f1233f6_hucf1c4ce610eeace3a883bbe6ce42f6d4_41929_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;268&#34;
+		data-flex-basis=&#34;645px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;看链子写exp&lt;/p&gt;
@@ -1065,51 +1089,71 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;decoratemap.get(Runtime.class);
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730531508724-551893b4-add1-4b45-87b3-f53971ec71d6.png&#34;
-	
-	
-	
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/1730531508724-551893b4-add1-4b45-87b3-f53971ec71d6.png&#34;
+	width=&#34;549&#34;
+	height=&#34;193&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/1730531508724-551893b4-add1-4b45-87b3-f53971ec71d6_hu144ebb33b8ee43c18bc0f89c6a620fd0_28220_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/1730531508724-551893b4-add1-4b45-87b3-f53971ec71d6_hu144ebb33b8ee43c18bc0f89c6a620fd0_28220_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;284&#34;
+		data-flex-basis=&#34;682px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Hashtable.readObject&lt;/code&gt;调用了&lt;code&gt;reconstitutionPut&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730531560444-43c05689-5a0b-404e-be72-d819c00ca3f9.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/1730531560444-43c05689-5a0b-404e-be72-d819c00ca3f9.png&#34;
+	width=&#34;763&#34;
+	height=&#34;406&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/1730531560444-43c05689-5a0b-404e-be72-d819c00ca3f9_hub65f667c7d48528fe005b8850f8e049b_59261_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/1730531560444-43c05689-5a0b-404e-be72-d819c00ca3f9_hub65f667c7d48528fe005b8850f8e049b_59261_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;187&#34;
+		data-flex-basis=&#34;451px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;reconstitutionPut&lt;/code&gt;触发&lt;code&gt;AbstractMapDecorator.equals()&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730532704960-130645da-c14b-454d-8f2f-7226b6497154.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/1730532704960-130645da-c14b-454d-8f2f-7226b6497154.png&#34;
+	width=&#34;515&#34;
+	height=&#34;187&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/1730532704960-130645da-c14b-454d-8f2f-7226b6497154_hu82c13a8cc449afb4bda375964455c834_15352_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/1730532704960-130645da-c14b-454d-8f2f-7226b6497154_hu82c13a8cc449afb4bda375964455c834_15352_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;275&#34;
+		data-flex-basis=&#34;660px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;AbstractMapDecorator.equals()&lt;/code&gt;触发&lt;code&gt;AbstractMap.equals()&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730532766320-d29d7627-a025-4531-96fd-4d729d57fba7.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/1730532766320-d29d7627-a025-4531-96fd-4d729d57fba7.png&#34;
+	width=&#34;689&#34;
+	height=&#34;645&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/1730532766320-d29d7627-a025-4531-96fd-4d729d57fba7_hu2caf036f70a6a632a93693d5af496acc_66679_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/1730532766320-d29d7627-a025-4531-96fd-4d729d57fba7_hu2caf036f70a6a632a93693d5af496acc_66679_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;106&#34;
+		data-flex-basis=&#34;256px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;然后就进入到&lt;code&gt;LazyMap.get&lt;/code&gt;里,也就是cc5的后半段链子&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;这里我把断点打在了 &lt;code&gt;AbstractMap.equals()&lt;/code&gt; 的地方，结果发现居然没有执行到 .equals() 这个方法，去看一看 yso 的链子是怎么写的。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730535384872-ab3cd7de-1e1e-4b98-a9a5-790acfe224e1.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/1730535384872-ab3cd7de-1e1e-4b98-a9a5-790acfe224e1.png&#34;
+	width=&#34;1331&#34;
+	height=&#34;508&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/1730535384872-ab3cd7de-1e1e-4b98-a9a5-790acfe224e1_hu8f36b8a41b6e9d6ce600fc9bc783bb8b_50794_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/1730535384872-ab3cd7de-1e1e-4b98-a9a5-790acfe224e1_hu8f36b8a41b6e9d6ce600fc9bc783bb8b_50794_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;262&#34;
+		data-flex-basis=&#34;628px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;yso 这里的链子比我们多了一个 map，而且将两个 map 进行了比较，一看到这个就明白了。&lt;/font&gt;&lt;/p&gt;
@@ -1119,12 +1163,16 @@
 &lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;我们需要调用的&lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;code&gt;e.key.equal()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;方法是在 for 循环里面的，需要进入到这 for 循环才能调用。&lt;/font&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Hashtable&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;的&lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;code&gt;reconstitutionPut()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;方法是被遍历调用的，&lt;/font&gt;&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;第一次调用的时候，并不会走入到&lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;code&gt;reconstitutionPut()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;方法 for 循环里面，因为&lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;code&gt;tab[index]&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;的内容是空的，在下面会对&lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;code&gt;tab[index]&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;进行赋值。&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730535396012-f3b3cf6f-4dd7-496d-a236-f57e020613fa.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/1730535396012-f3b3cf6f-4dd7-496d-a236-f57e020613fa.png&#34;
+	width=&#34;1754&#34;
+	height=&#34;721&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/1730535396012-f3b3cf6f-4dd7-496d-a236-f57e020613fa_hu04eb1b61e61223c73491ca30d8b49e20_186635_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/1730535396012-f3b3cf6f-4dd7-496d-a236-f57e020613fa_hu04eb1b61e61223c73491ca30d8b49e20_186635_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;243&#34;
+		data-flex-basis=&#34;583px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -1146,12 +1194,16 @@
 &lt;/ul&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;这是因为&lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;code&gt;HashTable.put()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;实际上也会调用到&lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;code&gt;equals()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;方法：&lt;/font&gt;&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;当调用完&lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;code&gt;equals()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;方法后，LazyMap2 的 key 中就会增加一个 yy 键：&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730535384372-4502d9cc-921e-47cd-bdc6-121e76c6dc17.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/1730535384372-4502d9cc-921e-47cd-bdc6-121e76c6dc17.png&#34;
+	width=&#34;614&#34;
+	height=&#34;157&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/1730535384372-4502d9cc-921e-47cd-bdc6-121e76c6dc17_hu6d7313828142e850e2979c6ab5a3fd25_10640_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/1730535384372-4502d9cc-921e-47cd-bdc6-121e76c6dc17_hu6d7313828142e850e2979c6ab5a3fd25_10640_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;391&#34;
+		data-flex-basis=&#34;938px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;这就不能满足 hash 碰撞了，构造序列化链的时候是满足的，但是构造完成之后就不满足了，那么经过对方服务器反序列化也不能满足 hash 碰撞了，也就不会执行系统命令了，所以就在构造完序列化链之后手动删除这多出来的一组键值对。&lt;/font&gt;&lt;/p&gt;
@@ -1245,38 +1297,54 @@
         <description>&lt;img src="https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/7.jpg" alt="Featured image of post java反序列化之Commons-Collections1-CC1正链" /&gt;&lt;h2 id=&#34;链尾invokertransformertransform&#34;&gt;链尾InvokerTransformer.transform
 &lt;/h2&gt;&lt;p&gt;正版cc1链漏洞点还是&lt;code&gt;InvokeTransformer&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;但是利用的&lt;code&gt;transform&lt;/code&gt;的是&lt;code&gt;LazyMap&lt;/code&gt;类&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729690093720-15a1808f-bbba-48e2-a74d-1c346097459b.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729690093720-15a1808f-bbba-48e2-a74d-1c346097459b.png&#34;
+	width=&#34;480&#34;
+	height=&#34;94&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729690093720-15a1808f-bbba-48e2-a74d-1c346097459b_hu914a1035ce157dcd6906931c826b1a14_9837_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729690093720-15a1808f-bbba-48e2-a74d-1c346097459b_hu914a1035ce157dcd6906931c826b1a14_9837_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;510&#34;
+		data-flex-basis=&#34;1225px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729690127984-226aaeb1-8ef2-45d3-aa9c-fabbee1d24bc.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729690127984-226aaeb1-8ef2-45d3-aa9c-fabbee1d24bc.png&#34;
+	width=&#34;667&#34;
+	height=&#34;283&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729690127984-226aaeb1-8ef2-45d3-aa9c-fabbee1d24bc_hu136f4ea6d4c6520f369bd9f6c736bb3b_30486_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729690127984-226aaeb1-8ef2-45d3-aa9c-fabbee1d24bc_hu136f4ea6d4c6520f369bd9f6c736bb3b_30486_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;235&#34;
+		data-flex-basis=&#34;565px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;get是public方法,可以创建对象直接调用&lt;/p&gt;
 &lt;p&gt;找一下&lt;code&gt;factory&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729690201760-0901831d-6d79-48aa-a17e-b2998278b179.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729690201760-0901831d-6d79-48aa-a17e-b2998278b179.png&#34;
+	width=&#34;402&#34;
+	height=&#34;59&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729690201760-0901831d-6d79-48aa-a17e-b2998278b179_hu871fc17e0222d4ff680f7599c3039d48_7109_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729690201760-0901831d-6d79-48aa-a17e-b2998278b179_hu871fc17e0222d4ff680f7599c3039d48_7109_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;681&#34;
+		data-flex-basis=&#34;1635px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729690222437-4860abd1-2cea-4fff-ac5b-e1465d63a42b.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729690222437-4860abd1-2cea-4fff-ac5b-e1465d63a42b.png&#34;
+	width=&#34;977&#34;
+	height=&#34;61&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729690222437-4860abd1-2cea-4fff-ac5b-e1465d63a42b_hube933d19c0e403bf69739658b8d5ffbd_9381_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729690222437-4860abd1-2cea-4fff-ac5b-e1465d63a42b_hube933d19c0e403bf69739658b8d5ffbd_9381_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1601&#34;
+		data-flex-basis=&#34;3843px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;发现是&lt;code&gt;Transformer&lt;/code&gt;而且&lt;code&gt;decorate&lt;/code&gt;方法能返回一个&lt;code&gt;LazyMap&lt;/code&gt;的实例对象&lt;/p&gt;
@@ -1312,39 +1380,55 @@
 &lt;/div&gt;&lt;p&gt;成功弹了&lt;/p&gt;
 &lt;p&gt;再找&lt;code&gt;get&lt;/code&gt;的链子&lt;/p&gt;
 &lt;p&gt;这里太多类调用&lt;code&gt;get&lt;/code&gt;了,直接看出在&lt;code&gt;AnnotationInvocationHandler&lt;/code&gt;的&lt;code&gt;invoke&lt;/code&gt;里&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729692272357-e5c55a96-0f6b-4020-987b-bd78a7a7fa86.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729692272357-e5c55a96-0f6b-4020-987b-bd78a7a7fa86.png&#34;
+	width=&#34;775&#34;
+	height=&#34;602&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729692272357-e5c55a96-0f6b-4020-987b-bd78a7a7fa86_hu1f511a07096a040206dff1616b9513b8_76812_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729692272357-e5c55a96-0f6b-4020-987b-bd78a7a7fa86_hu1f511a07096a040206dff1616b9513b8_76812_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;怎么触发呢?虽然说invoke是public方法,但是在反序列化的时候,是进入&lt;code&gt;readObject&lt;/code&gt;的,不能直接来个&lt;code&gt;AnnotationInvocationHandler.invoke&lt;/code&gt;来触发&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;需要触发 &lt;/font&gt;&lt;code&gt;invoke&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 方法，马上想到动态代理&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729770258319-7ee4ddbe-6386-4840-b36b-2603efc907fc.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729770258319-7ee4ddbe-6386-4840-b36b-2603efc907fc.png&#34;
+	width=&#34;852&#34;
+	height=&#34;173&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729770258319-7ee4ddbe-6386-4840-b36b-2603efc907fc_hu5cceec526e9e633312502ee1d8d18bbd_37290_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729770258319-7ee4ddbe-6386-4840-b36b-2603efc907fc_hu5cceec526e9e633312502ee1d8d18bbd_37290_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
-&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729770276794-16e0c148-2d86-4ebc-915b-4537f1aac990.png&#34;
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;492&#34;
+		data-flex-basis=&#34;1181px&#34;
 	
-	
-	
+&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729770276794-16e0c148-2d86-4ebc-915b-4537f1aac990.png&#34;
+	width=&#34;299&#34;
+	height=&#34;76&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729770276794-16e0c148-2d86-4ebc-915b-4537f1aac990_hu2325ef54c7cfe13633be1e283144e3dd_6689_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729770276794-16e0c148-2d86-4ebc-915b-4537f1aac990_hu2325ef54c7cfe13633be1e283144e3dd_6689_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;393&#34;
+		data-flex-basis=&#34;944px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;满足实现接口并且重写了invoke方法,是代理类&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;一个类被动态代理了之后，想要通过代理调用这个类的方法，就一定会调用 &lt;/font&gt;&lt;code&gt;invoke()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 方法。&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729772447678-9f76e003-38a2-4b18-af42-3790a401eb81.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729772447678-9f76e003-38a2-4b18-af42-3790a401eb81.png&#34;
+	width=&#34;490&#34;
+	height=&#34;61&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729772447678-9f76e003-38a2-4b18-af42-3790a401eb81_hu7e752075f027fb89e954e18b5f8936c0_8168_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729772447678-9f76e003-38a2-4b18-af42-3790a401eb81_hu7e752075f027fb89e954e18b5f8936c0_8168_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;803&#34;
+		data-flex-basis=&#34;1927px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;先通过反射将&lt;code&gt;memberValues&lt;/code&gt;的值改为&lt;code&gt;LazyMap&lt;/code&gt;&lt;/p&gt;
@@ -1365,12 +1449,16 @@
 &lt;p&gt;&lt;font style=&#34;color:rgb(33, 53, 71);&#34;&gt;代理类只能代理构造函数传入的类，在这里就是继承了Annotation接口的类（即注解），和实现了Map接口的类。&lt;/font&gt;&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(33, 53, 71);&#34;&gt;所以哪个注解类或实现了Map接口的类在readObject调用了无参方法呢？就是他本身&lt;/font&gt;&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(33, 53, 71);&#34;&gt;AnnotationInvocationHandler本身的readObject里调用了map的一个无参方法&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729776989601-18b21b2b-4875-49b5-ad00-a5efd7f19042.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729776989601-18b21b2b-4875-49b5-ad00-a5efd7f19042.png&#34;
+	width=&#34;801&#34;
+	height=&#34;151&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729776989601-18b21b2b-4875-49b5-ad00-a5efd7f19042_hu5f64213f5059f112b3e4640e16c8f65f_26259_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/1729776989601-18b21b2b-4875-49b5-ad00-a5efd7f19042_hu5f64213f5059f112b3e4640e16c8f65f_26259_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;530&#34;
+		data-flex-basis=&#34;1273px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(33, 53, 71);&#34;&gt;我们用AnnotationInvocationHandler代理lazyMap，调用这个代理实例的entrySet方法，就能跳转到invoke方法，进而调用get。&lt;/font&gt;&lt;/p&gt;
@@ -1677,21 +1765,29 @@
 &lt;h2 id=&#34;tiedmapentrygetvalue触发get&#34;&gt;&lt;code&gt;TiedMapEntry.getValue触发get&lt;/code&gt;
 &lt;/h2&gt;&lt;p&gt;然后找调用了&lt;code&gt;get&lt;/code&gt;方法的类&lt;/p&gt;
 &lt;p&gt;链子的下一步是&lt;code&gt;TiedMapEntry&lt;/code&gt;的&lt;code&gt;getValue&lt;/code&gt;调用了&lt;code&gt;LazyMap&lt;/code&gt;的&lt;code&gt;get()&lt;/code&gt;方法&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729927942007-1b5d9a00-7525-4c48-8bdd-783016f78df7.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729927942007-1b5d9a00-7525-4c48-8bdd-783016f78df7.png&#34;
+	width=&#34;866&#34;
+	height=&#34;177&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729927942007-1b5d9a00-7525-4c48-8bdd-783016f78df7_hud1e8b5a6aa5712450387a6765cf4c690_22347_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729927942007-1b5d9a00-7525-4c48-8bdd-783016f78df7_hud1e8b5a6aa5712450387a6765cf4c690_22347_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;489&#34;
+		data-flex-basis=&#34;1174px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;看构造方法是public,这里map-&amp;gt;LazyMap,value-&amp;gt;Runtime.class&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729928197991-ecc4c265-e833-4ff3-a621-9e82aab3598c.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729928197991-ecc4c265-e833-4ff3-a621-9e82aab3598c.png&#34;
+	width=&#34;563&#34;
+	height=&#34;53&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729928197991-ecc4c265-e833-4ff3-a621-9e82aab3598c_huf0077cd63ca57c9fa474697e013b7f69_7512_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729928197991-ecc4c265-e833-4ff3-a621-9e82aab3598c_huf0077cd63ca57c9fa474697e013b7f69_7512_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1062&#34;
+		data-flex-basis=&#34;2549px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;这里可以不需要通过反射来获取方法&lt;/p&gt;
@@ -1742,12 +1838,16 @@
 &lt;/div&gt;&lt;p&gt;成功弹了&lt;/p&gt;
 &lt;h2 id=&#34;tiedmapentryhashcode触发getvalue&#34;&gt;TiedMapEntry.hashCode触发getValue
 &lt;/h2&gt;&lt;p&gt;因为&lt;code&gt;getValue&lt;/code&gt;的方法相当常见,寻找同名类的其他调用&lt;code&gt;getValue&lt;/code&gt;的方法&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729928860999-b54c382d-27d5-412b-b187-7fc5a5369110.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729928860999-b54c382d-27d5-412b-b187-7fc5a5369110.png&#34;
+	width=&#34;849&#34;
+	height=&#34;571&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729928860999-b54c382d-27d5-412b-b187-7fc5a5369110_hude5d5266672bc96b266d244c8b536098_66818_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729928860999-b54c382d-27d5-412b-b187-7fc5a5369110_hude5d5266672bc96b266d244c8b536098_66818_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;148&#34;
+		data-flex-basis=&#34;356px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;找到还是&lt;code&gt;TiedMapEntry&lt;/code&gt;类的&lt;code&gt;hashCode&lt;/code&gt;方法,这里调用了getValue&lt;/p&gt;
@@ -1763,22 +1863,30 @@
 &lt;/div&gt;&lt;p&gt;运行后成功弹计算器&lt;/p&gt;
 &lt;h2 id=&#34;hashmaphash触发hashcode&#34;&gt;HashMap.hash触发hashCode
 &lt;/h2&gt;&lt;p&gt;后面的链子就是&lt;code&gt;HashMap&lt;/code&gt;的&lt;code&gt;hash&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729932168814-780814bc-e3dc-4b0b-a911-bb11f5e75138.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729932168814-780814bc-e3dc-4b0b-a911-bb11f5e75138.png&#34;
+	width=&#34;725&#34;
+	height=&#34;125&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729932168814-780814bc-e3dc-4b0b-a911-bb11f5e75138_huc0281338723461f94a9d432bf7ba520a_12186_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729932168814-780814bc-e3dc-4b0b-a911-bb11f5e75138_huc0281338723461f94a9d432bf7ba520a_12186_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;580&#34;
+		data-flex-basis=&#34;1392px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;hashmapput触发hash&#34;&gt;HashMap.put触发hash
 &lt;/h2&gt;&lt;p&gt;&lt;code&gt;HashMap&lt;/code&gt;的&lt;code&gt;put&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729932195223-a182a3af-f5d9-4c8c-9605-12579d57c4c9.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729932195223-a182a3af-f5d9-4c8c-9605-12579d57c4c9.png&#34;
+	width=&#34;802&#34;
+	height=&#34;117&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729932195223-a182a3af-f5d9-4c8c-9605-12579d57c4c9_hu60a0988cc33940b0ff65d3a78dfd2285_14560_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729932195223-a182a3af-f5d9-4c8c-9605-12579d57c4c9_hu60a0988cc33940b0ff65d3a78dfd2285_14560_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;685&#34;
+		data-flex-basis=&#34;1645px&#34;
 	
 &gt;\&lt;/p&gt;
 &lt;p&gt;为什么readObject都没有put,这里用&lt;code&gt;put&lt;/code&gt;?因为 在 Java 的反序列化过程中，&lt;code&gt;HashMap&lt;/code&gt; 会自动调用 &lt;code&gt;put&lt;/code&gt; 方法来恢复数据结构  ,而且hash(key)是从put(key,value)传进来的&lt;/p&gt;
@@ -1856,12 +1964,16 @@
 &lt;/div&gt;&lt;h3 id=&#34;问题一&#34;&gt;问题一
 &lt;/h3&gt;&lt;p&gt;但是注释掉反序列化代码,序列化的时候也会弹出计算器&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;原因&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729939004412-9105296e-de1d-4672-b852-2d29d0ec1814.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729939004412-9105296e-de1d-4672-b852-2d29d0ec1814.png&#34;
+	width=&#34;735&#34;
+	height=&#34;106&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729939004412-9105296e-de1d-4672-b852-2d29d0ec1814_hue9dd830f0bbe2a0a5530d6edaa286d64_12801_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729939004412-9105296e-de1d-4672-b852-2d29d0ec1814_hue9dd830f0bbe2a0a5530d6edaa286d64_12801_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;693&#34;
+		data-flex-basis=&#34;1664px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;序列化的时候put就会进入hash从而走一遍链子触发弹计算器&lt;/p&gt;
@@ -1920,20 +2032,28 @@
 &lt;p&gt;但反序列化也不会弹计算器&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;原因&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;调试时发现&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729941361110-f1e46e59-599b-43f5-82e0-2023b021b9be.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729941361110-f1e46e59-599b-43f5-82e0-2023b021b9be.png&#34;
+	width=&#34;607&#34;
+	height=&#34;254&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729941361110-f1e46e59-599b-43f5-82e0-2023b021b9be_hu75b8241f83bb211b3d2b9fc01c31dbb7_38144_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729941361110-f1e46e59-599b-43f5-82e0-2023b021b9be_hu75b8241f83bb211b3d2b9fc01c31dbb7_38144_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;238&#34;
+		data-flex-basis=&#34;573px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729941345818-0986bff5-d582-4f49-a1fa-172ebc66fa3c.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729941345818-0986bff5-d582-4f49-a1fa-172ebc66fa3c.png&#34;
+	width=&#34;702&#34;
+	height=&#34;71&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729941345818-0986bff5-d582-4f49-a1fa-172ebc66fa3c_hude610d2a35b9396c09fb02d8396d9940_13346_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729941345818-0986bff5-d582-4f49-a1fa-172ebc66fa3c_hude610d2a35b9396c09fb02d8396d9940_13346_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;988&#34;
+		data-flex-basis=&#34;2372px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;key不等于false,不会进入链子&lt;/p&gt;
@@ -1994,41 +2114,57 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;h3 id=&#34;问题三&#34;&gt;问题三
 &lt;/h3&gt;&lt;p&gt;在序列化前打断点,调试的时候会弹出计算器&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729934141968-665d50d1-4bbd-42f4-81cb-30b71716a0b2.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729934141968-665d50d1-4bbd-42f4-81cb-30b71716a0b2.png&#34;
+	width=&#34;840&#34;
+	height=&#34;152&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729934141968-665d50d1-4bbd-42f4-81cb-30b71716a0b2_hud3f0f05fbd1a494fb261d3f12a10d19f_28002_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729934141968-665d50d1-4bbd-42f4-81cb-30b71716a0b2_hud3f0f05fbd1a494fb261d3f12a10d19f_28002_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;552&#34;
+		data-flex-basis=&#34;1326px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;因为在 IDEA 进行 debug 调试的时候，为了展示对象的集合，会自动调用&lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;code&gt;toString()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;方法，所以在创建&lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;code&gt;TiedMapEntry&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;的时候，就自动调用了&lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;code&gt;getValue()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;最终将链子走完，然后弹出计算器。&lt;/font&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;解决&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729938319844-b199435e-38b9-409c-a7a0-c781976765bf.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729938319844-b199435e-38b9-409c-a7a0-c781976765bf.png&#34;
+	width=&#34;1003&#34;
+	height=&#34;521&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729938319844-b199435e-38b9-409c-a7a0-c781976765bf_hu0a021815cf274bb9f33e227ca2646c1d_73045_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729938319844-b199435e-38b9-409c-a7a0-c781976765bf_hu0a021815cf274bb9f33e227ca2646c1d_73045_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;192&#34;
+		data-flex-basis=&#34;462px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;在 IDEA 的偏好设置当中如图修改即可。&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729938337802-122c248a-c063-43b8-aeee-6472e5470d08.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729938337802-122c248a-c063-43b8-aeee-6472e5470d08.png&#34;
+	width=&#34;1125&#34;
+	height=&#34;875&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729938337802-122c248a-c063-43b8-aeee-6472e5470d08_hu1c7166a604eb866bdb36d8d4036dceaa_90469_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729938337802-122c248a-c063-43b8-aeee-6472e5470d08_hu1c7166a604eb866bdb36d8d4036dceaa_90469_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;总结&#34;&gt;总结
 &lt;/h2&gt;&lt;p&gt;&lt;strong&gt;流程图&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729942732480-8089858c-149c-4d74-ad2d-a42c39586ac2.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729942732480-8089858c-149c-4d74-ad2d-a42c39586ac2.png&#34;
+	width=&#34;1542&#34;
+	height=&#34;360&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729942732480-8089858c-149c-4d74-ad2d-a42c39586ac2_hu171687d306c7a9dfb3fd83b45fdcb356_50340_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729942732480-8089858c-149c-4d74-ad2d-a42c39586ac2_hu171687d306c7a9dfb3fd83b45fdcb356_50340_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;428&#34;
+		data-flex-basis=&#34;1028px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;链子&lt;/strong&gt;&lt;/p&gt;
@@ -2069,39 +2205,55 @@
 &lt;/h2&gt;&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;入口类是 &lt;/font&gt;&lt;code&gt;BadAttributeValueExpException&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 的 &lt;/font&gt;&lt;code&gt;readObject()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 方法，这一个倒是不难。关键是后面的。&lt;/font&gt;&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;逆向思维来看的话，&lt;/font&gt;&lt;code&gt;LazyMap.get()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 方法被 &lt;/font&gt;&lt;code&gt;TiedMapEntry.toString()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 所调用，而如果去找谁调用了 &lt;/font&gt;&lt;code&gt;toString()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 这也太多了，太难找了，我们只能正向分析。&lt;/font&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;BadAttributeValueExpException&amp;lt;/font&amp;gt;&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;的readObject&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730374922224-d5ae896a-3f78-4d1c-9354-75272eaa6c39.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730374922224-d5ae896a-3f78-4d1c-9354-75272eaa6c39.png&#34;
+	width=&#34;786&#34;
+	height=&#34;559&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730374922224-d5ae896a-3f78-4d1c-9354-75272eaa6c39_hu170586d232904960e6e330aa2a3eca34_88199_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730374922224-d5ae896a-3f78-4d1c-9354-75272eaa6c39_hu170586d232904960e6e330aa2a3eca34_88199_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;140&#34;
+		data-flex-basis=&#34;337px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;TiedMapEntry&lt;/code&gt;类下的&lt;code&gt;toString&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730375111938-5a53885f-7cda-4f84-8b65-160711219976.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375111938-5a53885f-7cda-4f84-8b65-160711219976.png&#34;
+	width=&#34;614&#34;
+	height=&#34;122&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375111938-5a53885f-7cda-4f84-8b65-160711219976_huc043417b37d56becfc8b17a690c76fbd_11235_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375111938-5a53885f-7cda-4f84-8b65-160711219976_huc043417b37d56becfc8b17a690c76fbd_11235_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;503&#34;
+		data-flex-basis=&#34;1207px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;同类下的&lt;code&gt;getValue&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730375086790-b62a3355-cda0-44ac-ae82-7646b6918380.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375086790-b62a3355-cda0-44ac-ae82-7646b6918380.png&#34;
+	width=&#34;285&#34;
+	height=&#34;551&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375086790-b62a3355-cda0-44ac-ae82-7646b6918380_hu9de919589fb779d4064cc27e84bf992e_32466_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375086790-b62a3355-cda0-44ac-ae82-7646b6918380_hu9de919589fb779d4064cc27e84bf992e_32466_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;51&#34;
+		data-flex-basis=&#34;124px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;再找到&lt;code&gt;LazyMap&lt;/code&gt;下的&lt;code&gt;get&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730375167971-e36caa22-30c2-4c81-a896-83980f8e734d.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375167971-e36caa22-30c2-4c81-a896-83980f8e734d.png&#34;
+	width=&#34;664&#34;
+	height=&#34;330&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375167971-e36caa22-30c2-4c81-a896-83980f8e734d_hu06d75b0aa2141e9faa0284a07510673a_38225_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375167971-e36caa22-30c2-4c81-a896-83980f8e734d_hu06d75b0aa2141e9faa0284a07510673a_38225_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;201&#34;
+		data-flex-basis=&#34;482px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;后半段是cc1正链的后半部分到&lt;code&gt;LazyMap&lt;/code&gt;,直接拿进来&lt;/p&gt;
@@ -2138,28 +2290,40 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;tiedmapentrygetvalue触发lazymapget&#34;&gt;&lt;code&gt;TiedMapEntry.getValue&lt;/code&gt;触发&lt;code&gt;LazyMap.get&lt;/code&gt;
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730375973587-ff7930ae-06f6-46f4-bc4f-fd5432f04e4f.png&#34;
-	
-	
-	
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375973587-ff7930ae-06f6-46f4-bc4f-fd5432f04e4f.png&#34;
+	width=&#34;420&#34;
+	height=&#34;95&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375973587-ff7930ae-06f6-46f4-bc4f-fd5432f04e4f_hue47148bc6c68b8f57b33cddbec8d3c60_8820_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375973587-ff7930ae-06f6-46f4-bc4f-fd5432f04e4f_hue47148bc6c68b8f57b33cddbec8d3c60_8820_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;442&#34;
+		data-flex-basis=&#34;1061px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730375979456-58a7680e-71b5-40c9-9a2f-0b0f968238c3.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375979456-58a7680e-71b5-40c9-9a2f-0b0f968238c3.png&#34;
+	width=&#34;453&#34;
+	height=&#34;94&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375979456-58a7680e-71b5-40c9-9a2f-0b0f968238c3_hu2664586db6682ba2c62b3cea9b3ee7dd_9589_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730375979456-58a7680e-71b5-40c9-9a2f-0b0f968238c3_hu2664586db6682ba2c62b3cea9b3ee7dd_9589_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;481&#34;
+		data-flex-basis=&#34;1156px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730376048836-6bed0362-6558-4e6d-95e3-ce5bea605f38.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730376048836-6bed0362-6558-4e6d-95e3-ce5bea605f38.png&#34;
+	width=&#34;451&#34;
+	height=&#34;157&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730376048836-6bed0362-6558-4e6d-95e3-ce5bea605f38_hu31452176f1cea99139fc16c3663208c7_13549_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730376048836-6bed0362-6558-4e6d-95e3-ce5bea605f38_hu31452176f1cea99139fc16c3663208c7_13549_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;287&#34;
+		data-flex-basis=&#34;689px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -2173,28 +2337,40 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;回到链首&#34;&gt;回到链首
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730377925810-23b82acb-2322-4072-bea2-212ab0741364.png&#34;
-	
-	
-	
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730377925810-23b82acb-2322-4072-bea2-212ab0741364.png&#34;
+	width=&#34;893&#34;
+	height=&#34;748&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730377925810-23b82acb-2322-4072-bea2-212ab0741364_hua82db1e7b5e929e3f48276b7f9a24571_109577_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730377925810-23b82acb-2322-4072-bea2-212ab0741364_hua82db1e7b5e929e3f48276b7f9a24571_109577_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;119&#34;
+		data-flex-basis=&#34;286px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;可以看到存在两个&lt;code&gt;toString&lt;/code&gt;方法&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730378174305-a3fcc266-27bb-49db-9c02-41777ae00c22.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730378174305-a3fcc266-27bb-49db-9c02-41777ae00c22.png&#34;
+	width=&#34;541&#34;
+	height=&#34;86&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730378174305-a3fcc266-27bb-49db-9c02-41777ae00c22_hue91ab9e373bc2ae08c2cdd36a7c02062_12994_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730378174305-a3fcc266-27bb-49db-9c02-41777ae00c22_hue91ab9e373bc2ae08c2cdd36a7c02062_12994_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
-&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730378181718-f8b93b9f-48d6-4612-a9a9-f89723b50d24.png&#34;
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;629&#34;
+		data-flex-basis=&#34;1509px&#34;
 	
-	
-	
+&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730378181718-f8b93b9f-48d6-4612-a9a9-f89723b50d24.png&#34;
+	width=&#34;215&#34;
+	height=&#34;41&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730378181718-f8b93b9f-48d6-4612-a9a9-f89723b50d24_hudaa21ebe9c0a324c1db346446758cf28_3557_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730378181718-f8b93b9f-48d6-4612-a9a9-f89723b50d24_hudaa21ebe9c0a324c1db346446758cf28_3557_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;524&#34;
+		data-flex-basis=&#34;1258px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;当实例化&lt;code&gt;BadAttributeValueExpException&lt;/code&gt;传入参数&lt;code&gt;TiedMapEntry&lt;/code&gt;后&lt;/p&gt;
@@ -2292,12 +2468,16 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            InvokerTransformer.transform()
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730380205297-5a3261e1-4b31-4700-a37c-edf083694c82.png&#34;
-	
-	
-	
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730380205297-5a3261e1-4b31-4700-a37c-edf083694c82.png&#34;
+	width=&#34;3008&#34;
+	height=&#34;755&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730380205297-5a3261e1-4b31-4700-a37c-edf083694c82_hue025a111767c5422a558ce9e4328b436_137328_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc5/1730380205297-5a3261e1-4b31-4700-a37c-edf083694c82_hue025a111767c5422a558ce9e4328b436_137328_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;398&#34;
+		data-flex-basis=&#34;956px&#34;
 	
 &gt;&lt;/p&gt;
 </description>
@@ -2309,60 +2489,84 @@
         
         <guid>https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc2/</guid>
         <description>&lt;img src="https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc2/8.jpg" alt="Featured image of post java反序列化之Commons-Collections-CC2链" /&gt;&lt;h2 id=&#34;链子图&#34;&gt;链子图
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730360926100-f7d155a0-7f5a-472d-9afb-d131873a194b.png&#34;
-	
-	
-	
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc2/1730360926100-f7d155a0-7f5a-472d-9afb-d131873a194b.png&#34;
+	width=&#34;2994&#34;
+	height=&#34;595&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc2/1730360926100-f7d155a0-7f5a-472d-9afb-d131873a194b_hu72f31f624b413d799776dc8e81994046_114270_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc2/1730360926100-f7d155a0-7f5a-472d-9afb-d131873a194b_hu72f31f624b413d799776dc8e81994046_114270_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;503&#34;
+		data-flex-basis=&#34;1207px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;cc2链就是如何将&lt;code&gt;InstatiateTransformer&lt;/code&gt;和&lt;code&gt;InvokeTransformer&lt;/code&gt;以及&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730360985048-1ca1e9c5-07b7-41d0-b204-e758a8c32d95.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc2/1730360985048-1ca1e9c5-07b7-41d0-b204-e758a8c32d95.png&#34;
+	width=&#34;756&#34;
+	height=&#34;518&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc2/1730360985048-1ca1e9c5-07b7-41d0-b204-e758a8c32d95_hu320a82d196560ea016a8f7cd3efa8323_28232_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc2/1730360985048-1ca1e9c5-07b7-41d0-b204-e758a8c32d95_hu320a82d196560ea016a8f7cd3efa8323_28232_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;145&#34;
+		data-flex-basis=&#34;350px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;InvokeTransformer&lt;/code&gt;和&lt;code&gt;TemplatesImpl&lt;/code&gt;串一起&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730365618123-399e9de3-4b86-4562-b51a-86d18d066b20.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc2/1730365618123-399e9de3-4b86-4562-b51a-86d18d066b20.png&#34;
+	width=&#34;1093&#34;
+	height=&#34;404&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc2/1730365618123-399e9de3-4b86-4562-b51a-86d18d066b20_hu989b24c1fb1f5360396846361a1d1113_36720_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc2/1730365618123-399e9de3-4b86-4562-b51a-86d18d066b20_hu989b24c1fb1f5360396846361a1d1113_36720_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;270&#34;
+		data-flex-basis=&#34;649px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;instatiatetransformer和invoketransformer&#34;&gt;&lt;code&gt;InstatiateTransformer&lt;/code&gt;和&lt;code&gt;InvokeTransformer&lt;/code&gt;
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730365712972-26951a5d-e7cb-4acf-8c11-55fc47fd6c8c.png&#34;
-	
-	
-	
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc2/1730365712972-26951a5d-e7cb-4acf-8c11-55fc47fd6c8c.png&#34;
+	width=&#34;625&#34;
+	height=&#34;108&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc2/1730365712972-26951a5d-e7cb-4acf-8c11-55fc47fd6c8c_hufe65f396ac47b24c574359610c142020_22087_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc2/1730365712972-26951a5d-e7cb-4acf-8c11-55fc47fd6c8c_hufe65f396ac47b24c574359610c142020_22087_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;578&#34;
+		data-flex-basis=&#34;1388px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;transformer&lt;/code&gt;赋值为&lt;code&gt;InvokerTransformer&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;invoketransformer和templatesimpl&#34;&gt;&lt;code&gt;InvokeTransformer&lt;/code&gt;和&lt;code&gt;TemplatesImpl&lt;/code&gt;
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730365774682-e6aff751-fb8e-4bc1-90a3-23593d1b68d9.png&#34;
-	
-	
-	
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc2/1730365774682-e6aff751-fb8e-4bc1-90a3-23593d1b68d9.png&#34;
+	width=&#34;749&#34;
+	height=&#34;133&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc2/1730365774682-e6aff751-fb8e-4bc1-90a3-23593d1b68d9_huadc7cc7af0f573bec34dde0e90464ff4_18742_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc2/1730365774682-e6aff751-fb8e-4bc1-90a3-23593d1b68d9_huadc7cc7af0f573bec34dde0e90464ff4_18742_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;563&#34;
+		data-flex-basis=&#34;1351px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;InvokeTransformer&lt;/code&gt;的&lt;code&gt;transformer&lt;/code&gt;是将通过反射,&lt;/p&gt;
 &lt;p&gt;这里可以反射调用&lt;code&gt;TemplatesImpl&lt;/code&gt;的&lt;code&gt;newTransformer&lt;/code&gt;从而串在一起&lt;/p&gt;
 &lt;p&gt;怎么将&lt;code&gt;TemplatesImpl&lt;/code&gt;传入?&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730363865478-d97b9a2b-adab-46bd-8f5e-9ee29f4152eb.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc2/1730363865478-d97b9a2b-adab-46bd-8f5e-9ee29f4152eb.png&#34;
+	width=&#34;992&#34;
+	height=&#34;603&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc2/1730363865478-d97b9a2b-adab-46bd-8f5e-9ee29f4152eb_hu0b57c7d951d29c5d4d824d049c28681a_137364_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc2/1730363865478-d97b9a2b-adab-46bd-8f5e-9ee29f4152eb_hu0b57c7d951d29c5d4d824d049c28681a_137364_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;164&#34;
+		data-flex-basis=&#34;394px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;add传入的会作为&lt;code&gt;transform&lt;/code&gt;的参数&lt;/p&gt;
@@ -2504,54 +2708,78 @@
 &lt;/ul&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;既然 InvokerTransformer 这里用不了了，我们去找谁调用了&lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;code&gt;transform()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;方法，这里我去找的是&lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;code&gt;InstantiateTransformer&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;类，因为它上一步是 InvokerTransformer。&lt;/font&gt;&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;进行 find usages，在 &lt;/font&gt;&lt;code&gt;TransformingComparator&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 这个类中的 &lt;/font&gt;&lt;code&gt;compare()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 方法调用了 &lt;/font&gt;&lt;code&gt;transform()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 方法。而 &lt;/font&gt;&lt;code&gt;compare()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 这个方法也是我们比较喜欢的这种，因为它非常常见。&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730354057878-4828cfe3-f625-452e-bd3b-6bb7435ef45e.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354057878-4828cfe3-f625-452e-bd3b-6bb7435ef45e.png&#34;
+	width=&#34;589&#34;
+	height=&#34;161&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354057878-4828cfe3-f625-452e-bd3b-6bb7435ef45e_hu831a0db7a31f0018ec94f9e0492d295e_25091_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354057878-4828cfe3-f625-452e-bd3b-6bb7435ef45e_hu831a0db7a31f0018ec94f9e0492d295e_25091_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;365&#34;
+		data-flex-basis=&#34;878px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;找到&lt;code&gt;PriorityQueue&lt;/code&gt;类&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730354464025-6cf1a5e9-ac72-4a7f-b0b8-247c9850101e.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354464025-6cf1a5e9-ac72-4a7f-b0b8-247c9850101e.png&#34;
+	width=&#34;832&#34;
+	height=&#34;508&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354464025-6cf1a5e9-ac72-4a7f-b0b8-247c9850101e_hud2d0eddcb9f54bef6f492b27ec109b41_61633_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354464025-6cf1a5e9-ac72-4a7f-b0b8-247c9850101e_hud2d0eddcb9f54bef6f492b27ec109b41_61633_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;163&#34;
+		data-flex-basis=&#34;393px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;在同一个类找下去&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730354535072-a8579cca-9629-4c39-9be7-fdda90583e15.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354535072-a8579cca-9629-4c39-9be7-fdda90583e15.png&#34;
+	width=&#34;495&#34;
+	height=&#34;199&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354535072-a8579cca-9629-4c39-9be7-fdda90583e15_hu206f2b01c555366507d63613cbbd3897_18568_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354535072-a8579cca-9629-4c39-9be7-fdda90583e15_hu206f2b01c555366507d63613cbbd3897_18568_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;248&#34;
+		data-flex-basis=&#34;596px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730354640197-dfacd003-dd2e-47b0-abac-3125f16c2e7d.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354640197-dfacd003-dd2e-47b0-abac-3125f16c2e7d.png&#34;
+	width=&#34;588&#34;
+	height=&#34;118&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354640197-dfacd003-dd2e-47b0-abac-3125f16c2e7d_hu528cd7b0573a316fd687e02a26c24f79_12742_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354640197-dfacd003-dd2e-47b0-abac-3125f16c2e7d_hu528cd7b0573a316fd687e02a26c24f79_12742_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
-&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730354654339-3d2fbbfb-dcd4-4ff6-b601-4ef00a17bb7d.png&#34;
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;498&#34;
+		data-flex-basis=&#34;1195px&#34;
 	
-	
-	
+&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354654339-3d2fbbfb-dcd4-4ff6-b601-4ef00a17bb7d.png&#34;
+	width=&#34;692&#34;
+	height=&#34;495&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354654339-3d2fbbfb-dcd4-4ff6-b601-4ef00a17bb7d_hu99bc018e822e20a0999238c16c5f2b5d_52363_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354654339-3d2fbbfb-dcd4-4ff6-b601-4ef00a17bb7d_hu99bc018e822e20a0999238c16c5f2b5d_52363_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;139&#34;
+		data-flex-basis=&#34;335px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;最后找到&lt;code&gt;readObject&lt;/code&gt;首部&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730354667313-853c6be6-5103-4ac0-871a-e250ec4cfb9e.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354667313-853c6be6-5103-4ac0-871a-e250ec4cfb9e.png&#34;
+	width=&#34;571&#34;
+	height=&#34;84&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354667313-853c6be6-5103-4ac0-871a-e250ec4cfb9e_hu0f420ef82c32f789243d11bd003a7fd4_12780_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354667313-853c6be6-5103-4ac0-871a-e250ec4cfb9e_hu0f420ef82c32f789243d11bd003a7fd4_12780_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;679&#34;
+		data-flex-basis=&#34;1631px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;刚好继承了序列化接口&lt;/p&gt;
@@ -2630,31 +2858,43 @@
 &lt;h2 id=&#34;问题解决&#34;&gt;问题解决
 &lt;/h2&gt;&lt;p&gt;再&lt;code&gt;readObject&lt;/code&gt;和&lt;code&gt;heapify&lt;/code&gt;打断点&lt;/p&gt;
 &lt;p&gt;debug的时候看到到&lt;code&gt;heapify&lt;/code&gt;没有进for循环,直接跳出程序,没进入到链子&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730356864650-89eddd0f-ecbd-40d1-988d-f482e4806f13.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730356864650-89eddd0f-ecbd-40d1-988d-f482e4806f13.png&#34;
+	width=&#34;718&#34;
+	height=&#34;386&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730356864650-89eddd0f-ecbd-40d1-988d-f482e4806f13_hu522801c9cca25454cd863d2641c93170_32728_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730356864650-89eddd0f-ecbd-40d1-988d-f482e4806f13_hu522801c9cca25454cd863d2641c93170_32728_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;186&#34;
+		data-flex-basis=&#34;446px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;当给&lt;code&gt;size&lt;/code&gt;赋值为2时,结果刚好1-1=0,满足i&amp;gt;=0,能进入循环,所以需要找到size赋值的地方&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730356999971-7e7a6f32-446b-435f-af51-734d93cf4660.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730356999971-7e7a6f32-446b-435f-af51-734d93cf4660.png&#34;
+	width=&#34;983&#34;
+	height=&#34;292&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730356999971-7e7a6f32-446b-435f-af51-734d93cf4660_hufb834e020d6f0ae0c2ddd63a345f9950_26067_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730356999971-7e7a6f32-446b-435f-af51-734d93cf4660_hufb834e020d6f0ae0c2ddd63a345f9950_26067_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;336&#34;
+		data-flex-basis=&#34;807px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;加上之后发现序列化运行的时候也会直接弹计算器&lt;/p&gt;
 &lt;p&gt;进入&lt;code&gt;add&lt;/code&gt;方法&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730357617514-ff9a017c-6e18-482f-97d4-168561a8894a.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730357617514-ff9a017c-6e18-482f-97d4-168561a8894a.png&#34;
+	width=&#34;1995&#34;
+	height=&#34;657&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730357617514-ff9a017c-6e18-482f-97d4-168561a8894a_hu3b3ec1f2fe70a21888cfa9588dab252e_276163_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730357617514-ff9a017c-6e18-482f-97d4-168561a8894a_hu3b3ec1f2fe70a21888cfa9588dab252e_276163_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;303&#34;
+		data-flex-basis=&#34;728px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;只需要在add之前给&lt;code&gt;TransformingComparator&lt;/code&gt;传入一个无关的东西,add的时候进入不了链子,再通过反射来修改&lt;/p&gt;
@@ -2788,12 +3028,16 @@
 &lt;li&gt;&lt;strong&gt;利用 ClassLoader#defineClass 直接加载字节码&lt;/strong&gt;的手段。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;在这一条小链子当中，流程图可以绘制如下。&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730279089249-9c37b034-7d65-4fa7-9609-ff38fa44a171.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730279089249-9c37b034-7d65-4fa7-9609-ff38fa44a171.png&#34;
+	width=&#34;738&#34;
+	height=&#34;110&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730279089249-9c37b034-7d65-4fa7-9609-ff38fa44a171_hub02fad0b7f0784da3d751c76788e7fd4_7437_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730279089249-9c37b034-7d65-4fa7-9609-ff38fa44a171_hub02fad0b7f0784da3d751c76788e7fd4_7437_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;670&#34;
+		data-flex-basis=&#34;1610px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;这里我们可以正向看，首先是&lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;code&gt;loadClass()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;，它的作用是从已加载的类缓存、父加载器等位置寻找类（这里实际上是双亲委派机制），在前面没有找到的情况下，执行&lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;code&gt;findClass()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;。&lt;/font&gt;&lt;/p&gt;
@@ -2859,83 +3103,119 @@
 &lt;p&gt;此时的 &lt;code&gt;defineClass()&lt;/code&gt; 方法是有局限性的，因为它只是加载类，并不执行类。若需要执行，则需要先进行 &lt;code&gt;newInstance()&lt;/code&gt; 的实例化。&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;现在我们的 &lt;/font&gt;&lt;code&gt;defineClass()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 方法的作用域为 &lt;/font&gt;&lt;code&gt;protected&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;，我们需要找到作用域为 &lt;/font&gt;&lt;code&gt;public&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 的类，方便我们利用。照样 find usages&lt;/font&gt;&lt;/p&gt;
 &lt;h3 id=&#34;templatesimpl-解析&#34;&gt;TemplatesImpl 解析
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730122600558-bb743af7-195c-4b6a-b83f-2fdf2cb7996d.png&#34;
-	
-	
-	
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122600558-bb743af7-195c-4b6a-b83f-2fdf2cb7996d.png&#34;
+	width=&#34;650&#34;
+	height=&#34;417&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122600558-bb743af7-195c-4b6a-b83f-2fdf2cb7996d_hu20d23f51dd6d6387347578b156e5703d_34912_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122600558-bb743af7-195c-4b6a-b83f-2fdf2cb7996d_hu20d23f51dd6d6387347578b156e5703d_34912_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;155&#34;
+		data-flex-basis=&#34;374px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;这里的 &lt;/font&gt;&lt;code&gt;defineClass()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 方法没有标注作用域，默认为 defalut，也就是说自己的类里面可以调用，我们继续 find usages&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730122769497-f7f2876b-104a-44bd-ba90-659fac01d55e.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122769497-f7f2876b-104a-44bd-ba90-659fac01d55e.png&#34;
+	width=&#34;690&#34;
+	height=&#34;723&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122769497-f7f2876b-104a-44bd-ba90-659fac01d55e_hub78364f1fa715aa019c4fc85f93f42d2_92092_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122769497-f7f2876b-104a-44bd-ba90-659fac01d55e_hub78364f1fa715aa019c4fc85f93f42d2_92092_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;95&#34;
+		data-flex-basis=&#34;229px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;在同类下找到&lt;code&gt;defineTransletClass&lt;/code&gt;方法中看到调用了defineClass&lt;/p&gt;
 &lt;p&gt;还是private,继续找调用&lt;code&gt;defineTransletClass&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730122933557-58fda9c6-0394-4fa1-a5f1-d8911367db11.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122933557-58fda9c6-0394-4fa1-a5f1-d8911367db11.png&#34;
+	width=&#34;605&#34;
+	height=&#34;122&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122933557-58fda9c6-0394-4fa1-a5f1-d8911367db11_huaa8f24a882e77bb1158244375636f1e6_13859_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122933557-58fda9c6-0394-4fa1-a5f1-d8911367db11_huaa8f24a882e77bb1158244375636f1e6_13859_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;495&#34;
+		data-flex-basis=&#34;1190px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730122943517-9728f938-540c-422b-8677-304c83ed5222.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122943517-9728f938-540c-422b-8677-304c83ed5222.png&#34;
+	width=&#34;566&#34;
+	height=&#34;105&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122943517-9728f938-540c-422b-8677-304c83ed5222_hu255a0adad766366287032da055e81f07_12649_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122943517-9728f938-540c-422b-8677-304c83ed5222_hu255a0adad766366287032da055e81f07_12649_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;539&#34;
+		data-flex-basis=&#34;1293px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730122953691-692839ef-9136-4d9a-9a2c-04ca6675a56f.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122953691-692839ef-9136-4d9a-9a2c-04ca6675a56f.png&#34;
+	width=&#34;600&#34;
+	height=&#34;210&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122953691-692839ef-9136-4d9a-9a2c-04ca6675a56f_hu2133ba6ac67dafa7e210a8ae806fabcb_22547_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730122953691-692839ef-9136-4d9a-9a2c-04ca6675a56f_hu2133ba6ac67dafa7e210a8ae806fabcb_22547_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;285&#34;
+		data-flex-basis=&#34;685px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;以上三个方法都调用了&lt;code&gt;defineTransletClass&lt;/code&gt;,为什么选择它?&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;因为其调用了 &lt;/font&gt;&lt;code&gt;defineTransletClasses()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 方法，并且这里有一个 &lt;/font&gt;&lt;code&gt;newInstance()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 实例化的过程，如果能走完这个函数那么就能动态执行代码，但是因为它是私有的，所以继续找。&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730123329131-d2cf0fe9-0ec8-4ba2-aa42-d95a66318bc4.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730123329131-d2cf0fe9-0ec8-4ba2-aa42-d95a66318bc4.png&#34;
+	width=&#34;850&#34;
+	height=&#34;219&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730123329131-d2cf0fe9-0ec8-4ba2-aa42-d95a66318bc4_huc1c906b36536f8d39f079afa69a09d35_25678_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730123329131-d2cf0fe9-0ec8-4ba2-aa42-d95a66318bc4_huc1c906b36536f8d39f079afa69a09d35_25678_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;388&#34;
+		data-flex-basis=&#34;931px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;找到public修饰的&lt;code&gt;newTransformer&lt;/code&gt;方法,接下就是处理限制条件了&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730124203836-75cb4328-aaa7-480d-99c4-535a6e92181b.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730124203836-75cb4328-aaa7-480d-99c4-535a6e92181b.png&#34;
+	width=&#34;1198&#34;
+	height=&#34;734&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730124203836-75cb4328-aaa7-480d-99c4-535a6e92181b_hu2f6769ee492899cb96e29e2d438ac4a2_105615_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730124203836-75cb4328-aaa7-480d-99c4-535a6e92181b_hu2f6769ee492899cb96e29e2d438ac4a2_105615_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;163&#34;
+		data-flex-basis=&#34;391px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730124250473-c0997935-6c20-4e76-8fb2-70288118c55b.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730124250473-c0997935-6c20-4e76-8fb2-70288118c55b.png&#34;
+	width=&#34;623&#34;
+	height=&#34;184&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730124250473-c0997935-6c20-4e76-8fb2-70288118c55b_hu4db32bd550e5512be410ec27f36e07ce_27687_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730124250473-c0997935-6c20-4e76-8fb2-70288118c55b_hu4db32bd550e5512be410ec27f36e07ce_27687_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;338&#34;
+		data-flex-basis=&#34;812px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h4 id=&#34;_bytecodes解决&#34;&gt;&lt;strong&gt;_bytecodes解决&lt;/strong&gt;
-&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730125196189-322f0538-1d79-419b-8708-ff92fd8b4a12.png&#34;
-	
-	
-	
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730125196189-322f0538-1d79-419b-8708-ff92fd8b4a12.png&#34;
+	width=&#34;407&#34;
+	height=&#34;64&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730125196189-322f0538-1d79-419b-8708-ff92fd8b4a12_hu102be61c9ae2dacf95faab285791e191_5176_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730125196189-322f0538-1d79-419b-8708-ff92fd8b4a12_hu102be61c9ae2dacf95faab285791e191_5176_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;635&#34;
+		data-flex-basis=&#34;1526px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;_bytecodes&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 的值，这里需要的是一个二维数组，所以我们创建一个二维数组。但是 &lt;/font&gt;&lt;code&gt;_bytecodes&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 作为传递进 defineClass 方法的值是一个一维数组。而这个一维数组里面我们需要存放恶意的字节码。这一段伪代码可以这样写。&lt;/font&gt;&lt;/p&gt;
@@ -2989,22 +3269,30 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h4 id=&#34;_tfactory解决&#34;&gt;&lt;strong&gt;_tfactory解决&lt;/strong&gt;
-&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730125707047-9cc0796c-7bc7-401f-b578-63fe6c3b1547.png&#34;
-	
-	
-	
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730125707047-9cc0796c-7bc7-401f-b578-63fe6c3b1547.png&#34;
+	width=&#34;595&#34;
+	height=&#34;54&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730125707047-9cc0796c-7bc7-401f-b578-63fe6c3b1547_hud7e6bbe6513f9bed0f3842104f66780b_7485_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730125707047-9cc0796c-7bc7-401f-b578-63fe6c3b1547_hud7e6bbe6513f9bed0f3842104f66780b_7485_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1101&#34;
+		data-flex-basis=&#34;2644px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;transient保证了&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;这个变量在序列化之后无法被访问&lt;/font&gt;&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;在 &lt;/font&gt;&lt;code&gt;readObject()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 方法中，找到了 &lt;/font&gt;&lt;code&gt;_tfactory&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 的初始化定义。&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730125854645-da282866-253f-4edd-b99a-349e5d2d5ef9.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730125854645-da282866-253f-4edd-b99a-349e5d2d5ef9.png&#34;
+	width=&#34;605&#34;
+	height=&#34;755&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730125854645-da282866-253f-4edd-b99a-349e5d2d5ef9_hu1190bb6d3b3f21f5a2da1f6e6b74d402_110786_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730125854645-da282866-253f-4edd-b99a-349e5d2d5ef9_hu1190bb6d3b3f21f5a2da1f6e6b74d402_110786_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;80&#34;
+		data-flex-basis=&#34;192px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;刚好能在反序列化的时候初始化,就能让&lt;code&gt;_tfactory值不为null&lt;/code&gt;&lt;/p&gt;
@@ -3062,31 +3350,43 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;运行完但是不弹计算器且报错&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730203540011-aec37d44-08a7-45f5-b608-3df028e5ede7.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730203540011-aec37d44-08a7-45f5-b608-3df028e5ede7.png&#34;
+	width=&#34;1142&#34;
+	height=&#34;163&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730203540011-aec37d44-08a7-45f5-b608-3df028e5ede7_hu3ba6f03616f3fcacfc8dfda36fc6ab33_36155_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730203540011-aec37d44-08a7-45f5-b608-3df028e5ede7_hu3ba6f03616f3fcacfc8dfda36fc6ab33_36155_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;700&#34;
+		data-flex-basis=&#34;1681px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;空指针报错&lt;/p&gt;
 &lt;p&gt;看报错是在&lt;code&gt;422行&lt;/code&gt;空指针报错,打了断点&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730204346663-8b2a0aca-f080-4c1e-aad6-0da80794c1aa.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730204346663-8b2a0aca-f080-4c1e-aad6-0da80794c1aa.png&#34;
+	width=&#34;1013&#34;
+	height=&#34;80&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730204346663-8b2a0aca-f080-4c1e-aad6-0da80794c1aa_hu019874805e1d61c65ef6ed12ad22f074_9854_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730204346663-8b2a0aca-f080-4c1e-aad6-0da80794c1aa_hu019874805e1d61c65ef6ed12ad22f074_9854_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1266&#34;
+		data-flex-basis=&#34;3039px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;死在了else这里&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730204404589-0e2d6cb5-1c5a-47a7-b530-33269795924c.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730204404589-0e2d6cb5-1c5a-47a7-b530-33269795924c.png&#34;
+	width=&#34;970&#34;
+	height=&#34;371&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730204404589-0e2d6cb5-1c5a-47a7-b530-33269795924c_hud1029051a839da65fbcdc422a1ed0d98_56015_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730204404589-0e2d6cb5-1c5a-47a7-b530-33269795924c_hud1029051a839da65fbcdc422a1ed0d98_56015_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;261&#34;
+		data-flex-basis=&#34;627px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;这里要么&lt;code&gt;_auxClasses&lt;/code&gt;赋值,要么if判断正确不进入else&lt;/p&gt;
@@ -3118,23 +3418,31 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;所以只需要给我们的恶意类加上继承&lt;code&gt;AbstractTranslet&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730205042673-5f7b2aed-4c14-4b79-a2b7-1b6daae1fb69.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730205042673-5f7b2aed-4c14-4b79-a2b7-1b6daae1fb69.png&#34;
+	width=&#34;761&#34;
+	height=&#34;96&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730205042673-5f7b2aed-4c14-4b79-a2b7-1b6daae1fb69_huae97576dc20b6bb97d5498ae49f5bc19_12572_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730205042673-5f7b2aed-4c14-4b79-a2b7-1b6daae1fb69_huae97576dc20b6bb97d5498ae49f5bc19_12572_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;792&#34;
+		data-flex-basis=&#34;1902px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;重新编译一下calc.java运行后弹计算器&lt;/p&gt;
 &lt;h2 id=&#34;cc1-链的-templatesimpl-的实现方式&#34;&gt;CC1 链的 TemplatesImpl 的实现方式
 &lt;/h2&gt;&lt;p&gt;&lt;code&gt;&amp;lt;font style=&amp;quot;color:rgb(80, 80, 92);background-color:rgb(247, 247, 247);&amp;quot;&amp;gt;TemplatesImpl 只是将原本的命令执行变成代码执行的方式所以在不考虑黑名单的情况下，如果可以进行命令执行，则一定可以通过动态加载字节码进行代码执行。&amp;lt;/font&amp;gt;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730205438494-dc08a922-9b4e-4863-aba9-9aad79738a88.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730205438494-dc08a922-9b4e-4863-aba9-9aad79738a88.png&#34;
+	width=&#34;927&#34;
+	height=&#34;489&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730205438494-dc08a922-9b4e-4863-aba9-9aad79738a88_hub6f324a16a9b6ec2b3ef848fbd4570c6_161816_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730205438494-dc08a922-9b4e-4863-aba9-9aad79738a88_hub6f324a16a9b6ec2b3ef848fbd4570c6_161816_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;189&#34;
+		data-flex-basis=&#34;454px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -3391,12 +3699,16 @@
 &lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;第二个&lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;code&gt;getOutProperties&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;，是反射调用的方法，可能会在 fastjson 的漏洞里面被调用。&lt;/font&gt;&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;TransformerFactoryImpl 不能序列化，如果还想使用它也是也可能的，但是需要传参，我们需要去找构造函数。而它的构造函数难传参。&lt;/font&gt;&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;最后，&lt;/font&gt;&lt;code&gt;TrAXFilter&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;，它也是不能序列化的，但是我们去到它的构造函数看，是有搞头的。&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730208530558-479c2744-4812-453b-ae82-5184ba7faa27.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730208530558-479c2744-4812-453b-ae82-5184ba7faa27.png&#34;
+	width=&#34;743&#34;
+	height=&#34;262&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730208530558-479c2744-4812-453b-ae82-5184ba7faa27_hua1c14c693888f856070f6fdfacf1b392_33657_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730208530558-479c2744-4812-453b-ae82-5184ba7faa27_hua1c14c693888f856070f6fdfacf1b392_33657_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;283&#34;
+		data-flex-basis=&#34;680px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;只需要调用&lt;code&gt;TrAXFilter&lt;/code&gt;的构造函数就行了&lt;/p&gt;
@@ -3405,20 +3717,28 @@
 &lt;li&gt;&lt;code&gt;InstantiateTransformer&lt;/code&gt; 这个类是用来初始化 &lt;code&gt;Transformer&lt;/code&gt; 的，我们去找 &lt;code&gt;InstantiateTransformer&lt;/code&gt; 类下的 &lt;code&gt;transform&lt;/code&gt; 方法。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;完美契合我们的需求！&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730209223691-356ca3de-e86a-42f5-acc7-01b8866d4b30.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730209223691-356ca3de-e86a-42f5-acc7-01b8866d4b30.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;1030&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730209223691-356ca3de-e86a-42f5-acc7-01b8866d4b30_hu319eafd60fc8a90a12a7f3eacec386c0_308790_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730209223691-356ca3de-e86a-42f5-acc7-01b8866d4b30_hu319eafd60fc8a90a12a7f3eacec386c0_308790_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;186&#34;
+		data-flex-basis=&#34;447px&#34;
 	
 &gt;&lt;br&gt;
-&lt;img src=&#34;https://gsygsr.github.io/images%5c1730210456831-f439392a-d463-460a-a608-6d01f7acd07a.png&#34;
-	
-	
-	
+&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730210456831-f439392a-d463-460a-a608-6d01f7acd07a.png&#34;
+	width=&#34;885&#34;
+	height=&#34;756&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730210456831-f439392a-d463-460a-a608-6d01f7acd07a_hu463920064a95899fdcd2ecb6dc2f2508_130995_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730210456831-f439392a-d463-460a-a608-6d01f7acd07a_hu463920064a95899fdcd2ecb6dc2f2508_130995_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;117&#34;
+		data-flex-basis=&#34;280px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;写exp&lt;/strong&gt;&lt;/p&gt;
@@ -3472,32 +3792,44 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;弹计算器&lt;/p&gt;
 &lt;p&gt;找&lt;code&gt;transform&lt;/code&gt;找到熟悉的&lt;code&gt;LazyMap&lt;/code&gt;函数&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730210797112-679be9c7-84b5-4268-b79f-d67dddef0631.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730210797112-679be9c7-84b5-4268-b79f-d67dddef0631.png&#34;
+	width=&#34;510&#34;
+	height=&#34;142&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730210797112-679be9c7-84b5-4268-b79f-d67dddef0631_huc761d6cd820c49868246429724ab5713_15779_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730210797112-679be9c7-84b5-4268-b79f-d67dddef0631_huc761d6cd820c49868246429724ab5713_15779_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;359&#34;
+		data-flex-basis=&#34;861px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;想到cc1的正链&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730276240133-36773be4-3dfb-48c7-94a9-103af89d3073.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730276240133-36773be4-3dfb-48c7-94a9-103af89d3073.png&#34;
+	width=&#34;503&#34;
+	height=&#34;169&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730276240133-36773be4-3dfb-48c7-94a9-103af89d3073_hub44c76a4a418e12a8ec81f5bcaac181c_14929_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730276240133-36773be4-3dfb-48c7-94a9-103af89d3073_hub44c76a4a418e12a8ec81f5bcaac181c_14929_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;297&#34;
+		data-flex-basis=&#34;714px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;直接把前半部分的链拿来用&lt;/p&gt;
 &lt;p&gt;序列化正常,但是反序列化报错&lt;/p&gt;
 &lt;p&gt;想起之前的&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730277304764-5ba6d388-8136-4351-9321-fea59dc37af1.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730277304764-5ba6d388-8136-4351-9321-fea59dc37af1.png&#34;
+	width=&#34;556&#34;
+	height=&#34;78&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730277304764-5ba6d388-8136-4351-9321-fea59dc37af1_hu1d470f016fd1995ca6fcdb55ab85aeba_12763_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730277304764-5ba6d388-8136-4351-9321-fea59dc37af1_hu1d470f016fd1995ca6fcdb55ab85aeba_12763_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;712&#34;
+		data-flex-basis=&#34;1710px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;setValue&lt;/code&gt;传参无法可控&lt;/p&gt;
@@ -3643,12 +3975,16 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                        newInstance
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1730277704798-f1a07d93-ebfe-4d27-9b95-751efe82863a.png&#34;
-	
-	
-	
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730277704798-f1a07d93-ebfe-4d27-9b95-751efe82863a.png&#34;
+	width=&#34;2664&#34;
+	height=&#34;526&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730277704798-f1a07d93-ebfe-4d27-9b95-751efe82863a_hud26577cdefa20685acfc022efdc556a5_174255_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc3/1730277704798-f1a07d93-ebfe-4d27-9b95-751efe82863a_hud26577cdefa20685acfc022efdc556a5_174255_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;506&#34;
+		data-flex-basis=&#34;1215px&#34;
 	
 &gt;&lt;/p&gt;
 </description>
@@ -3660,12 +3996,16 @@
         
         <guid>https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/</guid>
         <description>&lt;img src="https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/6.jpg" alt="Featured image of post java反序列化之Commons-Collections1-CC1链" /&gt;&lt;h2 id=&#34;链尾invokertransformertransform&#34;&gt;链尾InvokerTransformer.transform
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729516474415-5435e85a-6b17-4595-8762-6c99ac262a82.png&#34;
-	
-	
-	
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729516474415-5435e85a-6b17-4595-8762-6c99ac262a82.png&#34;
+	width=&#34;758&#34;
+	height=&#34;267&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729516474415-5435e85a-6b17-4595-8762-6c99ac262a82_hu87fcba76132e6530d1153e07f0c8a752_27083_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729516474415-5435e85a-6b17-4595-8762-6c99ac262a82_hu87fcba76132e6530d1153e07f0c8a752_27083_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;283&#34;
+		data-flex-basis=&#34;681px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;存在&lt;code&gt;invoke&lt;/code&gt;,执行危险函数&lt;/p&gt;
@@ -3685,20 +4025,28 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;和runtime通过反射弹计算器很像,而且参数都可控
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729516947600-e824ed85-5e5a-4bd8-9e93-9ae73b1d2a6f.png&#34;
-	
-	
-	
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729516947600-e824ed85-5e5a-4bd8-9e93-9ae73b1d2a6f.png&#34;
+	width=&#34;888&#34;
+	height=&#34;184&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729516947600-e824ed85-5e5a-4bd8-9e93-9ae73b1d2a6f_hu6f6fd01b6c2519103da4b22220fb15d4_22078_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729516947600-e824ed85-5e5a-4bd8-9e93-9ae73b1d2a6f_hu6f6fd01b6c2519103da4b22220fb15d4_22078_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;482&#34;
+		data-flex-basis=&#34;1158px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729517509645-dbd1fb34-db4a-413c-8dee-3647e31d650e.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729517509645-dbd1fb34-db4a-413c-8dee-3647e31d650e.png&#34;
+	width=&#34;858&#34;
+	height=&#34;704&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729517509645-dbd1fb34-db4a-413c-8dee-3647e31d650e_hu8fabcf354bbbd0daf15bcc85123a7267_119765_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729517509645-dbd1fb34-db4a-413c-8dee-3647e31d650e_hu8fabcf354bbbd0daf15bcc85123a7267_119765_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;121&#34;
+		data-flex-basis=&#34;292px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;一一对应,&lt;code&gt;调用transform()&lt;/code&gt;方法将&lt;code&gt;Runtime&lt;/code&gt;对象传入,相当于反射了执行exec危险函数&lt;/p&gt;
@@ -3726,61 +4074,85 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;找到链尾,继续找&lt;code&gt;transform&lt;/code&gt;的同方法不同调用类&lt;/p&gt;
 &lt;h2 id=&#34;transformedmapcheckvalue触发transformer&#34;&gt;TransformedMap.checkValue()触发transformer
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729518544333-634a207f-1f56-4559-8f56-03f65134ce89.png&#34;
-	
-	
-	
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729518544333-634a207f-1f56-4559-8f56-03f65134ce89.png&#34;
+	width=&#34;496&#34;
+	height=&#34;420&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729518544333-634a207f-1f56-4559-8f56-03f65134ce89_hu448234b44d2ea411c2e6d7525a48a7e0_52045_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729518544333-634a207f-1f56-4559-8f56-03f65134ce89_hu448234b44d2ea411c2e6d7525a48a7e0_52045_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;118&#34;
+		data-flex-basis=&#34;283px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;圈的就是还是同样的transformer类的transform方法&lt;/p&gt;
 &lt;p&gt;下划线的就是新的类的transform方法&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;其中 &lt;/font&gt;&lt;code&gt;TransformedMap&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 类中存在 &lt;/font&gt;&lt;code&gt;checkSetValue()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 方法调用了 &lt;/font&gt;&lt;code&gt;transform()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 方法。&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729518732247-7a9332dc-bf28-4cb4-975f-c43fdc213eba.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729518732247-7a9332dc-bf28-4cb4-975f-c43fdc213eba.png&#34;
+	width=&#34;554&#34;
+	height=&#34;142&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729518732247-7a9332dc-bf28-4cb4-975f-c43fdc213eba_hu880e6705fee488ff17798040c2291c3f_14445_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729518732247-7a9332dc-bf28-4cb4-975f-c43fdc213eba_hu880e6705fee488ff17798040c2291c3f_14445_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;390&#34;
+		data-flex-basis=&#34;936px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;接下来我们去看一看 &lt;/font&gt;&lt;code&gt;valueTransformer.checkSetValue&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 的 &lt;/font&gt;&lt;code&gt;valueTransformer&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 是什么东西，最终在 &lt;/font&gt;&lt;code&gt;TransformedMap&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 的构造函数中发现了 &lt;/font&gt;&lt;code&gt;valueTransformer&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729519229426-15d3e340-4238-4764-a109-a06e30fad16c.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729519229426-15d3e340-4238-4764-a109-a06e30fad16c.png&#34;
+	width=&#34;997&#34;
+	height=&#34;170&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729519229426-15d3e340-4238-4764-a109-a06e30fad16c_hu604ffa15cd4d2498c63fed03e328e155_26045_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729519229426-15d3e340-4238-4764-a109-a06e30fad16c_hu604ffa15cd4d2498c63fed03e328e155_26045_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;586&#34;
+		data-flex-basis=&#34;1407px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;因为 &lt;code&gt;TransformedMap&lt;/code&gt; 的构造方法作用域是 &lt;code&gt;protected&lt;/code&gt;，我们还需要去找一找谁调用了 &lt;code&gt;TransformedMap&lt;/code&gt; 的构造方法。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;在 &lt;/font&gt;&lt;code&gt;decorate()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 静态方法中创建了 &lt;/font&gt;&lt;code&gt;TransformedMap&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 对象&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729519253693-0b4e62fd-c490-4f2e-b37a-76c610b253e0.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729519253693-0b4e62fd-c490-4f2e-b37a-76c610b253e0.png&#34;
+	width=&#34;1031&#34;
+	height=&#34;97&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729519253693-0b4e62fd-c490-4f2e-b37a-76c610b253e0_hua3fe4ea788a006ad4698b57f38116c20_13708_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729519253693-0b4e62fd-c490-4f2e-b37a-76c610b253e0_hua3fe4ea788a006ad4698b57f38116c20_13708_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1062&#34;
+		data-flex-basis=&#34;2550px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729519728584-624cf223-cb1f-4421-8eb2-31a071997b6e.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729519728584-624cf223-cb1f-4421-8eb2-31a071997b6e.png&#34;
+	width=&#34;730&#34;
+	height=&#34;83&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729519728584-624cf223-cb1f-4421-8eb2-31a071997b6e_hu9e091dbf6e3b0a7584b5fbe6428c39ef_7972_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729519728584-624cf223-cb1f-4421-8eb2-31a071997b6e_hu9e091dbf6e3b0a7584b5fbe6428c39ef_7972_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;879&#34;
+		data-flex-basis=&#34;2110px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;InvokerTransformer&lt;/code&gt;继承了&lt;code&gt;Transformer&lt;/code&gt;,所以&lt;code&gt;decorate(Transformer valueTransformer)&lt;/code&gt;能传入&lt;code&gt;InvokerTransformer&lt;/code&gt;对象&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729519810949-559849ad-9262-489a-a80f-550ba2548f68.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729519810949-559849ad-9262-489a-a80f-550ba2548f68.png&#34;
+	width=&#34;559&#34;
+	height=&#34;95&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729519810949-559849ad-9262-489a-a80f-550ba2548f68_hub9e9a98ddb0ee4f315f53f1ac6c8e73b_12621_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729519810949-559849ad-9262-489a-a80f-550ba2548f68_hub9e9a98ddb0ee4f315f53f1ac6c8e73b_12621_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;588&#34;
+		data-flex-basis=&#34;1412px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -3824,28 +4196,40 @@
 &lt;/div&gt;&lt;p&gt;成功弹计算器&lt;/p&gt;
 &lt;p&gt;继续找调用&lt;code&gt;checkSetValue&lt;/code&gt;的不同类&lt;/p&gt;
 &lt;h2 id=&#34;abstractinputcheckedmapdecoratorsetvalue触发checksetvalue&#34;&gt;AbstractInputCheckedMapDecorator.setValue触发checkSetValue
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729578598525-453910fc-4d57-43b7-a8d3-ccd5112be12e.png&#34;
-	
-	
-	
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729578598525-453910fc-4d57-43b7-a8d3-ccd5112be12e.png&#34;
+	width=&#34;589&#34;
+	height=&#34;179&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729578598525-453910fc-4d57-43b7-a8d3-ccd5112be12e_hu026e17d793587fd55235a8cce8865ba8_18464_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729578598525-453910fc-4d57-43b7-a8d3-ccd5112be12e_hu026e17d793587fd55235a8cce8865ba8_18464_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;329&#34;
+		data-flex-basis=&#34;789px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729578622493-890b6bb7-17b1-484e-96e2-45d0f2997ff7.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729578622493-890b6bb7-17b1-484e-96e2-45d0f2997ff7.png&#34;
+	width=&#34;920&#34;
+	height=&#34;409&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729578622493-890b6bb7-17b1-484e-96e2-45d0f2997ff7_hue393519c27cb9c7b3361f5bfbfe8222d_48416_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729578622493-890b6bb7-17b1-484e-96e2-45d0f2997ff7_hue393519c27cb9c7b3361f5bfbfe8222d_48416_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;224&#34;
+		data-flex-basis=&#34;539px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729578912329-4c2f692c-659a-49f7-93bf-a977c2b473b8.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729578912329-4c2f692c-659a-49f7-93bf-a977c2b473b8.png&#34;
+	width=&#34;932&#34;
+	height=&#34;863&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729578912329-4c2f692c-659a-49f7-93bf-a977c2b473b8_hu9e69b2db652d887707f11663534e85ad_228085_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729578912329-4c2f692c-659a-49f7-93bf-a977c2b473b8_hu9e69b2db652d887707f11663534e85ad_228085_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;107&#34;
+		data-flex-basis=&#34;259px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;所以，我们在进行 &lt;/font&gt;&lt;code&gt;.decorate&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 方法调用，进行 Map 遍历的时候，就会走到 &lt;/font&gt;&lt;code&gt;setValue()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 当中，而 &lt;/font&gt;&lt;code&gt;setValue()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 就会调用 &lt;/font&gt;&lt;code&gt;checkSetValue&lt;/code&gt;&lt;/p&gt;
@@ -3865,12 +4249,16 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;&lt;code&gt;AbstractInputCheckedMapDecorator&lt;/code&gt;的&lt;code&gt;entrySet&lt;/code&gt;函数&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729585291423-48f9a1cc-23b4-4d2f-b7ca-22c1ba862396.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729585291423-48f9a1cc-23b4-4d2f-b7ca-22c1ba862396.png&#34;
+	width=&#34;636&#34;
+	height=&#34;204&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729585291423-48f9a1cc-23b4-4d2f-b7ca-22c1ba862396_hu8a95f00412ec434e8a0f296316bb0242_20241_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729585291423-48f9a1cc-23b4-4d2f-b7ca-22c1ba862396_hu8a95f00412ec434e8a0f296316bb0242_20241_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;311&#34;
+		data-flex-basis=&#34;748px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;isSetValueChecking()&lt;/code&gt;默认为真,返回一个EntrySet的类&lt;/p&gt;
@@ -3878,30 +4266,42 @@
 &lt;p&gt;此时参数&lt;code&gt;(map.entrySet(),TransformedMap)&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(33, 53, 71);background-color:rgb(243, 245, 247);&#34;&gt;map.entrySet()返回由Map.Entry组成的原始集合&lt;/font&gt;&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(33, 53, 71);&#34;&gt;在EntrySet类中，迭代器使用了EntrySetInterator进行迭代&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729585609947-c4354228-a53d-4872-b0bf-97fb06bd373b.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729585609947-c4354228-a53d-4872-b0bf-97fb06bd373b.png&#34;
+	width=&#34;928&#34;
+	height=&#34;44&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729585609947-c4354228-a53d-4872-b0bf-97fb06bd373b_huc1bd43df286337325b6a900b0329a8db_8998_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729585609947-c4354228-a53d-4872-b0bf-97fb06bd373b_huc1bd43df286337325b6a900b0329a8db_8998_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;2109&#34;
+		data-flex-basis=&#34;5061px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(33, 53, 71);&#34;&gt;重写了迭代中会使用的next()，在这里就返回了MapEntry装饰的Map.Entry&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729585609946-ce52ddfe-84c9-4be1-b0b3-24bd6a80235b.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729585609946-ce52ddfe-84c9-4be1-b0b3-24bd6a80235b.png&#34;
+	width=&#34;990&#34;
+	height=&#34;476&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729585609946-ce52ddfe-84c9-4be1-b0b3-24bd6a80235b_hued36125aa27804d2976420e0a399af2d_42437_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729585609946-ce52ddfe-84c9-4be1-b0b3-24bd6a80235b_hued36125aa27804d2976420e0a399af2d_42437_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;207&#34;
+		data-flex-basis=&#34;499px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(33, 53, 71);&#34;&gt;从而调用&lt;/font&gt;&lt;code&gt;&amp;lt;font style=&amp;quot;color:rgb(33, 53, 71);&amp;quot;&amp;gt;MapEntry类的setValue()函数&amp;lt;/font&amp;gt;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729586545845-771384f3-6132-417c-bdcd-e9f6abae261b.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729586545845-771384f3-6132-417c-bdcd-e9f6abae261b.png&#34;
+	width=&#34;1055&#34;
+	height=&#34;464&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729586545845-771384f3-6132-417c-bdcd-e9f6abae261b_hufc136fb7bba33b241c2bee0656f6903a_38395_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729586545845-771384f3-6132-417c-bdcd-e9f6abae261b_hufc136fb7bba33b241c2bee0656f6903a_38395_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;227&#34;
+		data-flex-basis=&#34;545px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;开断点运行的流程&lt;/p&gt;
@@ -3948,31 +4348,43 @@
 &lt;/div&gt;&lt;p&gt;成功弹计算器了&lt;/p&gt;
 &lt;h2 id=&#34;找readobject&#34;&gt;找readObject
 &lt;/h2&gt;&lt;p&gt;找调用&lt;code&gt;setValue&lt;/code&gt;的&lt;code&gt;readObject&lt;/code&gt;入口类&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729586645121-757fda30-d40b-4291-8795-c2748831dbef.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729586645121-757fda30-d40b-4291-8795-c2748831dbef.png&#34;
+	width=&#34;564&#34;
+	height=&#34;120&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729586645121-757fda30-d40b-4291-8795-c2748831dbef_hu3292f8f94c5d8879510e68584d441c62_11845_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729586645121-757fda30-d40b-4291-8795-c2748831dbef_hu3292f8f94c5d8879510e68584d441c62_11845_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;470&#34;
+		data-flex-basis=&#34;1128px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729587618307-ded1d2d5-8d4c-4504-8ac6-575b49f197ed.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729587618307-ded1d2d5-8d4c-4504-8ac6-575b49f197ed.png&#34;
+	width=&#34;850&#34;
+	height=&#34;298&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729587618307-ded1d2d5-8d4c-4504-8ac6-575b49f197ed_hu3547885227b900efba95f229c7f9fee8_54299_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729587618307-ded1d2d5-8d4c-4504-8ac6-575b49f197ed_hu3547885227b900efba95f229c7f9fee8_54299_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;285&#34;
+		data-flex-basis=&#34;684px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;这里的&lt;code&gt;for (Map.Entry&amp;lt;String, Object&amp;gt; memberValue : memberValues.entrySet())&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;和&lt;code&gt;for(Map.Entry entry:decoratemap.entrySet())&lt;/code&gt;可以发现是一样的,只不过参数名称不同,&lt;/p&gt;
 &lt;p&gt;所以&lt;code&gt;memberValues&lt;/code&gt;需要被赋值为&lt;code&gt;TransformedMap&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729587721797-b306961d-c056-4250-8930-f33310211bf0.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729587721797-b306961d-c056-4250-8930-f33310211bf0.png&#34;
+	width=&#34;1095&#34;
+	height=&#34;278&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729587721797-b306961d-c056-4250-8930-f33310211bf0_hu9f605bf62fcd111d1a1bfbdf66308876_48052_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729587721797-b306961d-c056-4250-8930-f33310211bf0_hu9f605bf62fcd111d1a1bfbdf66308876_48052_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;393&#34;
+		data-flex-basis=&#34;945px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;没有修饰符,说明不能直接new,要通过反射&lt;/p&gt;
@@ -4058,12 +4470,16 @@
 &lt;/div&gt;&lt;p&gt;但是还有三个问题要解决&lt;/p&gt;
 &lt;p&gt;1.Runtime对象不可序列化,&lt;font style=&#34;color:rgb(80, 80, 92);background-color:rgb(247, 247, 247);&#34;&gt;需要通过反射将其变成可以序列化的形式。&lt;/font&gt;&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);background-color:rgb(247, 247, 247);&#34;&gt;2.&lt;/font&gt;&lt;code&gt;setValue()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);background-color:rgb(247, 247, 247);&#34;&gt; 的传参，是需要传 &lt;/font&gt;&lt;code&gt;Runtime&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);background-color:rgb(247, 247, 247);&#34;&gt; 对象的；而在实际情况当中的 &lt;/font&gt;&lt;code&gt;setValue()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);background-color:rgb(247, 247, 247);&#34;&gt; 的传参是这个东西&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729593881921-f23912e0-1768-48d2-bdd4-68d25a4c2edc.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729593881921-f23912e0-1768-48d2-bdd4-68d25a4c2edc.png&#34;
+	width=&#34;622&#34;
+	height=&#34;121&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729593881921-f23912e0-1768-48d2-bdd4-68d25a4c2edc_hudd2add843b7504f80913a66e36b4f8cf_16787_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729593881921-f23912e0-1768-48d2-bdd4-68d25a4c2edc_hudd2add843b7504f80913a66e36b4f8cf_16787_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;514&#34;
+		data-flex-basis=&#34;1233px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;3.&lt;font style=&#34;color:rgb(80, 80, 92);background-color:rgb(247, 247, 247);&#34;&gt;解决上文提到的，要进入 &lt;/font&gt;&lt;code&gt;setValue&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);background-color:rgb(247, 247, 247);&#34;&gt; 的两个 if 判断&lt;/font&gt;&lt;/p&gt;
@@ -4107,47 +4523,67 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;h3 id=&#34;2解决两个if条件&#34;&gt;2.解决两个if条件
 &lt;/h3&gt;&lt;p&gt;第一个if&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729595604684-1b571b70-ec29-4bd1-8055-266972e07689.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729595604684-1b571b70-ec29-4bd1-8055-266972e07689.png&#34;
+	width=&#34;795&#34;
+	height=&#34;158&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729595604684-1b571b70-ec29-4bd1-8055-266972e07689_hu1d293a999c8af86a44e1e351a3f73319_41030_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729595604684-1b571b70-ec29-4bd1-8055-266972e07689_hu1d293a999c8af86a44e1e351a3f73319_41030_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;503&#34;
+		data-flex-basis=&#34;1207px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;打印一下就知道了&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729595687373-820e8997-dfda-4fee-a738-0d19780891f7.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729595687373-820e8997-dfda-4fee-a738-0d19780891f7.png&#34;
+	width=&#34;522&#34;
+	height=&#34;144&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729595687373-820e8997-dfda-4fee-a738-0d19780891f7_hu46da78cccdca5122dc375d38053c3977_15259_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729595687373-820e8997-dfda-4fee-a738-0d19780891f7_hu46da78cccdca5122dc375d38053c3977_15259_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
-&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729595704591-96c7f5cc-d57b-4036-b35a-6bdf1fbe075c.png&#34;
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;362&#34;
+		data-flex-basis=&#34;870px&#34;
 	
-	
-	
+&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729595704591-96c7f5cc-d57b-4036-b35a-6bdf1fbe075c.png&#34;
+	width=&#34;131&#34;
+	height=&#34;47&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729595704591-96c7f5cc-d57b-4036-b35a-6bdf1fbe075c_hu6c57a6678d1bd28a7c38980125a70254_2049_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729595704591-96c7f5cc-d57b-4036-b35a-6bdf1fbe075c_hu6c57a6678d1bd28a7c38980125a70254_2049_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;278&#34;
+		data-flex-basis=&#34;668px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729595711374-ee91514b-06e2-48c5-babd-33855bf384dc.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729595711374-ee91514b-06e2-48c5-babd-33855bf384dc.png&#34;
+	width=&#34;295&#34;
+	height=&#34;39&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729595711374-ee91514b-06e2-48c5-babd-33855bf384dc_hu7da710d3f7a5fb8bb46fcba95981a9d7_3909_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729595711374-ee91514b-06e2-48c5-babd-33855bf384dc_hu7da710d3f7a5fb8bb46fcba95981a9d7_3909_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;756&#34;
+		data-flex-basis=&#34;1815px&#34;
 	
 &gt;所以name就是键名&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;get&lt;/code&gt;是获取键名&lt;code&gt;name&lt;/code&gt;的键值&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(33, 53, 71);&#34;&gt;AnnotationInvocationHandler的readObject内的&lt;/font&gt;&lt;code&gt;&amp;lt;font style=&amp;quot;color:rgb(71, 101, 130);background-color:rgb(241, 241, 241);&amp;quot;&amp;gt;Class&amp;lt;?&amp;gt; memberType = memberTypes.get(name);&amp;lt;/font&amp;gt;&lt;/code&gt;&lt;font style=&#34;color:rgb(33, 53, 71);&#34;&gt;做了什么呢？就是取出注解类中为name的方法名。&lt;/font&gt;&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(33, 53, 71);&#34;&gt;因为先给的&lt;/font&gt;&lt;code&gt;&amp;lt;font style=&amp;quot;color:rgb(33, 53, 71);&amp;quot;&amp;gt;Override&amp;lt;/font&amp;gt;&lt;/code&gt;&lt;font style=&#34;color:rgb(33, 53, 71);&#34;&gt;没有方法,所以&lt;/font&gt;&lt;code&gt;&amp;lt;font style=&amp;quot;color:rgb(33, 53, 71);&amp;quot;&amp;gt;memberType&amp;lt;/font&amp;gt;&lt;/code&gt;&lt;font style=&#34;color:rgb(33, 53, 71);&#34;&gt;为null&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729596246380-ef0cd8e4-88e5-4b3d-b346-f164ffc8a9ce.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729596246380-ef0cd8e4-88e5-4b3d-b346-f164ffc8a9ce.png&#34;
+	width=&#34;489&#34;
+	height=&#34;178&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729596246380-ef0cd8e4-88e5-4b3d-b346-f164ffc8a9ce_hu9f041fdcd3a5eca3d483a71455e122f0_15587_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729596246380-ef0cd8e4-88e5-4b3d-b346-f164ffc8a9ce_hu9f041fdcd3a5eca3d483a71455e122f0_15587_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;274&#34;
+		data-flex-basis=&#34;659px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;但是&lt;code&gt;Target&lt;/code&gt;有value方法,所以给如果name为&lt;code&gt;value&lt;/code&gt;,&lt;code&gt;&amp;lt;font style=&amp;quot;color:rgb(33, 53, 71);&amp;quot;&amp;gt;memberType&amp;lt;/font&amp;gt;&lt;/code&gt;&lt;font style=&#34;color:rgb(33, 53, 71);&#34;&gt;就为真&lt;/font&gt;&lt;/p&gt;
@@ -4161,45 +4597,61 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Object o = annotationclz.newInstance(Target.class,decoratemap);
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729596424589-b2b4beb0-af56-4740-9db2-44b94edbd6ef.png&#34;
-	
-	
-	
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729596424589-b2b4beb0-af56-4740-9db2-44b94edbd6ef.png&#34;
+	width=&#34;538&#34;
+	height=&#34;94&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729596424589-b2b4beb0-af56-4740-9db2-44b94edbd6ef_hufbdc1b5ca3dae213aeb7d4fa801b23a1_15028_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729596424589-b2b4beb0-af56-4740-9db2-44b94edbd6ef_hufbdc1b5ca3dae213aeb7d4fa801b23a1_15028_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;572&#34;
+		data-flex-basis=&#34;1373px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;debug能进入下面的代码&lt;/p&gt;
 &lt;p&gt;第二个if&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729596996102-187a5bcc-504a-43d0-8aa2-e49411f8c7c0.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729596996102-187a5bcc-504a-43d0-8aa2-e49411f8c7c0.png&#34;
+	width=&#34;709&#34;
+	height=&#34;107&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729596996102-187a5bcc-504a-43d0-8aa2-e49411f8c7c0_hudbd7ebb9885d4945b241282a5e7b16ed_31181_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729596996102-187a5bcc-504a-43d0-8aa2-e49411f8c7c0_hudbd7ebb9885d4945b241282a5e7b16ed_31181_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;662&#34;
+		data-flex-basis=&#34;1590px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;调试的时候,已经给出value的值是键值了,这个if判断就是判断value是不是&lt;code&gt;memberType&lt;/code&gt; 的实例，或者&lt;code&gt;ExceptionProxy&lt;/code&gt; 的实例，不是就执行 if 语句块中的代码&lt;/p&gt;
 &lt;p&gt;这里put传键值随便传个123&lt;/p&gt;
 &lt;h3 id=&#34;3解决setvaluefont-stylecolorrgb80-80-92background-colorrgb247-247-247-的传参font&#34;&gt;3.解决&lt;code&gt;setValue()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);background-color:rgb(247, 247, 247);&#34;&gt; 的传参&lt;/font&gt;
 &lt;/h3&gt;&lt;p&gt;这里用到了&lt;code&gt;ChainedTransformer&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729598884484-c4d30e9e-10b8-4f3e-9d57-2654d76846ac.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729598884484-c4d30e9e-10b8-4f3e-9d57-2654d76846ac.png&#34;
+	width=&#34;636&#34;
+	height=&#34;180&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729598884484-c4d30e9e-10b8-4f3e-9d57-2654d76846ac_hu57706dd618b33239b840476467b98cae_19734_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729598884484-c4d30e9e-10b8-4f3e-9d57-2654d76846ac_hu57706dd618b33239b840476467b98cae_19734_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;353&#34;
+		data-flex-basis=&#34;848px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;transform方法就是个反射的代码&lt;/p&gt;
 &lt;p&gt;所以不需要写那么多反射,这里直接每次都调用transform来反射&lt;/p&gt;
 &lt;p&gt;构造方法能看到传入的是&lt;code&gt;Transformer&lt;/code&gt;数组&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729598996662-68d14888-e230-4393-9265-4372f0191abe.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729598996662-68d14888-e230-4393-9265-4372f0191abe.png&#34;
+	width=&#34;634&#34;
+	height=&#34;141&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729598996662-68d14888-e230-4393-9265-4372f0191abe_hu98d1f301efda6bf3f47977e30c4c7a52_13468_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729598996662-68d14888-e230-4393-9265-4372f0191abe_hu98d1f301efda6bf3f47977e30c4c7a52_13468_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;449&#34;
+		data-flex-basis=&#34;1079px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -4243,39 +4695,55 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;InvokerTransformer invokerTransformer = new InvokerTransformer(&amp;#34;exec&amp;#34;,new Class[]{String.class},new Object[]{&amp;#34;calc&amp;#34;});
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729597222467-aed7ecbe-43fd-446f-9fd2-5b9448d141e8.png&#34;
-	
-	
-	
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729597222467-aed7ecbe-43fd-446f-9fd2-5b9448d141e8.png&#34;
+	width=&#34;472&#34;
+	height=&#34;62&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729597222467-aed7ecbe-43fd-446f-9fd2-5b9448d141e8_hu00c1ee8265501723354867c7ad9fb4cc_11257_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729597222467-aed7ecbe-43fd-446f-9fd2-5b9448d141e8_hu00c1ee8265501723354867c7ad9fb4cc_11257_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;761&#34;
+		data-flex-basis=&#34;1827px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;这里应该要传入&lt;code&gt;TransformedMap&lt;/code&gt;的,但是限死了&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729600698539-a650724f-4346-4ddc-9904-8bffc5058bff.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729600698539-a650724f-4346-4ddc-9904-8bffc5058bff.png&#34;
+	width=&#34;1095&#34;
+	height=&#34;77&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729600698539-a650724f-4346-4ddc-9904-8bffc5058bff_hu2e1f49bdd80cccb25b6101bab52a74c9_6591_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729600698539-a650724f-4346-4ddc-9904-8bffc5058bff_hu2e1f49bdd80cccb25b6101bab52a74c9_6591_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1422&#34;
+		data-flex-basis=&#34;3412px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;看报错看得出来&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;ConstantTransformer&lt;/code&gt;类也有个transform方法,而且只会返回他固定的值&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729600148626-f395d553-9afd-48af-8e79-0b8aae0d6417.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729600148626-f395d553-9afd-48af-8e79-0b8aae0d6417.png&#34;
+	width=&#34;511&#34;
+	height=&#34;98&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729600148626-f395d553-9afd-48af-8e79-0b8aae0d6417_hu99b41cffed8d1b3358b0bf761986d1bf_8820_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729600148626-f395d553-9afd-48af-8e79-0b8aae0d6417_hu99b41cffed8d1b3358b0bf761986d1bf_8820_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;521&#34;
+		data-flex-basis=&#34;1251px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729600876558-61c9b849-16ba-4b47-97cd-394a7783f62b.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729600876558-61c9b849-16ba-4b47-97cd-394a7783f62b.png&#34;
+	width=&#34;637&#34;
+	height=&#34;149&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729600876558-61c9b849-16ba-4b47-97cd-394a7783f62b_hucfa7a6eac3dd05ebc9fed041a59c6740_14116_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729600876558-61c9b849-16ba-4b47-97cd-394a7783f62b_hucfa7a6eac3dd05ebc9fed041a59c6740_14116_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;427&#34;
+		data-flex-basis=&#34;1026px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;构造方法也简单,只需要传入一个类,这里传入&lt;code&gt;Runtime.class&lt;/code&gt;&lt;/p&gt;
@@ -4343,12 +4811,16 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ChainedTransformer.transform()
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729603082840-909193fe-61db-46bf-9efd-4cfe9df4f8f5.png&#34;
-	
-	
-	
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729603082840-909193fe-61db-46bf-9efd-4cfe9df4f8f5.png&#34;
+	width=&#34;1135&#34;
+	height=&#34;413&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729603082840-909193fe-61db-46bf-9efd-4cfe9df4f8f5_hu4fa140618480411b0c32eeb4adc76f39_91620_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1/1729603082840-909193fe-61db-46bf-9efd-4cfe9df4f8f5_hu4fa140618480411b0c32eeb4adc76f39_91620_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;274&#34;
+		data-flex-basis=&#34;659px&#34;
 	
 &gt;&lt;/p&gt;
 </description>
@@ -4360,68 +4832,96 @@
         
         <guid>https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/</guid>
         <description>&lt;img src="https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/5.jpg" alt="Featured image of post java反序列化之URLDNS链" /&gt;&lt;p&gt;这是ysoserial的URLDNS链&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729062106363-39e31e40-55fe-41a2-87fd-d9212da7ca65.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729062106363-39e31e40-55fe-41a2-87fd-d9212da7ca65.png&#34;
+	width=&#34;441&#34;
+	height=&#34;177&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729062106363-39e31e40-55fe-41a2-87fd-d9212da7ca65_hu263e929c24b1d7e40912fdfe2b34b168_8236_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729062106363-39e31e40-55fe-41a2-87fd-d9212da7ca65_hu263e929c24b1d7e40912fdfe2b34b168_8236_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;249&#34;
+		data-flex-basis=&#34;597px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;首先选择&lt;code&gt;HashMap&lt;/code&gt;,这里首先满足了继承&lt;code&gt;Serializable&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729062356280-6cb69095-cda0-4f66-a536-75702d45d302.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729062356280-6cb69095-cda0-4f66-a536-75702d45d302.png&#34;
+	width=&#34;570&#34;
+	height=&#34;106&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729062356280-6cb69095-cda0-4f66-a536-75702d45d302_hu1f3b072e7fd0031f029d03fb9f3a6750_12700_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729062356280-6cb69095-cda0-4f66-a536-75702d45d302_hu1f3b072e7fd0031f029d03fb9f3a6750_12700_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;537&#34;
+		data-flex-basis=&#34;1290px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;再寻找source,找到重写的readObject&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729062441913-cb2942ec-d523-462c-8403-42d6ff75d442.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729062441913-cb2942ec-d523-462c-8403-42d6ff75d442.png&#34;
+	width=&#34;1086&#34;
+	height=&#34;238&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729062441913-cb2942ec-d523-462c-8403-42d6ff75d442_hufaa5dc95ff0ca02a038fc5561428c069_49943_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729062441913-cb2942ec-d523-462c-8403-42d6ff75d442_hufaa5dc95ff0ca02a038fc5561428c069_49943_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;456&#34;
+		data-flex-basis=&#34;1095px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;font style=&#34;color:rgb(51, 51, 51);&#34;&gt;Key 与 Value 的值执行了&lt;/font&gt;&lt;code&gt;&amp;lt;font style=&amp;quot;color:rgb(51, 51, 51);&amp;quot;&amp;gt;readObject&amp;lt;/font&amp;gt;&lt;/code&gt;&lt;font style=&#34;color:rgb(51, 51, 51);&#34;&gt;的操作，再将 Key 和 Value 两个变量扔进&lt;/font&gt;&lt;code&gt;&amp;lt;font style=&amp;quot;color:rgb(51, 51, 51);&amp;quot;&amp;gt;hash&amp;lt;/font&amp;gt;&lt;/code&gt;&lt;font style=&#34;color:rgb(51, 51, 51);&#34;&gt;这个方法里，我们再跟进(ctrl+鼠标左键即可) hash 当中&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1728998034565-6d12d60a-b813-4481-813f-91b25cf1bff7.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1728998034565-6d12d60a-b813-4481-813f-91b25cf1bff7.png&#34;
+	width=&#34;733&#34;
+	height=&#34;157&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1728998034565-6d12d60a-b813-4481-813f-91b25cf1bff7_hu86f8808fd97b18a340e7ad6285f14327_12914_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1728998034565-6d12d60a-b813-4481-813f-91b25cf1bff7_hu86f8808fd97b18a340e7ad6285f14327_12914_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;466&#34;
+		data-flex-basis=&#34;1120px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;如果传入的&lt;code&gt;key&lt;/code&gt;不为null,则进入&lt;code&gt;hashCode&lt;/code&gt;方法,跟进hashCode方法&lt;/p&gt;
 &lt;p&gt;是Object类的方法,满足调用常见的函数&lt;/p&gt;
 &lt;h1 id=&#34;原理&#34;&gt;原理
-&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729062106363-39e31e40-55fe-41a2-87fd-d9212da7ca65.png&#34;
-	
-	
-	
+&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729062106363-39e31e40-55fe-41a2-87fd-d9212da7ca65.png&#34;
+	width=&#34;441&#34;
+	height=&#34;177&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729062106363-39e31e40-55fe-41a2-87fd-d9212da7ca65_hu263e929c24b1d7e40912fdfe2b34b168_8236_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729062106363-39e31e40-55fe-41a2-87fd-d9212da7ca65_hu263e929c24b1d7e40912fdfe2b34b168_8236_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;249&#34;
+		data-flex-basis=&#34;597px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;URL是hashMap的put方法产生的&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729064923082-ee89041c-2899-4dbb-a4fb-8ce1766c6a2f.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729064923082-ee89041c-2899-4dbb-a4fb-8ce1766c6a2f.png&#34;
+	width=&#34;870&#34;
+	height=&#34;238&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729064923082-ee89041c-2899-4dbb-a4fb-8ce1766c6a2f_hu487a5d92df6352036e6a15c26ce5aca1_102290_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729064923082-ee89041c-2899-4dbb-a4fb-8ce1766c6a2f_hu487a5d92df6352036e6a15c26ce5aca1_102290_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;365&#34;
+		data-flex-basis=&#34;877px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;put调用&lt;code&gt;hash&lt;/code&gt;方法,参数为key&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1728997901192-04ca6ef9-3464-4302-861c-a055be9a867d.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1728997901192-04ca6ef9-3464-4302-861c-a055be9a867d.png&#34;
+	width=&#34;690&#34;
+	height=&#34;143&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1728997901192-04ca6ef9-3464-4302-861c-a055be9a867d_hu9ccf69fab7803d70c1dc43d2c545e2bb_12861_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1728997901192-04ca6ef9-3464-4302-861c-a055be9a867d_hu9ccf69fab7803d70c1dc43d2c545e2bb_12861_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;482&#34;
+		data-flex-basis=&#34;1158px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;这里再调用&lt;code&gt;key&lt;/code&gt;的&lt;code&gt;hashCode&lt;/code&gt;方法&lt;/p&gt;
@@ -4439,40 +4939,56 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;跟进URL,因为&lt;code&gt;key.hashCode()&lt;/code&gt;,key又是new URL,所以这里会调用URL的hashCode方法&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1728997847187-361a388b-29e1-4e74-9a19-f541aeb734af.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1728997847187-361a388b-29e1-4e74-9a19-f541aeb734af.png&#34;
+	width=&#34;570&#34;
+	height=&#34;216&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1728997847187-361a388b-29e1-4e74-9a19-f541aeb734af_hu9444b439a83e92af9216fb3a8730744b_20149_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1728997847187-361a388b-29e1-4e74-9a19-f541aeb734af_hu9444b439a83e92af9216fb3a8730744b_20149_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;263&#34;
+		data-flex-basis=&#34;633px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;发现是handler调用了hashCode方法,继续跟进&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729065244386-9784ff11-f108-42b6-84bb-3190284f8799.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065244386-9784ff11-f108-42b6-84bb-3190284f8799.png&#34;
+	width=&#34;421&#34;
+	height=&#34;65&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065244386-9784ff11-f108-42b6-84bb-3190284f8799_huadcc18cbc429bc329be8797fa23634e2_5509_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065244386-9784ff11-f108-42b6-84bb-3190284f8799_huadcc18cbc429bc329be8797fa23634e2_5509_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;647&#34;
+		data-flex-basis=&#34;1554px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;跟进到&lt;code&gt;URLStreamHandler&lt;/code&gt;类,寻找hashCode方法&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729065279946-c8083c7e-0115-411d-85fb-9c83ccfa896a.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065279946-c8083c7e-0115-411d-85fb-9c83ccfa896a.png&#34;
+	width=&#34;577&#34;
+	height=&#34;501&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065279946-c8083c7e-0115-411d-85fb-9c83ccfa896a_hu591d94345efa142533dc797fc37b9bfd_40615_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065279946-c8083c7e-0115-411d-85fb-9c83ccfa896a_hu591d94345efa142533dc797fc37b9bfd_40615_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;115&#34;
+		data-flex-basis=&#34;276px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;InetAddress addr = getHostAddress(u);&lt;/code&gt;对u进行了操作,跟进&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;getHostAddress&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729065328168-acbdcd13-ded9-4fba-92ca-085b330d46d3.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065328168-acbdcd13-ded9-4fba-92ca-085b330d46d3.png&#34;
+	width=&#34;534&#34;
+	height=&#34;105&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065328168-acbdcd13-ded9-4fba-92ca-085b330d46d3_hub55511c44903e738ab7f6e55bf54b924_10640_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065328168-acbdcd13-ded9-4fba-92ca-085b330d46d3_hub55511c44903e738ab7f6e55bf54b924_10640_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;508&#34;
+		data-flex-basis=&#34;1220px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;这里就是对域名解析,然后可以检测DNS是否查询来判断反序列化漏洞&lt;/p&gt;
@@ -4488,29 +5004,41 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;运行序列化后,发现触发了DNS查询&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729065593333-5219634e-6fd0-40c1-a51a-367793676845.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065593333-5219634e-6fd0-40c1-a51a-367793676845.png&#34;
+	width=&#34;1030&#34;
+	height=&#34;163&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065593333-5219634e-6fd0-40c1-a51a-367793676845_hu25258a9f7fe1f0a5bf7208f5f491f285_17521_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065593333-5219634e-6fd0-40c1-a51a-367793676845_hu25258a9f7fe1f0a5bf7208f5f491f285_17521_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;631&#34;
+		data-flex-basis=&#34;1516px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;跟进URL的hashCode的&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729065913032-268c6993-cf6d-4e0a-a75a-776584d99c46.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065913032-268c6993-cf6d-4e0a-a75a-776584d99c46.png&#34;
+	width=&#34;467&#34;
+	height=&#34;200&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065913032-268c6993-cf6d-4e0a-a75a-776584d99c46_hu0889162cf088c8a3b3e7887d4cd356e4_18311_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065913032-268c6993-cf6d-4e0a-a75a-776584d99c46_hu0889162cf088c8a3b3e7887d4cd356e4_18311_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;233&#34;
+		data-flex-basis=&#34;560px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/images%5c1729067202629-cf1a7226-0514-4c46-a119-61691890f6fa.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729067202629-cf1a7226-0514-4c46-a119-61691890f6fa.png&#34;
+	width=&#34;573&#34;
+	height=&#34;111&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729067202629-cf1a7226-0514-4c46-a119-61691890f6fa_hub7108b49886776d9dc8edf085c66b76b_9960_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729067202629-cf1a7226-0514-4c46-a119-61691890f6fa_hub7108b49886776d9dc8edf085c66b76b_9960_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;516&#34;
+		data-flex-basis=&#34;1238px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;hashCode一开始就是-1,所以会直接执行&lt;code&gt;handler.hashCode&lt;/code&gt;从而触发DNS查询,这样会混淆是否是反序列化的时候触发&lt;/p&gt;

@@ -10,7 +10,7 @@
 <meta property='og:description' content="java反序列化链子之cc4链">
 <meta property='og:url' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/'>
 <meta property='og:site_name' content='一个俗人'>
-<meta property='og:type' content='article'><meta property='article:section' content='Java' /><meta property='article:published_time' content='2025-01-03T15:21:30&#43;08:00'/><meta property='article:modified_time' content='2025-01-06T06:35:37&#43;00:00'/><meta property='og:image' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/10.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Java' /><meta property='article:published_time' content='2025-01-03T15:21:30&#43;08:00'/><meta property='article:modified_time' content='2025-01-06T06:44:01&#43;00:00'/><meta property='og:image' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/10.jpg' />
 <meta name="twitter:title" content="java反序列化之Commons-Collections-CC4链">
 <meta name="twitter:description" content="java反序列化链子之cc4链"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/10.jpg' />
@@ -431,54 +431,78 @@
 </ul>
 <p><font style="color:rgb(80, 80, 92);">既然 InvokerTransformer 这里用不了了，我们去找谁调用了</font><font style="color:rgb(80, 80, 92);"> </font><code>transform()</code><font style="color:rgb(80, 80, 92);"> </font><font style="color:rgb(80, 80, 92);">方法，这里我去找的是</font><font style="color:rgb(80, 80, 92);"> </font><code>InstantiateTransformer</code><font style="color:rgb(80, 80, 92);"> </font><font style="color:rgb(80, 80, 92);">类，因为它上一步是 InvokerTransformer。</font></p>
 <p><font style="color:rgb(80, 80, 92);">进行 find usages，在 </font><code>TransformingComparator</code><font style="color:rgb(80, 80, 92);"> 这个类中的 </font><code>compare()</code><font style="color:rgb(80, 80, 92);"> 方法调用了 </font><code>transform()</code><font style="color:rgb(80, 80, 92);"> 方法。而 </font><code>compare()</code><font style="color:rgb(80, 80, 92);"> 这个方法也是我们比较喜欢的这种，因为它非常常见。</font></p>
-<p><img src="/images%5c1730354057878-4828cfe3-f625-452e-bd3b-6bb7435ef45e.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354057878-4828cfe3-f625-452e-bd3b-6bb7435ef45e.png"
+	width="589"
+	height="161"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354057878-4828cfe3-f625-452e-bd3b-6bb7435ef45e_hu831a0db7a31f0018ec94f9e0492d295e_25091_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354057878-4828cfe3-f625-452e-bd3b-6bb7435ef45e_hu831a0db7a31f0018ec94f9e0492d295e_25091_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="365"
+		data-flex-basis="878px"
 	
 ></p>
 <p>找到<code>PriorityQueue</code>类</p>
-<p><img src="/images%5c1730354464025-6cf1a5e9-ac72-4a7f-b0b8-247c9850101e.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354464025-6cf1a5e9-ac72-4a7f-b0b8-247c9850101e.png"
+	width="832"
+	height="508"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354464025-6cf1a5e9-ac72-4a7f-b0b8-247c9850101e_hud2d0eddcb9f54bef6f492b27ec109b41_61633_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354464025-6cf1a5e9-ac72-4a7f-b0b8-247c9850101e_hud2d0eddcb9f54bef6f492b27ec109b41_61633_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="163"
+		data-flex-basis="393px"
 	
 ></p>
 <p>在同一个类找下去</p>
-<p><img src="/images%5c1730354535072-a8579cca-9629-4c39-9be7-fdda90583e15.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354535072-a8579cca-9629-4c39-9be7-fdda90583e15.png"
+	width="495"
+	height="199"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354535072-a8579cca-9629-4c39-9be7-fdda90583e15_hu206f2b01c555366507d63613cbbd3897_18568_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354535072-a8579cca-9629-4c39-9be7-fdda90583e15_hu206f2b01c555366507d63613cbbd3897_18568_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="248"
+		data-flex-basis="596px"
 	
 ></p>
-<p><img src="/images%5c1730354640197-dfacd003-dd2e-47b0-abac-3125f16c2e7d.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354640197-dfacd003-dd2e-47b0-abac-3125f16c2e7d.png"
+	width="588"
+	height="118"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354640197-dfacd003-dd2e-47b0-abac-3125f16c2e7d_hu528cd7b0573a316fd687e02a26c24f79_12742_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354640197-dfacd003-dd2e-47b0-abac-3125f16c2e7d_hu528cd7b0573a316fd687e02a26c24f79_12742_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 	
-><img src="/images%5c1730354654339-3d2fbbfb-dcd4-4ff6-b601-4ef00a17bb7d.png"
+		class="gallery-image" 
+		data-flex-grow="498"
+		data-flex-basis="1195px"
 	
-	
-	
+><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354654339-3d2fbbfb-dcd4-4ff6-b601-4ef00a17bb7d.png"
+	width="692"
+	height="495"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354654339-3d2fbbfb-dcd4-4ff6-b601-4ef00a17bb7d_hu99bc018e822e20a0999238c16c5f2b5d_52363_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354654339-3d2fbbfb-dcd4-4ff6-b601-4ef00a17bb7d_hu99bc018e822e20a0999238c16c5f2b5d_52363_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="139"
+		data-flex-basis="335px"
 	
 ></p>
 <p>最后找到<code>readObject</code>首部</p>
-<p><img src="/images%5c1730354667313-853c6be6-5103-4ac0-871a-e250ec4cfb9e.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354667313-853c6be6-5103-4ac0-871a-e250ec4cfb9e.png"
+	width="571"
+	height="84"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354667313-853c6be6-5103-4ac0-871a-e250ec4cfb9e_hu0f420ef82c32f789243d11bd003a7fd4_12780_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730354667313-853c6be6-5103-4ac0-871a-e250ec4cfb9e_hu0f420ef82c32f789243d11bd003a7fd4_12780_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="679"
+		data-flex-basis="1631px"
 	
 ></p>
 <p>刚好继承了序列化接口</p>
@@ -557,31 +581,43 @@
 <h2 id="问题解决">问题解决
 </h2><p>再<code>readObject</code>和<code>heapify</code>打断点</p>
 <p>debug的时候看到到<code>heapify</code>没有进for循环,直接跳出程序,没进入到链子</p>
-<p><img src="/images%5c1730356864650-89eddd0f-ecbd-40d1-988d-f482e4806f13.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730356864650-89eddd0f-ecbd-40d1-988d-f482e4806f13.png"
+	width="718"
+	height="386"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730356864650-89eddd0f-ecbd-40d1-988d-f482e4806f13_hu522801c9cca25454cd863d2641c93170_32728_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730356864650-89eddd0f-ecbd-40d1-988d-f482e4806f13_hu522801c9cca25454cd863d2641c93170_32728_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="186"
+		data-flex-basis="446px"
 	
 ></p>
 <p>当给<code>size</code>赋值为2时,结果刚好1-1=0,满足i&gt;=0,能进入循环,所以需要找到size赋值的地方</p>
-<p><img src="/images%5c1730356999971-7e7a6f32-446b-435f-af51-734d93cf4660.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730356999971-7e7a6f32-446b-435f-af51-734d93cf4660.png"
+	width="983"
+	height="292"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730356999971-7e7a6f32-446b-435f-af51-734d93cf4660_hufb834e020d6f0ae0c2ddd63a345f9950_26067_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730356999971-7e7a6f32-446b-435f-af51-734d93cf4660_hufb834e020d6f0ae0c2ddd63a345f9950_26067_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="336"
+		data-flex-basis="807px"
 	
 ></p>
 <p>加上之后发现序列化运行的时候也会直接弹计算器</p>
 <p>进入<code>add</code>方法</p>
-<p><img src="/images%5c1730357617514-ff9a017c-6e18-482f-97d4-168561a8894a.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730357617514-ff9a017c-6e18-482f-97d4-168561a8894a.png"
+	width="1995"
+	height="657"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730357617514-ff9a017c-6e18-482f-97d4-168561a8894a_hu3b3ec1f2fe70a21888cfa9588dab252e_276163_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc4/1730357617514-ff9a017c-6e18-482f-97d4-168561a8894a_hu3b3ec1f2fe70a21888cfa9588dab252e_276163_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="303"
+		data-flex-basis="728px"
 	
 ></p>
 <p>只需要在add之前给<code>TransformingComparator</code>传入一个无关的东西,add的时候进入不了链子,再通过反射来修改</p>
@@ -719,7 +755,7 @@
 
 
         <span>
-            最后更新于 Jan 06, 2025 06:35 UTC
+            最后更新于 Jan 06, 2025 06:44 UTC
         </span>
     </section></footer>
 

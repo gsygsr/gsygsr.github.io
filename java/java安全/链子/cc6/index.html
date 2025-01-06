@@ -10,7 +10,7 @@
 <meta property='og:description' content="java反序列化链子之cc6链">
 <meta property='og:url' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/'>
 <meta property='og:site_name' content='一个俗人'>
-<meta property='og:type' content='article'><meta property='article:section' content='Java' /><meta property='article:published_time' content='2025-01-03T15:21:45&#43;08:00'/><meta property='article:modified_time' content='2025-01-06T06:35:37&#43;00:00'/><meta property='og:image' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/12.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Java' /><meta property='article:published_time' content='2025-01-03T15:21:45&#43;08:00'/><meta property='article:modified_time' content='2025-01-06T06:44:01&#43;00:00'/><meta property='og:image' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/12.jpg' />
 <meta name="twitter:title" content="java反序列化之Commons-Collections-CC6链">
 <meta name="twitter:description" content="java反序列化链子之cc6链"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/12.jpg' />
@@ -453,21 +453,29 @@
 <h2 id="tiedmapentrygetvalue触发get"><code>TiedMapEntry.getValue触发get</code>
 </h2><p>然后找调用了<code>get</code>方法的类</p>
 <p>链子的下一步是<code>TiedMapEntry</code>的<code>getValue</code>调用了<code>LazyMap</code>的<code>get()</code>方法</p>
-<p><img src="/images%5c1729927942007-1b5d9a00-7525-4c48-8bdd-783016f78df7.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729927942007-1b5d9a00-7525-4c48-8bdd-783016f78df7.png"
+	width="866"
+	height="177"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729927942007-1b5d9a00-7525-4c48-8bdd-783016f78df7_hud1e8b5a6aa5712450387a6765cf4c690_22347_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729927942007-1b5d9a00-7525-4c48-8bdd-783016f78df7_hud1e8b5a6aa5712450387a6765cf4c690_22347_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="489"
+		data-flex-basis="1174px"
 	
 ></p>
 <p>看构造方法是public,这里map-&gt;LazyMap,value-&gt;Runtime.class</p>
-<p><img src="/images%5c1729928197991-ecc4c265-e833-4ff3-a621-9e82aab3598c.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729928197991-ecc4c265-e833-4ff3-a621-9e82aab3598c.png"
+	width="563"
+	height="53"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729928197991-ecc4c265-e833-4ff3-a621-9e82aab3598c_huf0077cd63ca57c9fa474697e013b7f69_7512_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729928197991-ecc4c265-e833-4ff3-a621-9e82aab3598c_huf0077cd63ca57c9fa474697e013b7f69_7512_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="1062"
+		data-flex-basis="2549px"
 	
 ></p>
 <p>这里可以不需要通过反射来获取方法</p>
@@ -518,12 +526,16 @@
 </div><p>成功弹了</p>
 <h2 id="tiedmapentryhashcode触发getvalue">TiedMapEntry.hashCode触发getValue
 </h2><p>因为<code>getValue</code>的方法相当常见,寻找同名类的其他调用<code>getValue</code>的方法</p>
-<p><img src="/images%5c1729928860999-b54c382d-27d5-412b-b187-7fc5a5369110.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729928860999-b54c382d-27d5-412b-b187-7fc5a5369110.png"
+	width="849"
+	height="571"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729928860999-b54c382d-27d5-412b-b187-7fc5a5369110_hude5d5266672bc96b266d244c8b536098_66818_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729928860999-b54c382d-27d5-412b-b187-7fc5a5369110_hude5d5266672bc96b266d244c8b536098_66818_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="148"
+		data-flex-basis="356px"
 	
 ></p>
 <p>找到还是<code>TiedMapEntry</code>类的<code>hashCode</code>方法,这里调用了getValue</p>
@@ -539,22 +551,30 @@
 </div><p>运行后成功弹计算器</p>
 <h2 id="hashmaphash触发hashcode">HashMap.hash触发hashCode
 </h2><p>后面的链子就是<code>HashMap</code>的<code>hash</code></p>
-<p><img src="/images%5c1729932168814-780814bc-e3dc-4b0b-a911-bb11f5e75138.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729932168814-780814bc-e3dc-4b0b-a911-bb11f5e75138.png"
+	width="725"
+	height="125"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729932168814-780814bc-e3dc-4b0b-a911-bb11f5e75138_huc0281338723461f94a9d432bf7ba520a_12186_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729932168814-780814bc-e3dc-4b0b-a911-bb11f5e75138_huc0281338723461f94a9d432bf7ba520a_12186_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="580"
+		data-flex-basis="1392px"
 	
 ></p>
 <h2 id="hashmapput触发hash">HashMap.put触发hash
 </h2><p><code>HashMap</code>的<code>put</code></p>
-<p><img src="/images%5c1729932195223-a182a3af-f5d9-4c8c-9605-12579d57c4c9.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729932195223-a182a3af-f5d9-4c8c-9605-12579d57c4c9.png"
+	width="802"
+	height="117"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729932195223-a182a3af-f5d9-4c8c-9605-12579d57c4c9_hu60a0988cc33940b0ff65d3a78dfd2285_14560_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729932195223-a182a3af-f5d9-4c8c-9605-12579d57c4c9_hu60a0988cc33940b0ff65d3a78dfd2285_14560_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="685"
+		data-flex-basis="1645px"
 	
 >\</p>
 <p>为什么readObject都没有put,这里用<code>put</code>?因为 在 Java 的反序列化过程中，<code>HashMap</code> 会自动调用 <code>put</code> 方法来恢复数据结构  ,而且hash(key)是从put(key,value)传进来的</p>
@@ -632,12 +652,16 @@
 </div><h3 id="问题一">问题一
 </h3><p>但是注释掉反序列化代码,序列化的时候也会弹出计算器</p>
 <p><strong>原因</strong></p>
-<p><img src="/images%5c1729939004412-9105296e-de1d-4672-b852-2d29d0ec1814.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729939004412-9105296e-de1d-4672-b852-2d29d0ec1814.png"
+	width="735"
+	height="106"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729939004412-9105296e-de1d-4672-b852-2d29d0ec1814_hue9dd830f0bbe2a0a5530d6edaa286d64_12801_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729939004412-9105296e-de1d-4672-b852-2d29d0ec1814_hue9dd830f0bbe2a0a5530d6edaa286d64_12801_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="693"
+		data-flex-basis="1664px"
 	
 ></p>
 <p>序列化的时候put就会进入hash从而走一遍链子触发弹计算器</p>
@@ -696,20 +720,28 @@
 <p>但反序列化也不会弹计算器</p>
 <p><strong>原因</strong></p>
 <p>调试时发现</p>
-<p><img src="/images%5c1729941361110-f1e46e59-599b-43f5-82e0-2023b021b9be.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729941361110-f1e46e59-599b-43f5-82e0-2023b021b9be.png"
+	width="607"
+	height="254"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729941361110-f1e46e59-599b-43f5-82e0-2023b021b9be_hu75b8241f83bb211b3d2b9fc01c31dbb7_38144_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729941361110-f1e46e59-599b-43f5-82e0-2023b021b9be_hu75b8241f83bb211b3d2b9fc01c31dbb7_38144_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="238"
+		data-flex-basis="573px"
 	
 ></p>
-<p><img src="/images%5c1729941345818-0986bff5-d582-4f49-a1fa-172ebc66fa3c.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729941345818-0986bff5-d582-4f49-a1fa-172ebc66fa3c.png"
+	width="702"
+	height="71"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729941345818-0986bff5-d582-4f49-a1fa-172ebc66fa3c_hude610d2a35b9396c09fb02d8396d9940_13346_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729941345818-0986bff5-d582-4f49-a1fa-172ebc66fa3c_hude610d2a35b9396c09fb02d8396d9940_13346_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="988"
+		data-flex-basis="2372px"
 	
 ></p>
 <p>key不等于false,不会进入链子</p>
@@ -770,41 +802,57 @@
 </div>
 </div><h3 id="问题三">问题三
 </h3><p>在序列化前打断点,调试的时候会弹出计算器</p>
-<p><img src="/images%5c1729934141968-665d50d1-4bbd-42f4-81cb-30b71716a0b2.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729934141968-665d50d1-4bbd-42f4-81cb-30b71716a0b2.png"
+	width="840"
+	height="152"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729934141968-665d50d1-4bbd-42f4-81cb-30b71716a0b2_hud3f0f05fbd1a494fb261d3f12a10d19f_28002_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729934141968-665d50d1-4bbd-42f4-81cb-30b71716a0b2_hud3f0f05fbd1a494fb261d3f12a10d19f_28002_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="552"
+		data-flex-basis="1326px"
 	
 ></p>
 <p><font style="color:rgb(80, 80, 92);">因为在 IDEA 进行 debug 调试的时候，为了展示对象的集合，会自动调用</font><font style="color:rgb(80, 80, 92);"> </font><code>toString()</code><font style="color:rgb(80, 80, 92);"> </font><font style="color:rgb(80, 80, 92);">方法，所以在创建</font><font style="color:rgb(80, 80, 92);"> </font><code>TiedMapEntry</code><font style="color:rgb(80, 80, 92);"> </font><font style="color:rgb(80, 80, 92);">的时候，就自动调用了</font><font style="color:rgb(80, 80, 92);"> </font><code>getValue()</code><font style="color:rgb(80, 80, 92);"> </font><font style="color:rgb(80, 80, 92);">最终将链子走完，然后弹出计算器。</font></p>
 <p><strong>解决</strong></p>
-<p><img src="/images%5c1729938319844-b199435e-38b9-409c-a7a0-c781976765bf.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729938319844-b199435e-38b9-409c-a7a0-c781976765bf.png"
+	width="1003"
+	height="521"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729938319844-b199435e-38b9-409c-a7a0-c781976765bf_hu0a021815cf274bb9f33e227ca2646c1d_73045_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729938319844-b199435e-38b9-409c-a7a0-c781976765bf_hu0a021815cf274bb9f33e227ca2646c1d_73045_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="192"
+		data-flex-basis="462px"
 	
 ></p>
 <p><font style="color:rgb(80, 80, 92);">在 IDEA 的偏好设置当中如图修改即可。</font></p>
-<p><img src="/images%5c1729938337802-122c248a-c063-43b8-aeee-6472e5470d08.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729938337802-122c248a-c063-43b8-aeee-6472e5470d08.png"
+	width="1125"
+	height="875"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729938337802-122c248a-c063-43b8-aeee-6472e5470d08_hu1c7166a604eb866bdb36d8d4036dceaa_90469_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729938337802-122c248a-c063-43b8-aeee-6472e5470d08_hu1c7166a604eb866bdb36d8d4036dceaa_90469_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
 	
 ></p>
 <h2 id="总结">总结
 </h2><p><strong>流程图</strong></p>
-<p><img src="/images%5c1729942732480-8089858c-149c-4d74-ad2d-a42c39586ac2.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729942732480-8089858c-149c-4d74-ad2d-a42c39586ac2.png"
+	width="1542"
+	height="360"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729942732480-8089858c-149c-4d74-ad2d-a42c39586ac2_hu171687d306c7a9dfb3fd83b45fdcb356_50340_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc6/1729942732480-8089858c-149c-4d74-ad2d-a42c39586ac2_hu171687d306c7a9dfb3fd83b45fdcb356_50340_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="428"
+		data-flex-basis="1028px"
 	
 ></p>
 <p><strong>链子</strong></p>
@@ -849,7 +897,7 @@
 
 
         <span>
-            最后更新于 Jan 06, 2025 06:35 UTC
+            最后更新于 Jan 06, 2025 06:44 UTC
         </span>
     </section></footer>
 

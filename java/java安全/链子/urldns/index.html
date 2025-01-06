@@ -10,7 +10,7 @@
 <meta property='og:description' content="java链子之URLDNS链">
 <meta property='og:url' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/'>
 <meta property='og:site_name' content='一个俗人'>
-<meta property='og:type' content='article'><meta property='article:section' content='Java' /><meta property='article:published_time' content='2025-01-03T15:04:23&#43;08:00'/><meta property='article:modified_time' content='2025-01-06T06:35:36&#43;00:00'/><meta property='og:image' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/5.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Java' /><meta property='article:published_time' content='2025-01-03T15:04:23&#43;08:00'/><meta property='article:modified_time' content='2025-01-06T06:44:01&#43;00:00'/><meta property='og:image' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/5.jpg' />
 <meta name="twitter:title" content="java反序列化之URLDNS链">
 <meta name="twitter:description" content="java链子之URLDNS链"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/5.jpg' />
@@ -366,68 +366,96 @@
     
     
     <p>这是ysoserial的URLDNS链</p>
-<p><img src="/images%5c1729062106363-39e31e40-55fe-41a2-87fd-d9212da7ca65.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729062106363-39e31e40-55fe-41a2-87fd-d9212da7ca65.png"
+	width="441"
+	height="177"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729062106363-39e31e40-55fe-41a2-87fd-d9212da7ca65_hu263e929c24b1d7e40912fdfe2b34b168_8236_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729062106363-39e31e40-55fe-41a2-87fd-d9212da7ca65_hu263e929c24b1d7e40912fdfe2b34b168_8236_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="249"
+		data-flex-basis="597px"
 	
 ></p>
 <p>首先选择<code>HashMap</code>,这里首先满足了继承<code>Serializable</code></p>
-<p><img src="/images%5c1729062356280-6cb69095-cda0-4f66-a536-75702d45d302.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729062356280-6cb69095-cda0-4f66-a536-75702d45d302.png"
+	width="570"
+	height="106"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729062356280-6cb69095-cda0-4f66-a536-75702d45d302_hu1f3b072e7fd0031f029d03fb9f3a6750_12700_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729062356280-6cb69095-cda0-4f66-a536-75702d45d302_hu1f3b072e7fd0031f029d03fb9f3a6750_12700_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="537"
+		data-flex-basis="1290px"
 	
 ></p>
 <p>再寻找source,找到重写的readObject</p>
-<p><img src="/images%5c1729062441913-cb2942ec-d523-462c-8403-42d6ff75d442.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729062441913-cb2942ec-d523-462c-8403-42d6ff75d442.png"
+	width="1086"
+	height="238"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729062441913-cb2942ec-d523-462c-8403-42d6ff75d442_hufaa5dc95ff0ca02a038fc5561428c069_49943_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729062441913-cb2942ec-d523-462c-8403-42d6ff75d442_hufaa5dc95ff0ca02a038fc5561428c069_49943_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="456"
+		data-flex-basis="1095px"
 	
 ></p>
 <p><font style="color:rgb(51, 51, 51);">Key 与 Value 的值执行了</font><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;readObject&lt;/font&gt;</code><font style="color:rgb(51, 51, 51);">的操作，再将 Key 和 Value 两个变量扔进</font><code>&lt;font style=&quot;color:rgb(51, 51, 51);&quot;&gt;hash&lt;/font&gt;</code><font style="color:rgb(51, 51, 51);">这个方法里，我们再跟进(ctrl+鼠标左键即可) hash 当中</font></p>
-<p><img src="/images%5c1728998034565-6d12d60a-b813-4481-813f-91b25cf1bff7.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1728998034565-6d12d60a-b813-4481-813f-91b25cf1bff7.png"
+	width="733"
+	height="157"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1728998034565-6d12d60a-b813-4481-813f-91b25cf1bff7_hu86f8808fd97b18a340e7ad6285f14327_12914_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1728998034565-6d12d60a-b813-4481-813f-91b25cf1bff7_hu86f8808fd97b18a340e7ad6285f14327_12914_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="466"
+		data-flex-basis="1120px"
 	
 ></p>
 <p>如果传入的<code>key</code>不为null,则进入<code>hashCode</code>方法,跟进hashCode方法</p>
 <p>是Object类的方法,满足调用常见的函数</p>
 <h1 id="原理">原理
-</h1><p><img src="/images%5c1729062106363-39e31e40-55fe-41a2-87fd-d9212da7ca65.png"
-	
-	
-	
+</h1><p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729062106363-39e31e40-55fe-41a2-87fd-d9212da7ca65.png"
+	width="441"
+	height="177"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729062106363-39e31e40-55fe-41a2-87fd-d9212da7ca65_hu263e929c24b1d7e40912fdfe2b34b168_8236_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729062106363-39e31e40-55fe-41a2-87fd-d9212da7ca65_hu263e929c24b1d7e40912fdfe2b34b168_8236_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="249"
+		data-flex-basis="597px"
 	
 ></p>
 <p>URL是hashMap的put方法产生的</p>
-<p><img src="/images%5c1729064923082-ee89041c-2899-4dbb-a4fb-8ce1766c6a2f.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729064923082-ee89041c-2899-4dbb-a4fb-8ce1766c6a2f.png"
+	width="870"
+	height="238"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729064923082-ee89041c-2899-4dbb-a4fb-8ce1766c6a2f_hu487a5d92df6352036e6a15c26ce5aca1_102290_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729064923082-ee89041c-2899-4dbb-a4fb-8ce1766c6a2f_hu487a5d92df6352036e6a15c26ce5aca1_102290_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="365"
+		data-flex-basis="877px"
 	
 ></p>
 <p>put调用<code>hash</code>方法,参数为key</p>
-<p><img src="/images%5c1728997901192-04ca6ef9-3464-4302-861c-a055be9a867d.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1728997901192-04ca6ef9-3464-4302-861c-a055be9a867d.png"
+	width="690"
+	height="143"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1728997901192-04ca6ef9-3464-4302-861c-a055be9a867d_hu9ccf69fab7803d70c1dc43d2c545e2bb_12861_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1728997901192-04ca6ef9-3464-4302-861c-a055be9a867d_hu9ccf69fab7803d70c1dc43d2c545e2bb_12861_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="482"
+		data-flex-basis="1158px"
 	
 ></p>
 <p>这里再调用<code>key</code>的<code>hashCode</code>方法</p>
@@ -445,40 +473,56 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>跟进URL,因为<code>key.hashCode()</code>,key又是new URL,所以这里会调用URL的hashCode方法</p>
-<p><img src="/images%5c1728997847187-361a388b-29e1-4e74-9a19-f541aeb734af.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1728997847187-361a388b-29e1-4e74-9a19-f541aeb734af.png"
+	width="570"
+	height="216"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1728997847187-361a388b-29e1-4e74-9a19-f541aeb734af_hu9444b439a83e92af9216fb3a8730744b_20149_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1728997847187-361a388b-29e1-4e74-9a19-f541aeb734af_hu9444b439a83e92af9216fb3a8730744b_20149_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="263"
+		data-flex-basis="633px"
 	
 ></p>
 <p>发现是handler调用了hashCode方法,继续跟进</p>
-<p><img src="/images%5c1729065244386-9784ff11-f108-42b6-84bb-3190284f8799.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065244386-9784ff11-f108-42b6-84bb-3190284f8799.png"
+	width="421"
+	height="65"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065244386-9784ff11-f108-42b6-84bb-3190284f8799_huadcc18cbc429bc329be8797fa23634e2_5509_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065244386-9784ff11-f108-42b6-84bb-3190284f8799_huadcc18cbc429bc329be8797fa23634e2_5509_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="647"
+		data-flex-basis="1554px"
 	
 ></p>
 <p>跟进到<code>URLStreamHandler</code>类,寻找hashCode方法</p>
-<p><img src="/images%5c1729065279946-c8083c7e-0115-411d-85fb-9c83ccfa896a.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065279946-c8083c7e-0115-411d-85fb-9c83ccfa896a.png"
+	width="577"
+	height="501"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065279946-c8083c7e-0115-411d-85fb-9c83ccfa896a_hu591d94345efa142533dc797fc37b9bfd_40615_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065279946-c8083c7e-0115-411d-85fb-9c83ccfa896a_hu591d94345efa142533dc797fc37b9bfd_40615_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="115"
+		data-flex-basis="276px"
 	
 ></p>
 <p><code>InetAddress addr = getHostAddress(u);</code>对u进行了操作,跟进</p>
 <p><code>getHostAddress</code></p>
-<p><img src="/images%5c1729065328168-acbdcd13-ded9-4fba-92ca-085b330d46d3.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065328168-acbdcd13-ded9-4fba-92ca-085b330d46d3.png"
+	width="534"
+	height="105"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065328168-acbdcd13-ded9-4fba-92ca-085b330d46d3_hub55511c44903e738ab7f6e55bf54b924_10640_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065328168-acbdcd13-ded9-4fba-92ca-085b330d46d3_hub55511c44903e738ab7f6e55bf54b924_10640_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="508"
+		data-flex-basis="1220px"
 	
 ></p>
 <p>这里就是对域名解析,然后可以检测DNS是否查询来判断反序列化漏洞</p>
@@ -494,29 +538,41 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>运行序列化后,发现触发了DNS查询</p>
-<p><img src="/images%5c1729065593333-5219634e-6fd0-40c1-a51a-367793676845.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065593333-5219634e-6fd0-40c1-a51a-367793676845.png"
+	width="1030"
+	height="163"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065593333-5219634e-6fd0-40c1-a51a-367793676845_hu25258a9f7fe1f0a5bf7208f5f491f285_17521_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065593333-5219634e-6fd0-40c1-a51a-367793676845_hu25258a9f7fe1f0a5bf7208f5f491f285_17521_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="631"
+		data-flex-basis="1516px"
 	
 ></p>
 <p>跟进URL的hashCode的</p>
-<p><img src="/images%5c1729065913032-268c6993-cf6d-4e0a-a75a-776584d99c46.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065913032-268c6993-cf6d-4e0a-a75a-776584d99c46.png"
+	width="467"
+	height="200"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065913032-268c6993-cf6d-4e0a-a75a-776584d99c46_hu0889162cf088c8a3b3e7887d4cd356e4_18311_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729065913032-268c6993-cf6d-4e0a-a75a-776584d99c46_hu0889162cf088c8a3b3e7887d4cd356e4_18311_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="233"
+		data-flex-basis="560px"
 	
 ></p>
-<p><img src="/images%5c1729067202629-cf1a7226-0514-4c46-a119-61691890f6fa.png"
-	
-	
-	
+<p><img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729067202629-cf1a7226-0514-4c46-a119-61691890f6fa.png"
+	width="573"
+	height="111"
+	srcset="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729067202629-cf1a7226-0514-4c46-a119-61691890f6fa_hub7108b49886776d9dc8edf085c66b76b_9960_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/urldns/1729067202629-cf1a7226-0514-4c46-a119-61691890f6fa_hub7108b49886776d9dc8edf085c66b76b_9960_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="516"
+		data-flex-basis="1238px"
 	
 ></p>
 <p>hashCode一开始就是-1,所以会直接执行<code>handler.hashCode</code>从而触发DNS查询,这样会混淆是否是反序列化的时候触发</p>
@@ -564,7 +620,7 @@
 
 
         <span>
-            最后更新于 Jan 06, 2025 06:35 UTC
+            最后更新于 Jan 06, 2025 06:44 UTC
         </span>
     </section></footer>
 
