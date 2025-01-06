@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="java反射知识">
+<title>Java反射</title>
+
+<link rel='canonical' href='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/'>
+
+<link rel="stylesheet" href="/scss/style.min.4574748025b73b0369492ab661900878369bf003d477e5f5c673ee527faf3df7.css"><meta property='og:title' content="Java反射">
+<meta property='og:description' content="java反射知识">
+<meta property='og:url' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/'>
+<meta property='og:site_name' content='一个俗人'>
+<meta property='og:type' content='article'><meta property='article:section' content='Java' /><meta property='article:published_time' content='2025-01-06T15:04:44&#43;08:00'/><meta property='article:modified_time' content='2025-01-06T10:05:06&#43;00:00'/><meta property='og:image' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/20.jpg' />
+<meta name="twitter:title" content="Java反射">
+<meta name="twitter:description" content="java反射知识"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/20.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu7c49ec7d0c73aa09934b289b1d767e6f_13051_300x0_resize_box_3.png" width="300"
+                            height="302" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🤡</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">一个俗人</a></h1>
+            <h2 class="site-description">welcome two 一个俗人&#39;s 博客</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/gsygsr/gsygsr.github.io.git'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://gsygsr.github.io/en/" >English</option>
+                                
+                                    <option value="https://gsygsr.github.io/" selected>中文</option>
+                                
+                                    <option value="https://gsygsr.github.io/ar/" >عربي</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#使用场景">使用场景</a></li>
+    <li><a href="#construct实例化对象">construct实例化对象</a></li>
+    <li><a href="#field设置属性值">Field设置属性值</a></li>
+    <li><a href="#method调用函数">Method调用函数</a></li>
+    <li><a href="#反射利用">反射利用</a>
+      <ol>
+        <li><a href="#反射知识博客">反射知识博客</a></li>
+        <li><a href="#反射操作">反射操作</a></li>
+        <li><a href="#正向操作">正向操作</a></li>
+      </ol>
+    </li>
+    <li><a href="#font-stylecolorrgb0-0-0反射获取一个对象的步骤font"><font style="color:rgb(0, 0, 0);">反射获取一个对象的步骤</font></a>
+      <ol>
+        <li><a href="#font-stylecolorrgb0-0-0获取反射中的class对象font"><font style="color:rgb(0, 0, 0);">获取反射中的Class对象</font></a></li>
+        <li><a href="#font-stylecolorrgb0-0-0通过反射创建类对象font"><font style="color:rgb(0, 0, 0);">通过反射创建类对象</font></a></li>
+        <li><a href="#font-stylecolorrgb0-0-0通过反射获取类属性方法构造器font"><font style="color:rgb(0, 0, 0);">通过反射获取类属性、方法、构造器</font></a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/">
+                <img src="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/20_huaae7be4ba70df7325b57cd351ea21ee7_869980_800x0_resize_q75_box.jpg"
+                        srcset="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/20_huaae7be4ba70df7325b57cd351ea21ee7_869980_800x0_resize_q75_box.jpg 800w, /java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/20_huaae7be4ba70df7325b57cd351ea21ee7_869980_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="422" 
+                        loading="lazy"
+                        alt="Featured image of post Java反射" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="background-color: #2a9d8f; color: #fff;">
+                Java反序列化
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/">Java反射</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            java反射知识
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 06, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 8 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="使用场景">使用场景
+</h2><p>反序列化通常就是通过一个类的函数来调用另一个类的函数,从而构成链子</p>
+<p>像一般调用函数,最基本的肯定是</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">person</span><span class="w"> </span><span class="n">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">person</span><span class="p">(</span><span class="o">***</span><span class="p">,</span><span class="o">***</span><span class="p">);</span><span class="n">有参就加值</span><span class="p">,</span><span class="n">无参就不加值</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">person</span><span class="p">.</span><span class="na">toString</span><span class="p">();</span><span class="n">来调用person类的toString方法</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>但是如果<code>类的构造函数是private修饰</code></p>
+<p>那么</p>
+<blockquote>
+<p>person person = new person();实例化会报错</p>
+<blockquote>
+<p>报错:java: person(java.lang.String,int) 在 person 中是 private 访问控制</p>
+</blockquote>
+</blockquote>
+<p>再或者<code>person类的toString函数是private或者protected修饰</code></p>
+<blockquote>
+<p>person.toString(); 也会报错</p>
+</blockquote>
+<p>所以需要通过其他方式来实现,这也就是反射做的事</p>
+<h2 id="construct实例化对象">construct实例化对象
+</h2><ul>
+<li><font style="color:rgb(33, 53, 71);background-color:rgb(243, 245, 247);">Constructor类型存储getConstructor获取的有参或无参构造函数。其中getConstructor参数为需要获取的构造函数形参类型，如String.class，Class[].class</font></li>
+<li><font style="color:rgb(33, 53, 71);background-color:rgb(243, 245, 247);">newInstance实例化对象，可从原型实例化对象，如person.getClass().newInstance()</font></li>
+</ul>
+<p><font style="color:rgb(33, 53, 71);background-color:rgb(243, 245, 247);">当然这种实例化只能调用无参构造函数实例化。可以先获取构造器，再调用有参构造函数实例化，如：</font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">person类</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">person</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="nf">person</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getName</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setName</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getAge</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">age</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setAge</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">toString</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&#34;person{&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;name=&#39;&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="sc">&#39;\&#39;&#39;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;, age=&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="sc">&#39;}&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Class</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="na">class</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Constructor</span><span class="w"> </span><span class="n">personconstructor</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">c</span><span class="p">.</span><span class="na">getDeclaredConstructor</span><span class="p">(</span><span class="n">String</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="kt">int</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">personconstructor</span><span class="p">.</span><span class="na">setAccessible</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">person</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">person</span><span class="p">)</span><span class="w"> </span><span class="n">personconstructor</span><span class="p">.</span><span class="na">newInstance</span><span class="p">(</span><span class="s">&#34;abc&#34;</span><span class="p">,</span><span class="n">21</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/image-20250106160846331.png"
+	width="466"
+	height="117"
+	srcset="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/image-20250106160846331_hu4ec96891efec8454dacc92e10e23934f_12839_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/image-20250106160846331_hu4ec96891efec8454dacc92e10e23934f_12839_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250106160846331"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="398"
+		data-flex-basis="955px"
+	
+></p>
+<ul>
+<li>**getDeclaredConstructor(String.class,int.class)**是获取私有构造函数,参数要对应着构造函数的参数</li>
+<li>**personconstructor.setAccessible(true);**构造函数是私有的一定要加上</li>
+<li>如果<code>toString</code>函数是私有的,**p.toString()**还是会报错</li>
+</ul>
+<p>而要能调用私有函数就需要<strong>Field和Method</strong></p>
+<h2 id="field设置属性值">Field设置属性值
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Class</span><span class="w"> </span><span class="n">pclass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="na">class</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Field</span><span class="w"> </span><span class="n">field</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pclass</span><span class="p">.</span><span class="na">getField</span><span class="p">(</span><span class="s">&#34;age&#34;</span><span class="p">);</span><span class="w"> </span><span class="n">age是person的属性</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">field</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">20</span><span class="p">);</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//p是上面通过构造器实例化的person对象,基于person构造函数是私有的情况下</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//如果构造函数不是私有的,那么可以直接new person实例化,就不需要构造器了</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/image-20250106170052415.png"
+	width="345"
+	height="69"
+	srcset="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/image-20250106170052415_hu994ea011e052417588f8de58b6b870b2_4617_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/image-20250106170052415_hu994ea011e052417588f8de58b6b870b2_4617_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250106170052415"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="500"
+		data-flex-basis="1200px"
+	
+></p>
+<p>如果属性是私有的就需要<font style="color:rgb(33, 53, 71);background-color:rgb(243, 245, 247);">以上方法加declared获取私有内容，如getDecalredFields()获取私有属性</font></p>
+<p><font style="color:rgb(33, 53, 71);background-color:rgb(243, 245, 247);">使用setAccessible(true)允许修改私有变量，私有方法等private内容</font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">pclass</span><span class="p">.</span><span class="na">getDeclaredField</span><span class="p">(</span><span class="s">&#34;name&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">personconstructor</span><span class="p">.</span><span class="na">setAccessible</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="method调用函数">Method调用函数
+</h2><p>假如这里修改一下person类的<strong>toString</strong>函数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">toString</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">sex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&#34;person{&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;name=&#39;&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="sc">&#39;\&#39;&#39;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;, age=&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34;, sex=&#39;&#34;</span><span class="o">+</span><span class="n">sex</span><span class="o">+</span><span class="s">&#34;&#39;&#34;</span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="sc">&#39;}&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>变私有了,而且增加了参数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Class</span><span class="w"> </span><span class="n">pclass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="na">class</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Method</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pclass</span><span class="p">.</span><span class="na">getDeclaredMethod</span><span class="p">(</span><span class="s">&#34;toString&#34;</span><span class="p">,</span><span class="n">String</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//获取函数名叫toString的函数,String.class是函数的参数</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">method</span><span class="p">.</span><span class="na">setAccessible</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//同样要设置为true,和上面一样</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">method</span><span class="p">.</span><span class="na">invoke</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="s">&#34;man&#34;</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//invoke调用,第一个参数是person的实例对象,第二个就是给参数传参</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/image-20250106180243960.png"
+	width="467"
+	height="36"
+	srcset="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/image-20250106180243960_hu1c6d3399baefbbb0c1ed7c2d85d12b8c_4602_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/image-20250106180243960_hu1c6d3399baefbbb0c1ed7c2d85d12b8c_4602_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250106180243960"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1297"
+		data-flex-basis="3113px"
+	
+></p>
+<h2 id="反射利用">反射利用
+</h2><p><font style="color:rgb(33, 53, 71);">反序列化需要从能invoke执行代码的部分走到readObject，序列化时导致任意代码执行。</font></p>
+<p><font style="color:rgb(33, 53, 71);">比如Runtime类下的exec方法就能执行系统命令，我们通常使用单形参的这个exec：</font></p>
+<p><img src="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/1729594561393-1c277d42-1278-4a37-acf4-a467b60ee033.png"
+	width="773"
+	height="100"
+	srcset="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/1729594561393-1c277d42-1278-4a37-acf4-a467b60ee033_hu8c8e96b01b32d8560463f0da8179f9ba_12546_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/1729594561393-1c277d42-1278-4a37-acf4-a467b60ee033_hu8c8e96b01b32d8560463f0da8179f9ba_12546_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="773"
+		data-flex-basis="1855px"
+	
+></p>
+<p><font style="color:rgb(33, 53, 71);background-color:rgb(243, 245, 247);">java以是否有static关键字区分了实例方法和静态方法。</font></p>
+<ul>
+<li><font style="color:rgb(39, 56, 73);background-color:rgb(243, 245, 247);">实例方法：必须通过已经实例化的对象来调用。例如，如果你有一个名为MyClass的类，并且它有一个实例方法doSomething()，你需要先创建MyClass的一个实例，然后通过这个实例来调用方法，如</font><code>MyClass instance = new MyClass(); instance.doSomething();</code><font style="color:rgb(39, 56, 73);background-color:rgb(243, 245, 247);">。</font></li>
+<li><font style="color:rgb(39, 56, 73);background-color:rgb(243, 245, 247);">静态方法（可以直接调用的方法）：可以通过类名直接调用，无需创建类的实例。例如，如果MyClass有一个静态方法staticMethod()，你可以直接通过类名调用它，如MyClass.staticMethod();</font></li>
+</ul>
+<p><font style="color:rgb(33, 53, 71);">Runtime.exec()就是实例方法，需要在实例化对象上进行调用。Runtime.getRuntime()返回一个单例实例。</font></p>
+<p><font style="color:rgb(33, 53, 71);background-color:rgb(243, 245, 247);">因为Runtime类没有公开的构造方法，getRuntime()方法实际上是返回了该类的一个单例实例。这样做可以确保整个应用程序中只有一个Runtime实例存在，这样可以更好地管理资源和环境交互</font></p>
+<p><img src="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/1729594561436-d138ff19-6853-44f7-9a6f-5a198463bbe2.png"
+	width="713"
+	height="59"
+	srcset="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/1729594561436-d138ff19-6853-44f7-9a6f-5a198463bbe2_hu3d6c858b1c6c392433e98b450782fcc1_7915_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/1729594561436-d138ff19-6853-44f7-9a6f-5a198463bbe2_hu3d6c858b1c6c392433e98b450782fcc1_7915_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1208"
+		data-flex-basis="2900px"
+	
+></p>
+<p>所以使用<code>Runtime.getRuntime().exec(&quot;calc&quot;);</code>就能调用系统计算器。</p>
+<p>但是Runtime类没有继承Serializable，所以不能序列化。InvokerTransformer继承了Serializable，且其transformer调用了invoke，有invoke当然就能用invoke反射调用到Runtime中的exec。</p>
+<h3 id="反射知识博客">反射知识博客
+</h3><p><a class="link" href="https://www.cnblogs.com/chanshuyi/p/head_first_of_reflection.html"  target="_blank" rel="noopener"
+    >反射知识博客</a></p>
+<p><img src="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/1729594561436-08cdb92c-6168-4a83-97bf-0394a4be1704.png"
+	width="661"
+	height="235"
+	srcset="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/1729594561436-08cdb92c-6168-4a83-97bf-0394a4be1704_hu603054a97d86576f8a179371f8099eb9_24334_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/1729594561436-08cdb92c-6168-4a83-97bf-0394a4be1704_hu603054a97d86576f8a179371f8099eb9_24334_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="281"
+		data-flex-basis="675px"
+	
+></p>
+<p>先把<code>Runtime.getRuntime.exec(&quot;calc&quot;);</code>改为反射调用：</p>
+<p>其中invoke调用格式为：<code>方法.invoke(对象,参数)</code></p>
+<p>getMethod调用格式为：<code>对象.getMethod(方法名,该方法参数类型)</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Runtime</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Runtime</span><span class="p">.</span><span class="na">getRuntime</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Class</span><span class="o">&lt;?&gt;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Runtime</span><span class="p">.</span><span class="na">class</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Method</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="na">getMethod</span><span class="p">(</span><span class="s">&#34;exec&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">m</span><span class="p">.</span><span class="na">invoke</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="s">&#34;calc&#34;</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><font style="color:rgb(33, 53, 71);">getRuntime()是不是也能顺便改成反射了呢？</font></p>
+<h3 id="反射操作">反射操作
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//代码1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Class</span><span class="o">&lt;</span><span class="n">Runtime</span><span class="o">&gt;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Runtime</span><span class="p">.</span><span class="na">class</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Method</span><span class="w"> </span><span class="n">gMethod</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="na">getMethod</span><span class="p">(</span><span class="s">&#34;getRuntime&#34;</span><span class="p">,</span><span class="kc">null</span><span class="p">);</span><span class="c1">//getRuntime无参，即null</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Object</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gMethod</span><span class="p">.</span><span class="na">invoke</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span><span class="kc">null</span><span class="p">);</span><span class="c1">//执行getRuntime，静态方法无需实例，第一个参数为null；</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Method</span><span class="w"> </span><span class="n">execMethod</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="na">getMethod</span><span class="p">(</span><span class="s">&#34;exec&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="c1">//exec参数类型为string</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">execMethod</span><span class="p">.</span><span class="na">invoke</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="s">&#34;calc&#34;</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="正向操作">正向操作
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Apple</span><span class="w"> </span><span class="n">apple</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Apple</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">apple</span><span class="p">.</span><span class="na">setPrice</span><span class="p">(</span><span class="n">4</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><font style="color:rgb(0, 0, 0);">而反射则是一开始并不知道我要初始化的类对象是什么，自然也无法使用 new 关键字来创建对象了。</font></p>
+<p><font style="color:rgb(0, 0, 0);">这时候，我们使用 JDK 提供的反射 API 进行反射调用</font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">Class clz = Class.forName(&#34;com.chenshuyi.reflect.Apple&#34;);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>这行代码通过<code>Class.forName()</code>方法动态加载名为<code>com.chenshuyi.reflect.Apple</code>的类。注意，类的全限定名（包括包名）必须正确，才能成功加载。返回值<code>clz</code>是<code>Apple</code>类的<code>Class</code>对象，它包含了关于这个类的所有元信息。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">Method method = clz.getMethod(&#34;setPrice&#34;, int.class);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>通过<code>clz.getMethod()</code>方法，获取<code>Apple</code>类中的<code>setPrice</code>方法。<code>getMethod()</code>需要传递方法名称以及该方法的参数类型，在这里，<code>setPrice</code>方法接受一个<code>int</code>类型的参数。因此，<code>int.class</code>表示参数的类型。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">Constructor constructor = clz.getConstructor();
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>获取<code>Apple</code>类的无参构造函数（默认构造函数）。<code>getConstructor()</code>方法用于获取类的构造方法，若不传参数，则获取无参构造器。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">Object object = constructor.newInstance();
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>使用上面获取的无参构造函数，创建<code>Apple</code>类的实例对象。<code>newInstance()</code>方法用于调用构造器并创建实例，返回值为<code>Object</code>类型。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">method.invoke(object, 4);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>通过<code>Method</code>对象<code>method</code>调用反射的<code>setPrice</code>方法，并传入参数<code>4</code>。<code>invoke()</code>方法的第一个参数是目标对象（即<code>Apple</code>类的实例<code>object</code>），后面是要传递给方法的参数。</li>
+</ul>
+<p>完整代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">package</span> <span class="n">serialize</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.lang.reflect.Constructor</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.lang.reflect.Method</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">public</span> <span class="k">class</span> <span class="nc">Apple</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">private</span> <span class="nb">int</span> <span class="n">price</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">public</span> <span class="nb">int</span> <span class="n">getPrice</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">price</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">public</span> <span class="n">void</span> <span class="n">setPrice</span><span class="p">(</span><span class="nb">int</span> <span class="n">price</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">this</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">price</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">public</span> <span class="n">static</span> <span class="n">void</span> <span class="n">main</span><span class="p">(</span><span class="n">String</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="n">throws</span> <span class="ne">Exception</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="o">//</span><span class="n">正常的调用</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Apple</span> <span class="n">apple</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Apple</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">apple</span><span class="o">.</span><span class="n">setPrice</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&#34;Apple Price:&#34;</span> <span class="o">+</span> <span class="n">apple</span><span class="o">.</span><span class="n">getPrice</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="o">//</span><span class="n">使用反射调用</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Class</span> <span class="n">clz</span> <span class="o">=</span> <span class="n">Class</span><span class="o">.</span><span class="n">forName</span><span class="p">(</span><span class="s2">&#34;serialize.Apple&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Method</span> <span class="n">setPriceMethod</span> <span class="o">=</span> <span class="n">clz</span><span class="o">.</span><span class="n">getMethod</span><span class="p">(</span><span class="s2">&#34;setPrice&#34;</span><span class="p">,</span> <span class="nb">int</span><span class="o">.</span><span class="n">class</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Constructor</span> <span class="n">appleConstructor</span> <span class="o">=</span> <span class="n">clz</span><span class="o">.</span><span class="n">getConstructor</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Object</span> <span class="n">appleObj</span> <span class="o">=</span> <span class="n">appleConstructor</span><span class="o">.</span><span class="n">newInstance</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">setPriceMethod</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">appleObj</span><span class="p">,</span> <span class="mi">14</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Method</span> <span class="n">getPriceMethod</span> <span class="o">=</span> <span class="n">clz</span><span class="o">.</span><span class="n">getMethod</span><span class="p">(</span><span class="s2">&#34;getPrice&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&#34;Apple Price:&#34;</span> <span class="o">+</span> <span class="n">getPriceMethod</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">appleObj</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/1728990144294-19f0fc77-4fb0-4be5-b193-5ca6a1a0ce9d.png"
+	width="336"
+	height="98"
+	srcset="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/1728990144294-19f0fc77-4fb0-4be5-b193-5ca6a1a0ce9d_hu901a0818201fdbe75add6613ebdd7a7b_9010_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%B0%84/1728990144294-19f0fc77-4fb0-4be5-b193-5ca6a1a0ce9d_hu901a0818201fdbe75add6613ebdd7a7b_9010_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="342"
+		data-flex-basis="822px"
+	
+></p>
+<h2 id="font-stylecolorrgb0-0-0反射获取一个对象的步骤font"><font style="color:rgb(0, 0, 0);">反射获取一个对象的步骤</font>
+</h2><ul>
+<li><font style="color:rgb(0, 0, 0);">获取类的 Class 对象实例</font></li>
+</ul>
+<p><code>Class clz = Class.forName(&quot;serialize.Apple&quot;);</code></p>
+<p>serialize.Apple是 可以在运行时加载类,适合在不知道类名时动态加载类</p>
+<ul>
+<li><font style="color:rgb(0, 0, 0);">根据 Class 对象实例获取 Constructor 对象</font></li>
+</ul>
+<p><code>Constructor appleConstructor = clz.getConstructor();</code></p>
+<p><font style="color:rgb(68, 68, 68);background-color:rgb(235, 242, 251);"> 使用 </font><strong>Java反射</strong><font style="color:rgb(68, 68, 68);background-color:rgb(235, 242, 251);"> 来获取类中的一个名为 </font><code>setPrice</code><font style="color:rgb(68, 68, 68);background-color:rgb(235, 242, 251);"> 的方法，它的参数类型是 </font><code>int</code><font style="color:rgb(68, 68, 68);background-color:rgb(235, 242, 251);">。它的作用是在运行时动态获取某个类的特定方法，之后可以使用这个方法进行操作  </font></p>
+<ul>
+<li><font style="color:rgb(0, 0, 0);">使用 Constructor 对象的 newInstance 方法获取反射类对象</font></li>
+</ul>
+<p><code>Object appleObj= appleConstructor.newInstance();</code></p>
+<ul>
+<li><font style="color:rgb(0, 0, 0);">获取方法的 Method 对象</font></li>
+</ul>
+<p><code>Method setPriceMethod = clz.getMethod(&quot;setPrice&quot;, int.class);</code></p>
+<ul>
+<li><font style="color:rgb(0, 0, 0);">利用 invoke 方法调用方法</font></li>
+</ul>
+<p><code>setPriceMethod.invoke(appleObj, 14);</code></p>
+<h3 id="font-stylecolorrgb0-0-0获取反射中的class对象font"><font style="color:rgb(0, 0, 0);">获取反射中的Class对象</font>
+</h3><p><font style="color:rgb(0, 0, 0);">在反射中，要获取一个类或调用一个类的方法，我们首先需要获取到该类的 Class 对象。</font></p>
+<p><font style="color:rgb(0, 0, 0);">在 Java API 中，获取 Class 类对象有三种方法：</font></p>
+<p><strong><font style="color:rgb(229, 20, 61) !important;">第一种，使用 Class.forName 静态方法。</font></strong><font style="color:rgb(0, 0, 0);">当你知道该类的全路径名时，你可以使用该方法获取 Class 类对象。</font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="line"><span class="cl"><span class="k">Class</span> <span class="nc">clz</span> <span class="o">=</span> <span class="n">Class</span><span class="p">.</span><span class="n">forName</span><span class="p">(</span><span class="s">&#34;java.lang.String&#34;</span><span class="p">)</span><span class="err">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong><font style="color:rgb(229, 20, 61) !important;">第二种，使用 .class 方法。</font></strong></p>
+<p><font style="color:rgb(0, 0, 0);">这种方法只适合在编译前就知道操作的 Class。</font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="line"><span class="cl"><span class="k">Class</span> <span class="nc">clz</span> <span class="o">=</span> <span class="kt">String</span><span class="p">.</span><span class="n">class</span><span class="err">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong><font style="color:rgb(229, 20, 61) !important;">第三种，使用类对象的 getClass() 方法。</font></strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-vbnet" data-lang="vbnet"><span class="line"><span class="cl"><span class="kt">String</span> <span class="n">str</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">String</span><span class="p">(</span><span class="s">&#34;Hello&#34;</span><span class="p">)</span><span class="err">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">Class</span> <span class="nc">clz</span> <span class="o">=</span> <span class="n">str</span><span class="p">.</span><span class="n">getClass</span><span class="p">()</span><span class="err">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="font-stylecolorrgb0-0-0通过反射创建类对象font"><font style="color:rgb(0, 0, 0);">通过反射创建类对象</font>
+</h3><p><font style="color:rgb(0, 0, 0);">通过反射创建类对象主要有两种方式：通过 Class 对象的 newInstance() 方法、通过 Constructor 对象的 newInstance() 方法。</font></p>
+<p><font style="color:rgb(0, 0, 0);">第一种：通过 Class 对象的 newInstance() 方法。</font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Class</span><span class="w"> </span><span class="n">clz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Apple</span><span class="p">.</span><span class="na">class</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Apple</span><span class="w"> </span><span class="n">apple</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Apple</span><span class="p">)</span><span class="n">clz</span><span class="p">.</span><span class="na">newInstance</span><span class="p">();</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><font style="color:rgb(0, 0, 0);">第二种：通过 Constructor 对象的 newInstance() 方法</font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">Class clz = Apple.class;
+</span></span><span class="line"><span class="cl">Constructor constructor = clz.getConstructor();
+</span></span><span class="line"><span class="cl">Apple apple = (Apple)constructor.newInstance();
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><font style="color:rgb(0, 0, 0);">通过 Constructor 对象创建类对象可以选择特定构造方法，而通过 Class 对象则只能使用默认的无参数构造方法。下面的代码就调用了一个有参数的构造方法进行了类对象的初始化。</font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="n">Class</span> <span class="n">clz</span> <span class="p">=</span> <span class="nc">Apple</span><span class="p">.</span><span class="k">class</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">Constructor</span> <span class="k">constructor</span> <span class="p">=</span> <span class="n">clz</span><span class="p">.</span><span class="n">getConstructor</span><span class="p">(</span><span class="nc">String</span><span class="p">.</span><span class="k">class</span><span class="p">,</span> <span class="n">int</span><span class="p">.</span><span class="k">class</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">Apple</span> <span class="n">apple</span> <span class="p">=</span> <span class="p">(</span><span class="n">Apple</span><span class="p">)</span><span class="k">constructor</span><span class="p">.</span><span class="n">newInstance</span><span class="p">(</span><span class="s2">&#34;红富士&#34;</span><span class="p">,</span> <span class="m">15</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="font-stylecolorrgb0-0-0通过反射获取类属性方法构造器font"><font style="color:rgb(0, 0, 0);">通过反射获取类属性、方法、构造器</font>
+</h3><p><font style="color:rgb(0, 0, 0);">我们通过 Class 对象的 getFields() 方法可以获取 Class 类的属性，但无法获取私有属性。</font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">Class clz = Apple.class;
+</span></span><span class="line"><span class="cl">Field[] fields = clz.getFields();
+</span></span><span class="line"><span class="cl">for (Field field : fields) {
+</span></span><span class="line"><span class="cl">    System.out.println(field.getName());
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><font style="color:rgb(0, 0, 0);">输出结果是：</font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">price
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><font style="color:rgb(0, 0, 0);">而如果使用 Class 对象的 getDeclaredFields() 方法则可以获取包括私有属性在内的所有属性：</font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">Class clz = Apple.class;
+</span></span><span class="line"><span class="cl">Field[] fields = clz.getDeclaredFields();
+</span></span><span class="line"><span class="cl">for (Field field : fields) {
+</span></span><span class="line"><span class="cl">    System.out.println(field.getName());
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><font style="color:rgb(0, 0, 0);">输出结果是：</font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">name
+</span></span><span class="line"><span class="cl">price
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><font style="color:rgb(0, 0, 0);">与获取类属性一样，当我们去获取类方法、类构造器时，如果要获取私有方法或私有构造器，则必须使用有 declared 关键字的方法。</font></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            最后更新于 Jan 06, 2025 10:05 UTC
+        </span>
+    </section></footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/19.85b7569c25c2980b6b8904e9e8cfcf1a_hue185bcc6d60665e4bb8f4cec1e20680e_992322_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Java反序列化"
+                        
+                        data-hash="md5-hbdWnCXCmAtriQTp6M/PGg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Java反序列化</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cb/15.07ec9bda9431131849b85b2471706cd0_hudc4c77fa4a7b6e0d5307eb2ce6368816_984136_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post java反序列化之CommonsBeanUtils1链"
+                        
+                        data-hash="md5-B&#43;yb2pQxExhJuFskcXBs0A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">java反序列化之CommonsBeanUtils1链</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/rome/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/rome/14.d93e0f38134072739c6a5e6fd2f4e025_hue39ddf12b43735ddd45d5131ec91605e_378122_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post java反序列化之ROME反序列化"
+                        
+                        data-hash="md5-2T4POBNAcnOcal5v0vTgJQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">java反序列化之ROME反序列化</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc7/13.4ae40056add277ae04024c62d37ab9f6_hue1a50ceaf49ba5491ac8a39d8d7ea50c_290380_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post java反序列化之Commons-Collections-CC7链"
+                        
+                        data-hash="md5-SuQAVq3Sd64EAkxi03q59g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">java反序列化之Commons-Collections-CC7链</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/%E9%93%BE%E5%AD%90/cc1%E6%AD%A3%E9%93%BE/7.7ceb02305f8119c45462668c9b61b718_hu5913cd4f38c7546b1d9ada3fa63d7ed0_3285229_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post java反序列化之Commons-Collections1-CC1正链"
+                        
+                        data-hash="md5-fOsCMF&#43;BGcRUYmaMm2G3GA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">java反序列化之Commons-Collections1-CC1正链</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 一个俗人
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<style>
+  @font-face {
+    font-family: '屏显臻宋';
+    src: url(https://gsygsr.github.io/font/%E5%B1%8F%E6%98%BE%E8%87%BB%E5%AE%8B.ttf) format('truetype');
+  }
+
+  :root {
+    --base-font-family: '屏显臻宋';
+    --code-font-family: '屏显臻宋';
+  }
+  body {
+    background: url(https://gsygsr.github.io/background/18.jpg) no-repeat center top;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+</style>
+
+    </body>
+</html>
