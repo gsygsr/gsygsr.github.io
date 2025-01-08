@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="java动态代理">
+<title>java动态代理</title>
+
+<link rel='canonical' href='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/'>
+
+<link rel="stylesheet" href="/scss/style.min.4574748025b73b0369492ab661900878369bf003d477e5f5c673ee527faf3df7.css"><meta property='og:title' content="java动态代理">
+<meta property='og:description' content="java动态代理">
+<meta property='og:url' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/'>
+<meta property='og:site_name' content='一个俗人'>
+<meta property='og:type' content='article'><meta property='article:section' content='Java' /><meta property='article:published_time' content='2025-01-08T14:40:39&#43;08:00'/><meta property='article:modified_time' content='2025-01-08T07:35:26&#43;00:00'/><meta property='og:image' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/23.jpg' />
+<meta name="twitter:title" content="java动态代理">
+<meta name="twitter:description" content="java动态代理"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/23.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu7c49ec7d0c73aa09934b289b1d767e6f_13051_300x0_resize_box_3.png" width="300"
+                            height="302" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🤡</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">一个俗人</a></h1>
+            <h2 class="site-description">welcome two 一个俗人&#39;s 博客</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/gsygsr/gsygsr.github.io.git'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://gsygsr.github.io/en/" >English</option>
+                                
+                                    <option value="https://gsygsr.github.io/" selected>中文</option>
+                                
+                                    <option value="https://gsygsr.github.io/ar/" >عربي</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#静态代理">静态代理</a></li>
+    <li><a href="#动态代理">动态代理</a>
+      <ol>
+        <li><a href="#动态代理的代码实现">动态代理的代码实现</a></li>
+      </ol>
+    </li>
+    <li><a href="#cc1正链的分析">cc1正链的分析</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/">
+                <img src="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/23_huf9676a8800dc8cf9723afb54e95056be_155376_800x0_resize_q75_box.jpg"
+                        srcset="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/23_huf9676a8800dc8cf9723afb54e95056be_155376_800x0_resize_q75_box.jpg 800w, /java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/23_huf9676a8800dc8cf9723afb54e95056be_155376_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post java动态代理" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="background-color: #2a9d8f; color: #fff;">
+                Java反序列化
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/">java动态代理</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            java动态代理
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 08, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 4 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="静态代理">静态代理
+</h2><p><img src="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/1729335059505-a73b9b27-2e48-4860-989e-3ec60b23f7ab.png"
+	width="831"
+	height="606"
+	srcset="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/1729335059505-a73b9b27-2e48-4860-989e-3ec60b23f7ab_hu944c535718d8cec567eb3b5bec25c63f_92529_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/1729335059505-a73b9b27-2e48-4860-989e-3ec60b23f7ab_hu944c535718d8cec567eb3b5bec25c63f_92529_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="137"
+		data-flex-basis="329px"
+	
+></p>
+<p>代码步骤:</p>
+<p>1.接口</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">//</span><span class="n">租房接口</span>
+</span></span><span class="line"><span class="cl"><span class="n">public</span> <span class="n">interface</span> <span class="n">Rent</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">public</span> <span class="n">void</span> <span class="n">rent</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>2.真实角色</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">//</span><span class="n">房东</span>
+</span></span><span class="line"><span class="cl"><span class="n">public</span> <span class="k">class</span> <span class="nc">Host</span> <span class="n">implements</span> <span class="n">Rent</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="n">public</span> <span class="n">void</span> <span class="n">rent</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&#34;房东出租房子&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>3.代理角色</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">public</span> <span class="k">class</span> <span class="nc">Proxy</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">private</span> <span class="n">Host</span> <span class="n">host</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">public</span> <span class="n">Proxy</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">public</span> <span class="n">Proxy</span><span class="p">(</span><span class="n">Host</span> <span class="n">host</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">this</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="n">host</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">public</span> <span class="n">void</span> <span class="n">rent</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>   <span class="n">fare</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">host</span><span class="o">.</span><span class="n">rent</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">//</span><span class="n">看房</span>
+</span></span><span class="line"><span class="cl">    <span class="n">public</span> <span class="n">void</span> <span class="n">watch</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&#34;中介带你看房&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">public</span> <span class="n">void</span> <span class="n">fare</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&#34;中介收费&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>4.客户</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">public</span> <span class="k">class</span> <span class="nc">Client</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">public</span> <span class="n">static</span> <span class="n">void</span> <span class="n">main</span><span class="p">(</span><span class="n">String</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Host</span> <span class="n">host</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Host</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Proxy</span> <span class="n">proxy</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Proxy</span><span class="p">(</span><span class="n">host</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">proxy</span><span class="o">.</span><span class="n">rent</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="动态代理">动态代理
+</h2><ul>
+<li>动态代理的角色和静态代理的一样。需要一个实体类，一个代理类，一个启动器。</li>
+<li>动态代理的代理类是动态生成的，静态代理的代理类是我们提前写好的。</li>
+</ul>
+<p><strong>JDK的动态代理需要了解两个类</strong></p>
+<p><font style="color:rgb(80, 80, 92);">核心 : InvocationHandler 调用处理程序类和 Proxy 代理类</font></p>
+<p><strong>InvocationHandler：调用处理程序</strong></p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>public interface InvocationHandler ```</th>
+</tr>
+</thead>
+</table></div>
+<p><font style="color:rgb(80, 80, 92);">InvocationHandler是由代理实例的调用处理程序实现的接口</font></p>
+<p><font style="color:rgb(80, 80, 92);">每个代理实例都有一个关联的调用处理程序。</font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">Object invoke(Object proxy, 方法 method, Object[] args)；
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><font style="color:rgb(80, 80, 92);">当在代理实例上调用方法的时候，方法调用将被编码并分派到其调用处理程序的</font><code>invoke()</code><font style="color:rgb(80, 80, 92);">方法。</font></p>
+<p><strong>参数</strong><font style="color:rgb(80, 80, 92);">：</font></p>
+<ul>
+<li><code>proxy</code> – 调用该方法的代理实例</li>
+<li><code>method</code> -所述方法对应于调用代理实例上的接口方法的实例。方法对象的声明类将是该方法声明的接口，它可以是代理类继承该方法的代理接口的超级接口。</li>
+<li><code>args</code> -包含的方法调用传递代理实例的参数值的对象的阵列，或null如果接口方法没有参数。原始类型的参数包含在适当的原始包装器类的实例中，例如<code>java.lang.Integer</code>或<code>java.lang.Boolean</code> 。</li>
+</ul>
+<p><strong>Proxy : 代理</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">public class Proxy extends Object implements Serializable
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>Proxy</code><font style="color:rgb(80, 80, 92);">提供了创建动态代理类和实例的静态方法，它也是由这些方法创建的所有动态代理类的超类。</font></p>
+<p><font style="color:rgb(80, 80, 92);">动态代理类 （以下简称为代理类 ）是一个实现在类创建时在运行时指定的接口列表的类，具有如下所述的行为。 代理接口是由代理类实现的接口。 代理实例是代理类的一个实例。</font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">public static Object newProxyInstance(ClassLoader loader, 类&lt;?&gt;[] interfaces, InvocationHandler h) throws IllegalArgumentException
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><font style="color:rgb(80, 80, 92);">返回指定接口的代理类的实例，该接口将方法调用分派给指定的调用处理程序。</font></p>
+<p><strong>参数</strong></p>
+<ul>
+<li><code>loader</code> – 类加载器来定义代理类</li>
+<li><code>interfaces</code> – 代理类实现的接口列表</li>
+<li><code>h</code> – 调度方法调用的调用处理函数</li>
+</ul>
+<h3 id="动态代理的代码实现">动态代理的代码实现
+</h3><ul>
+<li>要写动态代理的代码，需要抓牢两个要点</li>
+</ul>
+<p><font style="color:rgb(80, 80, 92);">①：我们代理的是接口，而不是单个用户。<br>
+</font><font style="color:rgb(80, 80, 92);">②：代理类是动态生成的，而非静态定死。</font></p>
+<p><font style="color:rgb(80, 80, 92);">我只能说这种编程思想是真的牛逼，其实我们还可以实现任意接口的动态代理实现，在这里就不贴出来了。</font></p>
+<p><font style="color:rgb(80, 80, 92);">首先是我们的接口类<br>
+</font><strong>UserService.java</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">package src.JdkProxy.DynamicProxy;  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">public interface UserService {  
+</span></span><span class="line"><span class="cl">    public void add();  
+</span></span><span class="line"><span class="cl"> public void delete();  
+</span></span><span class="line"><span class="cl"> public void update();  
+</span></span><span class="line"><span class="cl"> public void query();  
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><font style="color:rgb(80, 80, 92);">接着，我们需要用实体类去实现这个抽象类</font></p>
+<p><strong>UserServiceImpl.java</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">package src.JdkProxy.DynamicProxy;  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">public class UserServiceImpl implements UserService{  
+</span></span><span class="line"><span class="cl">    @Override  
+</span></span><span class="line"><span class="cl"> public void add() {  
+</span></span><span class="line"><span class="cl">        System.out.println(&#34;增加了一个用户&#34;);  
+</span></span><span class="line"><span class="cl"> }  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">    @Override  
+</span></span><span class="line"><span class="cl"> public void delete() {  
+</span></span><span class="line"><span class="cl">        System.out.println(&#34;删除了一个用户&#34;);  
+</span></span><span class="line"><span class="cl"> }  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">    @Override  
+</span></span><span class="line"><span class="cl"> public void update() {  
+</span></span><span class="line"><span class="cl">        System.out.println(&#34;更新了一个用户&#34;);  
+</span></span><span class="line"><span class="cl"> }  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">    @Override  
+</span></span><span class="line"><span class="cl"> public void query() {  
+</span></span><span class="line"><span class="cl">        System.out.println(&#34;查询了一个用户&#34;);  
+</span></span><span class="line"><span class="cl"> }  
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><font style="color:rgb(80, 80, 92);">接着，是动态代理的实现类</font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">package src.JdkProxy.DynamicProxy;  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">import java.lang.reflect.InvocationHandler;  
+</span></span><span class="line"><span class="cl">import java.lang.reflect.Method;  
+</span></span><span class="line"><span class="cl">import java.lang.reflect.Proxy;  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">public class UserProxyInvocationHandler implements InvocationHandler {  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">    // 被代理的接口  
+</span></span><span class="line"><span class="cl"> private UserService userService;  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"> public void setUserService(UserService userService) {  
+</span></span><span class="line"><span class="cl">        this.userService = userService;  
+</span></span><span class="line"><span class="cl"> }  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">    // 动态生成代理类实例  
+</span></span><span class="line"><span class="cl"> public Object getProxy(){  
+</span></span><span class="line"><span class="cl">        Object obj = Proxy.newProxyInstance(this.getClass().getClassLoader(), userService.getClass().getInterfaces(), this);  
+</span></span><span class="line"><span class="cl"> return obj;  
+</span></span><span class="line"><span class="cl"> }  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">    // 处理代理类实例，并返回结果  
+</span></span><span class="line"><span class="cl"> @Override  
+</span></span><span class="line"><span class="cl"> public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {  
+</span></span><span class="line"><span class="cl">        log(method);  
+</span></span><span class="line"><span class="cl"> Object obj = method.invoke(userService, args);  
+</span></span><span class="line"><span class="cl"> return obj;  
+</span></span><span class="line"><span class="cl"> }  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">    //业务自定义需求  
+</span></span><span class="line"><span class="cl"> public void log(Method method){  
+</span></span><span class="line"><span class="cl">        System.out.println(&#34;[Info] &#34; + method.getName() + &#34;方法被调用&#34;);  
+</span></span><span class="line"><span class="cl"> }  
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>最后编写我们的 Client，也就是启动器</li>
+</ul>
+<p><strong>Client.java</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">package src.JdkProxy.DynamicProxy;  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">import src.JdkProxy.DynamicProxy.UserServiceImpl;  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">public class Client {  
+</span></span><span class="line"><span class="cl">    public static void main(String[] args) {  
+</span></span><span class="line"><span class="cl">        // 真实角色  
+</span></span><span class="line"><span class="cl"> UserServiceImpl userServiceImpl = new UserServiceImpl();  
+</span></span><span class="line"><span class="cl"> // 代理角色，不存在  
+</span></span><span class="line"><span class="cl"> UserProxyInvocationHandler userProxyInvocationHandler = new UserProxyInvocationHandler();  
+</span></span><span class="line"><span class="cl"> userProxyInvocationHandler.setUserService((UserService) userServiceImpl); // 设置要代理的对象  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"> // 动态生成代理类  
+</span></span><span class="line"><span class="cl"> UserService proxy = (UserService) userProxyInvocationHandler.getProxy();  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"> proxy.add();  
+</span></span><span class="line"><span class="cl"> proxy.delete();  
+</span></span><span class="line"><span class="cl"> proxy.update();  
+</span></span><span class="line"><span class="cl"> proxy.query();  
+</span></span><span class="line"><span class="cl"> }  
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="cc1正链的分析">cc1正链的分析
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">Constructor&lt;?&gt; constructor = clz.getDeclaredConstructor(Class.class, Map.class);
+</span></span><span class="line"><span class="cl">constructor.setAccessible(true);  // 允许访问私有构造函数
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>**实例化 **<code>**AnnotationInvocationHandler**</code>：</li>
+<li>使用获取到的构造函数创建 <code>AnnotationInvocationHandler</code> 实例。这个实例负责处理代理对象的方法调用。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">Object o = constructor.newInstance(Override.class, decoratemap);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>**强制转换为 **<code>**InvocationHandler**</code>：</li>
+<li>将创建的实例强制转换为 <code>InvocationHandler</code> 类型，以便后续可以通过这个处理器处理代理对象的调用。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">InvocationHandler invocationHandler = (InvocationHandler) o;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>创建代理对象</strong>：</li>
+<li>使用 <code>Proxy.newProxyInstance()</code> 方法创建一个动态代理对象，代理 <code>Map</code> 接口。此时，所有对 <code>proxymap</code> 的方法调用（如 <code>entrySet()</code>、<code>get()</code> 等）都会转发给 <code>invocationHandler</code> 的 <code>invoke()</code> 方法。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">Map proxymap = (Map) Proxy.newProxyInstance(
+</span></span><span class="line"><span class="cl">    Map.class.getClassLoader(),
+</span></span><span class="line"><span class="cl">    new Class[]{Map.class},
+</span></span><span class="line"><span class="cl">    invocationHandler
+</span></span><span class="line"><span class="cl">);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>调用代理方法</strong>：</li>
+<li>通过代理对象（<code>proxymap</code>）调用 <code>entrySet()</code> 方法。这个调用实际上会被转发到 <code>InvocationHandler</code> 的 <code>invoke()</code> 方法，进行处理。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">proxymap.entrySet();  // 代理方法调用
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最后将代理类的实例化</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">Object ob = constructor.newInstance(Override.class,proxymap);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>大多内容参考的是:<a class="link" href="https://drun1baby.top/2022/06/01/Java%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96%e5%9f%ba%e7%a1%80%e7%af%87-04-JDK%e5%8a%a8%e6%80%81%e4%bb%a3%e7%90%86/"  target="_blank" rel="noopener"
+    >Drunkbaby大佬的博客</a></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            最后更新于 Jan 08, 2025 07:35 UTC
+        </span>
+    </section></footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/26.cef2fe99533407212681f8679c82e2e5_hu1bf91eafd363a6a8cf12bcea22325fb0_892347_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Fastjson各版本绕过分析"
+                        
+                        data-hash="md5-zvL&#43;mVM0ByEmgfhnnILi5Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Fastjson各版本绕过分析</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson2/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson2/25.090c9fb095cfbe1b9147302afa798b94_hueda339f65764f7844afcc8ab1b48c07c_207061_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Fastjson1.2.62-1.2.68版本反序列化漏洞"
+                        
+                        data-hash="md5-CQyfsJXPvhuRRzAq&#43;nmLlA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Fastjson1.2.62-1.2.68版本反序列化漏洞</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson1/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson1/24.536555907a9796a67203136e7846373a_huf13ef49576a26e60058adb4232b89236_327164_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Fastjson-1.2.24版本漏洞分析"
+                        
+                        data-hash="md5-U2VVkHqXlqZyAxNueEY3Og==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Fastjson-1.2.24版本漏洞分析</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java/22.1e5ed26cd78eb4f2c758f31ea7bbf451_hu1a38b88b30d2714f829ca328dca8e993_249171_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post CTF Java"
+                        
+                        data-hash="md5-Hl7SbNeOtPLHWPMep7v0UQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">CTF Java</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/21.caa37814ebe9f28b27369c5bc8276a7f_hu0ec011a5d8edd549699d0eaf8c37598a_128675_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 动态加载字节码和和javassist"
+                        
+                        data-hash="md5-yqN4FOvp8osnNpxbyCdqfw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">动态加载字节码和和javassist</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 一个俗人
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<style>
+  @font-face {
+    font-family: '屏显臻宋';
+    src: url(https://gsygsr.github.io/font/%E5%B1%8F%E6%98%BE%E8%87%BB%E5%AE%8B.ttf) format('truetype');
+  }
+
+  :root {
+    --base-font-family: '屏显臻宋';
+    --code-font-family: '屏显臻宋';
+  }
+  body {
+    background: url(https://gsygsr.github.io/background/18.jpg) no-repeat center top;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+</style>
+
+    </body>
+</html>

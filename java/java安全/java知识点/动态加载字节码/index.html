@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="恶意类加载的原理和利用以及javassist的使用">
+<title>动态加载字节码和和javassist</title>
+
+<link rel='canonical' href='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/'>
+
+<link rel="stylesheet" href="/scss/style.min.4574748025b73b0369492ab661900878369bf003d477e5f5c673ee527faf3df7.css"><meta property='og:title' content="动态加载字节码和和javassist">
+<meta property='og:description' content="恶意类加载的原理和利用以及javassist的使用">
+<meta property='og:url' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/'>
+<meta property='og:site_name' content='一个俗人'>
+<meta property='og:type' content='article'><meta property='article:section' content='Java' /><meta property='article:published_time' content='2025-01-08T14:16:54&#43;08:00'/><meta property='article:modified_time' content='2025-01-08T07:35:26&#43;00:00'/><meta property='og:image' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/21.jpg' />
+<meta name="twitter:title" content="动态加载字节码和和javassist">
+<meta name="twitter:description" content="恶意类加载的原理和利用以及javassist的使用"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/21.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu7c49ec7d0c73aa09934b289b1d767e6f_13051_300x0_resize_box_3.png" width="300"
+                            height="302" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🤡</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">一个俗人</a></h1>
+            <h2 class="site-description">welcome two 一个俗人&#39;s 博客</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/gsygsr/gsygsr.github.io.git'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://gsygsr.github.io/en/" >English</option>
+                                
+                                    <option value="https://gsygsr.github.io/" selected>中文</option>
+                                
+                                    <option value="https://gsygsr.github.io/ar/" >عربي</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#利用-urlclassloader-加载远程class文件">利用 URLClassLoader 加载远程class文件</a></li>
+    <li><a href="#类加载---双亲委派模型">类加载 - 双亲委派模型</a></li>
+    <li><a href="#双亲委派模型的代码实现">双亲委派模型的代码实现</a></li>
+    <li><a href="#通俗理解">通俗理解</a>
+      <ol>
+        <li><a href="#双亲委派机制的定义"><strong>双亲委派机制的定义</strong></a></li>
+        <li><a href="#形象的比喻"><strong>形象的比喻</strong></a></li>
+      </ol>
+    </li>
+    <li><a href="#javassist">javassist</a>
+      <ol>
+        <li><a href="#演示">演示</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/">
+                <img src="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/21_hu0ec011a5d8edd549699d0eaf8c37598a_128675_800x0_resize_q75_box.jpg"
+                        srcset="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/21_hu0ec011a5d8edd549699d0eaf8c37598a_128675_800x0_resize_q75_box.jpg 800w, /java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/21_hu0ec011a5d8edd549699d0eaf8c37598a_128675_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post 动态加载字节码和和javassist" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="background-color: #2a9d8f; color: #fff;">
+                Java反序列化
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/">动态加载字节码和和javassist</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            恶意类加载的原理和利用以及javassist的使用
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 08, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 5 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>参考文章：<a class="link" href="https://blog.csdn.net/mole_exp/article/details/122768814"  target="_blank" rel="noopener"
+    >https://blog.csdn.net/mole_exp/article/details/122768814</a></p>
+<p>Java中动态加载字节码的方法</p>
+<h2 id="利用-urlclassloader-加载远程class文件">利用 URLClassLoader 加载远程class文件
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">public static void main(String[] args) {
+</span></span><span class="line"><span class="cl">    try {
+</span></span><span class="line"><span class="cl">        //使用file协议在本地寻找指定.class文件
+</span></span><span class="line"><span class="cl">        //URL[] urls = new URL[]{new URL(&#34;file:///Users/fa1c0n/codeprojects/IdeaProjects/misc-classes/src/main/java/&#34;)};
+</span></span><span class="line"><span class="cl">        //使用http协议到远程地址寻找指定.class文件
+</span></span><span class="line"><span class="cl">        URL[] urls = new URL[]{new URL(&#34;http://127.0.0.1:8000/&#34;)};
+</span></span><span class="line"><span class="cl">        URLClassLoader urlClassLoader = new URLClassLoader(urls);
+</span></span><span class="line"><span class="cl">        Class clazz = urlClassLoader.loadClass(&#34;Exploit&#34;);
+</span></span><span class="line"><span class="cl">        clazz.newInstance();
+</span></span><span class="line"><span class="cl">    } catch (Exception e) {
+</span></span><span class="line"><span class="cl">        e.printStackTrace();
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>利用 ClassLoader#defineClass 直接加载字节码</p>
+<h2 id="类加载---双亲委派模型">类加载 - 双亲委派模型
+</h2><p><img src="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/1733664572160-e4b9ebd4-9316-4fc4-8c84-eaaa1d52ea2c.png"
+	width="1055"
+	height="1065"
+	srcset="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/1733664572160-e4b9ebd4-9316-4fc4-8c84-eaaa1d52ea2c_huef42ced323375dd09355390e419fadc4_191711_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/1733664572160-e4b9ebd4-9316-4fc4-8c84-eaaa1d52ea2c_huef42ced323375dd09355390e419fadc4_191711_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="99"
+		data-flex-basis="237px"
+	
+></p>
+<p>BootstrapClassLoader：启动类加载器/根加载器，负责加载 JVM 运行时核心类，这些类位于 JAVA_HOME/lib/rt.jar 文件中，我们常用内置库 java.*.*都在里面。这个 ClassLoader 比较特殊，它其实不是一个ClassLoader实例对象，而是由C代码实现。用户在实现自定义类加载器时，如果需要把加载请求委派给启动类加载器，那可以直接传入null作为 BootstrapClassLoader。</p>
+<p>ExtClassLoader：扩展类加载器，负责加载 JVM 扩展类，扩展 jar 包位于 JAVA_HOME/lib/ext/*.jar 中，库名通常以 javax 开头。</p>
+<p>AppClassLoader，应用类加载器/系统类加载器，直接提供给用户使用的ClassLoader，它会加载 ClASSPATH 环境变量或者 java.class.path 属性里定义的路径中的 jar 包和目录，负责加载包括开发者代码中、第三方库中的类。AppClassLoader 可以由 ClassLoader 类提供的静态方法 getSystemClassLoader() 得到。</p>
+<p>ClassLoader.getParent() 可以获取用于委派的父级class loader，通常会返回null来表示bootstrap class loader。</p>
+<h2 id="双亲委派模型的代码实现">双亲委派模型的代码实现
+</h2><p><img src="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/1733664612067-85613314-15b9-4af3-8498-6d2d4dcb2d5a.png"
+	width="1013"
+	height="953"
+	srcset="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/1733664612067-85613314-15b9-4af3-8498-6d2d4dcb2d5a_hu7ab7f09bc08e3f1fc0521ec4faa42471_211050_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/1733664612067-85613314-15b9-4af3-8498-6d2d4dcb2d5a_hu7ab7f09bc08e3f1fc0521ec4faa42471_211050_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="106"
+		data-flex-basis="255px"
+	
+></p>
+<p>如上图，实现双亲委派的代码都集中在 java.lang.ClassLoader#loadClass()方法中，其逻辑如下：</p>
+<p>先检查是否已被加载过;</p>
+<p>若没有加载过则调用父加载器的loadClass()方法；</p>
+<p>若父加载器为null则默认使用启动类加载器(Bootstrap ClassLoader)作为父加载器；</p>
+<p>如果父加载器加载类失败，抛出ClassNotFoundException异常后，再调用自己的findClass()方法进行加载。(findClass()最终会调用defineClass()加载字节码)</p>
+<p>注意：</p>
+<p>这里的“双亲”，指的并不是有两个父加载器，可能仅仅是英文“parent”的翻译。每个ClassLoader最多有一个父加载器，也就是parent变量。“双亲委派机制”指的就是优先让父加载器去加载类，如果父加载器没有成功加载到类，才由本ClassLoader加载。</p>
+<p>这样可以保证安全性，防止系统类被伪造(比如自定义java.lang.Object类，肯定是无法运行的)。</p>
+<p>对于Java程序来讲，一般的类是由AppClassLoader来加载的，而系统类则是由BootStrapClassLoader加载的。由于BootStrapClassLoader是在native层实现的，所以调用系统类的getClassLoader()方法会返回null。</p>
+<h2 id="通俗理解">通俗理解
+</h2><p>双亲委派机制是 Java 类加载器的重要设计原则，用于确保 Java 应用的安全性和稳定性。为了让这个机制更形象，以下是详细解释和具体例子。</p>
+<hr>
+<h3 id="双亲委派机制的定义"><strong>双亲委派机制的定义</strong>
+</h3><p>双亲委派机制规定，当一个类加载器接收到类加载请求时，它会首先将这个请求委托给它的“父加载器”处理。只有当父加载器无法加载时，子加载器才会尝试自己加载。</p>
+<p>这种机制确保：</p>
+<ol>
+<li><strong>类加载的唯一性</strong>：避免重复加载同一个类。</li>
+<li><strong>核心类的安全性</strong>：例如 <code>java.lang.String</code> 等核心类只能由根类加载器加载，防止被篡改。</li>
+</ol>
+<hr>
+<h3 id="形象的比喻"><strong>形象的比喻</strong>
+</h3><p>可以把双亲委派机制比作一个问题的求解过程，假设有一个学生、小组长、班主任和校长的层级关系：</p>
+<ol>
+<li>学生有个问题想解决（例如“加载某个类”）。</li>
+<li>学生先问小组长（子加载器）。</li>
+<li>小组长说：“先等等，我得先问班主任（父加载器）。”</li>
+<li>班主任又说：“我得先请示校长（根类加载器）。”</li>
+<li>如果校长知道答案，就会直接回答。</li>
+<li>如果校长说：“我也不知道这个问题的答案”，班主任才会尝试自己解决，依次递归到学生。</li>
+</ol>
+<p>这个过程保证了所有请求都从最高层级开始尝试解决，避免了低层级重复回答。</p>
+<p>而如果最高层都无法解决,就会让学生自行解决</p>
+<p>如果我们传入一个恶意类的字节码,这个系统里当然没有这个恶意类的加载器,所以学生自行解决会生成和加载这个恶意类,从而RCE(我是这么认为的,不对的话请指正)</p>
+<h2 id="javassist">javassist
+</h2><p><font style="color:rgb(49, 70, 89);">Java 字节码以二进制的形式存储在 .class 文件中，每一个 .class 文件包含一个 Java 类或接口。Javaassist 就是一个用来 处理 Java 字节码的类库。它可以在一个已经编译好的类中添加新的方法，或者是修改已有的方法，并且不需要对字节码方面有深入的了解。同时也可以去生成一个新的类对象，通过完全手动的方式。也就是当需要字节码的时候不需要手动另外新建类然后编译为</font><code>class</code><font style="color:rgb(49, 70, 89);">文件</font></p>
+<p>依赖</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">&lt;dependency&gt;
+</span></span><span class="line"><span class="cl">  &lt;groupId&gt;org.javassist&lt;/groupId&gt;
+</span></span><span class="line"><span class="cl">  &lt;artifactId&gt;javassist&lt;/artifactId&gt;
+</span></span><span class="line"><span class="cl">  &lt;version&gt;3.23.1-GA&lt;/version&gt;
+</span></span><span class="line"><span class="cl">&lt;/dependency&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="演示">演示
+</h3><p>通过不新建类来构建一个不存在的对象</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">//创建类,这是一个单例对象
+</span></span><span class="line"><span class="cl">ClassPool pool = ClassPool.getDefault();
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//需要构建的类
+</span></span><span class="line"><span class="cl">CtClass ctClass = pool.makeClass(&#34;test.Person&#34;);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//新增字段
+</span></span><span class="line"><span class="cl">CtField field$name = new CtField(pool.get(&#34;java.lang.String&#34;),&#34;name&#34;,ctClass);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//设置访问级别
+</span></span><span class="line"><span class="cl">field$name.setModifiers(Modifier.PRIVATE);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//设置继承
+</span></span><span class="line"><span class="cl">ctClass.setSuperclass(pool.get(&#34;com.sun.org.apache.xalan.internal.xsltc.runtime.AbstractTranslet&#34;));
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//也可以给个初始值
+</span></span><span class="line"><span class="cl">ctClass.addField(field$name,CtField.Initializer.constant(&#34;ygsr&#34;));
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//生成get/set方法
+</span></span><span class="line"><span class="cl">ctClass.addMethod(CtNewMethod.setter(&#34;setName&#34;,field$name));
+</span></span><span class="line"><span class="cl">ctClass.addMethod(CtNewMethod.getter(&#34;getName&#34;,field$name));
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//新增构造函数
+</span></span><span class="line"><span class="cl">//无参构造函数
+</span></span><span class="line"><span class="cl">CtConstructor cons$no = new CtConstructor(new CtClass[]{},ctClass);
+</span></span><span class="line"><span class="cl">cons$no.setBody(&#34;{name = \&#34;ygsr\&#34;;}&#34;);
+</span></span><span class="line"><span class="cl">ctClass.addConstructor(cons$no);
+</span></span><span class="line"><span class="cl">//有参构造方法
+</span></span><span class="line"><span class="cl">CtConstructor cons$one  = new CtConstructor(new CtClass[]{pool.get(&#34;java.lang.String&#34;)},ctClass);
+</span></span><span class="line"><span class="cl">// $0=this  $1,$2,$3... 代表方法参数
+</span></span><span class="line"><span class="cl">cons$one.setBody(&#34;{$0.name = $1;}&#34;);
+</span></span><span class="line"><span class="cl">ctClass.addConstructor(cons$one);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//或者CtNewConstructor.make
+</span></span><span class="line"><span class="cl">CtConstructor constructor = CtNewConstructor.make(&#34;public Person(){  System.out.println(\&#34;abc\&#34;);}&#34;,ctClass);
+</span></span><span class="line"><span class="cl">ctClass.addConstructor(constructor);
+</span></span><span class="line"><span class="cl">//两者只能使用一者
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//创建一个名为print的方法,无参,无回显,输出name值
+</span></span><span class="line"><span class="cl">CtMethod ctMethod = new CtMethod(CtClass.voidType,&#34;print&#34;,new CtClass[]{},ctClass);
+</span></span><span class="line"><span class="cl">ctMethod.setModifiers(Modifier.PUBLIC);
+</span></span><span class="line"><span class="cl">ctMethod.setBody(&#34;{System.out.println(name);}&#34;);
+</span></span><span class="line"><span class="cl">ctClass.addMethod(ctMethod);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//当前目录
+</span></span><span class="line"><span class="cl">final String Path = &#34;E:\javawork\timu\src\main\java\&#34;;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//生成.class文件
+</span></span><span class="line"><span class="cl">ctClass.writeFile(Path);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//将ctfClass对象转换为字节码数组
+</span></span><span class="line"><span class="cl">byte[] bytes = ctClass.toBytecode();
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/1733743934214-5b8d4fc3-9baa-4638-9f70-bb8a7e8070b9.png"
+	width="670"
+	height="418"
+	srcset="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/1733743934214-5b8d4fc3-9baa-4638-9f70-bb8a7e8070b9_hucd287fe1b4107f4974799234555c0f33_46118_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/1733743934214-5b8d4fc3-9baa-4638-9f70-bb8a7e8070b9_hucd287fe1b4107f4974799234555c0f33_46118_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="160"
+		data-flex-basis="384px"
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            最后更新于 Jan 08, 2025 07:35 UTC
+        </span>
+    </section></footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/26.cef2fe99533407212681f8679c82e2e5_hu1bf91eafd363a6a8cf12bcea22325fb0_892347_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Fastjson各版本绕过分析"
+                        
+                        data-hash="md5-zvL&#43;mVM0ByEmgfhnnILi5Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Fastjson各版本绕过分析</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson2/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson2/25.090c9fb095cfbe1b9147302afa798b94_hueda339f65764f7844afcc8ab1b48c07c_207061_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Fastjson1.2.62-1.2.68版本反序列化漏洞"
+                        
+                        data-hash="md5-CQyfsJXPvhuRRzAq&#43;nmLlA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Fastjson1.2.62-1.2.68版本反序列化漏洞</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson1/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson1/24.536555907a9796a67203136e7846373a_huf13ef49576a26e60058adb4232b89236_327164_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Fastjson-1.2.24版本漏洞分析"
+                        
+                        data-hash="md5-U2VVkHqXlqZyAxNueEY3Og==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Fastjson-1.2.24版本漏洞分析</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/23.18927b89b7cec8d6042141c403d831a0_huf9676a8800dc8cf9723afb54e95056be_155376_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post java动态代理"
+                        
+                        data-hash="md5-GJJ7ibfOyNYEIUHEA9gxoA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">java动态代理</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java/22.1e5ed26cd78eb4f2c758f31ea7bbf451_hu1a38b88b30d2714f829ca328dca8e993_249171_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post CTF Java"
+                        
+                        data-hash="md5-Hl7SbNeOtPLHWPMep7v0UQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">CTF Java</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 一个俗人
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<style>
+  @font-face {
+    font-family: '屏显臻宋';
+    src: url(https://gsygsr.github.io/font/%E5%B1%8F%E6%98%BE%E8%87%BB%E5%AE%8B.ttf) format('truetype');
+  }
+
+  :root {
+    --base-font-family: '屏显臻宋';
+    --code-font-family: '屏显臻宋';
+  }
+  body {
+    background: url(https://gsygsr.github.io/background/18.jpg) no-repeat center top;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+</style>
+
+    </body>
+</html>

