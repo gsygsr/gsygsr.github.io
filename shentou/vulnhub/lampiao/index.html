@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="vulnhub靶场之Lampiao">
+<title>Lampiao</title>
+
+<link rel='canonical' href='https://gsygsr.github.io/shentou/vulnhub/lampiao/'>
+
+<link rel="stylesheet" href="/scss/style.min.4574748025b73b0369492ab661900878369bf003d477e5f5c673ee527faf3df7.css"><meta property='og:title' content="Lampiao">
+<meta property='og:description' content="vulnhub靶场之Lampiao">
+<meta property='og:url' content='https://gsygsr.github.io/shentou/vulnhub/lampiao/'>
+<meta property='og:site_name' content='一个俗人'>
+<meta property='og:type' content='article'><meta property='article:section' content='Shentou' /><meta property='article:published_time' content='2025-03-03T14:19:04&#43;08:00'/><meta property='article:modified_time' content='2025-03-03T15:27:11&#43;08:00'/><meta property='og:image' content='https://gsygsr.github.io/shentou/vulnhub/lampiao/6.jpg' />
+<meta name="twitter:title" content="Lampiao">
+<meta name="twitter:description" content="vulnhub靶场之Lampiao"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://gsygsr.github.io/shentou/vulnhub/lampiao/6.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu7c49ec7d0c73aa09934b289b1d767e6f_13051_300x0_resize_box_3.png" width="300"
+                            height="302" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🤡</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">一个俗人</a></h1>
+            <h2 class="site-description">welcome two 一个俗人&#39;s 博客</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/gsygsr/gsygsr.github.io.git'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://gsygsr.github.io/en/" >English</option>
+                                
+                                    <option value="https://gsygsr.github.io/" selected>中文</option>
+                                
+                                    <option value="https://gsygsr.github.io/ar/" >عربي</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#信息收集">信息收集</a>
+      <ol>
+        <li><a href="#主机探测">主机探测</a></li>
+      </ol>
+    </li>
+    <li><a href="#渗透">渗透</a>
+      <ol>
+        <li><a href="#密码爆破">密码爆破</a></li>
+        <li><a href="#msf">msf</a></li>
+      </ol>
+    </li>
+    <li><a href="#提权">提权</a>
+      <ol>
+        <li><a href="#指针探测">指针探测</a></li>
+      </ol>
+    </li>
+    <li><a href="#总结">总结</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/shentou/vulnhub/lampiao/">
+                <img src="/shentou/vulnhub/lampiao/6_hu44ffc9ba1d52087fa1130a2f9e2e23ba_2271946_800x0_resize_q75_box.jpg"
+                        srcset="/shentou/vulnhub/lampiao/6_hu44ffc9ba1d52087fa1130a2f9e2e23ba_2271946_800x0_resize_q75_box.jpg 800w, /shentou/vulnhub/lampiao/6_hu44ffc9ba1d52087fa1130a2f9e2e23ba_2271946_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="451" 
+                        loading="lazy"
+                        alt="Featured image of post Lampiao" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E6%B8%97%E9%80%8F/" style="background-color: #2a9d8f; color: #fff;">
+                渗透
+            </a>
+        
+            <a href="/categories/vulnhub%E9%9D%B6%E5%9C%BA/" style="background-color: #2a9d8f; color: #fff;">
+                Vulnhub靶场
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/shentou/vulnhub/lampiao/">Lampiao</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            vulnhub靶场之Lampiao
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 03, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 2 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="信息收集">信息收集
+</h2><h3 id="主机探测">主机探测
+</h3><p><img src="/shentou/vulnhub/lampiao/1718254326379-fd7fe7d8-5a06-4ddc-916c-547597cbb1ae.png"
+	width="658"
+	height="131"
+	srcset="/shentou/vulnhub/lampiao/1718254326379-fd7fe7d8-5a06-4ddc-916c-547597cbb1ae_hua360d2c9d7da54fd5444671f6fc45843_50926_480x0_resize_box_3.png 480w, /shentou/vulnhub/lampiao/1718254326379-fd7fe7d8-5a06-4ddc-916c-547597cbb1ae_hua360d2c9d7da54fd5444671f6fc45843_50926_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="502"
+		data-flex-basis="1205px"
+	
+></p>
+<p><img src="/shentou/vulnhub/lampiao/1718254572055-b652d823-c99a-4ea4-93ad-a36eb762ee00.png"
+	width="706"
+	height="405"
+	srcset="/shentou/vulnhub/lampiao/1718254572055-b652d823-c99a-4ea4-93ad-a36eb762ee00_hu2df356f848242d53f766a76c45c51b26_154462_480x0_resize_box_3.png 480w, /shentou/vulnhub/lampiao/1718254572055-b652d823-c99a-4ea4-93ad-a36eb762ee00_hu2df356f848242d53f766a76c45c51b26_154462_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="174"
+		data-flex-basis="418px"
+	
+></p>
+<p>开了22,80,1898端口</p>
+<h2 id="渗透">渗透
+</h2><p>扫80端口没用<img src="/shentou/vulnhub/lampiao/1718254638970-3ca559ba-fd0c-45ca-8bde-c825d2bd3430.png"
+	width="1064"
+	height="322"
+	srcset="/shentou/vulnhub/lampiao/1718254638970-3ca559ba-fd0c-45ca-8bde-c825d2bd3430_hu5406daade6639190592e599515679144_156201_480x0_resize_box_3.png 480w, /shentou/vulnhub/lampiao/1718254638970-3ca559ba-fd0c-45ca-8bde-c825d2bd3430_hu5406daade6639190592e599515679144_156201_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="330"
+		data-flex-basis="793px"
+	
+></p>
+<p>再扫1989端口</p>
+<p>有robots.txt</p>
+<p><img src="/shentou/vulnhub/lampiao/1718256522689-2ee3e68d-d96e-40e5-a47b-18a41ba8c6cb.png"
+	width="305"
+	height="204"
+	srcset="/shentou/vulnhub/lampiao/1718256522689-2ee3e68d-d96e-40e5-a47b-18a41ba8c6cb_hu12824961903b953a68e95bdfb255d91f_6928_480x0_resize_box_3.png 480w, /shentou/vulnhub/lampiao/1718256522689-2ee3e68d-d96e-40e5-a47b-18a41ba8c6cb_hu12824961903b953a68e95bdfb255d91f_6928_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="149"
+		data-flex-basis="358px"
+	
+></p>
+<p>这里看到<code>/?q=node/2</code>有东西</p>
+<p><img src="/shentou/vulnhub/lampiao/1718256540843-9ee0f7cf-1c70-4190-a3e0-dc0bd36e5b6b.png"
+	width="1342"
+	height="547"
+	srcset="/shentou/vulnhub/lampiao/1718256540843-9ee0f7cf-1c70-4190-a3e0-dc0bd36e5b6b_hua567b77ae9e334a963163581ad4f6e21_35635_480x0_resize_box_3.png 480w, /shentou/vulnhub/lampiao/1718256540843-9ee0f7cf-1c70-4190-a3e0-dc0bd36e5b6b_hua567b77ae9e334a963163581ad4f6e21_35635_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="245"
+		data-flex-basis="588px"
+	
+></p>
+<p>audio.m4a</p>
+<p><img src="/shentou/vulnhub/lampiao/1718256573593-2dc627d8-bd05-4b21-be97-3a65726cef41.png"
+	width="1799"
+	height="278"
+	srcset="/shentou/vulnhub/lampiao/1718256573593-2dc627d8-bd05-4b21-be97-3a65726cef41_huf1432c3db148ef70a7bb50efd2eeb6a3_5805_480x0_resize_box_3.png 480w, /shentou/vulnhub/lampiao/1718256573593-2dc627d8-bd05-4b21-be97-3a65726cef41_huf1432c3db148ef70a7bb50efd2eeb6a3_5805_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="647"
+		data-flex-basis="1553px"
+	
+></p>
+<p>能听到<code>user:tiago</code></p>
+<p>qrc.png</p>
+<p><img src="/shentou/vulnhub/lampiao/1718256739783-39ac37e3-96cd-42dd-84f4-87f2e5d29cc6.png"
+	width="581"
+	height="419"
+	srcset="/shentou/vulnhub/lampiao/1718256739783-39ac37e3-96cd-42dd-84f4-87f2e5d29cc6_hue82aa16b814f0f4686cced4da7c28196_62630_480x0_resize_box_3.png 480w, /shentou/vulnhub/lampiao/1718256739783-39ac37e3-96cd-42dd-84f4-87f2e5d29cc6_hue82aa16b814f0f4686cced4da7c28196_62630_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="138"
+		data-flex-basis="332px"
+	
+></p>
+<p><img src="/shentou/vulnhub/lampiao/1718256763255-10c02b10-0877-446f-b4b3-04b48df07510.png"
+	width="194"
+	height="53"
+	srcset="/shentou/vulnhub/lampiao/1718256763255-10c02b10-0877-446f-b4b3-04b48df07510_hu289c6e7d3b52d5e8a70095e395026808_7198_480x0_resize_box_3.png 480w, /shentou/vulnhub/lampiao/1718256763255-10c02b10-0877-446f-b4b3-04b48df07510_hu289c6e7d3b52d5e8a70095e395026808_7198_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="366"
+		data-flex-basis="878px"
+	
+>没啥消息</p>
+<h3 id="密码爆破">密码爆破
+</h3><p>通过cewl生成社工的密码字典</p>
+<p><code>cewl http://192.168.184.136:1898/ -w pass.txt</code></p>
+<p>九头蛇爆破</p>
+<p><code>hydra -l tiago -P pass.txt ssh://192.168.184.136 </code></p>
+<p><img src="/shentou/vulnhub/lampiao/1718257455421-eb3c227b-e36a-4540-8aef-efd1158defa5.png"
+	width="755"
+	height="219"
+	srcset="/shentou/vulnhub/lampiao/1718257455421-eb3c227b-e36a-4540-8aef-efd1158defa5_hue6c7301d2321ca1d3fe954a6ef3098dc_118448_480x0_resize_box_3.png 480w, /shentou/vulnhub/lampiao/1718257455421-eb3c227b-e36a-4540-8aef-efd1158defa5_hue6c7301d2321ca1d3fe954a6ef3098dc_118448_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="344"
+		data-flex-basis="827px"
+	
+></p>
+<p>另一种登录是通过模版漏洞</p>
+<h3 id="msf">msf
+</h3><p><img src="/shentou/vulnhub/lampiao/1718259522361-4537cbcc-3062-4e90-887a-d473ecdafd1c.png"
+	width="258"
+	height="87"
+	srcset="/shentou/vulnhub/lampiao/1718259522361-4537cbcc-3062-4e90-887a-d473ecdafd1c_huf195c16dd3e90f77d217192c1bdd932c_1754_480x0_resize_box_3.png 480w, /shentou/vulnhub/lampiao/1718259522361-4537cbcc-3062-4e90-887a-d473ecdafd1c_huf195c16dd3e90f77d217192c1bdd932c_1754_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="296"
+		data-flex-basis="711px"
+	
+></p>
+<p>可以看到网站是<code>Drupal</code>框架写的</p>
+<p>启动msf</p>
+<p><img src="/shentou/vulnhub/lampiao/1718259793606-cc13bce6-0c8d-400d-972d-30aa5296126e.png"
+	width="1093"
+	height="293"
+	srcset="/shentou/vulnhub/lampiao/1718259793606-cc13bce6-0c8d-400d-972d-30aa5296126e_hu72e330121a79ec776c44f2233c997ec2_117117_480x0_resize_box_3.png 480w, /shentou/vulnhub/lampiao/1718259793606-cc13bce6-0c8d-400d-972d-30aa5296126e_hu72e330121a79ec776c44f2233c997ec2_117117_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="373"
+		data-flex-basis="895px"
+	
+></p>
+<p>使用第二个</p>
+<p><img src="/shentou/vulnhub/lampiao/1718259970256-603c32e3-7e8f-4d19-8f75-7f84aa422409.png"
+	width="800"
+	height="423"
+	srcset="/shentou/vulnhub/lampiao/1718259970256-603c32e3-7e8f-4d19-8f75-7f84aa422409_hu24157a8439e0136f763852c6d6d217a9_162035_480x0_resize_box_3.png 480w, /shentou/vulnhub/lampiao/1718259970256-603c32e3-7e8f-4d19-8f75-7f84aa422409_hu24157a8439e0136f763852c6d6d217a9_162035_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="189"
+		data-flex-basis="453px"
+	
+></p>
+<p><img src="/shentou/vulnhub/lampiao/1718260019142-45a93a77-2130-4a90-b859-8f72285790ea.png"
+	width="475"
+	height="141"
+	srcset="/shentou/vulnhub/lampiao/1718260019142-45a93a77-2130-4a90-b859-8f72285790ea_hu761853ea6250c5a138f55bcd7e363b18_24513_480x0_resize_box_3.png 480w, /shentou/vulnhub/lampiao/1718260019142-45a93a77-2130-4a90-b859-8f72285790ea_hu761853ea6250c5a138f55bcd7e363b18_24513_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="336"
+		data-flex-basis="808px"
+	
+></p>
+<p>这里还不是root权限,和上面通过密码ssh登录的差不多</p>
+<h2 id="提权">提权
+</h2><p><img src="/shentou/vulnhub/lampiao/1718257596562-10502fbe-5ba6-4f32-9e89-1edee223eb08.png"
+	width="419"
+	height="89"
+	srcset="/shentou/vulnhub/lampiao/1718257596562-10502fbe-5ba6-4f32-9e89-1edee223eb08_hu2148dd5c4cd3c029ebfe1ab24cf4d765_19706_480x0_resize_box_3.png 480w, /shentou/vulnhub/lampiao/1718257596562-10502fbe-5ba6-4f32-9e89-1edee223eb08_hu2148dd5c4cd3c029ebfe1ab24cf4d765_19706_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="470"
+		data-flex-basis="1129px"
+	
+></p>
+<p><img src="/shentou/vulnhub/lampiao/1718257618154-d36b75e1-aaa9-4eb0-a502-9914281cb722.png"
+	width="887"
+	height="53"
+	srcset="/shentou/vulnhub/lampiao/1718257618154-d36b75e1-aaa9-4eb0-a502-9914281cb722_hub324a70f6345ba41eb9c5bb619ecf277_23612_480x0_resize_box_3.png 480w, /shentou/vulnhub/lampiao/1718257618154-d36b75e1-aaa9-4eb0-a502-9914281cb722_hub324a70f6345ba41eb9c5bb619ecf277_23612_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1673"
+		data-flex-basis="4016px"
+	
+></p>
+<p>百度内核漏洞,搜到这里用脏牛提权(<strong><font style="color:rgb(77, 77, 77);">漏洞范围</font></strong><font style="color:rgb(77, 77, 77);">：Linux内核 &gt;= 2.6.22)</font></p>
+<p><font style="color:rgb(77, 77, 77);">不过这里可以先探测一波</font></p>
+<h3 id="指针探测">指针探测
+</h3><p><font style="color:rgb(77, 77, 77);">这里使用linux-exploit-suggester.sh进行探测</font></p>
+<p><font style="color:rgb(77, 77, 77);">通过python3简易http服务</font></p>
+<p><font style="color:rgb(77, 77, 77);">wget将</font>`linux-exploit-suggester.sh<font style="color:rgb(77, 77, 77);">传到目标机/tmp下</font></p>
+<p><code>chmod +x linux-exploit-suggester.sh</code></p>
+<p><code>./linux-exploit-suggester.sh</code></p>
+<p><img src="/shentou/vulnhub/lampiao/1718260570265-216ffaf2-df46-4ff4-b085-f318caea9b19.png"
+	width="698"
+	height="173"
+	srcset="/shentou/vulnhub/lampiao/1718260570265-216ffaf2-df46-4ff4-b085-f318caea9b19_hu6afe0e1cc6b7f995a74f62c006d41af8_53871_480x0_resize_box_3.png 480w, /shentou/vulnhub/lampiao/1718260570265-216ffaf2-df46-4ff4-b085-f318caea9b19_hu6afe0e1cc6b7f995a74f62c006d41af8_53871_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="403"
+		data-flex-basis="968px"
+	
+></p>
+<p>这里是比较典型的脏牛提权</p>
+<p><img src="/shentou/vulnhub/lampiao/1718260585205-5465ebbd-c2cc-4e07-a7a1-97a347c1d834.png"
+	width="1093"
+	height="146"
+	srcset="/shentou/vulnhub/lampiao/1718260585205-5465ebbd-c2cc-4e07-a7a1-97a347c1d834_hu7bcf6452b88df152aa8f5b54d53120f7_65432_480x0_resize_box_3.png 480w, /shentou/vulnhub/lampiao/1718260585205-5465ebbd-c2cc-4e07-a7a1-97a347c1d834_hu7bcf6452b88df152aa8f5b54d53120f7_65432_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="748"
+		data-flex-basis="1796px"
+	
+></p>
+<p>寻找脏牛exp并下载</p>
+<p><img src="/shentou/vulnhub/lampiao/1718260721241-d66310b4-d310-4aac-aa05-01c34438f6b3.png"
+	width="1075"
+	height="394"
+	srcset="/shentou/vulnhub/lampiao/1718260721241-d66310b4-d310-4aac-aa05-01c34438f6b3_hu1a791cda16f1ab0c7f9da2826be565ab_185363_480x0_resize_box_3.png 480w, /shentou/vulnhub/lampiao/1718260721241-d66310b4-d310-4aac-aa05-01c34438f6b3_hu1a791cda16f1ab0c7f9da2826be565ab_185363_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="272"
+		data-flex-basis="654px"
+	
+></p>
+<p>传到目标机/tmp目录下</p>
+<p><img src="/shentou/vulnhub/lampiao/1718260881851-476a0219-b83c-4c76-86d9-fb9e7d054e8e.png"
+	width="575"
+	height="305"
+	srcset="/shentou/vulnhub/lampiao/1718260881851-476a0219-b83c-4c76-86d9-fb9e7d054e8e_hua805d38b1b99aebd75eae819b5186bce_51774_480x0_resize_box_3.png 480w, /shentou/vulnhub/lampiao/1718260881851-476a0219-b83c-4c76-86d9-fb9e7d054e8e_hua805d38b1b99aebd75eae819b5186bce_51774_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="188"
+		data-flex-basis="452px"
+	
+></p>
+<p>编译cpp文件</p>
+<p><code>g++ -Wall -pedantic -O2 -std=c++11 -pthread -o 40847 40847.cpp -lutil</code></p>
+<ul>
+<li>
+<p>-Wall 一般使用该选项，允许发出GCC能够提供的所有有用的警告</p>
+</li>
+<li>
+<p>-pedantic 允许发出ANSI/ISO C标准所列出的所有警告</p>
+</li>
+<li>
+<p>-O2编译器的优化选项的4个级别，-O0表示没有优化,-O1为缺省值，-O3优化级别最高</p>
+</li>
+<li>
+<p>-std=c++11就是用按C++2011标准来编译的</p>
+</li>
+<li>
+<p>-pthread 在Linux中要用到多线程时，需要链接pthread库</p>
+</li>
+<li>
+<p>-o dcow gcc生成的目标文件,名字为dcow</p>
+</li>
+</ul>
+<p>执行gcc编译可执行文件，可直接提权。</p>
+<p>给上权限,运行提权</p>
+<p><img src="/shentou/vulnhub/lampiao/1718261010727-17aba464-2f64-426b-8fcb-bfc2a6a7bbf2.png"
+	width="260"
+	height="103"
+	srcset="/shentou/vulnhub/lampiao/1718261010727-17aba464-2f64-426b-8fcb-bfc2a6a7bbf2_hubf333b0faa8a8ab0c554688ba7130240_10763_480x0_resize_box_3.png 480w, /shentou/vulnhub/lampiao/1718261010727-17aba464-2f64-426b-8fcb-bfc2a6a7bbf2_hubf333b0faa8a8ab0c554688ba7130240_10763_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="252"
+		data-flex-basis="605px"
+	
+></p>
+<p>root密码被修改了</p>
+<p><img src="/shentou/vulnhub/lampiao/1718261080380-664d9f26-37cc-44c0-a6ea-e6c07aa04a38.png"
+	width="556"
+	height="309"
+	srcset="/shentou/vulnhub/lampiao/1718261080380-664d9f26-37cc-44c0-a6ea-e6c07aa04a38_hub2f7f557cc52470d2fdef379536f8046_87729_480x0_resize_box_3.png 480w, /shentou/vulnhub/lampiao/1718261080380-664d9f26-37cc-44c0-a6ea-e6c07aa04a38_hub2f7f557cc52470d2fdef379536f8046_87729_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="179"
+		data-flex-basis="431px"
+	
+></p>
+<p>提权成功</p>
+<h2 id="总结">总结
+</h2><p>1.找到/?q=node/2下的文件</p>
+<p>2.通过cewl爬虫网站,获得社工生成的密码字典</p>
+<p>3.通过hydra爆破ssh密码</p>
+<p>4.可以通过msf找Drupal模版漏洞,从而获得www-data权限</p>
+<p>5.脏牛提权</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            最后更新于 Mar 03, 2025 15:27 &#43;0800
+        </span>
+    </section></footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/shentou/vulnhub/w1e3s/">
+        
+        
+            <div class="article-image">
+                <img src="/shentou/vulnhub/w1e3s/13.77123a0ce38008492538c1bc99b49322_hu5b08183bff39717ce68447d69c09704d_736555_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post W1e3s"
+                        
+                        data-hash="md5-dxI6DOOACEklOMG8mbSTIg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">W1e3s</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/shentou/vulnhub/vulnix/">
+        
+        
+            <div class="article-image">
+                <img src="/shentou/vulnhub/vulnix/12.f1ce5bf1f8047340847989621ce88075_hu5edc2dee25930f45c5f3558e9b5d8e2d_471588_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Vulnix"
+                        
+                        data-hash="md5-8c5b8fgEc0CEeYliHOiAdQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Vulnix</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/shentou/vulnhub/tr0ll/">
+        
+        
+            <div class="article-image">
+                <img src="/shentou/vulnhub/tr0ll/11.fa5687c30ba60a30dcf48db65f9ce7de_hu55c6e0bf4da1ddb34f779c438d682c63_464230_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Tr0ll"
+                        
+                        data-hash="md5-&#43;laHwwumCjDc9I22X5zn3g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Tr0ll</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/shentou/vulnhub/raven/">
+        
+        
+            <div class="article-image">
+                <img src="/shentou/vulnhub/raven/10.cdd7da0c250b77825d94fa2147947414_huc584c10ae1fdf6b10c758655cf22572c_334424_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Raven"
+                        
+                        data-hash="md5-zdfaDCULd4JdlPohR5R0FA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Raven</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/shentou/vulnhub/me_and_my_girlfriend__1/">
+        
+        
+            <div class="article-image">
+                <img src="/shentou/vulnhub/me_and_my_girlfriend__1/9.f93328ff4cc130cd98c94b4a0013b7d5_hudde70f08a2d53696481628d39bf38c7e_144973_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post ME_AND_MY_GIRLFRIEND__1"
+                        
+                        data-hash="md5-&#43;TMo/0zBMM2YyUtKABO31Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">ME_AND_MY_GIRLFRIEND__1</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 一个俗人
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<style>
+  @font-face {
+    font-family: '屏显臻宋';
+    src: url(https://gsygsr.github.io/font/%E5%B1%8F%E6%98%BE%E8%87%BB%E5%AE%8B.ttf) format('truetype');
+  }
+
+  :root {
+    --base-font-family: '屏显臻宋';
+    --code-font-family: '屏显臻宋';
+  }
+  body {
+    background: url(https://gsygsr.github.io/background/58.jpg) no-repeat center top;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+</style>
+
+    </body>
+</html>

